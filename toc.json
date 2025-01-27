@@ -1,8 +1,4 @@
 {
-  "items": [
-    {
-      "type": "divider",
-      "title": "References"
-    },
-  ]
+  "collapseTableOfContents": false,
+  "items": []
 }
