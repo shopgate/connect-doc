@@ -1,0 +1,10 @@
+# Stoplight specific files
+# Temporary or cache files
+stoplight.cache/
+stoplight.db
+.spectral.mjs
+
+# Editor specific
+.idea/
+.vscode/
+.DS_Store
