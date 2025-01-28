@@ -1,5 +1,10 @@
 {
-  "foo": "bar2",
   "collapseTableOfContents": false,
-  "items": []
+  "items": [    
+    {
+      "type": "item",
+      "title": "Catalog",
+      "uri": "shopgate-cart-pipelines.oas2.yml"
+    }
+  ]
 }
