@@ -94,7 +94,7 @@ After initializing the project, you can create a new extension.
 1. Type `sgconnect extension create`.
 2. Enter the extension name and type.
 
-For backend extensions, you also enter whether the extension [runs in a trusted environment](/guides/technical/connect/pipelines#regular-and-trusted-pipelines).
+For backend extensions, you also enter whether the extension [runs in a trusted environment](../technical/connect/pipelines.md#regular-and-trusted-pipelines).
 
 Here are the steps the Platform SDK executes when you create a new extension: 
 1. Downloads the Shopgate extension boilerplate from Github into the project's `extensions/` directory.
