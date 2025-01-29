@@ -346,6 +346,22 @@
           "uri": "markdown/tutorials/advanced/tracking-provider.md"
         }
       ]
+    },
+
+
+    {
+      "type": "divider",
+      "title": "Support"
+    },
+    {
+      "type": "item",
+      "title": "Contact",
+      "uri": "markdown/support/contact.md"
+    },
+    {
+      "type": "item",
+      "title": "FAQ",
+      "uri": "markdown/support/faq.md"
     }
   ]
 }
