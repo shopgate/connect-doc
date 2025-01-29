@@ -74,6 +74,13 @@
       ]
     },
 
+
+
+
+
+
+
+
     {
       "type": "divider",
       "title": "Guides"
@@ -253,7 +260,92 @@
           ]
         }
       ]
-    }
+    },
     
+
+
+
+
+
+
+
+    {
+      "type": "divider",
+      "title": "Tutorials"
+    },
+    {
+      "type": "group",
+      "title": "Kickstart-Tutorials",
+      "items": [
+        {
+          "type": "group",
+          "title": "Hello World",
+          "items": [
+            {
+              "type": "item",
+              "title": "Overview",
+              "uri": "markdown/tutorials/starter/hello-world/overview.md"
+            },
+            {
+              "type": "item",
+              "title": "1. Create first extension",
+              "uri": "markdown/tutorials/starter/hello-world/part-1.md"
+            },
+            {
+              "type": "item",
+              "title": "2. Build first pipeline",
+              "uri": "markdown/tutorials/starter/hello-world/part-2.md"
+            },
+            {
+              "type": "item",
+              "title": "3. Modify existing pipelines",
+              "uri": "markdown/tutorials/starter/hello-world/part-3.md"
+            },
+            {
+              "type": "item",
+              "title": "4. Interact with storage",
+              "uri": "markdown/tutorials/starter/hello-world/part-4.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Loyalty Points",
+          "items": [
+            {
+              "type": "item",
+              "title": "1. Backend part",
+              "uri": "markdown/tutorials/starter/loyalty-points/backend.md"
+            },
+            {
+              "type": "item",
+              "title": "2. Frontend part",
+              "uri": "markdown/tutorials/starter/loyalty-points/frontend.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Advanced Tutorials",
+      "items": [
+        {
+          "type": "item",
+          "title": "Integrate with an ECP",
+          "uri": "markdown/tutorials/advanced/ecp-integration.md"
+        },
+        {
+          "type": "item",
+          "title": "Integrate Search Provider",
+          "uri": "markdown/tutorials/advanced/search-provider.md"
+        },
+        {
+          "type": "item",
+          "title": "Integrate Tracking Provider",
+          "uri": "markdown/tutorials/advanced/tracking-provider.md"
+        }
+      ]
+    }
   ]
 }
