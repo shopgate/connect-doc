@@ -170,6 +170,129 @@
           ]
         }
       ]
+    },
+    {
+      "type": "group",
+      "title": "Tools",
+      "items": [
+        {
+          "type": "item",
+          "title": "Platform SDK",
+          "uri": "markdown/guides/tools/platform-sdk.md"
+        },
+        {
+          "type": "item",
+          "title": "Cloud Flight",
+          "uri": "markdown/guides/tools/cloud-flight.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Commerce",
+      "items": [
+        {
+          "type": "item",
+          "title": "Existing Interfaces",
+          "uri": ""
+        },
+        {
+          "type": "group",
+          "title": "Cart Integration",
+          "items": [
+            {
+              "type": "group",
+              "title": "Connect Your Shop",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Quickstart",
+                  "uri": ""
+                },
+                {
+                  "type": "item",
+                  "title": "Full Requirements",
+                  "uri": ""
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "Plugin API",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                },
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "Merchant API",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                },
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "Catalog Data Feed",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                },
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "Cart Integration SDK",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                },
+                {
+                  "type": "item",
+                  "title": "Example",
+                  "uri": ""
+                }
+              ]
+            },
+            {
+              "type": "item",
+              "title": "Example Plugin",
+              "uri": ""
+            },
+            {
+              "type": "item",
+              "title": "Mobile Redirect",
+              "uri": ""
+            }
+          ]
+        }
+      ]
     }
     
   ]
