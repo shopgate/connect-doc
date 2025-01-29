@@ -194,7 +194,7 @@
         {
           "type": "item",
           "title": "Existing Interfaces",
-          "uri": ""
+          "uri": "markdown/guides/commerce/existing-interfaces.md"
         },
         {
           "type": "group",
@@ -207,12 +207,12 @@
                 {
                   "type": "item",
                   "title": "Quickstart",
-                  "uri": ""
+                  "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/quickstart.md"
                 },
                 {
                   "type": "item",
                   "title": "Full Requirements",
-                  "uri": ""
+                  "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/full-requirements.md"
                 }
               ]
             },
@@ -220,75 +220,35 @@
               "type": "group",
               "title": "Plugin API",
               "items": [
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                },
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                }
               ]
             },
             {
               "type": "group",
               "title": "Merchant API",
               "items": [
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                },
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                }
               ]
             },
             {
               "type": "group",
               "title": "Catalog Data Feed",
               "items": [
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                },
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                }
               ]
             },
             {
               "type": "group",
               "title": "Cart Integration SDK",
               "items": [
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                },
-                {
-                  "type": "item",
-                  "title": "Example",
-                  "uri": ""
-                }
               ]
             },
             {
               "type": "item",
               "title": "Example Plugin",
-              "uri": ""
+              "uri": "markdown/guides/commerce/cart-integration/example-plugin.md"
             },
             {
               "type": "item",
               "title": "Mobile Redirect",
-              "uri": ""
+              "uri": "markdown/guides/commerce/cart-integration/mobile-redirect.md"
             }
           ]
         }
