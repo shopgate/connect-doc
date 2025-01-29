@@ -72,6 +72,105 @@
           "uri": "markdown/introduction/connect-architecture/extending-your-app.md"
         }
       ]
+    },
+
+    {
+      "type": "divider",
+      "title": "Guides"
+    },
+    {
+      "type": "group",
+      "title": "Technical Guides",
+      "items": [
+        {
+          "type": "group",
+          "title": "Engage",
+          "items": [
+            {
+              "type": "item",
+              "title": "Portals",
+              "uri": "markdown/guides/technical/engange/portals.md"
+            },
+            {
+              "type": "item",
+              "title": "Creating Custom Routes",
+              "uri": "markdown/guides/technical/engange/creating-custom-routes.md"
+            },
+            {
+              "type": "item",
+              "title": "Streams",
+              "uri": "markdown/guides/technical/engange/streams.md"
+            },
+            {
+              "type": "item",
+              "title": "Styling Components",
+              "uri": "markdown/guides/technical/engange/styling-components.md"
+            },
+            {
+              "type": "item",
+              "title": "Fetching and processing data",
+              "uri": "markdown/guides/technical/engange/data-fetching-and-processing.md"
+            },
+            {
+              "type": "item",
+              "title": "Retrieving data from the store",
+              "uri": "markdown/guides/technical/engange/retrieving-data.md"
+            },
+            {
+              "type": "item",
+              "title": "Extending the built-in Scanner",
+              "uri": "markdown/guides/technical/engange/extending-the-built-in-scanner.md"
+            },
+            {
+              "type": "item",
+              "title": "Using Translations",
+              "uri": "markdown/guides/technical/engange/using-the-translation-system.md"
+            },
+            {
+              "type": "item",
+              "title": "Mutable Actions",
+              "uri": "markdown/guides/technical/engange/mutable-actions.md"
+            },
+            {
+              "type": "item",
+              "title": "Form Builder",
+              "uri": "markdown/guides/technical/engange/form-builder.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Connect",
+          "items": [
+            {
+              "type": "item",
+              "title": "Extension Configuration",
+              "uri": "markdown/guides/technical/connect/extension-configuration.md"
+            },
+            {
+              "type": "item",
+              "title": "Pipelines",
+              "uri": "markdown/guides/technical/connect/pipelines.md"
+            },
+            {
+              "type": "item",
+              "title": "Product Extensibility",
+              "uri": "markdown/guides/technical/connect/product-extensibility.md"
+            },
+            {
+              "type": "item",
+              "title": "Steps",
+              "uri": "markdown/guides/technical/connect/steps.md"
+            },
+            {
+              "type": "item",
+              "title": "Step Insertion",
+              "uri": "markdown/guides/technical/connect/step-insertion.md"
+            }
+          ]
+        }
+      ]
     }
+    
   ]
 }
