@@ -13,11 +13,11 @@ Follow these steps to develop on the Shopgate CONNECT platform:
 The CONNECT platform SDK helps you to develop extensions and themes on your local computer. It comes with a lightweight command line tool to set up your environment, enable pipeline step execution locally and test the theme within the browser.
 
 
-!["Development Process"](dev-process.png)
+!["Development Process"](../../../assets/dev-process.png)
 
 
 The Cloud Flight testing app provides a convenient way to test any deployed or locally running application on a native device. This functionality works for staging deployments and simplifies the release process.
 
 >**Next:**
 >
->[Commerce Integration](/introduction/shopgate-connect/commerce-integration)
+>[Commerce Integration](commerce-integration.md)
