@@ -22,5 +22,5 @@ The Shopgate CONNECT platform includes the following components:
 
 >**Next:**
 >
->[Set up your developer environment](/introduction/getting-started/set-up-environment)
+>[Set up your developer environment](../getting-started/set-up-environment.md)
 

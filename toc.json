@@ -3,7 +3,7 @@
   "items": [
     {
       "type": "divider",
-      "title": "Introduction Test"
+      "title": "Introduction"
     },
     {
       "type": "item",
@@ -23,6 +23,53 @@
           "type": "item",
           "title": "Commerce integration",
           "uri": "markdown/introduction/shopgate-connect/commerce-integration.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Getting Started",
+      "items": [
+        {
+          "type": "item",
+          "title": "Set Up Environment",
+          "uri": "markdown/introduction/getting-started/set-up-environment.md"
+        },
+        {
+          "type": "item",
+          "title": "Set Up Local Frontend",
+          "uri": "markdown/introduction/getting-started/set-up-local-frontend.md"
+        },
+        {
+          "type": "item",
+          "title": "Test With Cloud Flight",
+          "uri": "markdown/introduction/getting-started/test-with-cloud-flight.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Connect Architecture",
+      "items": [
+        {
+          "type": "item",
+          "title": "App Architecture",
+          "uri": "markdown/introduction/connect-architecture/app-architecture.md"
+        },
+        {
+          "type": "item",
+          "title": "Infrastructure Overview",
+          "uri": "markdown/introduction/connect-architecture/infrastructure-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Backend Communication",
+          "uri": "markdown/introduction/connect-architecture/backend-communication.md"
+        },
+        {
+          "type": "item",
+          "title": "Extending Your App",
+          "uri": "markdown/introduction/connect-architecture/extending-your-app.md"
         }
       ]
     }
