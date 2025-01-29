@@ -17,15 +17,9 @@
  following tools and technologies:
 
 
- * [Node.js](https://nodejs.org/) (for backend
- development), [Tutorial on
- w3schools.com](https://www.w3schools.com/nodejs/nodejs_get_started.asp)
- * [React](https://reactjs.org/) (for frontend
- development), [Tutorial on
- egghead.io](https://egghead.io/courses/start-learning-react)
- * [Redux](https://redux.js.org/) (optional, for data
- handling), [Tutorial on
- egghead.io](https://egghead.io/courses/getting-started-with-redux)
+ * [Node.js](https://nodejs.org/) (for backend development), [Tutorial on w3schools.com](https://www.w3schools.com/nodejs/nodejs_get_started.asp)
+ * [React](https://reactjs.org/) (for frontend development), [Tutorial on egghead.io](https://egghead.io/courses/start-learning-react)
+ * [Redux](https://redux.js.org/) (optional, for data handling), [Tutorial on egghead.io](https://egghead.io/courses/getting-started-with-redux)
 
 
  ## Install the Shopgate CONNECT Platform SDK
