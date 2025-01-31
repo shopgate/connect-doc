@@ -123,7 +123,6 @@ paths:
   /shopgate.catalog.getFilters.v1:
     post:
       operationId: pipelines/shopgate.catalog.getFilters.v1
-      summary: 'getProduct.v1'
       description: |-
         This pipeline retrieves the possible filters, for a specific category or searchPhrase.
         Only one of both filter methods can be used at once.
@@ -162,7 +161,7 @@ paths:
                 code: EUNKNOWN
                 message: An internal error occured.
       tags:
-        - Catalog
+        - Product
       x-stoplight:
         id: ycgrfqygyz7or
   /shopgate.catalog.getTotalProductCount.v1:

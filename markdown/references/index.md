@@ -1,4 +1,0 @@
----
-title: Product
-type: hubdata
----
