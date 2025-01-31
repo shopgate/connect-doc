@@ -123,7 +123,7 @@ paths:
   /shopgate.catalog.getFilters.v1:
     post:
       operationId: pipelines/shopgate.catalog.getFilters.v1
-      summary: 'Retrieves possible filters, based on input parameters.'
+      summary: 'getProduct.v1'
       description: |-
         This pipeline retrieves the possible filters, for a specific category or searchPhrase.
         Only one of both filter methods can be used at once.

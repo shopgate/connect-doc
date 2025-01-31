@@ -355,8 +355,18 @@
     },
     {
       "type": "item",
-      "title": "Contact",
-      "uri": "shopgate-products.oas2.yml"
+      "title": "Product swagger",
+      "uri": "static/shopgate-products.oas2.yml"
+    },
+    {
+      "type": "item",
+      "title": "product deeplink",
+      "uri": "static/shopgate-products.oas2.yml#/paths/~1shopgate.catalog.getProduct.v1/post"
+    },
+    {
+      "type": "item",
+      "title": "hubdata test",
+      "uri": "markdown/references/index.md"
     },
 
 
