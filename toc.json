@@ -351,6 +351,17 @@
 
     {
       "type": "divider",
+      "title": "References"
+    },
+    {
+      "type": "item",
+      "title": "Contact",
+      "uri": "shopgate-products.oas2.yml"
+    },
+
+
+    {
+      "type": "divider",
       "title": "Support"
     },
     {
