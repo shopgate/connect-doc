@@ -463,7 +463,7 @@
       },
       {
         "type": "group",
-        "title": "Pipelines",
+        "title": "Shopgate Pipelines",
         "items": [
           {
             "type": "item",
@@ -489,12 +489,42 @@
       },
       {
         "type": "group",
-        "title": "TODO Platform SDK",
+        "title": "Platform SDK",
         "items": [
           {
             "type": "item",
-            "title": "TODO",
-            "uri": "markdown/references/extensions/configuration.md"
+            "title": "Overview",
+            "uri": "markdown/references/platform-sdk/overview.md"
+          },
+          {
+            "type": "item",
+            "title": "Login Action",
+            "uri": "markdown/references/platform-sdk/login.md"
+          },
+          {
+            "type": "item",
+            "title": "Init Action",
+            "uri": "markdown/references/platform-sdk/init.md"
+          },
+          {
+            "type": "item",
+            "title": "Extension Actions",
+            "uri": "markdown/references/platform-sdk/extension.md"
+          },
+          {
+            "type": "item",
+            "title": "Theme Action",
+            "uri": "markdown/references/platform-sdk/theme.md"
+          },
+          {
+            "type": "item",
+            "title": "Backend Actions",
+            "uri": "markdown/references/platform-sdk/backend.md"
+          },
+          {
+            "type": "item",
+            "title": "Frontend Actions",
+            "uri": "markdown/references/platform-sdk/frontend.md"
           }
         ]
       }
