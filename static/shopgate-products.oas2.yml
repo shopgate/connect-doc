@@ -14,7 +14,7 @@ paths:
   /shopgate.cms.getPageConfig.v1:
     post:
       operationId: pipelines/shopgate.cms.getPageConfig.v1
-      summary: Retrieve the page configuration for the given pageId.
+      summary: getPageConfig.v1
       description: |
         This pipeline returns the page configuration for one specific page, the ID of the page is passed through the pageId parameter.
         The 'title' property is only set, if the particular page has a title.
@@ -72,7 +72,7 @@ paths:
   /shopgate.cms.getMenu.v1:
     post:
       operationId: pipelines/shopgate.cms.getMenu.v1
-      summary: Retrieves additional entries for the app menu.
+      summary: getMenu.v1
       description: |
         This pipeline returns the additional entries for the service menu that will be shown, when clicking the hamburger icon in the android app or "More" on iOS.
         When there are no entries available for that shop the entries property will contain an empty array.
@@ -123,6 +123,7 @@ paths:
   /shopgate.catalog.getFilters.v1:
     post:
       operationId: pipelines/shopgate.catalog.getFilters.v1
+      summary: getFilters.v1
       description: |-
         This pipeline retrieves the possible filters, for a specific category or searchPhrase.
         Only one of both filter methods can be used at once.
@@ -167,7 +168,7 @@ paths:
   /shopgate.catalog.getTotalProductCount.v1:
     post:
       operationId: pipelines/shopgate.catalog.getTotalProductCount.v1
-      summary: Searches for products and returns the count of those.
+      summary: getTotalProductCount.v1
       description: |-
         This pipeline will utilize the same search mechanism as the 'getProducts_v1' pipeline, but will omit the products and extract the totalProductCount only. This is useful in cases where the actual product data is of no interest, because it is faster.
         It can be combined with filters, to preview the number of products, that would be found in a filter search.
@@ -207,7 +208,7 @@ paths:
   /shopgate.catalog.getLiveshoppingProducts.v1:
     post:
       operationId: pipelines/shopgate.catalog.getLiveshoppingProducts.v1
-      summary: 'Retrieves all products with a liveshopping timeframe, future, past and ongoing ones.'
+      summary: getLiveshoppingProducts.v1
       description: |-
         This pipeline will retrieve all products, that have a liveshopping timeframe. Not only active ones will be returned, but also the ones, which had such a timeframe in the past 7 days or will have one in the future. It's important for the frontend, to filter the products by active liveshopping.
         The additional products are there, to enable the frontend to show what the customer had missed, to show a countdown like "will be cheaper in 15 minutes" or to create similar features
@@ -301,7 +302,7 @@ paths:
   /shopgate.catalog.getHighlightProducts.v1:
     post:
       operationId: pipelines/shopgate.catalog.getHighlightProducts.v1
-      summary: Retrieves all products that ar marked as highlight.
+      summary: getHighlightProducts.v1
       description: 'This pipeline will retrieve all products, that are "highlighted"'
       parameters:
         - name: body
@@ -406,7 +407,7 @@ paths:
   /shopgate.catalog.getProducts.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProducts.v1
-      summary: 'Retrieves a collection of products, based on some filters, categories or on a search.'
+      summary: getProducts.v1
       description: |-
         This pipeline gives you a (paginated) product list. It can be used to either “search” for products or the content of categories. If the categoryId parameter is set, the searchPhrase will be ignored, to search inside a category (or more categories), you have to use filters combined with a search phrase.
 
@@ -499,7 +500,7 @@ paths:
   /shopgate.catalog.getCategoryChildren.v1:
     post:
       operationId: pipelines/shopgate.catalog.getCategoryChildren.v1
-      summary: Retrieve sub-categories for the given category id.
+      summary: getCategoryChildren.v1
       description: This pipeline will retrieve the sub-categories of one specific category.
       parameters:
         - name: body
@@ -545,6 +546,7 @@ paths:
   /shopgate.catalog.getCategory.v1:
     post:
       operationId: pipelines/shopgate.catalog.getCategory.v1
+      summary: getCategory.v1
       description: |
         This pipeline will retrieve one specific category and, if "includeChildren" is set to true, it's
         child categories. If it's set to false, the "children" property will be set to an empty array.
@@ -639,7 +641,7 @@ paths:
   /shopgate.catalog.getRootCategories.v1:
     post:
       operationId: pipelines/shopgate.catalog.getRootCategories.v1
-      summary: ''
+      summary: getRootCategories.v1
       description: This pipeline is used to retrieve the root categories of the shop
       parameters:
         - name: body
@@ -680,7 +682,7 @@ paths:
   /shopgate.catalog.getProduct.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProduct.v1
-      summary: ''
+      summary: getProduct.v1
       description: |
         This pipeline is used to retrieve one specific product. Mainly used for deeplinks to the
         detail page, because the relevant data is normally already fetched by the getProducts_v1 which
@@ -757,7 +759,7 @@ paths:
   /shopgate.catalog.getProductsByIds.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductsByIds.v1
-      summary: ''
+      summary: getProductsByIds.v1
       parameters:
         - name: body
           in: body
@@ -871,7 +873,7 @@ paths:
   /shopgate.catalog.getProductsByCategory.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductsByCategory.v1
-      summary: ''
+      summary: getProductsByCategory.v1
       parameters:
         - name: body
           in: body
@@ -983,7 +985,7 @@ paths:
   /shopgate.catalog.getProductsBySearchPhrase.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductsBySearchPhrase.v1
-      summary: ''
+      summary: getProductsBySearchPhrase.v1
       parameters:
         - name: body
           in: body
@@ -1093,7 +1095,7 @@ paths:
   /shopgate.catalog.getProductImages.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductImages.v1
-      summary: ''
+      summary: getProductImages.v1
       description: |
         This pipeline is used to only retrieve the images of a product. The BasicProduct, which is returned
         by getProduct and getProducts only holds the first one.
@@ -1126,7 +1128,7 @@ paths:
   /shopgate.catalog.getProductImages.v2:
     post:
       operationId: pipelines/shopgate.catalog.getProductImages.v2
-      summary: ''
+      summary: getProductImages.v2
       description: |
         This pipeline retrieves the product images. The BasicProduct, which is returned by getProduct and getProducts, only holds the first one.
       parameters:
@@ -1200,7 +1202,7 @@ paths:
   /shopgate.catalog.getProductImages.v3:
     post:
       operationId: pipelines/shopgate.catalog.getProductImages.v3
-      summary: ''
+      summary: getProductImages.v3
       description: |
         This pipeline retrieves the product images. The BasicProduct, which is returned
         by getProduct and getProducts, only holds the first one. The image URLs returned are only base URLs, without params for width, height etc. They need to be added as GET params (width, height) to receive the image.
@@ -1233,7 +1235,7 @@ paths:
   /shopgate.catalog.getProductDescription.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductDescription.v1
-      summary: ''
+      summary: getProductDescription.v1
       description: 'This pipeline is used to retrieve the product description only. This could be a very long text, including html'
       parameters:
         - $ref: '#/parameters/productId'
@@ -1256,7 +1258,7 @@ paths:
   /shopgate.catalog.getProductShipping.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductShipping.v1
-      summary: ''
+      summary: getProductShipping.v1
       description: |
         This pipeline is used to retrieve the shipping information only.
         Useful to update outdated data on the products detail page. Outdated data can be caused by a
@@ -1283,7 +1285,7 @@ paths:
   /shopgate.catalog.getProductPrice.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductPrice.v1
-      summary: ''
+      summary: getProductPrice.v1
       description: |
         This pipeline is used to retrieve the price information only.
         Useful to update outdated data on the products detail page. Outdated data can be caused by
@@ -1323,7 +1325,7 @@ paths:
   /shopgate.catalog.getProductProperties.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductProperties.v1
-      summary: ''
+      summary: getProductProperties.v1
       description: This pipeline is used to retrieve the properties of a product.
       parameters:
         - $ref: '#/parameters/productId'
@@ -1347,7 +1349,7 @@ paths:
   /shopgate.catalog.getProductOptions.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductOptions.v1
-      summary: ''
+      summary: getProductOptions.v1
       description: This pipeline is used to retrieve the options of a product. The result is already sorted.
       parameters:
         - $ref: '#/parameters/productId'
@@ -1381,7 +1383,7 @@ paths:
   /shopgate.catalog.getProductChildren.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductChildren.v1
-      summary: ''
+      summary: getProductChildren.v1
       description: This pipeline retrieves the child products of a given product.
       parameters:
         - $ref: '#/parameters/productIdShowInactive'
@@ -1461,7 +1463,7 @@ paths:
   /shopgate.catalog.getProductVariants.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductVariants.v1
-      summary: ''
+      summary: getProductVariants.v1
       description: This pipeline retrieves variant-products and the characteristics to distinguish these.
       parameters:
         - $ref: '#/parameters/productIdShowInactive'
@@ -1501,7 +1503,7 @@ paths:
   /shopgate.catalog.getSearchSuggestions.v1:
     post:
       operationId: pipelines/shopgate.catalog.getSearchSuggestions.v1
-      summary: ''
+      summary: getSearchSuggestions.v1
       description: used to send incomplete SearchPhrases to autocomplete/suggest a full searchPhrase
       parameters:
         - name: body
@@ -1535,7 +1537,7 @@ paths:
   /shopgate.catalog.getProductRelations.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductRelations.v1
-      summary: Get related products to the given one.
+      summary: getProductRelations.v1
       description: Requests all related products to the given `productId` and returns them as array.
       responses:
         ok:
