@@ -1,0 +1,302 @@
+swagger: '2.0'
+x-stoplight:
+  id: 00l7xbolg4p12
+info:
+  title: Shopgate Reviews Pipelines
+  version: '1.0'
+  description: ​
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /shopgate.catalog.getProductReviews.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getProductReviews.v1
+      summary: getProductReviews.v1
+      description: This pipeline is used to retrieve the reviews of a product.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - productId
+            properties:
+              productId:
+                type: string
+                description: 'The id of the product, which the reviews are bound to.'
+              offset:
+                type: integer
+                format: int32
+                minimum: 0
+                default: 0
+                description: Used for pagination through many reviews.
+              limit:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 100
+                default: 20
+                description: The maximum number of reviews to retrieve.
+              sort:
+                type: string
+                enum:
+                  - relevance
+                  - dateDesc
+                  - dateAsc
+                  - rateDesc
+                  - rateAsc
+                default: relevance
+                description: 'Describes how to sort the reviews, default is by "relevance".'
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            required:
+              - output
+            properties:
+              output:
+                properties:
+                  totalReviewCount:
+                    type: integer
+                  reviews:
+                    type: array
+                    items:
+                      $ref: '#/definitions/Review'
+          examples:
+            application/json:
+              output:
+                totalReviewCount: 0
+                reviews:
+                  - id: '1700123654'
+                    author: Max Musterman
+                    date: '2017-01-13T09:44:22Z'
+                    rate: 73
+                    title: This product is not that good
+                    review: 'I ordered a vacuum cleaner, but there are no dust bags with it, that is a pain'
+        EUNKNOWN:
+          description: An internal error occured.
+          schema:
+            $ref: ./shopgate-products-pipleines.oas2.yml#/definitions/UnknownError
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occured.
+      x-stoplight:
+        id: w5bhpytj2u2mu
+  /shopgate.user.getReview.v1:
+    post:
+      operationId: pipelines/shopgate.user.getReview.v1
+      summary: getReview.v1
+      description: This pipeline is used to retrieve the current users review for a product.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - productId
+            properties:
+              productId:
+                type: string
+                description: Product id to get reviews for.
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            $ref: '#/definitions/Review'
+          examples:
+            application/json:
+              id: '1700123654'
+              author: Max Musterman
+              date: '2017-01-13T09:44:22Z'
+              rate: 73
+              title: This product is not that good
+              review: 'I ordered a vacuum cleaner, but there are no dust bags with it, that is a pain'
+      x-stoplight:
+        id: 0vp7l0g2yx6v8
+  /shopgate.catalog.addProductReview.v1:
+    post:
+      summary: addProductReview.v1
+      description: |
+        This pipeline is used to add a new review for the given product.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - productId
+              - rate
+              - author
+            properties:
+              productId:
+                type: string
+                description: Product id to get reviews for
+              author:
+                $ref: '#/definitions/ReviewAuthor'
+              rate:
+                $ref: '#/definitions/ReviewRate'
+              title:
+                $ref: '#/definitions/ReviewTitle'
+              review:
+                $ref: '#/definitions/ReviewReview'
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            type: object
+          examples: {}
+        '400':
+          description: 'Validation error, when review attributes are not valid'
+          schema:
+            $ref: '#/definitions/ValidationError'
+        '401':
+          description: Unauthorized access. user shuld be logged in to post a review
+          schema:
+            $ref: '#/definitions/UnauthorizedError'
+      operationId: pipelines/shopgate.catalog.addProductReview.v1
+      x-stoplight:
+        id: fdu5bmwst1c6o
+  /shopgate.catalog.updateProductReview.v1:
+    post:
+      summary: updateProductReview.v1
+      description: |
+        This pipeline is used to edit an existing review.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - author
+              - rate
+            properties:
+              author:
+                $ref: '#/definitions/ReviewAuthor'
+              rate:
+                $ref: '#/definitions/ReviewRate'
+              title:
+                $ref: '#/definitions/ReviewTitle'
+              review:
+                $ref: '#/definitions/ReviewReview'
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            type: object
+        '400':
+          description: 'Validation error, when review attributes are not valid'
+          schema:
+            $ref: '#/definitions/ValidationError'
+        '401':
+          description: Unauthorized access. user shuld be logged in to post a review
+          schema:
+            $ref: '#/definitions/UnauthorizedError'
+      operationId: pipelines/shopgate.catalog.updateProductReview.v1
+      x-stoplight:
+        id: ijp8a5bw741on
+definitions:
+  Review:
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/ReviewId'
+      author:
+        $ref: '#/definitions/ReviewAuthor'
+      date:
+        $ref: '#/definitions/ReviewDate'
+      rate:
+        $ref: '#/definitions/ReviewRate'
+      title:
+        $ref: '#/definitions/ReviewTitle'
+      review:
+        $ref: '#/definitions/ReviewReview'
+    example:
+      id: '1700123654'
+      author: Max Musterman
+      date: '2017-01-13T09:44:22Z'
+      rate: 73
+      title: This product is not that good
+      review: 'I ordered a vacuum cleaner, but there are no dust bags with it, that is a pain'
+    x-stoplight:
+      id: gj5mj43hda4nr
+  ReviewId:
+    type: string
+    description: Id of review
+    example: '1700123654'
+    maxLength: 255
+    x-stoplight:
+      id: r2erkkysjadht
+  ReviewAuthor:
+    type: string
+    description: Name of the reviewer
+    example: John D.
+    maxLength: 255
+    x-stoplight:
+      id: r5atfry1c6jvm
+  ReviewRate:
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 100
+    example: 100
+    x-stoplight:
+      id: 3zynne3r2rd0t
+  ReviewDate:
+    type: string
+    format: dateTime
+    example: '2017-08-31T07:54:53.431Z'
+    x-stoplight:
+      id: vv268k3nuw7be
+  ReviewTitle:
+    type: string
+    example: Awesome product.
+    maxLength: 255
+    x-stoplight:
+      id: 94dt3zgkzhglo
+  ReviewReview:
+    type: string
+    example: I like it because it is good.
+    x-stoplight:
+      id: gex1a7j5ixtcy
+  ValidationError:
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          code:
+            type: string
+            enum:
+              - EINVAL
+            example: EINVAL
+          message:
+            type: string
+            example: One of review attributes are invalid.
+    x-stoplight:
+      id: 4tkmwtq1gyoq6
+  UnauthorizedError:
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          code:
+            type: string
+            enum:
+              - EACCESS
+            example: EACCESS
+          message:
+            type: string
+            example: User is not logged in.
+    x-stoplight:
+      id: met5c4575vg72

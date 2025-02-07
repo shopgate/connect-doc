@@ -1,0 +1,938 @@
+swagger: '2.0'
+x-stoplight:
+  id: v0trpy5qslqqw
+info:
+  title: Shopgate Cart Pipelines
+  version: '1.0'
+  contact:
+    name: ''
+  description: 'This document specifies all the cart pipelines, which are used by the default Shopgate iOS and Android themes.'
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /shopgate.cart.getCart.v1:
+    post:
+      operationId: pipelines/shopgate.cart.getCart.v1
+      summary: getCart.v1
+      description: 'Retrieves the whole cart, belonging to a customer, from a fixed endpoint, like an API.'
+      responses:
+        ok:
+          description: Returns the cart of the current user.
+          schema:
+            $ref: '#/definitions/CartResult'
+          examples:
+            application/json:
+              output:
+                messages:
+                  - type: error
+                    message: The cart amount is to high for online purchase. The maximum amount is USD 4.99.
+                    code: CART_VALUE_TOO_HIGH
+                cartItems:
+                  - id: a84de7d7-2b7d-4aa8-a64d-9558ca791b86
+                    quantity: 5
+                    type: product
+                    coupon:
+                      code: 20OFF
+                      description: Reduces the cost of all products by 20%.
+                      label: 20% off of all products.
+                      savedPrice:
+                        value: 20
+                        type: percentage
+                    product:
+                      id: '10080466570'
+                      name: Awesome T-Shirt
+                      additionalInfo:
+                        - label: Manufacturer
+                          value: Lacoste
+                      featuredImageUrl: 'https://myshop.example/images/product_xyz_featured.png'
+                      properties:
+                        - label: Color
+                          value: Red
+                      price:
+                        unit: 10
+                        default: 50
+                        special: 40
+                      appliedDiscounts:
+                        - code: 20OFF
+                          description: Reduces the cost of all products by 20%.
+                          label: 20% off of all products.
+                          savedPrice:
+                            value: 20
+                            type: percentage
+                    messages:
+                      - type: info
+                        message: cart.item.messages.order_on_purchase_with_when_param
+                        messageParams:
+                          when: tomorrow
+                        translated: false
+                        code: ORDER_ON_PURCHASE
+                currency: USD
+                totals:
+                  - type: tax
+                    label: Tax (19%)
+                    amount: 7.6
+                    subTotals:
+                      - type: tax
+                        label: Tax (19%)
+                        amount: 7.6
+                text:
+                  legal: 'By placing your order you agree to our <b><u>Privacy Policy</u></b>, our <b><u>Terms and Conditions</u></b> as well as our <b><u>Cancellation Policy</u></b>.'
+                flags:
+                  taxIncluded: false
+                  orderable: false
+                  coupons: true
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: zyckfdldpu46b
+  /shopgate.cart.addProducts.v1:
+    post:
+      tags:
+        - Cart Products
+      operationId: pipelines/shopgate.cart.addProducts.v1
+      summary: addProducts.v1
+      description: |-
+        Adds one or multiple products to the cart. Cart rules are applied, if the shop supports them and are set up for at least one product to be added (or already placed in the cart).
+
+        _Note: Depending on the installed extensions, custom errors can be returned on failure._
+      parameters:
+        - $ref: '#/parameters/addProductsParam'
+      responses:
+        ok:
+          description: Returns an empty object after the action was performed.
+          schema:
+            $ref: '#/definitions/EmptyResult'
+          examples:
+            application/json:
+              output: {}
+        ECART:
+          description: This error is thrown when there is an issue with adding one or multiple products to the cart. Note that the current theme only displays the first error in the array.
+          schema:
+            $ref: '#/definitions/CartProductsError'
+          examples:
+            application/json:
+              error:
+                code: ECART
+                message: There was a problem while trying to add one or multiple products.
+                errors:
+                  - entityId: product-number-123
+                    code: EINSUFFICIENTSTOCK
+                    message: cart.error.insufficientstock
+                    messageParams:
+                      productName: Apple Pie
+                    translated: false
+                  - entityId: unavailable-product-with-product-number-987
+                    code: ENOTFOUND
+                    message: The product 'Samba Hat' can't be found and was therefore not added to the cart.
+                    translated: true
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: 8zuoqd9nrj38m
+  /shopgate.cart.updateProducts.v1:
+    post:
+      tags:
+        - Cart Products
+      operationId: pipelines/shopgate.cart.updateProducts.v1
+      summary: updateProducts.v1
+      description: |-
+        Updates the quantity for one or multiple cart items referenced by their respective cartItemId. Depending on the shop and it’s cart rules certain quantities can be rejected.
+
+        _Note: Depending on the installed extensions, custom errors can be returned on failure._
+      parameters:
+        - $ref: '#/parameters/updateCartItemsParam'
+      responses:
+        ok:
+          description: Returns an empty object after the action was performed.
+          schema:
+            $ref: '#/definitions/EmptyResult'
+          examples:
+            application/json:
+              output: {}
+        ECART:
+          description: This error is thrown when there is an issue with updating one or multiple products within the cart.
+          schema:
+            $ref: '#/definitions/CartProductsError'
+          examples:
+            application/json:
+              error:
+                code: ECART
+                message: There was a problem while trying to update one or multiple products in the cart.
+                errors:
+                  - entityId: product-number-123
+                    code: EINSUFFICIENTSTOCK
+                    message: cart.error.insufficientstock
+                    messageParams:
+                      productName: Apple Pie
+                    translated: false
+                  - entityId: unavailable-product-with-product-number-987
+                    code: ENOTFOUND
+                    message: The product 'Samba Hat' can't be found and was therefore not added to the cart.
+                    translated: true
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: lmleyvhv8n0nj
+  /shopgate.cart.deleteProducts.v1:
+    post:
+      tags:
+        - Cart Products
+      operationId: pipelines/shopgate.cart.deleteProducts.v1
+      summary: deleteProducts.v1
+      description: |-
+        Deletes all given cart items of type “product” from the cart, if the applied cart rules don’t prevent it.
+
+        _Note: Depending on the installed extensions, custom errors can be returned on failure._
+      parameters:
+        - $ref: '#/parameters/cartItemIdsParam'
+      responses:
+        ok:
+          description: Returns an empty object after the action was performed.
+          schema:
+            $ref: '#/definitions/EmptyResult'
+          examples:
+            application/json:
+              output: {}
+        ECART:
+          description: This error is thrown when there is an issue with deleting one or multiple products from the cart.
+          schema:
+            $ref: '#/definitions/CartProductsError'
+          examples:
+            application/json:
+              error:
+                code: ECART
+                message: There was a problem while trying to delete one or multiple products.
+                errors:
+                  - entityId: cart-item-product-ABC54321
+                    code: ENOTFOUND
+                    message: cart.error.cartItemProductNotFound
+                    messageParams:
+                      cartItemName: 5 Pack of Apple Pie
+                    translated: false
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: hoitl3pjsbdv1
+  /shopgate.cart.addCoupons.v1:
+    post:
+      tags:
+        - Cart Coupons
+      operationId: pipelines/shopgate.cart.addCoupons.v1
+      summary: addCoupons.v1
+      description: |-
+        Adds multiple coupons to the cart. The coupon code needs to be unique. There can’t be two coupons with identical code in the cart at any given time.
+
+        _Note: Some shops don’t support more than one coupon, or none at all._
+      parameters:
+        - $ref: '#/parameters/couponCodesParam'
+      responses:
+        ok:
+          description: Returns an empty object after the action was performed.
+          schema:
+            $ref: '#/definitions/EmptyResult'
+          examples:
+            application/json:
+              output: {}
+        EINVALIDCALL:
+          description: The pipeline can't be called in the given context.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EINVALIDCALL
+                message: The pipeline can't be called in the given context.
+        ECART:
+          description: This error is thrown when there is an issue with adding a counpon to the cart.
+          schema:
+            $ref: '#/definitions/CartCouponsError'
+          examples:
+            application/json:
+              error:
+                code: ECART
+                message: There was a problem while trying to add one or multiple counpons to the cart.
+                errors:
+                  - entityId: TYPO-2019-FEB-20-PERCENT-OFF-SOCKS-TYPO
+                    code: EINVALIDCOUPON
+                    message: cart.error.invalidcoupon
+                    messageParams:
+                      enteredCouponCode: TYPO-2019-FEB-20-PERCENT-OFF-SOCKS-TYPO
+                    translated: false
+                  - entityId: FREE-SHIPPING-DEC-18
+                    code: ECOUPONEXPIRED
+                    message: The coupon 'FREE-SHIPPING-DEC-18' has expired.
+                    translated: true
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: i51jw4bbttncn
+  /shopgate.cart.deleteCoupons.v1:
+    post:
+      tags:
+        - Cart Coupons
+      operationId: pipelines/shopgate.cart.deleteCoupons.v1
+      summary: deleteCoupons.v1
+      description: |-
+        Deletes all given coupons from the cart. Depending on the shop and/or extension, which is handling this operation, some coupons could remain in the cart. Expecially if cart rules apply.
+
+        _Note: Some shops don’t support more than one coupon, or none at all._
+      parameters:
+        - $ref: '#/parameters/couponCodesParam'
+      responses:
+        ok:
+          description: Returns an empty object after the action was performed.
+          schema:
+            $ref: '#/definitions/EmptyResult'
+          examples:
+            application/json:
+              output: {}
+        EINVALIDCALL:
+          description: The pipeline can't be called in the given context.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EINVALIDCALL
+                message: The pipeline can't be called in the given context.
+        ECART:
+          description: This error is thrown when there is an issue with deleting one or multiple coupons from the cart.
+          schema:
+            $ref: '#/definitions/CartProductsError'
+          examples:
+            application/json:
+              error:
+                code: ECART
+                message: There was a problem while trying to delete one or multiple coupons.
+                errors:
+                  - entityId: cart-item-coupon-1fbA1
+                    code: ENOTFOUND
+                    message: The coupon you tried to remove does not exist in the cart.
+                    translated: true
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: v81xesl0nz1rg
+  /shopgate.checkout.getUrl.v1:
+    post:
+      tags:
+        - Checkout
+      operationId: pipelines/shopgate.checkout.getUrl.v1
+      summary: getUrl.v1
+      description: 'Requests a checkout url and it’s expiration time from the connected shop. Depending on the shop, the expiration time can be very short or not present at all. It is possible that the returned expiration date is already in the past, which enforces the effect that is can not be cached.'
+      responses:
+        ok:
+          description: Returns the checkout url.
+          schema:
+            $ref: '#/definitions/UrlResult'
+          examples:
+            application/json:
+              output:
+                url: 'http://example.com/'
+                expires: '2017-12-31T23:59:59.999Z'
+        EUNKNOWN:
+          description: An internal error occurred.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occurred.
+      x-stoplight:
+        id: i5xalmvpyc3q3
+parameters:
+  addProductsParam:
+    name: products
+    in: body
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          productId:
+            type: string
+            example: '10080466570'
+          quantity:
+            type: number
+            example: 1
+          options:
+            type: array
+            items:
+              $ref: '#/definitions/AddProductsProductOption'
+          metadata:
+            type: object
+            description: Holds additional information about a specific product of any type. The contents of the object can vary.
+            example:
+              additionalInfo:
+                is_parent: false
+  updateCartItemsParam:
+    name: CartItems
+    in: body
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          cartItemId:
+            type: string
+          quantity:
+            type: number
+  cartItemIdsParam:
+    name: cartItemIds
+    in: body
+    required: true
+    schema:
+      type: array
+      description: Id of the cart item to be deleted or modified.
+      items:
+        type: string
+  couponCodesParam:
+    name: couponCodes
+    in: body
+    required: true
+    schema:
+      type: array
+      description: Code of the coupon.
+      items:
+        type: string
+definitions:
+  EmptyResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        type: object
+    x-stoplight:
+      id: pq4i3rz4v5qnz
+  UrlResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        $ref: '#/definitions/Url'
+    x-stoplight:
+      id: eai0b68pstv1g
+  CartResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        $ref: '#/definitions/Cart'
+    x-stoplight:
+      id: cysnwi420oshm
+  Cart:
+    type: object
+    required:
+      - cartItems
+      - currency
+      - totals
+      - flags
+    properties:
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/Message'
+      cartItems:
+        type: array
+        items:
+          $ref: '#/definitions/CartItem'
+      currency:
+        $ref: '#/definitions/Currency'
+      totals:
+        type: array
+        items:
+          $ref: '#/definitions/CartTotal'
+      text:
+        $ref: '#/definitions/CartText'
+      flags:
+        $ref: '#/definitions/CartFlags'
+    x-stoplight:
+      id: 2jkag2vzqk45e
+  CartItem:
+    type: object
+    description: The cart item can be a product OR a coupon. The property `type` defines which one it is. The key `coupon` is not set if the type is `product` and vice versa.
+    required:
+      - id
+      - quantity
+      - type
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the cart item. It can be used to remove/manipulate the respective cart item.
+        example: a84de7d7-2b7d-4aa8-a64d-9558ca791b86
+      quantity:
+        type: number
+        description: Quantity of the cart item.
+        example: 5
+      type:
+        type: string
+        enum:
+          - product
+          - coupon
+        example: product
+      coupon:
+        $ref: '#/definitions/CartItemCoupon'
+      product:
+        $ref: '#/definitions/CartItemProduct'
+      messages:
+        type: array
+        description: All messages specific to the current cart item.
+        items:
+          $ref: '#/definitions/Message'
+    x-stoplight:
+      id: pbi8how2qxjg1
+  CartItemCoupon:
+    $ref: '#/definitions/AppliedDiscount'
+    x-stoplight:
+      id: 5sksf2o705h06
+  CartItemProduct:
+    type: object
+    required:
+      - id
+      - name
+      - featuredImageUrl
+      - price
+    properties:
+      id:
+        type: string
+        description: 'The id of the product. It`s NOT a database id but the item_number, unique within the scope of a specific shop.'
+        example: '10080466570'
+      name:
+        type: string
+        description: Name of the product.
+        example: Awesome T-Shirt
+      addtionalInfo:
+        type: array
+        description: 'Some additional info for the product to be shown on the cart page. E.g. basePrice, SKU, weight, ...'
+        items:
+          type: object
+          properties:
+            label:
+              type: string
+              example: Manufacturer
+            value:
+              type: string
+              example: Lacoste
+      featuredImageUrl:
+        type: string
+        description: The image of the product.
+        example: 'https://myshop.example/images/product_xyz_featured.png'
+      properties:
+        type: array
+        description: Selected properties of the current cart item.
+        items:
+          $ref: '#/definitions/CartItemProductProperty'
+      price:
+        $ref: '#/definitions/CartItemProductPrice'
+      appliedDiscounts:
+        type: array
+        description: All discouts applied to the current line item.
+        items:
+          $ref: '#/definitions/AppliedDiscount'
+    x-stoplight:
+      id: ummhyr408gj8c
+  AppliedDiscount:
+    type: object
+    required:
+      - savedPrice
+    properties:
+      code:
+        description: Code of the coupon.
+        type: string
+        example: 20OFF
+      description:
+        description: Description of the coupon.
+        type: string
+        example: Reduces the cost of all products by 20%.
+      label:
+        description: Label of the coupon.
+        type: string
+        example: 20% off of all products.
+      savedPrice:
+        description: Amounts to how much discount the coupon applies in percent or absolute.
+        type: object
+        properties:
+          value:
+            type: number
+            example: 20
+          type:
+            type: string
+            enum:
+              - fixed
+              - percentage
+            example: percentage
+    x-stoplight:
+      id: 61s2ent7ssbl8
+  CartItemProductPrice:
+    type: object
+    required:
+      - unit
+      - default
+    properties:
+      unit:
+        type: number
+        description: 'Price of a single product. With or without tax, depending on the shop settings.'
+        example: 10
+      default:
+        type: number
+        description: 'The price of a single product multiplied by the quantity of he cart item WITHOUT any discounts. With or without tax, depending on the shop settings.'
+        example: 50
+      special:
+        type: number
+        description: The special price of a single product multiplied by the cart item quantity. It's only set if a discount is applied to the product.
+        example: 40
+    x-stoplight:
+      id: 0ve1lcmlxra9m
+  CartItemProductProperty:
+    type: object
+    required:
+      - label
+      - value
+    properties:
+      label:
+        description: 'Display label of the select/input option, variant or any other kind of property.'
+        type: string
+        example: Color
+      value:
+        type: string
+        description: The respective display value of the property.
+        example: Red
+    x-stoplight:
+      id: l9uknjf8ayanu
+  AddProductsProductOption:
+    type: object
+    required:
+      - type
+      - id
+      - value
+    properties:
+      type:
+        type: string
+        enum:
+          - select
+          - text
+        example: text
+      id:
+        description: 'Id of the property, to which the selection belongs to.'
+        type: string
+        example: 01-input-field.greeting-card-text
+      value:
+        type: string
+        description: Content depends on the property type. It's either the value-id of a selected property value for options or the text that was entered for inputs.
+        example: 'Happy Birthday, dad!'
+    x-stoplight:
+      id: xmszz7s6newuo
+  Currency:
+    type: string
+    enum:
+      - EUR
+      - CHF
+      - USD
+      - RON
+      - PLN
+      - AUD
+      - GBP
+      - CAD
+      - SEK
+      - DKK
+      - NOK
+    example: USD
+    x-stoplight:
+      id: nw6fcdd0xjar6
+  CartText:
+    type: object
+    description: Additional texts for the current cart like legal text. It can contain HTML content.
+    properties:
+      legal:
+        type: string
+        example: 'By placing your order you agree to our <b><u>Privacy Policy</u></b>, our <b><u>Terms and Conditions</u></b> as well as our <b><u>Cancellation Policy</u></b>.'
+    x-stoplight:
+      id: 5yh6e3eaqr0fb
+  CartFlags:
+    type: object
+    required:
+      - taxIncluded
+      - orderable
+      - coupons
+    description: Additional information about the cart.
+    properties:
+      taxIncluded:
+        type: boolean
+        description: Holds information about the cart prices being gross values or not.
+        default: false
+      orderable:
+        type: boolean
+        description: Indicates if the current cart is orderable.
+        default: false
+      coupons:
+        type: boolean
+        description: States if coupon functionality is enabled or not.
+        default: true
+    x-stoplight:
+      id: iansm9o4v5oow
+  Total:
+    type: object
+    required:
+      - type
+      - label
+      - amount
+    properties:
+      type:
+        type: string
+        enum:
+          - subTotal
+          - shipping
+          - tax
+          - payment
+          - discount
+          - grandTotal
+        example: tax
+      label:
+        type: string
+        example: Tax (19%)
+      amount:
+        type: number
+        example: 7.6
+    x-stoplight:
+      id: lpa72ug0dzxkt
+  CartTotal:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Total'
+      - type: object
+        properties:
+          subTotals:
+            type: array
+            items:
+              $ref: '#/definitions/Total'
+    x-stoplight:
+      id: 4x1pkitqh8cy6
+  Message:
+    type: object
+    description: Message to be shown to the customer.
+    required:
+      - type
+      - message
+    properties:
+      type:
+        type: string
+        enum:
+          - error
+          - warning
+          - info
+        example: error
+      code:
+        type: string
+        description: 'Message code, mapped by the extension. It can be used to react in a specific way for certain messages and/or to enable message translations.'
+        example: EUNKNOWN
+      message:
+        type: string
+        description: 'Message to display to the customer. This can also be a translation string, defined in a locale file in the theme or any custom extension.'
+        example: Some error occurred.
+      messageParams:
+        $ref: '#/definitions/MessageParams'
+      translated:
+        type: boolean
+        description: Indicates if the 'message' property contains a translated string (true) or a translation string (false or undefined). Defaults to `true` if the property is missing or `null`.
+        example: false
+    x-stoplight:
+      id: 6v9a45f42matu
+  MessageParams:
+    type: object
+    description: 'The message params for the translation string. Translation params are just key/value pairs defined in the translation string defined in the ''locales/<langId>.json'' for the translation key in the `message` property. It defaults to an empty object if the property is missing or `null`. The translation string syntax is described here: https://github.com/yahoo/intl-messageformat#message-syntax'
+    properties:
+      my-custom-key:
+        type: string
+        example: my-custom-translation-param
+      my-custom-value:
+        type: string
+        example: 42 (fourty two)
+    x-stoplight:
+      id: uiy2yantyfepv
+  Url:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: A unified resource link.
+        example: 'http://example.com/'
+      expires:
+        type: string
+        description: 'An optional date-time-string in the format ISO 8601 (YYYY-MM-DDTH:i:s.fZ). The url does not expire if this field os not set. The returned timezone is always UTC (+00:00)'
+        example: '2017-12-31T23:59:59.999Z'
+    x-stoplight:
+      id: 5k1i2rnqu4vmb
+  CartProductsError:
+    type: object
+    required:
+      - error
+      - message
+      - details
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - ECART
+            example: ECART
+          message:
+            type: string
+            example: There was a problem while trying to update one or multiple products in the cart.
+          errors:
+            type: array
+            items:
+              type: object
+              required:
+                - entityId
+                - code
+                - message
+              properties:
+                entityId:
+                  type: string
+                  example: product-number-123
+                code:
+                  type: string
+                  enum:
+                    - ENOTFOUND
+                    - EINSUFFICIENTSTOCK
+                  example: EINSUFFICIENTSTOCK
+                message:
+                  type: string
+                  description: 'The message specific to the product with the matching identifier. This is either a translation string or an already translated string. Translation strings are just key/object or key/value pairs defined in the ''locales/<langId>.json'' files, that have a translation which could be applied. The value syntax assigned for each translation string key is described here: https://github.com/yahoo/intl-messageformat#message-syntax'
+                  example: cart.error.insufficientstock
+                messageParams:
+                  $ref: '#/definitions/MessageParams'
+                translated:
+                  type: boolean
+                  description: Indicates if the 'message' property contains a translated string (true) or a translation string (false or undefined). Defaults to `true` if the property is missing or `null`.
+                  example: false
+    x-stoplight:
+      id: e6z9i1zvdclqr
+  CartCouponsError:
+    type: object
+    required:
+      - error
+      - message
+      - details
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - ECART
+            example: ECART
+          message:
+            type: string
+            example: There was a problem while trying to update one or multiple products in the cart.
+          errors:
+            type: array
+            items:
+              type: object
+              required:
+                - entityId
+                - code
+                - message
+              properties:
+                entityId:
+                  type: string
+                  example: TYPO-2019-FEB-20-PERCENT-OFF-SOCKS-TYPO
+                code:
+                  type: string
+                  enum:
+                    - ENOTFOUND
+                    - EINVALIDCOUPON
+                    - ECOUPONEXPIRED
+                  example: EINVALIDCOUPON
+                message:
+                  type: string
+                  description: 'The message specific to the coupon with the matching identifier. This is either a translation string or an already translated string. Translation strings are just keys within locale files, that have a translation which could be applied.'
+                  example: cart.error.couponExpired
+                messageParams:
+                  $ref: '#/definitions/MessageParams'
+                translated:
+                  type: boolean
+                  description: Indicates if the 'message' property contains a translated string (true) or a translation string (false or undefined). Defaults to `true` if the property is missing or `null`.
+                  example: false
+    x-stoplight:
+      id: zm2rhlpkl7juw
+  UnknownError:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EUNKNOWN
+            example: EUNKNOWN
+          message:
+            type: string
+            example: An internal error occurred.
+    x-stoplight:
+      id: v04w3eyny7uvy

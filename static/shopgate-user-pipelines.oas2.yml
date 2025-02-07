@@ -1,0 +1,884 @@
+swagger: '2.0'
+x-stoplight:
+  id: mmwmzrxiy9x2x
+info:
+  title: Shopgate User Pipelines
+  version: '1.0'
+  contact:
+    name: ''
+  description: 'This document specifies all the user pipelines, which are used by the default Shopgate iOS and Android themes. All following pipelines run in the ‘trusted’ zone.'
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /shopgate.user.loginUser.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.loginUser.v1
+      summary: loginUser.v1
+      description: 'Attempts to log in the user. The user can choose between multiple login strategies. A strategy can be ‘basic’ or ‘facebook’ login. After login, the user storage becomes available to store data in a shop-global scope and can be shared across devices. Based on the shop, custom errors can be returned to react to in the theme. Calling this pipeline when a user is logged in results in an error because that usually means there some kind of issue in the theme.'
+      parameters:
+        - name: login
+          in: body
+          required: true
+          description: Login parameter.
+          schema:
+            type: object
+            properties:
+              strategy:
+                type: string
+                enum:
+                  - basic
+                  - facebook
+                example: basic
+              parameters:
+                description: Parameters for `Login`. They differ depending on the strategy.
+                type: object
+                example:
+                  login: info@shopgate.com
+                  password: secret
+            required:
+              - strategy
+              - parameters
+          x-examples:
+            application/json:
+              strategy: basic
+              parameters:
+                login: myaccount@example.com
+                password: my-Account-pass-Word-123
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      tags:
+        - User
+      x-stoplight:
+        id: ps7t54redal78
+  /shopgate.user.logoutUser.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.logoutUser.v1
+      summary: logoutUser.v1
+      description: 'Attempts to log out the user. Attempting to log out a guest results in an error, which could be caused by a privacy issue in the theme, such as showing the user’s data after the user has logged out.'
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      tags:
+        - User
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      x-stoplight:
+        id: k0u3ztxobfjno
+  /shopgate.user.getUser.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.getUser.v1
+      summary: getUser.v1
+      description: 'Fetches all saved information about a user from the connected shop. This can only be done in logged-in status and not for guests. This pipeline can be used to check the logged-in status of a user.  The pipeline returns an EACCESS error code if the user is not logged in, otherwise it returns the user’s data. The data includes personal information.'
+      responses:
+        '200':
+          description: Returns information about the current user.
+          schema:
+            $ref: '#/definitions/UserGet'
+          examples:
+            application/json:
+              id: 501f8dcb-b4e6-48bc-b815-3d2a2bc6deae
+              mail: john.doe@shopgate.com
+              firstName: John
+              lastName: Doe
+              userGroups:
+                - id: '1'
+                  name: default
+                - id: '5'
+                  name: VIP
+              customAttributes:
+                dob: '1952-03-11'
+                middlename: Noel
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            type: object
+      tags:
+        - User
+      x-stoplight:
+        id: kezmggmx7kf6l
+  /shopgate.user.updateUser.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.updateUser.v1
+      summary: updateUser.v1
+      description: This pipeline is used to update the data of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/UserUpdate'
+          x-examples:
+            application/json:
+              firstName: John
+              lastName: Doe
+              customAttributes:
+                dob: '1952-03-11'
+                middlename: Noel
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '#/definitions/ErrorValidation'
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: juj46ymcbctng
+  /shopgate.user.updateMail.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.updateMail.v1
+      summary: updateMail.v1
+      description: This pipeline is used to update the email address of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            type: object
+            properties:
+              mail:
+                type: string
+                example: john.doe@shopgate.com
+            required:
+              - mail
+          x-examples:
+            application/json:
+              mail: john.doe@shopgate.com
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '#/definitions/ErrorValidation'
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: 524kr0sjzkoo8
+  /shopgate.user.updatePassword.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.updatePassword.v1
+      summary: updatePassword.v1
+      description: This pipeline is used to update the password of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            type: object
+            properties:
+              password:
+                type: string
+                format: password
+                example: welcome
+              oldPassword:
+                type: string
+                format: password
+                example: letmein
+            required:
+              - password
+          x-examples:
+            application/json:
+              password: welcome
+              oldPassword: letmein
+      responses:
+        '200':
+          description: Successful Operation
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '405':
+          $ref: '#/definitions/ErrorInvalidCall'
+        '422':
+          $ref: '#/definitions/ErrorValidation'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: 58izxpu9x9x8u
+  /shopgate.user.getAddresses.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.getAddresses.v1
+      summary: getAddresses.v1
+      description: This pipeline is used to retrieve the addresses of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: false
+          schema:
+            type: object
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              addresses:
+                type: array
+                items:
+                  $ref: '#/definitions/AddressGetAndUpdate'
+          examples:
+            application/json:
+              addresses:
+                - id: '23'
+                  firstName: Jane
+                  lastName: Doe
+                  street1: 123 Main St
+                  street2: Suite 300
+                  zipcode: '12345'
+                  city: Anytown
+                  province: WA
+                  country: US
+                  tags:
+                    - billing
+                    - default_billing
+                  customAttributes:
+                    alias: Janes home address
+                    prefix: Ms.
+                - id: '42'
+                  firstName: Jane
+                  lastName: Doe
+                  street1: 2222 Rio Grande
+                  street2: ACME
+                  zipcode: '78705'
+                  city: Austin
+                  procinve: TX
+                  country: US
+                  tags:
+                    - shipping
+                    - default_shipping
+                  customAttributes:
+                    alias: Work address
+                    prefix: Ms.
+                    telephone: 1-800-490-1234
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: fbcirfect8jho
+  /shopgate.user.addAddress.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.addAddress.v1
+      summary: addAddress.v1
+      description: This pipeline is used to add an address to the list of addresses of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/AddressAdd'
+          x-examples:
+            application/json:
+              firstName: Jane
+              lastName: Doe
+              street1: 123 Main St
+              street2: Suite 300
+              zipcode: '12345'
+              city: Anytown
+              province: WA
+              country: US
+              tags:
+                - billing
+                - default_billing
+              customAttributes:
+                alias: Jane's home address
+                prefix: Ms.
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '#/definitions/ErrorValidation'
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: 02fcgtz8qmx59
+  /shopgate.user.updateAddress.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.updateAddress.v1
+      summary: updateAddress.v1
+      description: This pipeline is used to update the data of an address of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/AddressGetAndUpdate'
+          x-examples:
+            application/json:
+              id: '23'
+              firstName: Jane
+              lastName: Doe
+              street1: 123 Main St
+              street2: Suite 300
+              zipcode: '12345'
+              city: Anytown
+              procinve: WA
+              country: US
+              tags:
+                - billing
+                - default_billing
+              customAttributes:
+                alias: Jane's home address
+                prefix: Ms.
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '#/definitions/ErrorValidation'
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: 8374a0iehv941
+  /shopgate.user.deleteAddresses.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.deleteAddresses.v1
+      summary: deleteAddresses.v1
+      description: This pipeline is used to delete an address of the user.
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            required:
+              - ids
+            description: Request for address deletion
+            type: object
+            properties:
+              ids:
+                type: array
+                items:
+                  type: string
+                  example: '1234'
+          x-examples:
+            application/json:
+              ids:
+                - '23'
+                - '42'
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '#/definitions/ErrorRemoval'
+        '401':
+          $ref: '#/definitions/ErrorUnauthorized'
+        '405':
+          $ref: '#/definitions/ErrorInvalidCall'
+        '500':
+          $ref: '#/definitions/ErrorUnknown'
+      tags:
+        - User
+      x-stoplight:
+        id: qephl39d6p6ns
+  /shopgate.user.getRegistrationUrl.v1:
+    post:
+      operationId: trustedPipelines/shopgate.user.getRegistrationUrl.v1
+      summary: getRegistrationUrl.v1
+      description: 'Fetches required data from the shop, if needed, and creates a registration URL out of it. Usually these links are static, but they could contain information like affiliate data or tokens, if required. The URL should not expire, because it''s fetched only once in the default theme.'
+      responses:
+        ok:
+          description: Returns the registration url.
+          schema:
+            $ref: '#/definitions/Url'
+          examples:
+            application/json:
+              url: 'https://example.com/register/'
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      x-stoplight:
+        id: a7q5xu7ifbn8r
+  /shopgate.user.getFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.getFavorites.v1
+      summary: getFavorites.v1
+      description: |-
+        This pipeline is used to retrieve the favorites of a user.
+        Favorites are the products, retrieved from `shopgate.catalog.getProducts.v1` pipeline, but can additionally contain metadata.
+      responses:
+        ok:
+          description: Successful response
+          schema:
+            type: object
+            required:
+              - products
+            properties:
+              products:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                  ...:
+                    allOf:
+                      - $ref: ./shopgate-products-pipleines.oas2.yml#/definitions/BasicProduct
+          examples:
+            application/json:
+              products:
+                - id: abc123
+                  metadata:
+                    metaPropKey: metaPropValue
+                  ...: all properties of BasicProduct
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      tags:
+        - Favorites
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      x-stoplight:
+        id: upu8zz83nmg34
+  /shopgate.user.addFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.addFavorites.v1
+      summary: addFavorites.v1
+      description: Adds favorites to the favorite list of the user. This pipeline is being used in Engage Theme versions 6.7.0 and higher.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      tags:
+        - Favorites
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productId'
+          x-examples:
+            application/json:
+              productId: abc123
+      x-stoplight:
+        id: gbhtmw1bg0szu
+  /shopgate.user.deleteFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.deleteFavorites.v1
+      summary: deleteFavorites.v1
+      description: This pipeline is used to remove favorites from a user’s favorite list. This pipeline is being used in Engage Theme versions 6.7.0 and higher. list.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+          schema:
+            $ref: '#/definitions/Message'
+      tags:
+        - Favorites
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productId'
+          x-examples:
+            application/json:
+              productId: abc123
+      x-stoplight:
+        id: 0ytgqcdhsu9nz
+  /shopgate.user.putFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.putFavorites.v1
+      summary: putFavorites.v1
+      description: This pipeline is used to replace the user's favorite list for Engage Theme versions below 6.7.0. Theme versions 6.7.0 and higher use addFavorites and deleteFavorites instead.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      tags:
+        - Favorites
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productIds'
+          x-examples:
+            application/json:
+              productIds:
+                - abc123
+                - def456
+                - ghi789-0
+      x-stoplight:
+        id: 5ue36p1jpwsi1
+definitions:
+  UserGet:
+    type: object
+    required:
+      - id
+      - mail
+    properties:
+      id:
+        type: string
+        description: Unique identifier for the user.
+        example: 123-456789
+      mail:
+        type: string
+        description: User's email address.
+        example: developer@shopgate.com
+      firstName:
+        type: string
+        description: User's first name.
+        example: John
+      lastName:
+        type: string
+        description: User's last name.
+        example: Doe
+      userGroups:
+        type: array
+        items:
+          $ref: '#/definitions/UserGroup'
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: 507sij5bl0ftw
+  UserUpdate:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: jv6bypxec2rik
+  AddressAdd:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      street1:
+        type: string
+        example: 313 Bell Rd
+      street2:
+        type: string
+        example: Apt 44N
+      zipCode:
+        type: string
+        example: 85250-4121
+      city:
+        type: string
+        example: Phoenix
+      province:
+        type: string
+        example: AZ
+        description: Province code
+      country:
+        type: string
+        example: US
+        description: Country code
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+          - shipping
+          - billing
+          - default
+          - default_shipping
+          - default_billing
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: 38q3hzzuaur21
+  AddressGetAndUpdate:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        example: '123'
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      street1:
+        type: string
+        example: 313 Bell Rd
+      street2:
+        type: string
+        example: Apt 44N
+      zipCode:
+        type: string
+        example: 85250-4121
+      city:
+        type: string
+        example: Phoenix
+      province:
+        type: string
+        example: AZ
+        description: Province code
+      country:
+        type: string
+        example: US
+        description: Country code
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+          - shipping
+          - billing
+          - default
+          - default_shipping
+          - default_billing
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: 6tuwwacwnthfr
+  UserGroup:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        example: '1'
+      name:
+        type: string
+        example: VIP Group
+    x-stoplight:
+      id: kagckvx2ocjqt
+  CustomAttributes:
+    type: object
+    example:
+      attribute1: value1
+      attribute2: value2
+    x-stoplight:
+      id: uy4hnuurthauc
+  ErrorRemoval:
+    description: Removing this entity is not allowed
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - ENOREMOVEDEFAULT
+            example: ENOREMOVEDEFAULT
+          message:
+            type: string
+            example: Cannot delete default address
+    x-stoplight:
+      id: rirh32x5drvj4
+  ErrorUnauthorized:
+    description: Unauthorized user
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EACCESS
+            example: EACCESS
+          message:
+            type: string
+            example: Unauthorized user
+    x-stoplight:
+      id: sqwvrcb3hmrim
+  ErrorValidation:
+    description: Validation error
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EVALIDATION
+            example: EVALIDATION
+          message:
+            type: string
+            example: There was an error with a request
+          validationErrors:
+            type: array
+            items:
+              type: object
+              properties:
+                path:
+                  type: string
+                  example: mail
+                message:
+                  type: string
+                  example: Invalid email address
+    x-stoplight:
+      id: dz86cft4rt833
+  ErrorInvalidCall:
+    description: Invalid data
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EINVALIDCALL
+            example: EINVALIDCALL
+          message:
+            type: string
+            example: Invalid data passed to the pipeline
+    x-stoplight:
+      id: 1wqmmcjel7yck
+  ErrorUnknown:
+    description: Unknown error
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EUNKNOWN
+            example: EUNKNOWN
+          message:
+            type: string
+            example: An internal error occurred
+    x-stoplight:
+      id: fw99css0d1rxd
+  Message:
+    type: object
+    description: Message to be shown to the user
+    required:
+      - type
+      - message
+    properties:
+      type:
+        type: string
+        enum:
+          - error
+          - warning
+          - info
+        example: error
+      message:
+        type: string
+        example: Some error occured
+      code:
+        type: string
+        description: 'Message code, mapped within the extension. It can be used to react in a specific way or to allow for message translation.'
+        example: EUNKNOWN
+    title: Message
+    x-stoplight:
+      id: 9rjsgye091wvk
+  Url:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: URL
+        example: 'http://example.com/'
+      expires:
+        type: string
+        description: 'An optional date-time-string in the format ISO 8601 (YYYY-MM-DDTH:i:s.fZ). The URL does not expire if this field is not set. The returned timezone is always UTC (+00:00)'
+        example: '2017-12-31T23:59:59.999Z'
+    title: Url
+    x-stoplight:
+      id: loq7mttjg18wr
+  productId:
+    type: string
+    description: The ID of the product
+    example: abc123
+    maxLength: 255
+    title: productId
+    x-stoplight:
+      id: 8o9p3wtncfkc8
+  productIds:
+    description: List of product IDs
+    title: productIds
+    type: array
+    items:
+      $ref: '#/definitions/productId'
+    x-stoplight:
+      id: riwgmf7tcxacj
+tags:
+  - name: User
