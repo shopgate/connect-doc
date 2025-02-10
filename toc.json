@@ -355,11 +355,11 @@
     },
     {
       "type": "group",
-      "title": "Engage",
+      "title": "TODO Engage",
       "items": [
         {
           "type": "item",
-          "title": "Temp",
+          "title": "TODO",
           "uri": "markdown/tutorials/advanced/search-provider.md"
         }
       ]
@@ -532,11 +532,11 @@
     },
     {
       "type": "group",
-      "title": "Cart Integration",
+      "title": "TODO Cart Integration",
       "items": [
         {
         "type": "item",
-        "title": "Temp",
+        "title": "TODO",
         "uri": "markdown/tutorials/advanced/search-provider.md"
         }
       ]
