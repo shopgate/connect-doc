@@ -353,17 +353,481 @@
       "type": "divider",
       "title": "References"
     },
+    
+{
+  "type": "group",
+  "title": "Engage",
+  "items": [
     {
       "type": "group",
-      "title": "TODO Engage",
+      "title": "Actions",
       "items": [
         {
           "type": "item",
-          "title": "TODO",
-          "uri": "markdown/tutorials/advanced/search-provider.md"
+          "title": "Overview",
+          "uri": "markdown/references/engage/actions/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Cart",
+          "uri": "markdown/references/engage/actions/cart.md"
+        },
+        {
+          "type": "item",
+          "title": "Category",
+          "uri": "markdown/references/engage/actions/category.md"
+        },
+        {
+          "type": "item",
+          "title": "Checkout",
+          "uri": "markdown/references/engage/actions/checkout.md"
+        },
+        {
+          "type": "item",
+          "title": "Favorites",
+          "uri": "markdown/references/engage/actions/favorites.md"
+        },
+        {
+          "type": "item",
+          "title": "Modal",
+          "uri": "markdown/references/engage/actions/modal.md"
+        },
+        {
+          "type": "item",
+          "title": "Page",
+          "uri": "markdown/references/engage/actions/page.md"
+        },
+        {
+          "type": "item",
+          "title": "Product",
+          "uri": "markdown/references/engage/actions/product.md"
+        },
+        {
+          "type": "item",
+          "title": "Review",
+          "uri": "markdown/references/engage/actions/review.md"
+        },
+        {
+          "type": "item",
+          "title": "Router",
+          "uri": "markdown/references/engage/actions/router.md"
+        },
+        {
+          "type": "item",
+          "title": "Search",
+          "uri": "markdown/references/engage/actions/search.md"
+        },
+        {
+          "type": "item",
+          "title": "User",
+          "uri": "markdown/references/engage/actions/user.md"
         }
       ]
     },
+    {
+      "type": "group",
+      "title": "Components",
+      "items": [
+        {
+          "type": "item",
+          "title": "I18n",
+          "uri": "markdown/references/engage/components/i18n.md"
+        },
+        {
+          "type": "item",
+          "title": "Link",
+          "uri": "markdown/references/engage/components/link.md"
+        },
+        {
+          "type": "item",
+          "title": "Slider",
+          "uri": "markdown/references/engage/components/slider.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Helpers",
+      "items": [
+        {
+          "type": "item",
+          "title": "I18n",
+          "uri": "markdown/references/engage/helpers/i18n.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Hocs",
+      "uri": "markdown/references/engage/hocs.md"
+    },
+    {
+      "type": "item",
+      "title": "Hooks",
+      "uri": "markdown/references/engage/hooks.md"
+    },
+    {
+      "type": "group",
+      "title": "Portals",
+      "items": [
+        {
+          "type": "item",
+          "title": "Appbar",
+          "uri": "markdown/references/engage/portals/appbar.md"
+        },
+        {
+          "type": "item",
+          "title": "Browse",
+          "uri": "markdown/references/engage/portals/browse.md"
+        },
+        {
+          "type": "item",
+          "title": "Cart",
+          "uri": "markdown/references/engage/portals/cart.md"
+        },
+        {
+          "type": "item",
+          "title": "Category List Item",
+          "uri": "markdown/references/engage/portals/category-list-item.md"
+        },
+        {
+          "type": "item",
+          "title": "Category",
+          "uri": "markdown/references/engage/portals/category.md"
+        },
+        {
+          "type": "item",
+          "title": "Cms Pages",
+          "uri": "markdown/references/engage/portals/cms-pages.md"
+        },
+        {
+          "type": "item",
+          "title": "Components",
+          "uri": "markdown/references/engage/portals/components.md"
+        },
+        {
+          "type": "item",
+          "title": "Favorites List",
+          "uri": "markdown/references/engage/portals/favorites-list.md"
+        },
+        {
+          "type": "item",
+          "title": "Filters",
+          "uri": "markdown/references/engage/portals/filters.md"
+        },
+        {
+          "type": "item",
+          "title": "General",
+          "uri": "markdown/references/engage/portals/general.md"
+        },
+        {
+          "type": "item",
+          "title": "Index",
+          "uri": "markdown/references/engage/portals/index.md"
+        },
+        {
+          "type": "item",
+          "title": "Login Page",
+          "uri": "markdown/references/engage/portals/login-page.md"
+        },
+        {
+          "type": "item",
+          "title": "Navmenu",
+          "uri": "markdown/references/engage/portals/navmenu.md"
+        },
+        {
+          "type": "item",
+          "title": "Product Details",
+          "uri": "markdown/references/engage/portals/product-details.md"
+        },
+        {
+          "type": "item",
+          "title": "Product List Item",
+          "uri": "markdown/references/engage/portals/product-list-item.md"
+        },
+        {
+          "type": "item",
+          "title": "Scanner",
+          "uri": "markdown/references/engage/portals/scanner.md"
+        },
+        {
+          "type": "item",
+          "title": "Search",
+          "uri": "markdown/references/engage/portals/search.md"
+        },
+        {
+          "type": "item",
+          "title": "Tabbar",
+          "uri": "markdown/references/engage/portals/tabbar.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Routes",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/engage/routes/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Browse",
+          "uri": "markdown/references/engage/routes/browse.md"
+        },
+        {
+          "type": "item",
+          "title": "Cart",
+          "uri": "markdown/references/engage/routes/cart.md"
+        },
+        {
+          "type": "item",
+          "title": "Category Search Filter",
+          "uri": "markdown/references/engage/routes/category-search-filter.md"
+        },
+        {
+          "type": "item",
+          "title": "Category",
+          "uri": "markdown/references/engage/routes/category.md"
+        },
+        {
+          "type": "item",
+          "title": "Favorites",
+          "uri": "markdown/references/engage/routes/favorites.md"
+        },
+        {
+          "type": "item",
+          "title": "Home",
+          "uri": "markdown/references/engage/routes/home.md"
+        },
+        {
+          "type": "item",
+          "title": "Item Gallery",
+          "uri": "markdown/references/engage/routes/item-gallery.md"
+        },
+        {
+          "type": "item",
+          "title": "Item Reviews",
+          "uri": "markdown/references/engage/routes/item-reviews.md"
+        },
+        {
+          "type": "item",
+          "title": "Item Write Review",
+          "uri": "markdown/references/engage/routes/item-write-review.md"
+        },
+        {
+          "type": "item",
+          "title": "Item",
+          "uri": "markdown/references/engage/routes/item.md"
+        },
+        {
+          "type": "item",
+          "title": "Login",
+          "uri": "markdown/references/engage/routes/login.md"
+        },
+        {
+          "type": "item",
+          "title": "More",
+          "uri": "markdown/references/engage/routes/more.md"
+        },
+        {
+          "type": "item",
+          "title": "Scanner",
+          "uri": "markdown/references/engage/routes/scanner.md"
+        },
+        {
+          "type": "item",
+          "title": "Search",
+          "uri": "markdown/references/engage/routes/search.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Selectors",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/engage/selectors/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Cart",
+          "uri": "markdown/references/engage/selectors/cart.md"
+        },
+        {
+          "type": "item",
+          "title": "Checkout",
+          "uri": "markdown/references/engage/selectors/checkout.md"
+        },
+        {
+          "type": "item",
+          "title": "Client",
+          "uri": "markdown/references/engage/selectors/client.md"
+        },
+        {
+          "type": "item",
+          "title": "Favorites",
+          "uri": "markdown/references/engage/selectors/favorites.md"
+        },
+        {
+          "type": "item",
+          "title": "Filters",
+          "uri": "markdown/references/engage/selectors/filters.md"
+        },
+        {
+          "type": "item",
+          "title": "History",
+          "uri": "markdown/references/engage/selectors/history.md"
+        },
+        {
+          "type": "item",
+          "title": "Menu",
+          "uri": "markdown/references/engage/selectors/menu.md"
+        },
+        {
+          "type": "item",
+          "title": "Modal",
+          "uri": "markdown/references/engage/selectors/modal.md"
+        },
+        {
+          "type": "item",
+          "title": "Page",
+          "uri": "markdown/references/engage/selectors/page.md"
+        },
+        {
+          "type": "item",
+          "title": "Product",
+          "uri": "markdown/references/engage/selectors/product.md"
+        },
+        {
+          "type": "item",
+          "title": "Router",
+          "uri": "markdown/references/engage/selectors/router.md"
+        },
+        {
+          "type": "item",
+          "title": "Search",
+          "uri": "markdown/references/engage/selectors/search.md"
+        },
+        {
+          "type": "item",
+          "title": "Url",
+          "uri": "markdown/references/engage/selectors/url.md"
+        },
+        {
+          "type": "item",
+          "title": "User",
+          "uri": "markdown/references/engage/selectors/user.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Streams",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/engage/streams/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "App",
+          "uri": "markdown/references/engage/streams/app.md"
+        },
+        {
+          "type": "item",
+          "title": "Cart",
+          "uri": "markdown/references/engage/streams/cart.md"
+        },
+        {
+          "type": "item",
+          "title": "Category",
+          "uri": "markdown/references/engage/streams/category.md"
+        },
+        {
+          "type": "item",
+          "title": "Error",
+          "uri": "markdown/references/engage/streams/error.md"
+        },
+        {
+          "type": "item",
+          "title": "Favorites",
+          "uri": "markdown/references/engage/streams/favorites.md"
+        },
+        {
+          "type": "item",
+          "title": "Filters",
+          "uri": "markdown/references/engage/streams/filters.md"
+        },
+        {
+          "type": "item",
+          "title": "Main",
+          "uri": "markdown/references/engage/streams/main.md"
+        },
+        {
+          "type": "item",
+          "title": "Product",
+          "uri": "markdown/references/engage/streams/product.md"
+        },
+        {
+          "type": "item",
+          "title": "Reviews",
+          "uri": "markdown/references/engage/streams/reviews.md"
+        },
+        {
+          "type": "item",
+          "title": "Router",
+          "uri": "markdown/references/engage/streams/router.md"
+        },
+        {
+          "type": "item",
+          "title": "Scanner",
+          "uri": "markdown/references/engage/streams/scanner.md"
+        },
+        {
+          "type": "item",
+          "title": "Search",
+          "uri": "markdown/references/engage/streams/search.md"
+        },
+        {
+          "type": "item",
+          "title": "User",
+          "uri": "markdown/references/engage/streams/user.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Theme",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/engage/theme/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "App Bar",
+          "uri": "markdown/references/engage/theme/app-bar.md"
+        },
+        {
+          "type": "item",
+          "title": "View",
+          "uri": "markdown/references/engage/theme/view.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Tracking Events",
+      "uri": "markdown/references/engage/tracking-events.md"
+    }
+  ]
+},
     {
     "type": "group",
     "title": "Connect",
