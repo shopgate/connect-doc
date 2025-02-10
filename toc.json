@@ -375,7 +375,7 @@
           {
             "type": "item",
             "title": "Configuration",
-            "uri": "markdown/references/extensions/configuration.md"
+            "uri": "markdown/references/connect/extensions/configuration.md"
           },
           {
             "type": "group",
@@ -384,42 +384,42 @@
               {
                 "type": "item",
                 "title": "Overview",
-                "uri": "markdown/references/extensions/pipeline/overview.md"
+                "uri": "markdown/references/connect/extensions/pipeline/overview.md"
               },
               {
                 "type": "item",
                 "title": "Common Step Structure",
-                "uri": "markdown/references/extensions/pipeline/common-step-structure.md"
+                "uri": "markdown/references/connect/extensions/pipeline/common-step-structure.md"
               },
               {
                 "type": "item",
                 "title": "Extension Step",
-                "uri": "markdown/references/extensions/pipeline/extension-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/extension-step.md"
               },
               {
                 "type": "item",
                 "title": "Auth Step",
-                "uri": "markdown/references/extensions/pipeline/auth-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/auth-step.md"
               },
               {
                 "type": "item",
                 "title": "Conditional Step",
-                "uri": "markdown/references/extensions/pipeline/conditional-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/conditional-step.md"
               },
               {
                 "type": "item",
                 "title": "Error Catch Extension Step",
-                "uri": "markdown/references/extensions/pipeline/error-catch-extension-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/error-catch-extension-step.md"
               },
               {
                 "type": "item",
                 "title": "Pipeline Step",
-                "uri": "markdown/references/extensions/pipeline/pipeline-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/pipeline-step.md"
               },
               {
                 "type": "item",
                 "title": "Hook Step",
-                "uri": "markdown/references/extensions/pipeline/hook-step.md"
+                "uri": "markdown/references/connect/extensions/pipeline/hook-step.md"
               }
             ]
           },
@@ -430,32 +430,32 @@
               {
                 "type": "item",
                 "title": "Overview",
-                "uri": "markdown/references/extensions/steps/overview.md"
+                "uri": "markdown/references/connect/extensions/steps/overview.md"
               },
               {
                 "type": "item",
                 "title": "Logger",
-                "uri": "markdown/references/extensions/steps/logger.md"
+                "uri": "markdown/references/connect/extensions/steps/logger.md"
               },
               {
                 "type": "item",
                 "title": "Storage",
-                "uri": "markdown/references/extensions/steps/storage.md"
+                "uri": "markdown/references/connect/extensions/steps/storage.md"
               },
               {
                 "type": "item",
                 "title": "Device Info",
-                "uri": "markdown/references/extensions/steps/device-info.md"
+                "uri": "markdown/references/connect/extensions/steps/device-info.md"
               },
               {
                 "type": "item",
                 "title": "App Info",
-                "uri": "markdown/references/extensions/steps/app-info.md"
+                "uri": "markdown/references/connect/extensions/steps/app-info.md"
               },
               {
                 "type": "item",
                 "title": "Meta",
-                "uri": "markdown/references/extensions/steps/meta.md"
+                "uri": "markdown/references/connect/extensions/steps/meta.md"
               }
             ]
           }
@@ -494,37 +494,37 @@
           {
             "type": "item",
             "title": "Overview",
-            "uri": "markdown/references/platform-sdk/overview.md"
+            "uri": "markdown/references/connect/platform-sdk/overview.md"
           },
           {
             "type": "item",
             "title": "Login Action",
-            "uri": "markdown/references/platform-sdk/login.md"
+            "uri": "markdown/references/connect/platform-sdk/login.md"
           },
           {
             "type": "item",
             "title": "Init Action",
-            "uri": "markdown/references/platform-sdk/init.md"
+            "uri": "markdown/references/connect/platform-sdk/init.md"
           },
           {
             "type": "item",
             "title": "Extension Actions",
-            "uri": "markdown/references/platform-sdk/extension.md"
+            "uri": "markdown/references/connect/platform-sdk/extension.md"
           },
           {
             "type": "item",
             "title": "Theme Action",
-            "uri": "markdown/references/platform-sdk/theme.md"
+            "uri": "markdown/references/connect/platform-sdk/theme.md"
           },
           {
             "type": "item",
             "title": "Backend Actions",
-            "uri": "markdown/references/platform-sdk/backend.md"
+            "uri": "markdown/references/connect/platform-sdk/backend.md"
           },
           {
             "type": "item",
             "title": "Frontend Actions",
-            "uri": "markdown/references/platform-sdk/frontend.md"
+            "uri": "markdown/references/connect/platform-sdk/frontend.md"
           }
         ]
       }
