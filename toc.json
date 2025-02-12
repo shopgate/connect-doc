@@ -223,11 +223,7 @@
                 }
               ]
             },
-            {
-              "type": "item",
-              "title": "TODO Plugin API",
-              "uri": "markdown/guides/commerce/cart-integration/plugin-api.md"
-            },
+            // Moved to references
             // Remove Merchant API, not relevant anymore
             // Remove Catalog Data Feed, this content is already in references
             {
@@ -987,9 +983,25 @@
       "title": "TODO Cart Integration",
       "items": [
         {
-        "type": "item",
-        "title": "TODO Plugin API", // We should only have the overview & authentification from here, other parts just use from references
-        "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
+          "type": "group",
+          "title": "TODO Plugin API",
+          "items": [
+              {
+                "type": "item",
+                "title": "Overview",
+                "uri": "markdown/references/cart-integration/plugin-api/overview.md"
+              },
+              {
+                "type": "item",
+                "title": "Authentification",
+                "uri": "markdown/references/cart-integration/plugin-api/authentication.md"
+              },
+              {
+                "type": "item",
+                "title": "TODO the actual routes",
+                "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
+              }
+          ]
         },
         // Removed merchant API, not relevant
         {

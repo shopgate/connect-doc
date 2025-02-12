@@ -25,6 +25,71 @@ See chapter [Incoming Requests](/guides/commerce/cart-integration/sdk#incoming-r
 
 **Get the full [plugin example code](/guides/commerce/cart-integration/example-plugin) or have a look at the short example for a plugin class:**
 
+## Example ShopgatePlugin Class
+```php
+ <?php
+require_once(dirname(__FILE__).'/vendor/shopgate/cart-integration-sdk/shopgate.php'); // adjust this path to your environment
+define('SHOPGATE_PLUGIN_VERSION', '2.9.0');
+
+class ShopgatePluginMyShopSystem extends ShopgatePlugin {
+    public function startup() {
+        // ...
+    }
+
+    public function getCustomer($user, $pass) {
+        // ...
+    }
+
+    public function registerCustomer($user, $pass, ShopgateCustomer $customer){
+        // ...
+    }
+
+    public function addOrder(ShopgateOrder $order) {
+        // ...
+    }
+
+    public function updateOrder(ShopgateOrder $order) {
+        // ...
+    }
+
+    public function getOrders($customerToken, $customerLanguage, $limit = 10, $offset = 0, $orderDateFrom = '', $sortOrder = 'created_desc') {
+        // ...
+    }
+
+    protected function createItems($limit = null, $offset = null, array $uids = array()) {
+        // ...
+    }
+
+    protected function createReviews($limit = null, $offset = null, array $uids = array()) {
+        // ...
+    }
+    
+    protected function createCategories($limit = null, $offset = null, array $uids = array()) {
+        // ...
+    }
+
+    public function cron($jobname, $params, &$message, &$errorcount) {
+        // ...
+    }
+
+    public function checkCart(ShopgateCart $shopgateCart) {
+        // ...
+    }
+
+    public function checkStock(ShopgateCart $shopgateCart) {
+        // ...
+    }
+
+    public function getSettings() {
+        // ...
+    }
+
+    public function syncFavouriteList($customerToken, $items) {
+        // ...
+    }
+}
+```
+
 
 ## Configuration
 Using the components of the Shopgate Cart Integration SDK depends on configuration settings in many parts. The class ShopgateConfig is responsible for loading and saving these.
@@ -36,6 +101,11 @@ A detailed description and examples can be found on the page [Cart Integration S
 Quick Implementation
 
 Create a file called myconfig.php inside the Shopgate Cart Integration SDK's config folder and define the $shopgate_config variable with your settings as shown below:
+
+## Example myconfig.php
+```php
+TODO
+```
 
 ## Incoming Requests
 The starting point for requests of the Shopgate Plugin API depends on the shopping system. The starting point can be an independent script (e.g. api.php), a controller of the shop system, a hook point or something similar. Parameters are transmitted via POST. To receive GET parameters please contact out tech support.
