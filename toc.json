@@ -87,7 +87,7 @@
     },
     {
       "type": "group",
-      "title": "Technical Guides",
+      "title": "✅ Technical Guides",
       "items": [
         {
           "type": "group",
@@ -180,7 +180,7 @@
     },
     {
       "type": "group",
-      "title": "Tools",
+      "title": "✅ Tools",
       "items": [
         {
           "type": "item",
@@ -224,28 +224,16 @@
               ]
             },
             {
-              "type": "group",
-              "title": "Plugin API",
-              "items": [
-              ]
+              "type": "item",
+              "title": "TODO Plugin API",
+              "uri": "markdown/guides/commerce/cart-integration/plugin-api.md"
             },
+            // Remove Merchant API, not relevant anymore
+            // Remove Catalog Data Feed, this content is already in references
             {
-              "type": "group",
-              "title": "Merchant API",
-              "items": [
-              ]
-            },
-            {
-              "type": "group",
-              "title": "Catalog Data Feed",
-              "items": [
-              ]
-            },
-            {
-              "type": "group",
-              "title": "Cart Integration SDK",
-              "items": [
-              ]
+              "type": "item",
+              "title": "TODO Cart Integration SDK",
+              "uri": "markdown/guides/commerce/cart-integration/cart-integration-sdk.md"
             },
             {
               "type": "item",
@@ -271,7 +259,7 @@
 
     {
       "type": "divider",
-      "title": "Tutorials"
+      "title": "✅ Tutorials"
     },
     {
       "type": "group",
@@ -998,6 +986,12 @@
       "type": "group",
       "title": "TODO Cart Integration",
       "items": [
+        {
+        "type": "item",
+        "title": "TODO Plugin API", // We should only have the overview & authentification from here, other parts just use from references
+        "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
+        },
+        // Removed merchant API, not relevant
         {
           "type": "group",
           "title": "Catalog Feed Data",

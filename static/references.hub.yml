@@ -1,0 +1,3594 @@
+header:
+  nav:
+    left:
+      - path: /
+    center: []
+    right: []
+pages:
+  /:
+    title: Home
+    data:
+      blocks:
+        - type: text
+          data: |-
+            # Welcome to your new hub. 
+
+            Its kind of empty in here - click the "Toggle Editor" button at the top of the editor to switch to edit mode to add new pages, content, and subpages!
+
+            Use references to power parts of your Hub with other files in this project (like Modeling/OAS/Swagger files).
+      children:
+        - title: Merchant API
+          route:
+            path: /merchant-api
+          data:
+            children:
+              - title: Order
+                route:
+                  path: /order
+                data:
+                  blocks: []
+                  children:
+                    - title: get_orders
+                      route:
+                        path: /get-orders
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This method returns a complete order list. The date_from and date_to parameters can be used to set a date range. The limit parameter limits the number of results, with 100 as the maximum value. The offset parameters indicates the number of results to be skipped.'
+                            header:
+                              token: POST
+                              title: get_orders
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_orders
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "10123"
+                                date_from:
+                                  type: string
+                                  description: |-
+                                    Start date of the query. (Format ISO 8601).
+                                    Example: "2012-01-15T09:53:50+01:00"
+                                  format: date
+                                date_to:
+                                  type: string
+                                  description: |-
+                                    End date of the query. (Format ISO 8601).
+                                    Example: "2012-02-20T10:12:47+01:00"
+                                limit:
+                                  type: integer
+                                  description: 'Number of results to be returned from the query. (Default = 50, Max = 100)'
+                                offset:
+                                  type: integer
+                                  description: Number of results to be skipped. Can be used to browse through the results. (Default = 0)
+                                order_numbers:
+                                  type: array
+                                  description: "Limits the results to the order numbers entered in the parameter.\t\nExample: order_numbers[0]=\"1012001234\", order_numbers[1]=\"1012001235\""
+                                  items:
+                                    type:
+                                      - string
+                                      - array
+                                    items: {}
+                                with_items:
+                                  type: boolean
+                                  description: Setting this parameter to 1 retrieves every order's items. (Default = 0)
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    A unique request ID.
+                                    Example:  "spa-4f99573d74ae1"
+                              required:
+                                - action
+                                - shop_number
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/m_get_orders_01.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              101|Unknown action
+                              103|"shop_number" not set
+                              110|Merchant not found
+                              113|Shop not found
+                              118|Missing parameters
+                              123|Following parameters of wrong type: [...]
+                              400|Authorization not set
+                              400|Authorization not set
+                              401|Authorization username invalid format
+                              402|Generated authorization password invalid
+                              403|Generated authorization is too old
+                              404|The given OAuth2 access token is invalid
+                              405|Shop has no rights to access API. Make sure your contract is valid
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error_text": null,
+                                  "error": 0,
+                                  "sma_version": "1.0",
+                                  "trace_id": "spa-4f99573d74ae1",
+                                  "limit": 100,
+                                  "offset": 0,
+                                  "has_more_results": false,
+                                  "orders": [
+                                      {
+                                          "order_number": "1012001931",
+                                          "external_order_number": null,
+                                          "external_order_id": null,
+                                          "customer_number": "100816",
+                                          "mail": "johnsmith@shopgate.com",
+                                          "phone": null,
+                                          "mobile": null,
+                                          "custom_fields": [
+                                              {
+                                                  "label": "Birthday",
+                                                  "internal_field_name": "dob",
+                                                  "type": "date",
+                                                  "value": "1981-05-26"
+                                              }
+                                          ],
+                                          "external_customer_number": null,
+                                          "external_customer_id": null,
+                                          "confirm_shipping_url": "https://www.shopgate.com/clickcs/12345678/bf18fa0a2c67ced533e8c81dfa40ef85",
+                                          "created_time": "2012-04-26T16:07:54+02:00",
+                                          "payment_method": "DEBIT",
+                                          "payment_group": "DEBIT",
+                                          "is_paid": 1,
+                                          "payment_time": "2012-04-26T16:08:39+02:00",
+                                          "payment_transaction_number": null,
+                                          "payment_infos": {
+                                              "bank_account_holder": "John Smith",
+                                              "bank_account_number": "2433702",
+                                              "bank_code": "51390000",
+                                              "bank_name": "World Bank",
+                                              "iban": null,
+                                              "bic": null
+                                          },
+                                          "is_shipping_blocked": 0,
+                                          "is_shipping_completed": 1,
+                                          "shipping_completed_time": "2012-04-26T16:09:56+02:00",
+                                          "amount_items": "14.96",
+                                          "amount_shipping": "0.00",
+                                          "amount_payment": "14.96",
+                                          "amount_complete": "14.96",
+                                          "client": {
+                                              "type": "mobilesite"
+                                          }
+                                          "currency": "EUR",
+                                          "is_test": 0,
+                                          "is_storno": 0,
+                                          "invoice_address": {
+                                              "gender": null,
+                                              "first_name": "John",
+                                              "last_name": "Smith",
+                                              "birthday": null,
+                                              "company": "Test Company",
+                                              "street_1": "Main Street 10",
+                                              "street_2": null,
+                                              "city": "Berlin",
+                                              "zipcode": "10667",
+                                              "country": "DE",
+                                              "state": null,
+                                              "custom_fields": [
+                                                  {
+                                                      "label": "Floor",
+                                                      "internal_field_name": "floor",
+                                                      "type": "string",
+                                                      "value": "2nd"
+                                                  }
+                                              ]
+                                          },
+                                          "delivery_address": {
+                                              "gender": null,
+                                              "first_name": "John",
+                                              "last_name": "Smith",
+                                              "birthday": null,
+                                              "company": "Test Company",
+                                              "street_1": "Main Street 10",
+                                              "street_2": null,
+                                              "city": "Berlin",
+                                              "zipcode": "10667",
+                                              "country": "DE",
+                                              "state": null,
+                                              "custom_fields": [
+                                                  {
+                                                      "label": "Floor",
+                                                      "internal_field_name": "floor",
+                                                      "type": "string",
+                                                      "value": "2nd"
+                                                  }
+                                              ]
+                                          },
+                                          "shipping_group": "DPD",
+                                          "shipping_type": "MANUAL",
+                                          "shipping_infos": {
+                                              "name": "My DPD Example",
+                                              "amount": "4.99",
+                                              "amount_net": "4.59",
+                                              "amount_gross": "4.99",
+                                              "weight": 700
+                                          },
+                                          "items": [
+                                              {
+                                                  "order_item_id": "1231123",
+                                                  "item_number": "8",
+                                                  "quantity": 1,
+                                                  "name": "Undercover Blues",
+                                                  "unit_amount": "12.57",
+                                                  "unit_amount_with_tax": "14.96",
+                                                  "tax_percent": "19.00",
+                                                  "currency": "EUR",
+                                                  "internal_order_info": "{\"exchange_rate\":\"1.00000000\"}",
+                                                  "options": [ ],
+                                                  "inputs": [ ]
+                                              }
+                                          ],
+                                          "delivery_notes": [
+                                              {
+                                                  "shipping_type": "DHL",
+                                                  "tracking_number": "JJD1412345678901",
+                                                  "shipping_time": "2012-04-26T00:00:00+02:00"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: cancel_order
+                      route:
+                        path: /cancel-order
+                      config:
+                        sidebar:
+                          token: POST
+                      data:
+                        blocks:
+                          - type: text
+                            data: With this action you can cancel an order in whole or in part.
+                            header:
+                              token: POST
+                              title: cancel_order
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_orders
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "10123"
+                                cancel_complete_order:
+                                  type: boolean
+                                  description: 'Set to 1 to cancel the complete order including all items and shipping costs. (Default: 0)'
+                                cancellation_items:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      cancellation_item:
+                                        type: object
+                                        properties:
+                                          order_item_id:
+                                            type: integer
+                                            description: |-
+                                              Required when item_number is not set. Item ID of the item to be cancelled.
+                                              Note: This refers to the field "order_item_id" field in get_orders of the Shopgate Merchant API.
+                                              Example: 1221321
+                                          item_number:
+                                            type: string
+                                            description: |-
+                                              Required when order_item_id is not set. Item number of the item to be cancelled. Will be ignored, if item_number is set.
+                                              Example:  "AX29475H"
+                                          quantity:
+                                            type: integer
+                                            description: Number of items to be cancelled.
+                                cancel_shipping:
+                                  type: boolean
+                                  description: 'Cancel shipping costs as well? (Default: 0)'
+                                cancel_note:
+                                  type: string
+                                  description: |-
+                                    Note regarding the cancellation request.
+                                    Example:  "Item is not in stock anymore."
+                              required:
+                                - action
+                                - shop_number
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/m_cancel_order.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              101|Unknown action
+                              103|"shop_number" not set
+                              110|Merchant not found
+                              113|Shop not found
+                              118|Missing parameters
+                              123|Following parameters of wrong type: [...]
+                              201|Order not found
+                              222|Order already cancelled
+                              223|Try to cancel invalid item
+                              224|Try to cancel invalid quantity of items
+                              225|Shipping costs already cancelled
+                              226|Invalid cancellation arguments
+                              400|Authorization not set
+                              401|Authorization username invalid format
+                              402|Generated authorization password invalid
+                              403|Generated authorization is too old
+                              404|The given OAuth2 access token is invalid
+                              405|Shop has no rights to access API. Make sure your contract is valid
+                              803|Internal error occurred while saving
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  error: 0, 
+                                  error_text: null,
+                                  cancellation_number: "1010001596",
+                                  version: "1.0",
+                                  trace_id: "spa-4f7ab2d146165"
+                              }
+                            config:
+                              mode: json
+                    - title: set_order_shipping_completed
+                      route:
+                        path: /set-order-shipping-completed
+                      data:
+                        blocks:
+                          - type: text
+                            data: This method sets the order shipping status to completed.
+                            header:
+                              token: POST
+                              title: set_order_shipping_completed
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: set_order_shipping_completed
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "10123"
+                                order_number:
+                                  type: string
+                                  description: |-
+                                    Order number.
+                                    Example:  "1012001234"
+                                send_customer_email:
+                                  type: boolean
+                                  description: Indicates whether an email about the event is to be sent to the customer. (Default = 0)
+                              required:
+                                - action
+                                - shop_number
+                                - order_number
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/m_set_order_shipping.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              101|Unknown action
+                              103|"shop_number" not set
+                              110|Merchant not found
+                              113|Shop not found
+                              118|Missing parameters
+                              123|Following parameters of wrong type: [...]
+                              201|Order not found
+                              202|Order on hold
+                              203|Order already completed
+                              204|Order shipping status already on complete
+                              400|Authorization not set
+                              401|Authorization username invalid format
+                              402|Generated authorization password invalid
+                              403|Generated authorization is too old
+                              404|The given OAuth2 access token is invalid
+                              405|Shop has no rights to access API. Make sure your contract is valid
+                              803|Internal error occurred while saving
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  error: 0, 
+                                  error_text: null,
+                                  order_number: "1010001596",
+                                  version: "1.0",
+                                  trace_id: "spa-4f7ab2d146165"
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: add_order_delivery_note
+                      route:
+                        path: /add-order-delivery-note
+                      data:
+                        blocks:
+                          - type: text
+                            data: This method allows enables you to add adding delivery notes to an order.
+                            header:
+                              token: POST
+                              title: add_order_delivery_note
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: add_order_delivery_note
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "10123"
+                                order_number:
+                                  type: string
+                                  description: |-
+                                    Order number.
+                                    Example:  "1012001234"
+                                shipping_service_id:
+                                  type: string
+                                  description: |-
+                                    Shipping service ID.
+                                    Examples:  "CITYLINK", "DHL", "USPS",  "UPS"
+                                tracking_number:
+                                  type: string
+                                  description: |-
+                                    Tracking number.
+                                    Example: "6645269AG9SFZ46"
+                                mark_as_completed:
+                                  type: boolean
+                                  description: Indicates whether an order is to be marked as completely or only partially shipped. (Default = 0)
+                                send_customer_email:
+                                  type: boolean
+                                  description: Indicates whether an email about the event is to be sent to the customer. (Default = 0)
+                              required:
+                                - action
+                                - shop_number
+                                - order_number
+                                - shipping_service_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/m_add_order_delivery.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              101|Unknown action
+                              103|"shop_number" not set
+                              110|Merchant not found
+                              113|Shop not found
+                              118|Missing parameters
+                              119|"shipping_service_id" doesn't exist
+                              123|Following parameters of wrong type: [...]
+                              204|Order shipping status already completed
+                              400|Authorization not set
+                              401|Authorization username invalid format
+                              402|Generated authorization password invalid
+                              403|Generated authorization is too old
+                              404|The given OAuth2 access token is invalid
+                              405|Shop has no rights to access API. Make sure your contract is valid
+                              803|Internal error occurred while saving
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  error: 0, 
+                                  error_text: null,
+                                  cancellation_number: "1010001596",
+                                  version: "1.0",
+                                  trace_id: "spa-4f7ab2d146165"
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+              - title: Mobile Redirect
+                route:
+                  path: /mobile-redirect
+                data:
+                  blocks: []
+                  children:
+                    - title: get_mobile_redirect_user_agents
+                      route:
+                        path: /get-mobile-redirect-user-agents
+                      data:
+                        blocks:
+                          - type: text
+                            data: You should cache the request for 24 hours! It is not a solution to request this method every time a customer requests a page on the online store.
+                            header:
+                              token: POST
+                              title: get_mobile_redirect_user_agents
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_orders
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "10123"
+                              required:
+                                - action
+                                - shop_number
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/m_get_mobile_redirect.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              101|Unknown action
+                              103|"shop_number" not set
+                              110|Merchant not found
+                              113|Shop not found
+                              118|Missing parameters
+                              123|Following parameters of wrong type: [...]
+                              400|Authorization not set
+                              401|Authorization username invalid format
+                              402|Generated authorization password invalid
+                              403|Generated authorization is too old
+                              404|The given OAuth2 access token is invalid
+                              405|Shop has no rights to access API. Make sure your contract is valid
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  error: 0, 
+                                  error_text: null,
+                                  keywords : ['iPhone', 'iPod', 'iPad', 'Android'],
+                                  skipKeywords : ['Shopgate', 'iPad'],
+                                  version: "1.0",
+                                  trace_id: "spa-4f7ab2d146165"
+                              }
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+        - title: Plugin API
+          route:
+            path: /plugin-api
+          data:
+            children:
+              - title: System Information
+                route:
+                  path: /system-info
+                data:
+                  blocks: []
+                  children:
+                    - title: ping
+                      route:
+                        path: /ping
+                      data:
+                        blocks:
+                          - type: text
+                            data: Returns information about the framework and server used.
+                            header:
+                              token: POST
+                              title: ping
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: ping
+                                  example: ping
+                                shop_number:
+                                  type: string
+                                  description: Your shop number.
+                                  example: 11413
+                                trace_id:
+                                  type: string
+                                  description: Unique request trace ID.
+                                  example: sma-9412
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systeminfo_01_post_ping.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version": "2.1.0",
+                                  "plugin_version": "2.1.0",
+                                  "trace_id": "sma-4069",
+                                  "pong": "OK",
+                                  "configuration":
+                                  {
+                                      "api_url": "https://api.shopgate.com/merchant/",
+                                      "customer_number": "XXXXXX",
+                                      "apikey": "XXXXXX",
+                                      "enable_add_order": true,
+                                      "enable_check_cart": true,
+                                      "enable_check_stock": true,
+                                      "enable_clear_cache": true,
+                                      "enable_clear_log_file": true,
+                                      "enable_get_categories": true,
+                                      "enable_get_categories_csv": true,
+                                      "enable_get_customer": true,
+                                      "enable_get_items": true,
+                                      "enable_get_items_csv": true,
+                                      "enable_get_log_file": true,
+                                      "enable_get_orders": true,
+                                      "enable_get_reviews": true,
+                                      "enable_get_reviews_csv": true,
+                                      "enable_get_settings": true,
+                                      "enable_mobile_website": true,
+                                      "enable_ping": true,
+                                      "enable_redeem_coupons": true,
+                                      "enable_register_customer": true,
+                                      "enable_set_settings": true,
+                                      "enable_update_order": true,
+                                      "supported_fields_check_cart": [
+                                          "external_coupons",
+                                          "shipping_methods",
+                                          "items",
+                                          "payment_methods"
+                                      ],
+                                      "supported_fields_get_settings": [
+                                          "tax",
+                                          "customer_groups"
+                                      ],
+                                      "supported_methods_cron": [
+                                          "set_shipping_completed",
+                                          "cancel_orders"
+                                      ],
+                                      "supported_response_types": {
+                                          "get_categories": [
+                                              "xml",
+                                              "csv"
+                                          ],
+                                          "get_items": [
+                                              "xml"
+                                          ],
+                                          "get_reviews": [
+                                              "csv"
+                                          ]
+                                      }
+                                  },
+                                  "plugin_info":
+                                  {
+                                      "shopsystem_version": "2.3.8",
+                                      "shopsystem_edition": "community"
+                                  },
+                                  "shop_info":
+                                  {
+                                      "category_count": 125,
+                                      "item_count": 846,
+                                      "review_count": 312,
+                                      "media_count": 478,
+                                      "plugins_installed": [
+                                          {
+                                              "name": "Skrill Moneybookers Payment Module",
+                                              "id": "Phoenix_Moneybookers",
+                                              "version": "1.6.0.0",
+                                              "is_active": "true"
+                                          },
+                                          {
+                                              "name": "Cash on Delivery Payment Module",
+                                              "id": "Phoenix_CashOnDelivery",
+                                              "version": "1.0.8",
+                                              "is_active": "true"
+                                          }
+                                      ]
+                                  }
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: get_settings
+                      route:
+                        path: /get-settings
+                      config:
+                        sidebar:
+                          token: POST
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This action returns settings of an online shop, e.g. the tax settings.'
+                            header:
+                              token: POST
+                              title: get_settings
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: get_settings
+                                shop_number:
+                                  type: string
+                                  description: Your shop number.
+                                  example: 11413
+                                trace_id:
+                                  type: string
+                                  description: Unique request trace ID.
+                                  example: sma-9412
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systeminfo_02_post_get_settings.oas2.yml#/definitions/.main
+                          - type: text
+                            data: |-
+                              ## Error codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                      "error": 0,
+                                      "error_text": null,
+                                      "trace_id": null,
+                                      "shopgate_library_version": "2.9.1",
+                                      "plugin_version": "2.9.2",
+                                      "customer_groups": [
+                                          {
+                                              "id": "0",
+                                              "name": "NOT LOGGED IN",
+                                              "is_default": 0,
+                                              "customer_tax_class_key": "Retail Customer"
+                                          },
+                                          {
+                                              "id": "1",
+                                              "name": "Registered",
+                                              "is_default": 1,
+                                              "customer_tax_class_key": "Retail Customer"
+                                          },
+                                          {
+                                              "id": "10",
+                                              "name": "Wholesale Customer",
+                                              "is_default": 0,
+                                              "customer_tax_class_key": "Wholesale Customer"
+                                          }
+                                      ],
+                                      "allowed_shipping_countries": [
+                                          {
+                                              "country": "AU",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "AT",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "CA",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "FR",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "GB",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "US",
+                                              "state": ["All"]
+                                          }
+                                      ],
+                                      "allowed_address_countries": [
+                                          {
+                                              "country": "AU",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "AT",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "CA",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "FR",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "GB",
+                                              "state": ["All"]
+                                          },
+                                          {
+                                              "country": "US",
+                                              "state": ["All"]
+                                          }
+                                      ],
+                                      "tax":
+                                      {
+                                          "product_tax_classes": [
+                                              {
+                                                  "id": "2",
+                                                  "key": "Taxable Goods"
+                                              },
+                                              {
+                                                  "id": "4",
+                                                  "key": "Shipping"
+                                              }
+                                          ],
+                                          "customer_tax_classes": [
+                                              {
+                                                  "id": "3",
+                                                  "key": "Retail Customer",
+                                                  "is_default": 1
+                                              },
+                                              {
+                                                  "id": "5",
+                                                  "key": "Wholesale Customer",
+                                                  "is_default": 0
+                                              }
+                                          ],
+                                          "tax_rates": [
+                                              {
+                                                  "id": "1",
+                                                  "key": "1",
+                                                  "display_name": "US-WA-*-Default",
+                                                  "tax_percent": "9.5000",
+                                                  "country": "US",
+                                                  "state": "US-WA",
+                                                  "zipcode_type": "all",
+                                                  "zipcode_pattern": "",
+                                                  "zipcode_range_from": "",
+                                                  "zipcode_range_to": ""
+                                              },
+                                              {
+                                                  "id": "3",
+                                                  "key": "3",
+                                                  "display_name": "US-IL-*-Default",
+                                                  "tax_percent": "6.5000",
+                                                  "country": "US",
+                                                  "state": "US-IL",
+                                                  "zipcode_type": "all",
+                                                  "zipcode_pattern": "",
+                                                  "zipcode_range_from": "",
+                                                  "zipcode_range_to": ""
+                                              }
+                                          ],
+                                          "tax_rules": [
+                                              {
+                                                  "id": "1",
+                                                  "name": "Retail Customer-Taxable Goods-Rate 1",
+                                                  "priority": "1",
+                                                  "product_tax_classes": [
+                                                      {
+                                                          "id": "2",
+                                                          "key": "2"
+                                                      },
+                                                      {
+                                                          "id": "4",
+                                                          "key": "4"
+                                                      }
+                                                  ],
+                                                  "customer_tax_classes": [
+                                                      {
+                                                          "id": "3",
+                                                          "key": "3"
+                                                      }
+                                                  ],
+                                                  "tax_rates": [
+                                                      {
+                                                          "id": "1",
+                                                          "key": "1"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      "payment_methods": [
+                                          {
+                                              "id" : "cod"
+                                          },
+                                          {
+                                              "id" : "paypal"
+                                          }
+                                      ]
+                                  }
+                            config:
+                              mode: json
+                    - title: set_settings
+                      route:
+                        path: /set-settings
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'Allows to change settings, e.g. in the Shopgate configuration.'
+                            header:
+                              token: POST
+                              title: set_settings
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: set_settings
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                                shopgate_settings:
+                                  type: object
+                                  required:
+                                    - name
+                                    - value
+                                  properties:
+                                    name:
+                                      type: string
+                                      description: |-
+                                        Name of the setting.
+                                        Example: "encoding"
+                                    value:
+                                      type:
+                                        - string
+                                        - number
+                                        - integer
+                                        - boolean
+                                        - 'null'
+                                      description: The new value for the setting (type depending on the setting to be changed). To set a setting null only pass name and do not pass value.
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - shopgate_settings
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systeminfo_03_post_set_settings.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              50|parameter "shopgate_settings" missing
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "trace_id": "sma-9412",
+                                  "shopgate_library_version": "2.3.10",
+                                  "plugin_version": "2.3.2",
+                                  "shopgate_settings": [
+                                      {
+                                          "name": "encoding",
+                                          "old": "ISO-8859-15",
+                                          "new": "UTF-8"
+                                      },
+                                      {
+                                          "name": "cname",
+                                          "old": "http://mobile.my-shop.com",
+                                          "new": null
+                                      },
+                                      {
+                                          "name": "alias",
+                                          "old": "my-shop",
+                                          "new": "shopname"
+                                      }
+                                  ]
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: get_log_file
+                      route:
+                        path: /get-log-file
+                      data:
+                        blocks:
+                          - type: text
+                            data: This action allows access to the log files.
+                            header:
+                              token: POST
+                              title: get_log_file
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                log_type:
+                                  type: string
+                                  description: |-
+                                    log file to be selected.
+                                    Examples: "access", "debug", "error", "request"
+                                lines:
+                                  type: integer
+                                  description: Number of lines to read (starting from the end).
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systeminfo_04_post_get_log_file.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              38|unknown log type
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: clear_log_file
+                      route:
+                        path: /clear-log-file
+                      data:
+                        blocks:
+                          - type: text
+                            data: This action allows clearing cache folder.
+                            header:
+                              token: POST
+                              title: clear_log_file
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: clear_log_file
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systemInfo_05_post_clear_log_file.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              79|cannot delete file(s)
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version":"2.1.0",
+                                  "plugin_version":"2.1.0",
+                                  "trace_id": "sma-3995",
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: clear_cache
+                      route:
+                        path: /clear-cache
+                      data:
+                        blocks:
+                          - type: text
+                            data: This action allows clearing existing cache files.
+                            header:
+                              token: POST
+                              title: clear_cache
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: clear_cache
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_systeminfo_06_clear_cache.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              38|unknown log type
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version":"2.1.0",
+                                  "plugin_version":"2.1.0",
+                                  "trace_id": "sma-3995",
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+              - title: Stock
+                route:
+                  path: /stock
+                data:
+                  blocks: []
+                  children:
+                    - title: check_stock
+                      route:
+                        path: /check-stock
+                      data:
+                        blocks:
+                          - type: text
+                            data: Check current stock quantity of the product and returns available amount.
+                            header:
+                              token: POST
+                              title: check_stock
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                                items:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      item:
+                                        type: object
+                                        properties:
+                                          item_number:
+                                            type: string
+                                            description: |-
+                                              Item number.
+                                              Example: "100001732"
+                                          item_number_public:
+                                            type: string
+                                            description: |-
+                                              Public item number.
+                                              Example: "ams008"
+                                          internal_order_info:
+                                            type: string
+                                            description: |-
+                                              Additional item information to be transmitted when the item is ordered. E.g. internal IDs or additional information.
+                                              Example: "WWS number: "1234567"
+                                          options:
+                                            type: array
+                                            description: |-
+                                              --not yet implemented--
+                                              Array with item options
+                                            items:
+                                              type: object
+                                              properties:
+                                                option:
+                                                  type: object
+                                                  properties:
+                                                    option_number:
+                                                      type: string
+                                                      description: |-
+                                                        Corresponds with the option ID in the shop system.
+                                                        Example: "13"
+                                                    name:
+                                                      type: string
+                                                      description: |-
+                                                        Name of the option.
+                                                        Example:  "Color"
+                                                    value_number:
+                                                      type: string
+                                                      description: |-
+                                                        Corresponds with the value ID in the shop system.
+                                                        Example: "154"
+                                                    value:
+                                                      type: string
+                                                      description: |-
+                                                        Chosen option
+                                                        Example: "blue"
+                                                    additional_amount_with_tax:
+                                                      type: number
+                                                      description: Additional amount with tax
+                                                  required:
+                                                    - value
+                                                    - additional_amount_with_tax
+                                          inputs:
+                                            type: array
+                                            description: |-
+                                              --not yet implemented--
+                                              This array includes the item's corresponding input fields
+                                            items:
+                                              type: object
+                                              properties:
+                                                input:
+                                                  type: object
+                                                  properties:
+                                                    input_number:
+                                                      type: string
+                                                      description: |-
+                                                        ID of the input field in the shop system.
+                                                        Example: "23"
+                                                    type:
+                                                      type: string
+                                                      description: |-
+                                                        Allowed values: "text" and "image."
+                                                        Example: "text"
+                                                      pattern: text|image
+                                                    additional_amount_with_tax:
+                                                      type: number
+                                                      description: |-
+                                                        Additional amount with tax.
+                                                        Example: 5.49
+                                                    label:
+                                                      type: string
+                                                      description: |-
+                                                        Name of the input field.
+                                                        "Labeling (back side)"
+                                                    user_input:
+                                                      type: string
+                                                      description: |-
+                                                        User input.
+                                                        Example: "My Peanut Butter"
+                                                    info_text:
+                                                      type: string
+                                                      description: |-
+                                                        Description of the input field.
+                                                        Example: "The name will be printed on the front label - max. 18 characters"
+                                                  required:
+                                                    - input_number
+                                                    - type
+                                                    - additional_amount_with_tax
+                                                    - label
+                                                    - user_input
+                                                    - info_text
+                                        required:
+                                          - item_number
+                                      attributes:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            attribute:
+                                              type: object
+                                              properties:
+                                                name:
+                                                  type: string
+                                                  description: |-
+                                                    Name of the attribute.
+                                                    Example: "Size"
+                                                value:
+                                                  type: string
+                                                  description: |-
+                                                    Value of the selected attribute.
+                                                    Example:  "XL"
+                                              required:
+                                                - name
+                                                - value
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_stock_07_check_stock.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              300|product is not in stock
+                              301|product not found
+                              302|less stock available than requested
+                              999|Unknown error
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+              - title: Cart
+                route:
+                  path: /cart
+                data:
+                  blocks: []
+                  children:
+                    - title: check_cart
+                      route:
+                        path: /check-cart
+                      data:
+                        blocks:
+                          - type: text
+                            data: |-
+                              Every time a customer changes the contents of the cart in the Mobile Website or apps this action will be requested to validate the contents.
+                              This is currently used to validate **coupons**, check the **stock** of the items and return **shipping service providers** of the shopping cart system. Future applications include a change of products for the cart contents.
+                            header:
+                              token: POST
+                              title: check_cart
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  description: Requested method
+                                  type: string
+                                  default: check_cart
+                                shop_number:
+                                  description: Your shop number.
+                                  type: string
+                                trace_id:
+                                  description: 'Unique request trace ID. Example: "sma-9412"'
+                                  type: string
+                                language:
+                                  description: 'Request language. The customer''s selected language in the app. Example: "DE-DE:, "US-EN"'
+                                  type: string
+                                cart:
+                                  $ref: ./static/pi_cart_17_check_cart.oas2.yml#/definitions/cart
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - language
+                                - cart
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_cart_17_check_cart.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              200|the coupon is not valid
+                              201|the coupon code is not valid
+                              202|products for coupon are not valid
+                              203|delivery address for coupon is not valid
+                              204|user is not valid for coupon
+                              205|too many coupons in cart
+                              300|product is not in stock
+                              301|product not found
+                              302|less stock available than requested
+                              303|product input validation failed: text too long
+                              304|requested quantity is lower than required minimum quantity
+                              305|requested quantity is higher than allowed maximum quantity
+                              306|products can not be ordered together
+                              307|product not allowed in cart constellation
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "trace_id": null,
+                                  "shopgate_library_version": "2.4.14",
+                                  "plugin_version": "2.4.29",
+                                  "currency": "USD",
+                                  "internal_cart_info":"{\"cart_id\":82,\"coupons\":[{\"code\":\"spring30\",\"status\":\"removed\"},{\"code\":\"shipfree\",\"status\":\"applied\"}]}",
+                                  "customer": {
+                                      "customer_tax_class_key": "Retail Customer",
+                                      "customer_groups":
+                                      [
+                                          {
+                                              "id": "1"
+                                          },
+                                          {
+                                              "id": "13"
+                                          }
+                                      ]
+                                  },
+                                  "shipping_methods": [
+                                      {
+                                          "id": "flatrate_flatrate",
+                                          "title": "Fixed",
+                                          "shipping_group": "flatrate",
+                                          "description": "",
+                                          "sort_order": null,
+                                          "amount": 50,
+                                          "amount_with_tax": 50,
+                                          "tax_class": 0,
+                                          "tax_percent": "0.00",
+                                          "internal_shipping_info": null
+                                      }
+                                  ],
+                                  "items": [
+                                      {
+                                          "item_number": "1",
+                                          "is_buyable": 1,
+                                          "qty_buyable": 5,
+                                          "unit_amount": 750,
+                                          "unit_amount_with_tax": 750,
+                                          "error": null,
+                                          "error_text": null,
+                                          "options": [],
+                                          "inputs": [],
+                                          "attributes": []
+                                      },
+                                      {
+                                          "item_number": "126-127",
+                                          "is_buyable": 1,
+                                          "qty_buyable": 5,
+                                          "unit_amount": 18.75,
+                                          "unit_amount_with_tax": 18.75,
+                                          "error": null,
+                                          "error_text": null,
+                                          "options": [],
+                                          "inputs": [],
+                                          "attributes": []
+                                      },
+                                      {
+                                          "item_number": "1",
+                                          "is_buyable": 0,
+                                          "qty_buyable": 0,
+                                          "unit_amount": 0,
+                                          "unit_amount_with_tax": 0,
+                                          "error": 300,
+                                          "error_text": "product is not in stock",
+                                          "options": [],
+                                          "inputs": [],
+                                          "attributes": []
+                                      }
+                                   ],
+                                  "external_coupons": [
+                                      {
+                                          "is_valid": false,
+                                          "not_valid_message": "Coupon code \"shopgate\n\" is not valid.",
+                                          "code": "shopgate\n",
+                                          "name": null,
+                                          "description": null,
+                                          "amount": null,
+                                          "amount_net": null,
+                                          "amount_gross": null,
+                                          "tax_type": "auto",
+                                          "currency": null,
+                                          "is_free_shipping": null,
+                                          "internal_info": null
+                                      }
+                                  ],
+                                  "payment_methods": [
+                                      {
+                                          "id" : "cod"
+                                      },
+                                      {
+                                          "id" : "paypal"
+                                      }
+                                  ]
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+              - title: Order
+                route:
+                  path: /order
+                data:
+                  blocks: []
+                  children:
+                    - title: add_order
+                      route:
+                        path: /add-order
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'With this action you can add a new Shopgate order to your shop system. If there already is an order with the same number, the action must cancel and the error must be reported.'
+                            header:
+                              token: POST
+                              title: add_order
+                          - type: callout
+                            data:
+                              type: warning
+                              body: 'If you don''t use the Shopgate Cart Integration SDK you also have to call our Shopgate Merchant API method [get_orders](/references/cart-integration/merchant-api/order/get-orders) to get the order data.'
+                              title: ''
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: add_order
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                offset:
+                                  type: integer
+                                  description: 'Number of items (not item number, etc) to be skipped in the export.'
+                                limit:
+                                  type: integer
+                                  description: Maximum number of items to be exported.
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_orders_08_add_order.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              30|parameter "order_number" missing
+                              60|duplicate order
+                              62|no customer group found for customer
+                              64|order status is sent
+                              83|database error
+                              84|unknown country code
+                              85|unknown state code
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              200|the coupon is not valid
+                              201|the coupon code is not valid
+                              202|products for coupon are not valid
+                              203|delivery address for coupon is not valid
+                              204|user is not valid for coupon
+                              205|too many coupons in cart
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version": "2.1.0",
+                                  "plugin_version": "2.1.0",
+                                  "trace_id": "sma-3995",
+                                  "external_order_id": "153003",
+                                  "external_order_number": "141"
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: ' get_orders'
+                      route:
+                        path: /get-orders
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This action implements retrieval of order data from your shop. If a customer already has an account in your online shop, you can allow them to see the current status of their orders on the mobile website or in the mobile apps.'
+                            header:
+                              token: POST
+                              title: ' get_orders'
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: |-
+                                    Requested method  
+                                    Example: 
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.  
+                                    Example: "11413"
+                                customer_token:
+                                  type: string
+                                  description: |-
+                                    Shopgate customer token in the online store  
+                                    Example: "YY5UwgsjrYVFwqzAYx"
+                                customer_language:
+                                  type: string
+                                  description: |-
+                                    Shopgate customer language (language part: ISO-639 lowercase, country part: ISO-3166 uppercase)  
+                                    Example: "en_US"
+                                limit:
+                                  type: integer
+                                  description: 'Example: 10'
+                                  default: 10
+                                offset:
+                                  type: integer
+                                  description: 'Example: 0'
+                                  default: 0
+                                order_date_from:
+                                  type: string
+                                  description: |-
+                                    returns orders which are created after the given date time format (Format ISO 8601)  
+                                    Example: "2013-02-08T09:20:25+01:00"
+                                  default: ''
+                                sort_order:
+                                  type: string
+                                  description: |-
+                                    return the orders in the given sort_order  
+                                    Example: created_asc
+                                  default: created_desc
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.  
+                                    Example: "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - customer_token
+                                - customer_language
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_customer_16_get_orders.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              72|customer token missing
+                              73|invalid customer token
+                              74|customer language missing
+                              75|customer account not confirmed
+                              77|customer account insufficient permissions
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                "error": 0,
+                                "error_text": null,
+                                "trace_id": "sma-76315",
+                                "shopgate_library_version": "2.9.32",
+                                "plugin_version": "2.9.20",
+                                "orders": [
+                                  {
+                                    "order_number": null,
+                                    "external_order_number": "AB-1267",
+                                    "external_order_id": "509",
+                                    "status_name": "Shipped",
+                                    "status_color": null,
+                                    "created_time": "2015-08-25T07:10:47",
+                                    "mail": "customer@merchant.com",
+                                    "phone": "+4960337470",
+                                    "mobile": null,
+                                    "custom_fields": [
+                                      {
+                                        "label": "Customer Comments",
+                                        "internal_field_name": "ocomment",
+                                        "value": "This is a comment"
+                                      }
+                                    ],
+                                    "invoice_address": {
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": null,
+                                      "company": null,
+                                      "street_1": "Schloßstrasse 10",
+                                      "street_2": null,
+                                      "zipcode": "35510",
+                                      "city": "Butzbach",
+                                      "country": "DE",
+                                      "state": "HE",
+                                      "phone": "+4960337470",
+                                      "mobile": null,
+                                      "mail": null,
+                                      "custom_fields": []
+                                    },
+                                    "delivery_address": {
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": null,
+                                      "company": null,
+                                      "street_1": "Schloßstrasse 10",
+                                      "street_2": null,
+                                      "zipcode": "35510",
+                                      "city": "Butzbach",
+                                      "country": "DE",
+                                      "state": "HE",
+                                      "phone": "+4960337470",
+                                      "mobile": null,
+                                      "mail": null,
+                                      "custom_fields": []
+                                    },
+                                    "currency": "EUR",
+                                    "amount_items_gross": 119,
+                                    "amount_items_net": 100,
+                                    "amount_complete_gross": 124.95,
+                                    "amount_complete_net": 105,
+                                    "is_paid": 1,
+                                    "payment_method": "Paypal",
+                                    "payment_time": "2015-08-25T07:10:46",
+                                    "payment_transaction_number": null,
+                                    "is_shipping_completed": 1,
+                                    "shipping_completed_time": "2015-08-28T12:15:15",
+                                    "delivery_notes": [
+                                      {
+                                        "shipping_service_id": "DHL",
+                                        "shipping_service_name": "DHL Standard",
+                                        "tracking_number": "129834765",
+                                        "shipping_time": "2015-08-28T12:15:15"
+                                      }
+                                    ],
+                                    "order_taxes": [
+                                      {
+                                        "label": "Mehrwertsteuer",
+                                        "tax_percent": 19.00,
+                                        "amount": 19.95
+                                      }
+                                    ],
+                                    "extra_costs": [
+                                      {
+                                        "type": "shipping",
+                                        "tax_percent": 19.00,
+                                        "amount": 5.95,
+                                        "label": "Shipping costs"
+                                      }
+                                    ],
+                                    "external_coupons": [],
+                                    "items": [
+                                      {
+                                        "item_number": "1",
+                                        "item_number_public": "1001",
+                                        "quantity": 1,
+                                        "name": "Coffee Mug",
+                                        "unit_amount": 100.00,
+                                        "unit_amount_with_tax": 119.00,
+                                        "tax_percent": 19.00,
+                                        "currency": "EUR"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "order_number": null,
+                                    "external_order_number": "AB-1567",
+                                    "external_order_id": "698",
+                                    "status_name": "In Progress",
+                                    "status_color": null,
+                                    "created_time": "2015-09-24T14:18:32",
+                                    "mail": "customer@merchant.com",
+                                    "phone": "+4960337470",
+                                    "mobile": null,
+                                    "custom_fields": [],
+                                    "invoice_address": {
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": null,
+                                      "company": null,
+                                      "street_1": "Schloßstrasse 10",
+                                      "street_2": null,
+                                      "zipcode": "35510",
+                                      "city": "Butzbach",
+                                      "country": "DE",
+                                      "state": "HE",
+                                      "phone": "+4960337470",
+                                      "mobile": null,
+                                      "mail": null,
+                                      "custom_fields": []
+                                    },
+                                    "delivery_address": {
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": null,
+                                      "company": null,
+                                      "street_1": "Schloßstrasse 10",
+                                      "street_2": null,
+                                      "zipcode": "35510",
+                                      "city": "Butzbach",
+                                      "country": "DE",
+                                      "state": "HE",
+                                      "phone": "+4960337470",
+                                      "mobile": null,
+                                      "mail": null,
+                                      "custom_fields": []
+                                    },
+                                    "currency": "EUR",
+                                    "amount_items_gross": 130.90,
+                                    "amount_items_net": 110,
+                                    "amount_complete_gross": 136.85,
+                                    "amount_complete_net": 115,
+                                    "is_paid": 0,
+                                    "payment_method": "Cash on Delivery",
+                                    "payment_time": null,
+                                    "payment_transaction_number": null,
+                                    "is_shipping_completed": 0,
+                                    "shipping_completed_time": null,
+                                    "delivery_notes": [],
+                                    "order_taxes": [
+                                      {
+                                        "label": "Mehrwertsteuer",
+                                        "tax_percent": 19.00,
+                                        "amount": 19.95
+                                      }
+                                    ],
+                                    "extra_costs": [
+                                      {
+                                        "type": "shipping",
+                                        "tax_percent": 19.00,
+                                        "amount": 5.95,
+                                        "label": "Shipping costs"
+                                      }
+                                    ],
+                                    "external_coupons": [],
+                                    "items": [
+                                      {
+                                        "item_number": "1",
+                                        "item_number_public": "1001",
+                                        "quantity": 1,
+                                        "name": "Coffee Mug",
+                                        "unit_amount": 100.00,
+                                        "unit_amount_with_tax": 119.00,
+                                        "tax_percent": 19.00,
+                                        "currency": "EUR"
+                                      },
+                                      {
+                                        "item_number": "246",
+                                        "item_number_public": "AX-1D3573",
+                                        "quantity": 1,
+                                        "name": "Base Cap",
+                                        "unit_amount": 10.00,
+                                        "unit_amount_with_tax": 11.90,
+                                        "tax_percent": 19.00,
+                                        "currency": "EUR"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: update_order
+                      route:
+                        path: /update-order
+                      config:
+                        sidebar:
+                          token: POST
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'With this action you can update an already existing Shopgate order in your shop system. In case that the order number is unknown, the action must be cancelled and the error reported.'
+                            header:
+                              token: POST
+                              title: update_order
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                order_number:
+                                  type: string
+                                  description: |-
+                                    Shopgate order number:
+                                    Example: "1712000481"
+                                payment:
+                                  type: boolean
+                                  description: 'If this parameter is set to 1, the order''s payment information is updated.'
+                                shipping:
+                                  type: boolean
+                                  description: 'If this parameter is set to 1, it will be checked whether the order is ready for shipping.'
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example:  "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_orders_09_update_order.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              30|parameter "order_number" missing
+                              61|order not found
+                              64|order status is "sent"
+                              65|order is already up to date
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version": "2.1.0",
+                                  "plugin_version": "2.1.0",
+                                  "trace_id": "sma-3995",
+                                  "external_order_id": "153003",
+                                  "external_order_number": "141"
+                              }
+                            config:
+                              mode: json
+                config:
+                  sidebar: {}
+              - title: Customer
+                route:
+                  path: /customer
+                data:
+                  blocks: []
+                  children:
+                    - title: ' get_customer'
+                      route:
+                        path: /get-customer
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This action implements retrieval of user data from your shop, e.g. for the "Shopgate Connect" procedure. If a customer already has an account in your online shop, you can allow them to use their credentials to log in, register and place orders on the mobile website.'
+                            header:
+                              token: POST
+                              title: ' get_customer'
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_customer
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example: "sma-9412"
+                                user:
+                                  type: string
+                                  description: User (on most systems the email address).
+                                pass:
+                                  type: string
+                                  description: Password
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - user
+                                - pass
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_customer_14_get_customer.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              35|parameter "user" missing
+                              36|parameter "pass" missing
+                              37|parameter "user_data" missing
+                              70|no addresses found for customer
+                              71|wrong username or password
+                              72|customer account not confirmed
+                              73|unknown error while customer login
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version":"2.1.0",
+                                  "plugin_version":"2.1.0",
+                                  "trace_id": "sma-9412",
+                                  "user_data": 
+                                  {
+                                      "customer_id": "99",
+                                      "customer_number": null,
+                                      "customer_groups":  [
+                                          {
+                                              "id":"1",
+                                              "name":"General"
+                                          },
+                                          {
+                                              "id":"13",
+                                              "name":"BestFriendOfCeo"
+                                          }
+                                      ],
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": "1982-07-01",
+                                      "phone": "+49 (221) 123456780",
+                                      "mobile": null,
+                                      "mail": "maeximilian+chen@shopgate.com",
+                                      "newsletter_subscription": 0,
+                                      "custom_fields":    [
+                                          {
+                                              "label": "Birthday",
+                                              "internal_field_name": "dob",
+                                              "value": "1982-05-26"
+                                          }
+                                      ],
+                                      "customer_group": null,
+                                      "customer_group_id": null
+                                  },
+                                  "addresses":    [
+                                      {
+                                          "id": "288",
+                                          "is_invoice_address": 1,
+                                          "is_delivery_address": 1,
+                                          "first_name": "Max",
+                                          "last_name": "Mustermann",
+                                          "gender": "m",
+                                          "birthday": "1982-07-01",
+                                          "company": "Musterfirma GmbH",
+                                          "street_1": "Schloßstraße 10",
+                                          "street_2": "Altstadt-Süd",
+                                          "zipcode": "50667",
+                                          "city": "Köln",
+                                          "country": "DE",
+                                          "state": null,
+                                          "phone": "+49 (221) 123456780",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "2nd"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "id": "289",
+                                          "is_invoice_address": 0,
+                                          "is_delivery_address": 0,
+                                          "first_name": "Hannah",
+                                          "last_name": "Jones",
+                                          "gender": "f",
+                                          "birthday": null,
+                                          "company": "",
+                                          "street_1": "221B Baker Street",
+                                          "street_2": "",
+                                          "zipcode": "NW1 6XE",
+                                          "city": "London",
+                                          "country": "GB",
+                                          "state": null,
+                                          "phone": "",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "ground floor"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "id": "290",
+                                          "is_invoice_address": 1,
+                                          "is_delivery_address": 0,
+                                          "first_name": "Thomas",
+                                          "last_name": "Jefferson",
+                                          "gender": "m",
+                                          "birthday": "1743-04-13",
+                                          "company": "W.D.C. Inc.",
+                                          "street_1": "10 Hopton Gardens, Hopton Street",
+                                          "street_2": "Southwark",
+                                          "zipcode": "SE1 9JJ",
+                                          "city": "London",
+                                          "country": "GB",
+                                          "state": null,
+                                          "phone": "+44 20 1234 56789",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "basement"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                            config:
+                              mode: json
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: register_customer
+                      route:
+                        path: /register-customer
+                      config:
+                        sidebar:
+                          token: POST
+                      data:
+                        blocks:
+                          - type: text
+                            data: ''
+                            header:
+                              token: POST
+                              title: register_customer
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: register_customer
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: Your shop number.
+                                trace_id:
+                                  type: string
+                                  description: |
+                                    Unique request trace ID. Example: "sma-9412"
+                                user:
+                                  type: string
+                                  description: User (on most systems the email address).
+                                pass:
+                                  type: string
+                                  description: Password
+                                user_data:
+                                  $ref: ./pi_customer_15_register_customer.oas2.yml#/definitions/user_data_model
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - user
+                                - pass
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_customer_15_register_customer.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              35|parameter "user" missing
+                              36|parameter "pass" missing
+                              37|parameter "user_data" missing
+                              70|no addresses found for customer
+                              71|wrong username or password
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              220|failed to create user
+                              221|user already exists
+                              222|data fields are missing
+                              999|Unknown error
+                          - type: text
+                            data: '## Example'
+                          - type: code
+                            data: |-
+                              {
+                                  "error": 0,
+                                  "error_text": null,
+                                  "shopgate_library_version":"2.1.0",
+                                  "plugin_version":"2.1.0",
+                                  "trace_id": "sma-9412",
+                                  "user_data": 
+                                  {
+                                      "customer_id": "99",
+                                      "customer_number": null,
+                                      "customer_groups":  [
+                                          {
+                                              "id":"1",
+                                              "name":"General"
+                                          },
+                                          {
+                                              "id":"13",
+                                              "name":"BestFriendOfCeo"
+                                          }
+                                      ],
+                                      "first_name": "Max",
+                                      "last_name": "Mustermann",
+                                      "gender": "m",
+                                      "birthday": "1982-07-01",
+                                      "phone": "+49 (221) 123456780",
+                                      "mobile": null,
+                                      "mail": "maeximilian+chen@shopgate.com",
+                                      "newsletter_subscription": 0,
+                                      "custom_fields":    [
+                                          {
+                                              "label": "Birthday",
+                                              "internal_field_name": "dob",
+                                              "value": "1982-05-26"
+                                          }
+                                      ],
+                                      "customer_group": null,
+                                      "customer_group_id": null
+                                  },
+                                  "addresses":    [
+                                      {
+                                          "id": "288",
+                                          "is_invoice_address": 1,
+                                          "is_delivery_address": 1,
+                                          "first_name": "Max",
+                                          "last_name": "Mustermann",
+                                          "gender": "m",
+                                          "birthday": "1982-07-01",
+                                          "company": "Musterfirma GmbH",
+                                          "street_1": "Schloßstraße 10",
+                                          "street_2": "Altstadt-Süd",
+                                          "zipcode": "50667",
+                                          "city": "Köln",
+                                          "country": "DE",
+                                          "state": null,
+                                          "phone": "+49 (221) 123456780",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "2nd"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "id": "289",
+                                          "is_invoice_address": 0,
+                                          "is_delivery_address": 0,
+                                          "first_name": "Hannah",
+                                          "last_name": "Jones",
+                                          "gender": "f",
+                                          "birthday": null,
+                                          "company": "",
+                                          "street_1": "221B Baker Street",
+                                          "street_2": "",
+                                          "zipcode": "NW1 6XE",
+                                          "city": "London",
+                                          "country": "GB",
+                                          "state": null,
+                                          "phone": "",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "ground floor"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "id": "290",
+                                          "is_invoice_address": 1,
+                                          "is_delivery_address": 0,
+                                          "first_name": "Thomas",
+                                          "last_name": "Jefferson",
+                                          "gender": "m",
+                                          "birthday": "1743-04-13",
+                                          "company": "W.D.C. Inc.",
+                                          "street_1": "10 Hopton Gardens, Hopton Street",
+                                          "street_2": "Southwark",
+                                          "zipcode": "SE1 9JJ",
+                                          "city": "London",
+                                          "country": "GB",
+                                          "state": null,
+                                          "phone": "+44 20 1234 56789",
+                                          "mobile": null,
+                                          "mail": null,
+                                          "custom_fields":    [
+                                              {
+                                                  "label": "Floor",
+                                                  "internal_field_name": "floor",
+                                                  "value": "basement"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                            config:
+                              mode: json
+                config:
+                  sidebar: {}
+              - title: Export
+                route:
+                  path: /export
+                data:
+                  blocks: []
+                  children:
+                    - title: ' get_categories'
+                      route:
+                        path: /get-categories
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This allows you to export item categories from your shop system to the [Shopgate Categories XML Format](/references/cart-integration/catalog-data-feed/category-xml).'
+                            header:
+                              token: POST
+                              title: ' get_categories'
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_categories
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example: "sma-9412"
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_export_10_get_categories.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: '## Plugin Example'
+                          - type: code
+                            data: "<?\n    class MyPlugin extends ShopgatePlugin\n    {\n        ......\n    \n        protected function createCategories($limit = null, $offset = null, array $uids = array ())\n        {\n            /**\n             * init category model\n             */\n            $categoryItem = new Shopgate_Model_Catalog_Category();\n     \n            $categoryItem->setUid(10);\t\t\t\t\t\t\t\t\t        /** required */\n            $categoryItem->setName('Example Category');\t\t\t\t\t\t    /** required */\n            $categoryItem->setParentUid(4);\t\t\t\t\t\t\t\t        /** optional */\n            $categoryItem->setIsActive(true);\t\t\t\t\t\t\t\t    /** optional | default false */\n            $categoryItem->setDeeplink('http://example-shop/category/id/10');   /** optional */\n            $categoryItem->setIsAnchor(true);\t\t\t\t\t\t\t\t    /** optional | default false */\n            $categoryItem->setSortOrder(10);\t\t\t\t\t\t\t\t    /** optional */\n     \n            /**\n             * init image model\n             */\n            $imageItem = new Shopgate_Model_Media_Image();\n     \n            $imageItem->setUid(10);\t\t\t\t\t\t\t\t\t\t\t        /** required */\n            $imageItem->setSortOrder(10);\t\t\t\t\t\t\t\t\t        /** optional */\n            $imageItem->setAlt('Example Alt 1');\t\t\t\t\t\t\t\t    /** optional */\n            $imageItem->setUrl('http://example-shop/category/id/10/image/id/10');\t/** optional */\n            $imageItem->setTitle('Example Title 1');\t\t\t\t\t\t\t\t/** required */\n     \n            /**\n             * add to category model\n             */\n            $categoryItem->setImage($imageItem);\n            $this->addCategoryModel($categoryItem);\n        }"
+                            config:
+                              mode: php
+                          - type: text
+                            data: '## Plugin Example Result'
+                          - type: code
+                            data: |-
+                              <categories xsi:noNamespaceSchemaLocation="http://files.shopgate.com/xml/xsd/catalog/categories.xsd">
+                                  <category uid="10" sort_order="10" parent_uid="4" is_active="1" is_anchor="1">
+                                      <name>
+                                          <![CDATA[
+                                          Example Category
+                                          ]]>
+                                      </name>
+                                      <deeplink>http://example-shop/category/id/10</deeplink>
+                                      <image uid="10" sort_order="10">
+                                          <url>
+                                              <![CDATA[
+                                              http://example-shop/category/id/10/image/id/10
+                                              ]]>
+                                          </url>
+                                          <title>
+                                              <![CDATA[
+                                              Example Title 1
+                                              ]]>
+                                          </title>
+                                          <alt>
+                                              <![CDATA[
+                                              Example Alt 1
+                                              ]]>
+                                          </alt>
+                                      </image>
+                                  </category>
+                              </categories>
+                            config:
+                              mode: xml
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                    - title: ' get_items'
+                      route:
+                        path: /get-items
+                      config:
+                        sidebar:
+                          token: POST
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This item allows you to export item information from your shop system to the [Shopgate Items XML Format](/references/cart-integration/catalog-data-feed/product-xml).'
+                            header:
+                              token: POST
+                              title: ' get_items'
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  description: Requested method
+                                  default: get_items
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                offset:
+                                  type: integer
+                                  description: 'Number of items (not item number, etc) to be skipped in the export.'
+                                limit:
+                                  type: integer
+                                  description: Maximum number of items to be exported.
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example: "sma-9412"
+                                "uids\t":
+                                  type: array
+                                  description: |-
+                                    Product Ids that should not be included in the export file.
+                                    Example: ["10000","1025028"]
+                                  items:
+                                    type: string
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - "uids\t"
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_export_11_get_items.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: |-
+                              ## Error Codes
+
+                              Code|Description
+                              ---|---
+                              2|cannot open/create logfile(s)
+                              10|invalid value in configuration
+                              11|error reading or writing configuration
+                              20|no action specified
+                              21|unknown action requested
+                              22|disabled action requested
+                              23|wrong response format
+                              80|file not found
+                              81|cannot open file
+                              82|buffer is empty
+                              83|database error
+                              100|no connection to server
+                              101|Unknown action
+                              102|error code received from merchant API
+                              120|authentication failed
+                              999|Unknown error
+                          - type: text
+                            data: '## Plugin Examples'
+                          - type: code
+                            data: "    class MyPlugin extends ShopgatePlugin\n    {\n \n        protected function createItems($limit = null, $offset = null, array $uids = array ())\n\t    {\n \n            /**\n             * init product model\n             */\n            $productItem = new Shopgate_Model_Catalog_Product();\n            \n            $productItem->setUid(10);\n            $productItem->setName('Example Product 1');\n            $productItem->setTaxPercent(19);\n            $productItem->setTaxClass('19% MwSt DE');\n            $productItem->setCurrency('EUR');\n            $productItem->setDescription('Example Description');\n            $productItem->setDeeplink('http://example-shop/product/id/10/');\n            $productItem->setPromotionSortOrder(10);\n            $productItem->setInternalOrderInfo('Example Order Info');\n            $productItem->setAgeRating(18);\n            $productItem->setWeight(10);\n            $productItem->setWeightUnit(Shopgate_Model_Catalog_Product::DEFAULT_WEIGHT_UNIT_GRAMM);\n            \n            ...........\n            \n            /**\n             * add item \n             */\n            $this->addItemModel($productItem);"
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init price model
+                                           */
+                                          $priceItem = new Shopgate_Model_Catalog_Price();
+                                          $priceItem->setPrice(22.99);
+                                          $priceItem->setCost(12.99);
+                                          $priceItem->setMinimumOrderAmount(1);
+                                          $priceItem->setMsrp(18.99);
+                                          $priceItem->setSalePrice(21.99);
+                                      
+                                          /**
+                                           * init tier price (optional)
+                                           */
+                                          $tierPriceItem = new Shopgate_Model_Catalog_TierPrice();
+                                          $tierPriceItem->setAggregateChildren(true);
+                                          $tierPriceItem->setCustomerGroupUid(1);
+                                          $tierPriceItem->setFromQuantity(10);
+                                          $tierPriceItem->setToQuantity(20);
+                                          $tierPriceItem->setReduction(5.99);
+                                          $tierPriceItem->setReductionType(Shopgate_Model_Catalog_TierPrice::DEFAULT_TIER_PRICE_TYPE_FIXED);
+                                      
+                                          /**
+                                           * add to price model
+                                           */
+                                          $priceItem->addTierPriceGroup($tierPriceItem);
+                                      
+                                          /**
+                                           * init tier price (optional)
+                                           */
+                                          $tierPriceItem = new Shopgate_Model_Catalog_TierPrice();
+                                          $tierPriceItem->setCustomerGroupUid(1);
+                                          $tierPriceItem->setFromQuantity(20);
+                                          $tierPriceItem->setToQuantity(30);
+                                          $tierPriceItem->setReduction(8.99);
+                                          $tierPriceItem->setReductionType(Shopgate_Model_Catalog_TierPrice::DEFAULT_TIER_PRICE_TYPE_FIXED);
+                                      
+                                          /**
+                                           * add to price model
+                                           */
+                                          $priceItem->addTierPriceGroup($tierPriceItem);
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->setPrice($priceItem);
+                                          ........
+                                          $this->addItemModel($productItem);
+                            header:
+                              title: Plugin Example Price
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init image model
+                                           */
+                                          $imageItem = new Shopgate_Model_Media_Image();
+                                          $imageItem->setUid(10);
+                                          $imageItem->setIsCover(true);
+                                          $imageItem->setSortOrder(10);
+                                          $imageItem->setAlt('Example Alt 1');
+                                          $imageItem->setTitle('Example Title 1');
+                                          $imageItem->setUrl('http://example-shop/product/id/10/image/id/10');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addImage($imageItem);
+                                      
+                                          /**
+                                           * init image model
+                                           */
+                                          $imageItem = new Shopgate_Model_Media_Image();
+                                          $imageItem->setUid(20);
+                                          $imageItem->setIsCover(false);
+                                          $imageItem->setSortOrder(20);
+                                          $imageItem->setAlt('Example Alt 2');
+                                          $imageItem->setTitle('Example Title 1');
+                                          $imageItem->setUrl('http://example-shop/product/id/10/image/id/20');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addImage($imageItem);
+                            header:
+                              title: Plugin Example Images
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init category path model
+                                           */
+                                          $categoryPathItem = new Shopgate_Model_Catalog_CategoryPath();
+                                          $categoryPathItem->setUid(10);
+                                          $categoryPathItem->setSortOrder(10);
+
+                                      
+                                          /**
+                                           * add to product item
+                                           */
+                                          $productItem->addCategoryPath($categoryPathItem);
+                                      
+                                          /**
+                                           * init category path model
+                                           */
+                                          $categoryPathItem = new Shopgate_Model_Catalog_CategoryPath();
+                                          $categoryPathItem->setUid(20);
+                                          $categoryPathItem->setSortOrder(20);
+                                      
+                                          /**
+                                           * add to product item
+                                           */
+                                          $productItem->addCategoryPath($categoryPathItem);
+                            header:
+                              title: Plugin Example Categories
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init shipping model
+                                           */
+                                          $shippingItem = new Shopgate_Model_Catalog_Shipping();
+                                          $shippingItem->setIsFree(false);
+                                          $shippingItem->setAdditionalCostsPerUnit(1.99);
+                                          $shippingItem->setCostsPerOrder(0.99);
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->setShipping($shippingItem);
+                            header:
+                              title: Plugin Example Shipping
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init manufacturer model
+                                           */
+                                          $manufacturerItem = new Shopgate_Model_Catalog_Manufacturer();
+                                          $manufacturerItem->setUid(10);
+                                          $manufacturerItem->setTitle('Shopgate');
+                                          $manufacturerItem->setItemNumber('sg');
+                                      
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->setManufacturer($manufacturerItem);
+                            header:
+                              title: Plugin Example Manufacturer
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init visibility model
+                                           */
+                                          $visibilityItem = new Shopgate_Model_Catalog_Visibility();
+                                          $visibilityItem->setLevel(Shopgate_Model_Catalog_Visibility::DEFAULT_VISIBILITY_CATALOG_AND_SEARCH);
+                                          $visibilityItem->setMarketplace(false);
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->setVisibility($visibilityItem);
+                            header:
+                              title: Plugin Example Visibility
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init property model
+                                           */
+                                          $propertyItem = new Shopgate_Model_Catalog_Property();
+                                          $propertyItem->setUid(10);
+                                          $propertyItem->setLabel('Example Property 1');
+                                          $propertyItem->setValue('example value 1');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addProperty($propertyItem);
+                                       
+                                          /**
+                                           * init property model
+                                           */
+                                          $propertyItem = new Shopgate_Model_Catalog_Property();
+                                          $propertyItem->setUid(20);
+                                          $propertyItem->setLabel('Example Property 2');
+                                          $propertyItem->setValue('example value 2');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addProperty($propertyItem);
+                            header:
+                              title: Plugin Example Properties
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init stock model
+                                           */
+                                          $stockItem = new Shopgate_Model_Catalog_Stock();
+                                          $stockItem->setStockQuantity(100);
+                                          $stockItem->setAvailabilityText('in stock');
+                                          $stockItem->setBackorders(true);
+                                          $stockItem->setIsSaleable(true);
+                                          $stockItem->setUseStock(true);
+                                          $stockItem->setMinimumOrderQuantity(1);
+                                          $stockItem->setMaximumOrderQuantity(10);
+                                      
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->setStock($stockItem);
+                            header:
+                              title: Plugin Example Stock
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init identifier model
+                                           */
+                                          $identifierItem = new Shopgate_Model_Catalog_Identifier();
+                                          $identifierItem->setUid(10);
+                                          $identifierItem->setType('EAN');
+                                          $identifierItem->setValue('00000001');
+                                      
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addIdentifier($identifierItem);
+                                      
+                                          /**
+                                           * init identifier model
+                                           */
+                                          $identifierItem = new Shopgate_Model_Catalog_Identifier();
+                                          $identifierItem->setUid(20);
+                                          $identifierItem->setType('EXAMPLE');
+                                          $identifierItem->setValue('e_2004_001');
+                                      
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addIdentifier($identifierItem);
+                            header:
+                              title: Plugin Example Identifiers
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init tag model
+                                           */
+                                          $tagItem = new Shopgate_Model_Catalog_Tag();
+                                          $tagItem->setUid(10);
+                                          $tagItem->setValue('Example Tag 1');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addTag($tagItem);
+                                      
+                                          /**
+                                           * init tag model
+                                           */
+                                          $tagItem = new Shopgate_Model_Catalog_Tag();
+                                          $tagItem->setUid(20);
+                                          $tagItem->setValue('Example Tag 2');
+                                      
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addTag($tagItem);
+                            header:
+                              title: Plugin Example Tags
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init relation model
+                                           */
+                                          $relationItem = new Shopgate_Model_Catalog_Relation();
+                                          $relationItem->setType(Shopgate_Model_Catalog_Relation::DEFAULT_RELATION_TYPE_CROSSSELL);
+                                          $relationItem->addValue(100);
+                                          $relationItem->addValue(102);
+
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addRelation($relationItem);
+
+                                          /**
+                                           * init relation model
+                                           */
+                                          $relationItem = new Shopgate_Model_Catalog_Relation();
+                                          $relationItem->setType(Shopgate_Model_Catalog_Relation::DEFAULT_RELATION_TYPE_CUSTOM);
+                                          $relationItem->setLabel('Custom Relation');
+                                          $relationItem->addValue(105);
+                                          $relationItem->addValue(109);
+
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addRelation($relationItem);
+                            header:
+                              title: Plugin Example Relations
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init attribute group model
+                                           */
+                                          $attributeGroupItem = new Shopgate_Model_Catalog_AttributeGroup();
+                                          $attributeGroupItem->setUid('10');
+                                          $attributeGroupItem->setLabel('Color');
+
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addAttributeGroup($attributeGroupItem);
+
+                                          /**
+                                           * init attribute group model
+                                           */
+                                          $attributeGroupItem = new Shopgate_Model_Catalog_AttributeGroup();
+                                          $attributeGroupItem->setUid('20');
+                                          $attributeGroupItem->setLabel('Size');
+
+                                          /**
+                                           * add to product model
+                                           */
+                                          $productItem->addAttributeGroup($attributeGroupItem);
+                            header:
+                              title: Plugin Example Attributes Group
+                            config:
+                              mode: php
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init inputs model
+                                           */
+                                          $inputItem = new Shopgate_Model_Catalog_Input();
+                                          $inputItem->setUid(10);
+                                          $inputItem->setLabel('PDF upload');
+                                          $inputItem->setInfoText('Please select a pdf file');
+                                          $inputItem->setType(Shopgate_Model_Catalog_Input::DEFAULT_INPUT_TYPE_FILE);
+
+                                          /**
+                                           * validation
+                                           * init validation model
+                                           */
+                                          $validationItem = new Shopgate_Model_Catalog_Validation();
+                                          $validationItem->setValidationType(Shopgate_Model_Catalog_Validation::DEFAULT_VALIDATION_FILE_PDF);
+
+                                          /**
+                                           * add to input item
+                                           */
+                                          $inputItem->setValidation($validationItem);
+
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addInput($inputItem);
+
+                                          /**
+                                           * init inputs model
+                                           */
+                                          $inputItem = new Shopgate_Model_Catalog_Input();
+                                          $inputItem->setUid(20);
+                                          $inputItem->setLabel('Select some Item');
+                                          $inputItem->setInfoText('Please select');
+                                          $inputItem->setType(Shopgate_Model_Catalog_Input::DEFAULT_INPUT_TYPE_SELECT);
+
+                                          /**
+                                           * options
+                                           *
+                                           * init option model
+                                           */
+                                          $optionModel = new Shopgate_Model_Catalog_Option();
+                                          $optionModel->setUid(10);
+                                          $optionModel->setLabel('Item 1');
+                                          $optionModel->setValue(1);
+                                          $optionModel->setAdditionalPrice(1.99);
+
+                                          /**
+                                           * add to input model
+                                           */
+                                          $inputItem->addOption($optionModel);
+
+                                          /**
+                                           * init option model
+                                           */
+                                          $optionModel = new Shopgate_Model_Catalog_Option();
+                                          $optionModel->setUid(20);
+                                          $optionModel->setLabel('Item 2');
+                                          $optionModel->setValue(2);
+                                          $optionModel->setAdditionalPrice(1.49);
+
+                                          /**
+                                           * add to input model
+                                           */
+                                          $inputItem->addOption($optionModel);
+
+                                          /**
+                                           * validation
+                                           * init validation model
+                                           */
+                                          $validationItem = new Shopgate_Model_Catalog_Validation();
+                                          $validationItem->setValidationType(Shopgate_Model_Catalog_Validation::DEFAULT_VALIDATION_VARIABLE_INT);
+
+                                          /**
+                                           * add to input item
+                                           */
+                                          $inputItem->setValidation($validationItem);
+
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addInput($inputItem);
+
+                                          /**
+                                           * init inputs model
+                                           */
+                                          $inputItem = new Shopgate_Model_Catalog_Input();
+                                          $inputItem->setUid(20);
+                                          $inputItem->setLabel('Insert som text');
+                                          $inputItem->setInfoText('only numbers allowed');
+                                          $inputItem->setType(Shopgate_Model_Catalog_Input::DEFAULT_INPUT_TYPE_TEXT);
+
+                                          /**
+                                           * init validation model
+                                           */
+                                          $validationItem = new Shopgate_Model_Catalog_Validation();
+                                          $validationItem->setValidationType(Shopgate_Model_Catalog_Validation::DEFAULT_VALIDATION_TYPE_REGEX);
+                                          $validationItem->setValue('^[0-9]+$');
+
+                                          /**
+                                           * add to input item
+                                           */
+                                          $inputItem->setValidation($validationItem);
+
+                                          /**
+                                           * add to product
+                                           */
+                                          $productItem->addInput($inputItem);
+                            header:
+                              title: Plugin Example Inputs
+                          - type: code
+                            data: |2-
+
+                                          /**
+                                           * init children model (product model)
+                                           */
+                                          $childItem = new Shopgate_Model_Catalog_Product();
+                                          $childItem->setIsChild(true);
+
+                                          /**
+                                           * attributes
+                                           * init attribute model
+                                           */
+                                          $attributeItem = new Shopgate_Model_Catalog_Attribute();
+                                          $attributeItem->setUid(10);
+                                          $attributeItem->setGroupUid(10);
+                                          $attributeItem->setLabel('red');
+
+                                          /**
+                                           * add to child item
+                                           */
+                                          $childItem->addAttribute($attributeItem);
+
+                                          /**
+                                           * init attribute model
+                                           */
+                                          $attributeItem = new Shopgate_Model_Catalog_Attribute();
+                                          $attributeItem->setUid(10);
+                                          $attributeItem->setGroupUid(20);
+                                          $attributeItem->setLabel('XXL');
+
+                                          /**
+                                           * price
+                                           * init price model
+                                           */
+                                          $priceItem = new Shopgate_Model_Catalog_Price();
+
+                                          $priceItem->setPrice(18.88);
+
+                                          /**
+                                           * add to child product
+                                           */
+                                          $childItem->setPrice($priceItem);
+
+                                          /**
+                                           * add to child item
+                                           */
+                                          $childItem->addAttribute($attributeItem);
+
+                                          /**
+                                           * you can extend / rewrite every property from the parent product
+                                           * uid example
+                                           */
+                                          $childItem->setUid('10_1');
+
+                                          /**
+                                           * example name
+                                           */
+                                          $childItem->setName('Example Product 1 (Child)');
+
+                                          /**
+                                           * example identifier
+                                           * init identifier model
+                                           */
+                                          $identifierItem = new Shopgate_Model_Catalog_Identifier();
+
+                                          /**
+                                           * uid from the parent identifier id
+                                           */
+                                          $identifierItem->setUid(10);
+                                          $identifierItem->setValue('00000002');
+
+                                          /**
+                                           * add to the child product
+                                           */
+                                          $childItem->addIdentifier($identifierItem);
+                                          $productItem->addChild($childItem);
+                            header:
+                              title: Plugin Example Children
+                            config:
+                              mode: php
+                    - title: ' get_reviews'
+                      route:
+                        path: /get-reviews
+                      data:
+                        blocks:
+                          - type: text
+                            data: 'This allows you to export reviews from your shop system to the [Shopgate Reviews XML Format](/references/cart-integration/catalog-data-feed/review-xml).'
+                            header:
+                              token: POST
+                              title: ' get_reviews'
+                          - type: text
+                            data: '## Query parameters'
+                          - type: jsonSchema
+                            data:
+                              type: object
+                              properties:
+                                action:
+                                  type: string
+                                  default: get_reviews
+                                  description: Requested method
+                                shop_number:
+                                  type: string
+                                  description: |-
+                                    Your shop number.
+                                    Example: "11413"
+                                trace_id:
+                                  type: string
+                                  description: |-
+                                    Unique request trace ID.
+                                    Example: "sma-9412"
+                                offset:
+                                  type: integer
+                                  description: 'Number of items (not item number, etc) to be skipped in the export.'
+                                limit:
+                                  type: integer
+                                  description: Maximum number of items to be exported.
+                                uids:
+                                  type: array
+                                  description: |-
+                                    The ids of products that should not be included in exported file.
+                                    Example: ["10001","10002"]
+                                  items:
+                                    type: string
+                              required:
+                                - action
+                                - shop_number
+                                - trace_id
+                                - uids
+                            header: {}
+                            config:
+                              hideRoot: true
+                          - type: text
+                            data: '## Response'
+                          - type: jsonSchema
+                            data:
+                              $ref: ./static/pi_export_12_get_reviews.oas2.yml#/definitions/.main
+                            header:
+                              subtitle: application/json
+                          - type: text
+                            data: '## Plugin Example'
+                          - type: code
+                            data: "    class MyPlugin extends ShopgatePlugin\n    {\n        ......\n \n        protected function createReviews($limit = null, $offset = null, array $uids = array ())\n        {\n            /**\n             * init review model\n             */\n            $reviewItem = new Shopgate_Model_Review();\n     \n            $reviewItem->setUid(10);\t\t\t\t\t\t\t\t\t                        /** required */\n            $reviewItem->setItemUid(312);\t                            \t\t\t\t\t    /** required */\n            $reviewItem->setScore(6);\t\t\t\t\t\t\t\t                            /** required */\n            $reviewItem->setReviewerName('John Doe');\t\t\t\t\t\t\t\t            /** required */\n            $reviewItem->setDate('2007-08-25');                                                 /** optional */\n            $reviewItem->setTitle('Great Product');\t\t\t\t\t\t\t\t                /** optional */\n            $reviewItem->setText('I would highly recommend to buy this product because...');    /** optional */\n\n            $this->addReviewModel($reviewItem);\n        }"
+                            config:
+                              mode: php
+                          - type: code
+                            data: |-
+                              <reviews xsi:noNamespaceSchemaLocation="http://files.shopgate.com/xml/xsd/catalog/reviews.xsd">
+                                  <review uid="10">
+                                      <item_uid>312</item_uid>
+                                      <score>6</score>
+                                      <reviewer_name>
+                                          <![CDATA[
+                                          John Doe
+                                          ]]>
+                                      </reviewer_name>
+                                      <date>2007-08-25</date>
+                                      <title>
+                                          <![CDATA[
+                                          Great Product
+                                          ]]>
+                                      </title>
+                                      <text>
+                                      <![CDATA[
+                                          I would highly recommend to buy this product because...
+                                          ]]>
+                                      </text>
+                                  </review>
+                              </reviews>
+                            header:
+                              title: Plugin Example Result
+                            config:
+                              mode: xml
+                        children: []
+                      config:
+                        sidebar:
+                          token: POST
+                config:
+                  sidebar: {}
+footer:
+  nav:
+    left: []
+    center:
+      - path: /
