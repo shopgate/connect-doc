@@ -999,9 +999,25 @@
       "title": "TODO Cart Integration",
       "items": [
         {
-        "type": "item",
-        "title": "TODO",
-        "uri": "markdown/tutorials/advanced/search-provider.md"
+          "type": "group",
+          "title": "Catalog Feed Data",
+          "items": [
+            {
+            "type": "item",
+            "title": "Category XML",
+            "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
+            },
+            {
+            "type": "item",
+            "title": "Product XML",
+            "uri": "markdown/references/cart-integration/catalog-data-feed/product-xml.md"
+            },
+            {
+            "type": "item",
+            "title": "Review XML",
+            "uri": "markdown/references/cart-integration/catalog-data-feed/review-xml.md"
+            }
+          ]          
         }
       ]
     },
