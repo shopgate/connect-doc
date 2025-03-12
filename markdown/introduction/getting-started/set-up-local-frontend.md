@@ -32,7 +32,7 @@ title: Set Up Local Frontend
  frontend environment. For most cases, you can accept the
  default values for all requested settings. For more
  information, refer to the [Platform SDK
- guide](/guides/tools/platform-sdk).
+ guide](../../guides/tools/platform-sdk.md).
 
 
  You only need to run the setup step once for every
@@ -64,4 +64,4 @@ title: Set Up Local Frontend
 >**Next:**
 >
 > [Test with Cloud Flight](test-with-cloud-flight.md)  
-or continue with our [Kick-start Tutorials](/tutorials)
+or continue with our [Kick-start Tutorials](../../tutorials/starter/hello-world/overview.md)

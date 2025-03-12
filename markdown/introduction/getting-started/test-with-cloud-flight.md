@@ -95,4 +95,4 @@ title: Test With Cloud Flight
 
 >**Next:**
 >
->Continue with our [Kick-start Tutorials](/tutorials)
+>Continue with our [Kick-start Tutorials](../../tutorials/starter/hello-world/overview.md)

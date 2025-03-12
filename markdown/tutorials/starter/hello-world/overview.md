@@ -6,7 +6,7 @@ In this tutorial we will learn how to create the first extension and get more in
 
 > **Prerequisites:**
 >
-> It is expected that you have completed the [Getting Started](markdown/introduction/getting-started/set-up-environment.md) to setup your local development environment.
+> It is expected that you have completed the [Getting Started](../../../introduction/getting-started/set-up-environment.md) to setup your local development environment.
 
 ### Table of Contents
 
