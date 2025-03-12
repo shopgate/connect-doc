@@ -44,7 +44,7 @@
  >messages from time to time, such as peer dependencies,
  >that most likely will not affect your work with the SDK.
  >Continue and if you have an issue, contact [Shopgate
- >Support](/support/contact).*
+ >Support](https://support.shopgate.com/knowledge).*
 
 
  Now you have the `sgconnect` command available on the
