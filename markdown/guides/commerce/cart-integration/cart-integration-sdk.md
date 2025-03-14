@@ -1,6 +1,6 @@
 # Cart Integration SDK
 
-The Shopgate Cart Integration SDK is a compilation of classes to manage the communication between your shop system and Shopgate via the [Shopgate Plugin API](/guides/commerce/cart-integration/plugin-api) and the [Shopgate Merchant API](/guides/commerce/cart-integration/merchant-api). The SDK provides methods for processing incoming and outgoing requests, configuration options and for handling errors. The SDK also offers container classes, which allow easy storage of order data, among other things. Better like to start coding immediately? Have a look at the sample plugin code and get going! You're welcome to check back here anytime.
+The Shopgate Cart Integration SDK is a compilation of classes to manage the communication between your shop system and Shopgate via the [Shopgate Plugin API](../../../references/cart-integration/plugin-api/authentication.md) and the Shopgate Merchant API. The SDK provides methods for processing incoming and outgoing requests, configuration options and for handling errors. The SDK also offers container classes, which allow easy storage of order data, among other things. Better like to start coding immediately? Have a look at the sample plugin code and get going! You're welcome to check back here anytime.
 
 The most important functions are:
 * Shopgate Plugin API, i.e. the communication interface for Shopgate
@@ -11,7 +11,7 @@ The most important functions are:
 ## Download
 * [Cart Integration SDK on Github](https://github.com/shopgate/cart-integration-sdk) 
 * [Cart Integration SDK download](https://github.com/shopgate/cart-integration-sdk/releases/latest)
-* [Example Plugin](/guides/commerce/cart-integration/example-plugin)
+* [Example Plugin](example-plugin.md)
 
 ## Requirements
 Following requirements must be met in order to use the Shopgate Cart Integration SDK:
@@ -21,9 +21,9 @@ Following requirements must be met in order to use the Shopgate Cart Integration
 - The CURL library for PHP must be installed in order to send requests to the Shopgate Merchant API.
 
 ## Layout for the Plugin
-See chapter [Incoming Requests](/guides/commerce/cart-integration/sdk#incoming-requests) to learn how calls to the Shopgate Plugin API can be dispatched to your plugin. Your plugin class extends the ShopgatePlugin class of the SDK and must implement its abstract callback methods. Use the PHP constant `SHOPGATE_PLUGIN_VERSION` to store the current versions number of your plugin in the 2.x.x format. The first two numbers must be identical with the version number of the Shopgate Library you are using.
+See chapter "Incoming Requests" to learn how calls to the Shopgate Plugin API can be dispatched to your plugin. Your plugin class extends the ShopgatePlugin class of the SDK and must implement its abstract callback methods. Use the PHP constant `SHOPGATE_PLUGIN_VERSION` to store the current versions number of your plugin in the 2.x.x format. The first two numbers must be identical with the version number of the Shopgate Library you are using.
 
-**Get the full [plugin example code](/guides/commerce/cart-integration/example-plugin) or have a look at the short example for a plugin class:**
+**Get the full [plugin example code](example-plugin.md) or have a look at the short example for a plugin class:**
 
 ## Example ShopgatePlugin Class
 ```php
@@ -97,7 +97,7 @@ Advanced Implementation
 
 To get all out of the new ShopgateConfig class you can extend it in order to add own validation rules, override the loading and saving procedures (e.g. to implement saving into a database instead of the file system) or define new default values.
 
-A detailed description and examples can be found on the page [Cart Integration SDK: Configuration](/guides/commerce/cart-integration/sdk/configuration).
+A detailed description and examples can be found in the section [Configuration](#configuration).
 Quick Implementation
 
 Create a file called myconfig.php inside the Shopgate Cart Integration SDK's config folder and define the $shopgate_config variable with your settings as shown below:
