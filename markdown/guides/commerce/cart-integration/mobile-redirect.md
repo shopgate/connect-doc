@@ -7,7 +7,7 @@
  into their shop systems.
 
  2. The
- [Shopgate_Helper_Redirect_MobileRedirect](/guides/commerce/cart-integration/sdk/mobile-redirect)
+ [Shopgate_Helper_Redirect_MobileRedirect](cart-integration-sdk.md#Shopgate_Helper_Redirect_MobileRedirect)
  class offers the quickest and most convenient way
  to implement the subjects listed in the
  "Redirecting with the HTTP Header" chapter in PHP.
@@ -56,7 +56,7 @@
 
 
  It is recommended to use the
- [Shopgate_Helper_Redirect_MobileRedirect](/guides/commerce/cart-integration/sdk/mobile-redirect)
+ [Shopgate_Helper_Redirect_MobileRedirect](cart-integration-sdk.md#Shopgate_Helper_Redirect_MobileRedirect)
  class from the Shopgate Library when implementing
  the redirect functionality using the HTTP header
  in PHP.
@@ -201,9 +201,7 @@ The product and category number is converted into
 
 
  Keyword retrieval via the Shopgate Merchant API is
- implemented by the
- [get_mobile_redirect_user_agents](/references/cart-integration/merchant-api/mobile-redirect/get-mobile-redirect-user-agents)
- action. 
+ implemented by the get_mobile_redirect_user_agents action. 
 
 
  ## Redirecting using JavaScript

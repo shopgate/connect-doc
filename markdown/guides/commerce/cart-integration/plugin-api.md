@@ -21,8 +21,6 @@ To test the Shopgate Plugin API, request a demo at Shopgate or use a POST client
 
 # Authentication
 
-# Authentication
-
 In order to prevent incoming requests of unauthorized third parties, Shopgate needs to be authenticated by the Shopgate plugin API in every request.
 
 Two "X headers" containing a user name and auth token are sent along with every request.
