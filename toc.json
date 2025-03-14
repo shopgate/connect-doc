@@ -228,7 +228,7 @@
             // Remove Catalog Data Feed, this content is already in references
             {
               "type": "item",
-              "title": "TODO Cart Integration SDK",
+              "title": "Cart Integration SDK",
               "uri": "markdown/guides/commerce/cart-integration/cart-integration-sdk.md"
             },
             {

@@ -1,6 +1,6 @@
 # Cart Integration SDK
 
-The Shopgate Cart Integration SDK is a compilation of classes to manage the communication between your shop system and Shopgate via the [Shopgate Plugin API](../../../references/cart-integration/plugin-api/authentication.md) and the Shopgate Merchant API. The SDK provides methods for processing incoming and outgoing requests, configuration options and for handling errors. The SDK also offers container classes, which allow easy storage of order data, among other things. Better like to start coding immediately? Have a look at the sample plugin code and get going! You're welcome to check back here anytime.
+The Shopgate Cart Integration SDK is a compilation of classes to manage the communication between your shop system and Shopgate via the [Shopgate Plugin API](../../../references/cart-integration/plugin-api/overview.md) and the Shopgate Merchant API. The SDK provides methods for processing incoming and outgoing requests, configuration options and for handling errors. The SDK also offers container classes, which allow easy storage of order data, among other things. Better like to start coding immediately? Have a look at the sample plugin code and get going! You're welcome to check back here anytime.
 
 The most important functions are:
 * Shopgate Plugin API, i.e. the communication interface for Shopgate
@@ -97,18 +97,48 @@ Advanced Implementation
 
 To get all out of the new ShopgateConfig class you can extend it in order to add own validation rules, override the loading and saving procedures (e.g. to implement saving into a database instead of the file system) or define new default values.
 
-A detailed description and examples can be found in the section [Configuration](#configuration).
+A detailed description and examples can be found in the section [Configuration-Details](#configuration-details).
 Quick Implementation
 
 Create a file called myconfig.php inside the Shopgate Cart Integration SDK's config folder and define the $shopgate_config variable with your settings as shown below:
 
 ## Example myconfig.php
 ```php
-TODO
+<?php
+$shopgate_config = array (
+    'customer_number' => '123456789',
+    'shop_number' => '11223',
+    'apikey' => '90d36a7cb029b23c21f5',
+    'alias' => 'myshop',
+    'cname' => '',
+    'server' => 'live',
+    'encoding' => 'UTF-8',
+    'plugin' => 'MyShoppingSystem',
+    'enable_ping' => '1'
+);
 ```
 
 ## Incoming Requests
 The starting point for requests of the Shopgate Plugin API depends on the shopping system. The starting point can be an independent script (e.g. api.php), a controller of the shop system, a hook point or something similar. Parameters are transmitted via POST. To receive GET parameters please contact out tech support.
+
+```php
+<?php
+### Simple initialization ###
+require_once(dirname(__FILE__).'/plugin.php'); // adapt path to your environment
+
+$plugin = new ShopgatePluginMyShopSystem();
+$response = $plugin->handleRequest($_POST);
+
+
+### More complex initialization with own configuration class ###
+# require_once(dirname(__FILE__).'/plugin.php'); // adapt path to your environment
+# 
+# $config = new ShopgateConfigMyShopSystem();
+# $builder = new ShopgateBuilder($config, $_REQUEST);
+# $plugin = new ShopgatePluginMyShopSystem($builder);
+# $plugin->handleRequest($_POST);
+?>
+```
 
 > **⚠ Note:** Some requests, e.g. get_items, stop the execution of the script after the data file has been returned.
 
@@ -119,13 +149,81 @@ The starting point for requests of the Shopgate Plugin API depends on the shoppi
 In order to send a request, use the `ShopgateMerchantApi` object in your plugin class ($this->merchantApi) and run the required method. Parameters and response values can be found in the API documentation.
 <br><br>API methods will throw a `ShopgateMerchantApiException` or `ShopgateLibraryException` in case of an error. Errors at critical points (e.g. during the checkout process or while editing an order) must not abort the script execution in any case. Errors of that kind only need to be logged.
 
+```php
+<?php
+require_once(dirname(__FILE__).'/vendor/shopgate/cart-integration-sdk/shopgate.php'); // Modify this path correspondingly
+define('SHOPGATE_PLUGIN_VERSION', '2.9.0');
+
+class ShopgatePluginMyShopSystem extends ShopgatePlugin
+{
+
+    // ...
+
+    /**
+     * Gets called when an order has been marked as "shipped" in the shop system.
+     *
+     * @param MyShopSystemOrder $shopOrder An object from the shop system which represents an order with your data.
+     */
+    public function updateOrderStatus(MyShopSystemOrder $shopOrder) {
+        try {
+            $this->merchantApi->addOrderDeliveryNote($shopOrder->orderNumber, $shopOrder->shippingServiceId, $shopOrder->trackingNumber, true);
+            $shopOrder->addComment('Shopgate has has marked the order as shipped.');
+
+        } catch (ShopgateMerchantApiException $e) {
+            // Do not abort at this point as this would crash editing the order in the shop system's backend.
+            // The ShopgateMerchantApiExceptions are logged automatically.
+
+            $shopOrder->addComment('There was an error updating the order at Shopgate.');
+        } catch (ShopgateLibraryException $e) {
+            // Do not abort at this point as this would crash editing the order in the shop system's backend.
+            // The ShopgateLibraryExceptions are logged automatically.
+
+            $shopOrder->addComment('There was an error updating the order at Shopgate.');
+        }
+    }
+}
+
+```
+
 *Sending requests to the Shopgate Merchant API when the status of an order changes.*
+
+```php
+<?php
+        require_once(dirname(__FILE__).'/vendor/shopgate/cart-integration-sdk/shopgate.php'); // Modify this path correspondingly
+        define('SHOPGATE_PLUGIN_VERSION', '2.9.0');
+		
+        // ...
+         
+        try {
+                // create a new instance of ShopgateBuilder
+                // it will load the configuration file automatically
+                $shopgateBuilder = new ShopgateBuilder();
+             
+                // get the ShopgateMerchantApi instance from the builder
+                $merchantApi = $shopgateBuilder->buildMerchantApi();
+             
+                // send requests to the Shopgate Merchant API
+                $orders = $merchantApi->getOrders(array("limit" => 1));
+             
+        } catch (ShopgateMerchantApiException $e) {
+                // Do not abort at this point as this would crash editing the order in the shop system's backend.
+                // The ShopgateMerchantApiExceptions are logged automatically.
+             
+                Logger::log($e);
+        } catch (ShopgateLibraryException $e) {
+                // Do not abort at this point as this would crash editing the order in the shop system's backend.
+                // The ShopgateLibraryExceptions are logged automatically.
+             
+                Logger::log($e);
+        }
+         
+        // ...
+```
 
 *Sending requests to the Shopgate Merchant API to fetch one order*
 
-# Configuration
 
-# Configuration
+# Configuration Details
 
 Since version 2.1.0 the Shopgate Library offers a revised version of the ShopgateConfig class with better support for expandability of modules. You can influence the configuration saving and loading behaviour as well as additional settings by deriving your own configuration class, for instance, in order to implement saving the configuration to a database.
 Better like to start coding immediately? Simply download the [sample code](http://files.shopgate.com/wiki/example_shopgate_config.zip) and get going! You're welcome to check back here anytime.
@@ -176,6 +274,34 @@ The following examples are divided by chapters, but always relate to the same sa
 ## Attribute, Getter & Setter
 The sample class in the listing below creates additional configuration settings and introduces a database connection stored in the $db attribute. The connection will be used in the subsequent examples.
 
+```php
+<?php
+require_once(dirname(__FILE__).'/shopgate_library/shopgate.php');
+class ShopgateConfigMyShoppingSystem extends ShopgateConfig {
+    /**
+        * @var DBConnector
+        */
+    protected $db;
+    
+    // additional settings
+    protected $country;
+    protected $language;
+    protected $currency;
+    protected $tax_zone_id;
+    protected $customer_group_id;
+    
+    public function getCountry() { return $this->country; }
+    public function getLanguage() { return $this->language; }
+    public function getCurrency() { return $this->currency; }
+    public function getCustomerGroupId() { return $this->customer_group_id; }
+    
+    public function setCountry($value) { $this->country = $value; }
+    public function setLanguage($value) { $this->language = $value; }
+    public function setCurrency($value) { $this->currency = $value; }
+    public function setCustomerGroupId($value) { $this->customer_group_id = $value; }
+}
+```
+
 ## Initializing
 The `startup()` method in the following listing is an example to illustrate:
 
@@ -185,6 +311,44 @@ The `startup()` method in the following listing is an example to illustrate:
 - Loading the configuration through a custom method.
 - Prevent further initialization of the ShopgateConfig class' default routines by returning true.
 
+```php
+<?php
+public function startup() {
+    // custom validation rules:
+    $this->customValidations = array(
+        'country' => '/[A-Z]{2}/',  // 2 characters, only uppercase letters
+        'language' => '/[a-z]{2}/', // 2 characters, only lowercase letters
+    );
+
+    // overwrite some default library settings
+    $this->plugin_name = 'My Shopping System';
+    $this->enable_redirect_keyword_update = 1;
+    $this->enable_ping = 1;
+    $this->enable_add_order = 1;
+    $this->enable_update_order = 1;
+    $this->enable_get_orders = 0;
+    $this->enable_get_customer = 1;
+    /* ... */
+    $this->encoding = 'ISO-8859-15';
+
+    // initialize own settings
+    $this->country = 'US';
+    $this->language = 'en';
+    $this->currency = 'USD';
+    $this->customer_group_id = 2;
+
+    // load configuration from the database
+    try {
+        $this->loadDatabase();
+    } catch (ShopgateLibraryException $e) {
+        // do not interrupt the initialization, errors will be logged automatically
+    }
+
+    // prevent the default initialization routine to be executed
+    return true;
+}
+```
+
 ## Loading
 The `loadDatabase()` method in the listing below is an example to illustrate:
 - Initialization of the database connection (method initDatabase()).
@@ -193,6 +357,36 @@ The `loadDatabase()` method in the listing below is an example to illustrate:
 - Appropriate error handling.
 
 > **⚠ Attention:** The `ShopgateLibraryException` always needs to be caught in the front-end of the online shop when this method is called.
+
+```php
+<?php
+/**
+    * Initializes the database connection if not done yet.
+    *
+    * @throws Exception in case an error occurs.
+    */
+protected function initDatabase() {
+        if (empty($this->db)) {
+                $this->db = new DBConnector();
+                $this->db->connect();
+        }
+}
+
+/**
+    * Loads the configuration from the database.
+    *
+    * @throws ShopgateLibraryException in case an error occurs.
+    */
+public function loadDatabase() {
+        try {
+                $this->initDatabase();
+                $config = $this->jsonDecode($this->db->loadConfig('shopgate'), true);
+                $this->loadArray($config);
+        } catch (Exception $e) {
+                throw new ShopgateLibraryException(ShopgateLibraryException::CONFIG_READ_WRITE_ERROR, $e->getMessage());
+        }
+}
+```
 
 ## Saving
 The `saveDatabase()` method in the listing below is an example to illustrate:
@@ -204,6 +398,42 @@ The `saveDatabase()` method in the listing below is an example to illustrate:
 
 > **⚠ Attention:** The `ShopgateLibraryException` always needs to be caught in the front-end of the online shop when this method is called.
 
+```php
+<?php
+/**
+* Initializes the database connection if not done yet.
+*
+* @throws Exception in case an error occurs.
+*/
+protected function initDatabase() {
+        if (empty($this->db)) {
+                $this->db = new DBConnector();
+                $this->db->connect();
+        }
+}
+
+/**
+* Saves the configuration into the database as a JSON string.
+*
+* @param string[] $fieldList The list of fields to be saved.
+* @param bool $validate True to validate the fields to be saved.
+* @throws ShopgateLibraryException in case of failed validation or when an error occurred while saving.
+*/
+public function saveDatabase($fieldList, $validate = true) {
+        if ($validate) {
+                $this->validate($fieldList);
+        }
+
+        try {
+                $this->initDatabase();
+                $config = $this->jsonEncode($this->toArray());
+                $this->db->saveConfig('shopgate', $config);
+        } catch (Exception $e) {
+                throw new ShopgateLibraryException(ShopgateLibraryException::CONFIG_READ_WRITE_ERROR, $e->getMessage());
+        }
+}
+```
+
 ## Validating
 Regular expressions contained in the `$customValidations` attribute will automatically be applied when the `validate()` method gets called. The following method can be used for validations that cannot be covered by regular expressions, or when you want to avoid using regular expressions.
 
@@ -214,7 +444,29 @@ The `validateCustom()` method in the following listing is an example to illustra
 
 > **⚠ Attention:** This method is automatically called with the `validate()` method. There is no need to call it separately.
 
-# Updating to a New Version
+```php
+<?php    
+protected function validateCustom(array $fieldList = array()) {
+        $failedFields = array();
+
+        foreach ($fieldList as $fieldName) {
+                switch ($fieldName) {
+                        case 'currency': // must be one of "EUR", "USD" or "GBP"
+                            if (!in_array($this->$fieldName, array('EUR', 'USD', 'GBP'))) {
+                                $failedFields[] = $fieldName;
+                            }
+                        break;
+                        case 'customer_group_id': // must be numeric
+                            if (!is_numeric($this->fieldName)) {
+                                $failedFields[] = $fieldName;
+                            }
+                        break;
+                }
+        }
+    
+        return $failedFields;
+}
+```
 
 # Updating to a New Version
 
@@ -271,8 +523,6 @@ The method's fifth parameter $sendCustomerMail now defaults to false! If you wan
 
 # Mobile Redirect
 
-# Mobile Redirect
-
 ## Shopgate_Helper_Redirect_MobileRedirect
 The Shopgate Library offers a class which already implements the [mobile redirect with the HTTP header](http://developer.shopgate.com/mobile_redirect#redirect-with-http-header) functionality in PHP.
 
@@ -282,26 +532,27 @@ The Shopgate Library offers a class which already implements the [mobile redirec
 ## Redirecting Types
 After setting the redirect target, you can call the appropriate method. For every redirecting type there is a method that instantly redirects the user if applicable (is using a smartphone, did not come back from the mobile website, ...) or builds the **Mobile Header** and SEO optimized 
 **HTML tags** (see below).
-- `buildScriptShop()`
-<br>Redirecting to the Mobile Website homepage. If there is no mobile request, it returns the **Mobile Header**.
-- `buildScriptItem($itemNumber)`
-<br>Redirecting to a product on the Mobile Website by using the passed $itemNumber. If there is no mobile request, it returns the **Mobile Header**. The item number from the online shop is used as the parameter here.
-- `buildScriptItemPublic($itemNumberPublic)`
-<br>Redirecting to a product on the Mobile Website by using the passed $itemNumberPublic . If there is no mobile request, it returns the **Mobile Header**. The item number public from the online shop is used as the parameter here.
-- `buildScriptCategory($categoryNumber)`
-<br>Redirecting to a category on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. A category number from the online shop is used as the parameter here.
-- `buildScriptBrand($brandName)`
-<br>Redirecting to a brand on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. The name of the required brand is used as the parameter here.
-- `buildScriptSearch($searchQuery)`
-<br>Redirecting to a search for a product on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**.The search term is used as the parameter here.
-- `buildScriptCms($cmsPage)`
-<br>Redirecting to a user-defined page on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. The internal name of the user-defined site is used as the parameter here.
+- `buildScriptShop()` Redirecting to the Mobile Website homepage. If there is no mobile request, it returns the **Mobile Header**.
+- `buildScriptItem($itemNumber)` Redirecting to a product on the Mobile Website by using the passed $itemNumber. If there is no mobile request, it returns the **Mobile Header**. The item number from the online shop is used as the parameter here.
+- `buildScriptItemPublic($itemNumberPublic)` Redirecting to a product on the Mobile Website by using the passed $itemNumberPublic . If there is no mobile request, it returns the **Mobile Header**. The item number public from the online shop is used as the parameter here.
+- `buildScriptCategory($categoryNumber)` Redirecting to a category on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. A category number from the online shop is used as the parameter here.
+- `buildScriptBrand($brandName)` Redirecting to a brand on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. The name of the required brand is used as the parameter here.
+- `buildScriptSearch($searchQuery)` Redirecting to a search for a product on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**.The search term is used as the parameter here.
+- `buildScriptCms($cmsPage)` Redirecting to a user-defined page on the Mobile Website. If there is no mobile request, it returns the **Mobile Header**. The internal name of the user-defined site is used as the parameter here.
 
 ## Mobile Header and Meta Tags
 When a smartphone user returns to the desktop site, the Mobile Header must be displayed so the user can easily switch back to the mobile website.
 Additionally a bunch of HTML meta tags must be displayed to hint search engine crawlers to the deeplinks on the mobile website and in the native apps, if available.
 
 The JavaScript code and markup for this is returned by the buildScript*() methods explained above. It just needs to be inserted into an appropriate place in your template, view or layout.
+
+```html
+<head>
+	...
+	<?php echo $shopgateJsHeader; ?>
+	...
+</head>
+```
 
 ## Open Graph Tags
 On top of the Mobile Header and SEO meta tags Shopgate offers the integration of [Open Graph](http://ogp.me/) tags introduced by Facebook back in 2010. These are used to give social integrations more detailed information about a web site. If enabled, the tags are generated by the buildScript*() methods mentioned above along with the Mobile Header and meta tags.
@@ -314,7 +565,98 @@ Please also see the [list of all currently supported parameters](/guides/commerc
 ## Sample Application
 The sample application of the class illustrates redirecting to the homepage and to the product and category levels. 
 
-# Open Graph Tags
+```php
+<?php
+use Shopgate_Helper_Redirect_TagsGeneratorInterface as TagsGenerator;
+
+$shopgateJsHeader = '';
+
+### A method to check if the Shopgate Plugin is active
+if ($shopgatePlugin->isActive()) {
+    include_once DIR_FS_CATALOG.'/shopgate/shopgate_library/shopgate.php';
+    
+    // only if you use your own extended ShopgateConfig class
+    include_once DIR_FS_CATALOG.'/shopgate/my_own_shopgate_config.php';
+    $shopgate_config = new ShopgateConfig();
+    
+    // instantiate and set up redirect class
+    $builder = new ShopgateBuilder($shopgate_config);
+    $shopgateRedirector= $builder->buildMobileRedirect($_SERVER['HTTP_USER_AGENT'], $_GET, $_COOKIE);
+    
+    ##################
+    # redirect logic #
+    ##################
+    // set global site parameters
+    $shopgateRedirector->addSiteParameter(TagsGenerator::SITE_PARAMETER_SITENAME, $siteTitle);
+    $shopgateRedirector->addSiteParameter(TagsGenerator::SITE_PARAMETER_TITLE, $pageTitle);
+    $shopgateRedirector->addSiteParameter(TagsGenerator::SITE_PARAMETER_DESKTOP_URL, $_SERVER['SCRIPT_NAME']);
+    
+    // set redirection url and site specific parameters
+    if ($product->isProduct) {
+        $shopgateRedirector->addSiteParameter(TagsGenerator::SITE_PARAMETER_PRODUCT_AVAILABILITY, $product->stock);
+        $shopgateRedirector->addSiteParameter(TagsGenerator::SITE_PARAMETER_PRODUCT_NAME, $product->name);
+        $shopgateJsHeader = $shopgateRedirector->buildScriptItem($product->pID);
+    } elseif (!empty($current_category_id)) {
+        $shopgateJsHeader = $shopgateRedirector->buildScriptCategory($current_category_id);
+    } elseif($site->isHomePage()) {
+        $shopgateJsHeader = $shopgateRedirector->buildScriptShop();
+    } else {
+        $shopgateJsHeader = $shopgateRedirector->buildScriptDefault();
+    }
+}
+
+?>
+<html>
+<head>
+
+    [...]
+
+    <?php echo $shopgateJsHeader; ?>
+</head>
+<body>
+    [...]
+</body>
+</html>
+```
+
+Example output
+```php
+<html>
+<head>
+
+    [...]
+
+    <!-- BEGIN SHOPGATE -->
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.myshop.com/item/3132333435" />
+    <link rel="alternate" href="android-app://com.example.android/http/example.com/gizmos/item/3132333435" />
+    <meta property="og:title" content="My Product" />
+    <meta property="og:site_name" content="My Shop" />
+    <meta property="og:product:availability" content="67" />
+    <meta name="twitter:app:id:googleplay" content="com.myshop.android" />
+    
+    <script type="text/javascript">
+        var _shopgate = {
+        shop_number: "12345",
+          redirect: "item",
+          is_default_redirect_disabled: true,
+          item_number: "275"
+        };
+        
+        (function(b,d){
+          var a=("undefined"!==typeof _shopgate?_shopgate:{}).shop_number,
+          e="http:"===b.location.protocol?"http:":"https:";if(a){var c=b.createElement(d);
+          c.async=!/(ip(ad|od|hone)|Android)/i.test(navigator.userAgent);
+          c.src=e+"//static.shopgate.com/mobile_header/"+a+".js";
+          a=b.getElementsByTagName(d)[0];a.parentNode.insertBefore(c,a)}}
+        )(document,"script");
+    </script>
+    <!-- END SHOPGATE -->
+</head>
+<body>
+    [...]
+</body>
+</html>  
+```
 
 # Open Graph Tags
 
