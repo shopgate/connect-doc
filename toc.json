@@ -228,6 +228,11 @@
             // Remove Catalog Data Feed, this content is already in references
             {
               "type": "item",
+              "title": "Plugin API",
+              "uri": "markdown/guides/commerce/cart-integration/plugin-api.md"
+            },
+            {
+              "type": "item",
               "title": "Cart Integration SDK",
               "uri": "markdown/guides/commerce/cart-integration/cart-integration-sdk.md"
             },
