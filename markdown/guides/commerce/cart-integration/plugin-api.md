@@ -920,7 +920,6 @@ This action allows clearing existing cache files.
 |---|---|
 | 38 | unknown log type |
 
-# General Error Codes
 
 # General Error Codes
 
