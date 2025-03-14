@@ -61,8 +61,8 @@ Mobile Header is a button appearing at the head of an online shop if a visitor h
 
 ## Target Specifications
 
-Connecting to Shopgate should allow the merchant to use the entire range of Shopgate’s functions and to offer their products to mobile devices.
-Shopgate Inc. offers its customers a Mobile Website and native apps for popular mobile phone operating systems. For this purpose, Shopgate provides its own infrastructure for products and categories as well as management of orders placed through the Mobile Website or apps. If a customer already has an account in a merchant’s online shop, he or she may log in through the so called Shopgate Connect procedure on the Mobile Website or through an app. A mobile phone visitor on the merchant’s online shop will automatically be redirected to the Mobile Website.
+Connecting to Shopgate should allow the merchant to use the entire range of Shopgates functions and to offer their products to mobile devices.
+Shopgate Inc. offers its customers a Mobile Website and native apps for popular mobile phone operating systems. For this purpose, Shopgate provides its own infrastructure for products and categories as well as management of orders placed through the Mobile Website or apps. If a customer already has an account in a merchants online shop, he or she may log in through the so called Shopgate Connect procedure on the Mobile Website or through an app. A mobile phone visitor on the merchants online shop will automatically be redirected to the Mobile Website.
 
 **Range of functions of a completed Connection to Shopgate:**
 - Export of a stock list to Shopgate (category_export, product_export, review_export).
@@ -165,7 +165,7 @@ The online shop contains products offered by merchants. These products must be s
 
 ### Objective
 
-The product offer in Shopgate corresponds to the product offer in the merchant’s online shop.
+The product offer in Shopgate corresponds to the product offer in the merchants online shop.
 
 ### Procedure
 
@@ -388,11 +388,11 @@ The check_cart action can only be implemented via Shopgate Plugin API. We recomm
 
 ### Background
 
-Orders placed via the native apps or the Mobile Website arrive to Shopgate first and are displayed in the merchant’s administration area. To avoid disturbing the merchant’s usual procedures these orders should be imported into the online shop. If the customer registered at Shopgate via Shopgate Connect, the order must be assigned to their account. Differing shipping or invoice addresses must be added. For unknown customers a guest account must be created containing the information necessary to process the order.
+Orders placed via the native apps or the Mobile Website arrive to Shopgate first and are displayed in the merchants administration area. To avoid disturbing the merchants usual procedures these orders should be imported into the online shop. If the customer registered at Shopgate via Shopgate Connect, the order must be assigned to their account. Differing shipping or invoice addresses must be added. For unknown customers a guest account must be created containing the information necessary to process the order.
 
 ### Objective
 
-Shopgate informs the merchant about all orders placed. If possible, orders must be imported to the merchant’s online shop.
+Shopgate informs the merchant about all orders placed. If possible, orders must be imported to the merchants online shop.
 
 ### Procedure when using the Shopgate Plugin API
 
@@ -455,7 +455,7 @@ These fields include the customer number and/or ID in the online shop when the c
 This is the payment amount that the customer agreed to pay when placing the order. The value stored into the online shop must be exactlythe value given by Shopgate. Do not calculate the price yourself.
 
 - amount_shop_payment and payment_tax_percent  
-This field contains costs for the merchant’s payment method and the tax rate percentage included in the amount. They must be stored as “payment cost” in the order.
+This field contains costs for the merchants payment method and the tax rate percentage included in the amount. They must be stored as “payment cost” in the order.
 
 - amount_shopgate_payment  
 This field includes costs charged by Shopgate to the merchant for their Shopgate payment methods. These costs must not appear in the list of order items, because this amount is withheld by Shopgate and is not included in the final amount of the submitted order.
@@ -687,7 +687,7 @@ When errors occur while calling the Shopgate Plugin API or during other operatio
 Use the Shopgate Cart Integration SDK with the expandable “ShopgateLibraryException” class containing predefined error codes. When throwing a “ShopgateLibraryException”, it gets logged automatically.
 
 #### Option 2:
-If your plugin is developed in a language other than PHP, you have to implement the logging and answering error messages to Shopgate Plugin API’s calls yourself.
+If your plugin is developed in a language other than PHP, you have to implement the logging and answering error messages to Shopgate Plugin APIs calls yourself.
 You will find additional links to the individual approaches on the right side, in the “Ways of implementation” box.
 
 ## Log Files
@@ -844,7 +844,7 @@ To get a certification for your implementation, your code must be well readable.
 The source code of your implementation is formatted according to coding standards defined for the used language.
 
 ### Description
-Apply the following coding standards in order to fulfil Shopgate’s quality requirements for a Connection to Shopgate:
+Apply the following coding standards in order to fulfil Shopgates quality requirements for a Connection to Shopgate:
 
 - PHP: Coding Standards
 - Java: Oracle Code Conventions for the Java Programming Language
@@ -891,8 +891,8 @@ To acquire a seal of quality for your implementation you can submit it to Shopga
 
 ### General
 - Your Connection to Shopgate works correctly only with specific systems (i.e. only works with Linux servers).
-- Shopgate Plugin API’' replies are not converted into UTF-8.
-- Shopgate Merchant API’' replies are not converted into the online shop’s encoding system.
+- Shopgate Plugin API replies are not converted into UTF-8.
+- Shopgate Merchant API replies are not converted into the online shops encoding system.
 - Sensitive user data is saved in error or access protocols.
 - The Connection to Shopgate breaks down on a critical stage, rendering the online shop inoperable.  
 *Example:* When the Mobile Redirect comes down with an error it will tear down the whole online shop with it since the forwarding module must be included before every other output.
@@ -905,12 +905,12 @@ To acquire a seal of quality for your implementation you can submit it to Shopga
 *Example:* The functions json_decode() and json_encode() are compiled by default starting from PHP 5.2. Some hosting services still deactivate them, though.
 
 ### Order Processing
-- A new order is stored in the online shop’s database. Order processing crashes during this procedure due to an error. That results in an incomplete order present in the system.
+- A new order is stored in the online shops database. Order processing crashes during this procedure due to an error. That results in an incomplete order present in the system.
 - A field different from is_shipping_blocked is used to determine whether an order can be processed by the merchant or is still blocked by Shopgate.  
 *Example:* Fields is_paid or is_shipping_completed are mistaken responsible for this purpose. While the is_paid field only contains information for the merchant and is independent from the shipping readiness, the is_shipping_completed field holds on information whether the order has already been processed and sent to the customer by the merchant.
 
 ## Shop Interface Certification
-If you have implemented your own interface and would like to make it available to the Shopgate community, you should have it certified by Shopgate. After a detailed examination of your interface’s source code you will receive a Shopgate certificate and your shop will be advertised by Shopgate.
+If you have implemented your own interface and would like to make it available to the Shopgate community, you should have it certified by Shopgate. After a detailed examination of your interfaces source code you will receive a Shopgate certificate and your shop will be advertised by Shopgate.
 
 ### Requirements
 What requirements does your interface need to fulfill in order to receive a Shopgate certification?
@@ -925,10 +925,8 @@ What requirements does your interface need to fulfill in order to receive a Shop
 - **Allow us to help you** The Shopgate Cart Integration SDK already contains many basic functions delivered to you in a ready-made state with Shopgate responsible for the maintenance. If your interface uses PHP, it is the easiest way to ensure that it works properly.
 
 ### Contact
-You can contact our Technical Team via phone or e-mail under:
+You can contact our Technical Team via Ωe-mail at:
 
-Phone-US: +1 (800) 490 2467  
-Phone-DE: +49 (6033) 7470 500  
-[technik@shopgate.com](mailto:technik@shopgate.com)
+[support@shopgate.com](mailto:support@shopgate.com)
 
 We will then test your shop interface. If all requirements are met, nothing will prevent you from receiving the Shopgate certificate!
