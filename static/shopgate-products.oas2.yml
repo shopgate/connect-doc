@@ -162,7 +162,7 @@ paths:
                 code: EUNKNOWN
                 message: An internal error occured.
       tags:
-        - Product
+        - Search
       x-stoplight:
         id: ycgrfqygyz7or
   /shopgate.catalog.getTotalProductCount.v1:

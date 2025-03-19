@@ -260,11 +260,11 @@
 
     {
       "type": "divider",
-      "title": "✅ Tutorials"
+      "title": "Tutorials"
     },
     {
       "type": "group",
-      "title": "Kickstart-Tutorials",
+      "title": "✅ Kickstart-Tutorials",
       "items": [
         {
           "type": "group",
@@ -317,7 +317,7 @@
     },
     {
       "type": "group",
-      "title": "Advanced Tutorials",
+      "title": "🚧 Advanced Tutorials",
       "items": [
         {
           "type": "item",

@@ -6,9 +6,9 @@ This tutorial shows you how to integrate a new product search provider into your
 Before beginning this tutorial, complete the following tasks:
 
 - Create a [Shopgate Developer Account](https://developer.shopgate.com/admin/login).
-- Complete the Shopgate [Getting Started](markdown/introduction/index.md) instructions.
+- Complete the Shopgate [Getting Started](../../introduction/getting-started/set-up-environment.md) instructions.
 - Create a new backend extension with the Shopgate Connect SDK.
-- Optional: Complete Hello World Tutorial [markdown/tutorials/starter/hello-world/overview.md]
+- Optional: Complete [Hello World Tutorial](../starter/hello-world/overview.md)
 
 ## Pipelines
 To integrate a new search provider, you must have the following pipelines in your applications:
