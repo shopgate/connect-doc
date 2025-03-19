@@ -3,7 +3,7 @@
   "items": [
     {
       "type": "divider",
-      "title": "Introduction"
+      "title": "✅ Introduction"
     },
     {
       "type": "item",
@@ -83,11 +83,11 @@
 
     {
       "type": "divider",
-      "title": "Guides"
+      "title": "✅  Guides"
     },
     {
       "type": "group",
-      "title": "✅ Technical Guides",
+      "title": "Technical Guides",
       "items": [
         {
           "type": "group",
@@ -180,7 +180,7 @@
     },
     {
       "type": "group",
-      "title": "✅ Tools",
+      "title": "Tools",
       "items": [
         {
           "type": "item",
@@ -196,7 +196,7 @@
     },
     {
       "type": "group",
-      "title": "✅ Commerce",
+      "title": "Commerce",
       "items": [
         {
           "type": "item",
