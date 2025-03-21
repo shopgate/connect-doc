@@ -1,0 +1,1098 @@
+swagger: '2.0'
+x-stoplight:
+  id: s53hf8qxc3jzv
+info:
+  title: Webcheckout API
+  version: '1.0'
+  license:
+    name: Apache 2.0
+host: myShop.com
+paths:
+  '/carts/{cartId}':
+    get:
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CartResult'
+          examples:
+            application/json:
+              messages:
+                - type: error
+                  message: The cart amount is too high for online purchase. The maximum amount is USD 4.99.
+                  code: CART_VALUE_TOO_HIGH
+              cartItems:
+                - id: a84de7d7-2b7d-4aa8-a64d-9558ca791b86
+                  quantity: 5
+                  type: product
+                  coupon:
+                    code: 20OFF
+                    description: Reduces the cost of all products by 20%.
+                    label: 20% off of all products.
+                    savedPrice:
+                      value: 20
+                      type: percentage
+                  product:
+                    id: '10080466570'
+                    name: Awesome T-Shirt
+                    additionalInfo:
+                      - label: Manufacturer
+                        value: Lacoste
+                    featuredImageUrl: 'https://myshop.example/images/product_xyz_featured.png'
+                    properties:
+                      - type: option
+                        label: Color
+                        value: Red
+                    price:
+                      unit: 10
+                      default: 50
+                      special: 40
+                    appliedDiscounts:
+                      - code: 20OFF
+                        description: Reduces the cost of all products by 20%.
+                        label: 20% off of all products.
+                        savedPrice:
+                          value: 20
+                          type: percentage
+                  messages:
+                    - type: info
+                      message: This product will be ordered for you after purchase.
+                      code: ORDER_ON_PURCHASE
+              currency: USD
+              totals:
+                - type: tax
+                  label: Tax (19%)
+                  amount: 7.6
+                  subTotals:
+                    - type: tax
+                      label: Tax (19%)
+                      amount: 7.6
+              text:
+                legal: 'By placing your order you agree to our <b><u>Privacy Policy</u></b>, our <b><u>Terms and Conditions</u></b> as well as our <b><u>Cancellation Policy</u></b>.'
+              flags:
+                taxIncluded: false
+                orderable: false
+                coupons: true
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          description: ''
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: Cart not found!
+      summary: Get cart
+      parameters: []
+      description: Fetch the whole cart with all products and totals.
+      tags:
+        - Cart
+      x-stoplight:
+        id: ztfd811vxr8vd
+    parameters:
+      - name: cartId
+        in: path
+        type: string
+        required: true
+  '/carts/{cartId}/products':
+    post:
+      responses:
+        '204':
+          description: ''
+          schema:
+            type: object
+            properties: {}
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+      summary: Adding product(s) to the cart
+      parameters:
+        - $ref: '#/parameters/addProductsParam'
+          x-examples:
+            application/json: {}
+      description: 'Adds one or multiple products to the cart. Cart rules are applied, if the shop supports them, and are set up for at least one product to be added (or already placed in the cart).'
+      tags:
+        - Cart Manipulation
+      x-stoplight:
+        id: b4ht6zjmlspsy
+    parameters:
+      - name: cartId
+        in: path
+        type: string
+        required: true
+  '/carts/{cartId}/cartItems/{cartItemId}':
+    delete:
+      responses:
+        '204':
+          description: ''
+          schema:
+            type: object
+            properties: {}
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+        '409':
+          description: The product can't be removed from the cart because it depends on another product.
+          examples:
+            application/json:
+              message: The product 'Some Product' doesn't exist in your cart.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+      summary: Remove cart items from the cart
+      tags:
+        - Cart Manipulation
+      description: Removes a cart item from the cart entirely.
+      x-stoplight:
+        id: ky50ocjvgpfoe
+    parameters:
+      - name: cartId
+        in: path
+        type: string
+        required: true
+      - name: cartItemId
+        in: path
+        type: string
+        required: true
+    patch:
+      responses:
+        '204':
+          description: ''
+          schema:
+            type: object
+            properties: {}
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 -  not found'
+          examples:
+            application/json:
+              message: Not found
+      summary: Update quantity of product(s) within the cart
+      description: 'Updates the quantity for one or multiple cart items referenced by their respective cartItemId. Depending on the shop and its cart rules, certain quantities can be rejected.'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              quantity:
+                type: integer
+          x-examples:
+            application/json:
+              quantity: 4
+      tags:
+        - Cart Manipulation
+      x-stoplight:
+        id: 4hv6qvt59j14x
+  '/carts/{cartId}/coupons':
+    post:
+      responses:
+        '204':
+          description: Coupon was successfully added.
+          schema:
+            type: object
+            properties: {}
+        '400':
+          description: An invalid or expired coupon code was entered.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: Coupons is invalid! Please make sure that the coupon is correct.
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+      description: Adds multiple coupons to the cart. The coupon code needs to be unique. There can’t be two coupons with identical codes in the cart at any given time.
+      summary: Adding coupon(s) to the cart
+      parameters:
+        - $ref: '#/parameters/couponCodesParam'
+      tags:
+        - Cart Manipulation
+      x-stoplight:
+        id: u7g08ku9p59ag
+    parameters:
+      - name: cartId
+        in: path
+        type: string
+        required: true
+  '/carts/{cartId}/checkoutUrl':
+    post:
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UrlResult'
+          examples:
+            application/json:
+              url: 'https://myShop.com/checkout/shopgate?token=1234567890'
+              expires: '2018-05-30T23:09:20.481Z'
+      summary: Get checkout url
+      description: |-
+        Generates a checkout URL for the app with a token.
+        This URL opens in the app in a seperate tab, logs the user in, and transfers the cart.
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cartId
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            required:
+              - userId
+            properties:
+              userId:
+                type: string
+      x-stoplight:
+        id: wrwxesx2wphwi
+    parameters:
+      - name: cartId
+        in: path
+        type: string
+        required: true
+  /login:
+    post:
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            required:
+              - userId
+            properties:
+              userId:
+                type: string
+          examples:
+            application/json:
+              userId: c069f5a4-94b7-11e8-9eb6-529269fb1459
+        '401':
+          description: The login fails because of wrong credentials.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: wrong credentials
+      summary: Login user
+      description: 'Makes an attempt to log in the user. The user can choose between multiple login strategies. A stretegy can be ‘basic’ or ‘facebook’ login. After login, the user storage becomes available to store data in a shop-global scope, so it can be shared across devices. Based on the shop, custom errors can be returned to react to in the theme. Calling this pipeline when a user is logged in results in an error.'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            required:
+              - login
+              - password
+            properties:
+              login:
+                type: string
+              password:
+                type: string
+          x-examples: {}
+          description: The response contains the shopping carts system's user ID for authentication on the Shopgate Connect side.
+      tags:
+        - User
+      x-stoplight:
+        id: zj6wmke88ha5w
+  '/users/{userId}':
+    get:
+      responses:
+        '200':
+          description: 'User object containing basic user data such as ID, email address, name, addresses, ...'
+          schema:
+            type: object
+            required:
+              - id
+              - mail
+              - firstName
+              - lastName
+            properties:
+              id:
+                type: string
+                description: Unique identifier for the user.
+                example: 87ddbbdb-5b09-4dc4-b1b0-214f4b0fdaa1
+              mail:
+                type: string
+                description: Users email address.
+                example: developer@shopgate.com
+              firstName:
+                type: string
+                description: User's first name.
+                example: John
+              lastName:
+                type: string
+                description: User's last name.
+                example: Doe
+              gender:
+                type: string
+                enum:
+                  - m
+                  - f
+                description: User's gender.
+                example: m
+              birthday:
+                type: string
+                format: date
+                description: User's birthday.
+                example: '2017-01-01'
+              phone:
+                type: string
+                description: User's phone number.
+                example: +1-800-490-2467
+              addresses:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - type
+                    - firstName
+                    - lastName
+                    - company
+                    - street1
+                    - city
+                  properties:
+                    id:
+                      type: string
+                      example: 1
+                    type:
+                      type: string
+                      enum:
+                        - shipping
+                        - invoice
+                      example: invoice
+                    firstName:
+                      type: string
+                      example: Jane
+                    lastName:
+                      type: string
+                      example: Doe
+                    company:
+                      type: string
+                      example: Shopgate Inc
+                    street1:
+                      type: string
+                      example: 804 Congress Ave.
+                    street2:
+                      type: string
+                    city:
+                      type: string
+                      example: Austin
+                    state:
+                      type: string
+                      description: Shorthand form of the state.
+                      example: TX
+                    phone:
+                      type: string
+                      example: +1-800-490-2467
+                    isDefault:
+                      type: boolean
+                      description: Indicates if the current address is the default address of the given type.
+                      example: true
+                    alias:
+                      type: string
+                      description: The user can specify an alias for the address.
+                      example: Homeaddress
+                    zipcode:
+                      type: string
+                      description: Zipcode of the address
+                      example: '12345'
+                    country:
+                      type: string
+                      description: Country of the address
+                      example: United States
+            title: User
+          examples:
+            application/json:
+              id: 501f8dcb-b4e6-48bc-b815-3d2a2bc6deae
+              mail: john.doe@shopgate.com
+              firstName: John
+              lastName: Doe
+              gender: m
+              birthday: '1976-09-23'
+              phone: 800-490-2467
+              addresses:
+                - alias: Janes home adress
+                  id: de7566f0-15f1-4836-bf74-621ef07f96a5
+                  type: shipping
+                  firstName: Jane
+                  lastName: Doe
+                  street1: 123 Main St
+                  zipcode: '12345'
+                  city: Anytown
+                  state: WA
+                  country: United States
+                  isDefault: true
+                - alias: Work address
+                  id: f1916760-a990-49af-96c4-34fd3101f50c
+                  type: invoice
+                  firstName: John
+                  lastName: Doe
+                  street1: 2222 Rio Grande
+                  street2: Suite 300
+                  zipcode: '78705'
+                  city: Austin
+                  state: TX
+                  country: United States
+                  isDefault: true
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+      summary: Get user
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+      tags:
+        - User
+      description: 'Returns the basic user info such as name, addresses, …'
+      x-stoplight:
+        id: ohbqo5n3i94qz
+    parameters:
+      - name: userId
+        in: path
+        type: string
+        required: true
+  '/users/{userId}/mergeCart/{cartId}':
+    post:
+      responses:
+        '204':
+          description: ''
+          schema:
+            type: object
+            properties: {}
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+      summary: Merge cart with user cart.
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+        - in: path
+          name: cartId
+          type: string
+          required: true
+      tags:
+        - User
+      description: Merges a cart with the current user cart. The relation of user and user cart is held within the shop system. The non user-related cart and the cart attached by the user are merged.
+      x-stoplight:
+        id: kau0x8osaiiqj
+    parameters:
+      - name: userId
+        in: path
+        type: string
+        required: true
+      - name: cartId
+        in: path
+        type: string
+        required: true
+  /oauth/token:
+    post:
+      responses:
+        '200':
+          description: Standard OAuth access token response
+          schema:
+            type: object
+            properties:
+              access_token:
+                type: string
+              token_type:
+                type: string
+              expires_in:
+                type: string
+          examples:
+            application/json:
+              access_token: MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3
+              token_type: bearer
+              expires_in: 3600
+        '401':
+          description: Client credentials are invalid.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              error_description:
+                type: string
+          examples:
+            application/json:
+              error: credentials_invalid
+              message: client credentials are invalid
+      summary: Authenticate
+      parameters:
+        - in: formData
+          name: grant_type
+          type: string
+        - in: formData
+          name: client_id
+          type: string
+        - in: formData
+          name: client_secret
+          type: string
+      description: Provides an OAuth2 access token for Shopgate Connect to authenticate against the Web Checkout API.
+      tags:
+        - Authentication
+      x-stoplight:
+        id: 4bdu1c80izgqw
+  /carts:
+    post:
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              cartId:
+                type: string
+          examples:
+            application/json:
+              cartId: 6e57b3a0-9714-11e8-9eb6-529269fb1459
+        '401':
+          $ref: '#/responses/401 error'
+      summary: Create cart
+      tags:
+        - Cart
+      description: Creates a new cart within the shop system and returns its ID. This  ID is used for both anonymous cart and user cart.
+      x-stoplight:
+        id: 8x5it4gdhkz1f
+  '/users/{userId}/cartId':
+    get:
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              cartId:
+                type: string
+        '401':
+          $ref: '#/responses/401 error'
+        '404':
+          $ref: '#/responses/404 - not found'
+      summary: Get current cart of user
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+      description: Returns the given user's cart ID.
+      tags:
+        - User
+      x-stoplight:
+        id: hes0tuhhu61fu
+    parameters:
+      - name: userId
+        in: path
+        type: string
+        required: true
+basePath: /shopgate/v1
+securityDefinitions:
+  api-auth:
+    type: oauth2
+    flow: password
+    tokenUrl: 'https://myShop.com/shopgate/oauth/token'
+parameters:
+  addProductsParam:
+    name: products
+    in: body
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          productId:
+            type: string
+            example: '10080466570'
+          quantity:
+            type: number
+            example: 1
+          properties:
+            type: array
+            items:
+              $ref: '#/definitions/AddProductsProductProperty'
+          metadata:
+            type: object
+            description: Holds additional information about a specific product of any type. The contents of the object can vary.
+            example:
+              additionalInfo:
+                is_parent: false
+  updateCartItemsParam:
+    name: CartItems
+    in: body
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          cartItemId:
+            type: string
+          quantity:
+            type: number
+  cartItemIdsParam:
+    name: cartItemIds
+    in: body
+    required: true
+    schema:
+      type: array
+      description: ID of the cart item to be deleted or modified.
+      items:
+        type: string
+  couponCodesParam:
+    name: couponCodes
+    in: body
+    required: true
+    schema:
+      type: array
+      description: Code of the coupon.
+      items:
+        type: string
+definitions:
+  401-error:
+    type: object
+    properties:
+      message:
+        type: string
+      name:
+        type: string
+    x-stoplight:
+      id: 2xp033e5j5cql
+  EmptyResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        type: object
+    x-stoplight:
+      id: 6bxxdbrdl80qh
+  UrlResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        $ref: '#/definitions/Url'
+    x-stoplight:
+      id: ogkvefe6velfp
+  CartResult:
+    type: object
+    required:
+      - output
+    properties:
+      output:
+        $ref: '#/definitions/Cart'
+    x-stoplight:
+      id: es5kpy2gkiwcv
+  Cart:
+    type: object
+    required:
+      - cartItems
+      - currency
+      - totals
+      - flags
+    properties:
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/Message'
+      cartItems:
+        type: array
+        items:
+          $ref: '#/definitions/CartItem'
+      currency:
+        $ref: '#/definitions/Currency'
+      totals:
+        type: array
+        items:
+          $ref: '#/definitions/CartTotal'
+      text:
+        $ref: '#/definitions/CartText'
+      flags:
+        $ref: '#/definitions/CartFlags'
+    x-stoplight:
+      id: 2hi8ow6u9bi9l
+  CartItem:
+    type: object
+    description: The cart item can be a product OR a coupon. The property `type` defines which one it is. The key `coupon` is not set if the type is `product` and vice versa.
+    required:
+      - id
+      - quantity
+      - type
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the cart item. It can be used to remove/manipulate the respective cart item.
+        example: a84de7d7-2b7d-4aa8-a64d-9558ca791b86
+      quantity:
+        type: number
+        description: Quantity of the cart item.
+        example: 5
+      type:
+        type: string
+        enum:
+          - product
+          - coupon
+        example: product
+      coupon:
+        $ref: '#/definitions/CartItemCoupon'
+      product:
+        $ref: '#/definitions/CartItemProduct'
+      messages:
+        type: array
+        description: All messages specific to the current cart item.
+        items:
+          $ref: '#/definitions/Message'
+    x-stoplight:
+      id: 0nf3uad3c52le
+  CartItemCoupon:
+    $ref: '#/definitions/AppliedDiscount'
+    x-stoplight:
+      id: 42xl6xhqlsfdp
+  CartItemProduct:
+    type: object
+    required:
+      - id
+      - name
+      - featuredImageUrl
+      - price
+    properties:
+      id:
+        type: string
+        description: 'The ID of the product. It is NOT a database ID but the item_number, unique within the scope of a specific shop.'
+        example: '10080466570'
+      name:
+        type: string
+        description: Name of the product.
+        example: Awesome T-Shirt
+      addtionalInfo:
+        type: array
+        description: 'Some additional info for the product to be shown on the cart page. E.g. basePrice, SKU, weight, ...'
+        items:
+          type: object
+          properties:
+            label:
+              type: string
+              example: Manufacturer
+            value:
+              type: string
+              example: Lacoste
+      featuredImageUrl:
+        type: string
+        description: The image of the product.
+        example: 'https://myshop.example/images/product_xyz_featured.png'
+      properties:
+        type: array
+        description: Selected properties of the current cart item.
+        items:
+          $ref: '#/definitions/CartItemProductProperty'
+      price:
+        $ref: '#/definitions/CartItemProductPrice'
+      appliedDiscounts:
+        type: array
+        description: All discouts applied to the current line item.
+        items:
+          $ref: '#/definitions/AppliedDiscount'
+    x-stoplight:
+      id: b6a3e80qq23vh
+  AppliedDiscount:
+    type: object
+    required:
+      - savedPrice
+    properties:
+      code:
+        description: Code of the coupon.
+        type: string
+        example: 20OFF
+      description:
+        description: Description of the coupon.
+        type: string
+        example: Reduces the cost of all products by 20%.
+      label:
+        description: Label of the coupon.
+        type: string
+        example: 20% off of all products.
+      savedPrice:
+        description: Indicates how much discount the coupon applies in percent or absolute.
+        type: object
+        properties:
+          value:
+            type: number
+            example: 20
+          type:
+            type: string
+            enum:
+              - fixed
+              - percentage
+            example: percentage
+    x-stoplight:
+      id: on9w9tc7f8ujm
+  CartItemProductPrice:
+    type: object
+    required:
+      - unit
+      - default
+    properties:
+      unit:
+        type: number
+        description: 'Price of a single product. With or without tax, depending on the shop settings.'
+        example: 10
+      default:
+        type: number
+        description: 'The price of a single product, multiplied by the quantity of the cart item WITHOUT any discounts. With or without tax, depending on the shop settings.'
+        example: 50
+      special:
+        type: number
+        description: 'The special price of a single product, multiplied by the cart item quantity. It is only set if a discount is applied to the product.'
+        example: 40
+    x-stoplight:
+      id: fyo53tzjfdnkh
+  CartItemProductProperty:
+    type: object
+    required:
+      - type
+      - value
+    properties:
+      type:
+        type: string
+        enum:
+          - option
+          - input
+        example: option
+      label:
+        description: Display label of the property.
+        type: string
+        example: Color
+      value:
+        type: string
+        description: The selected value of the property.
+        example: Red
+    x-stoplight:
+      id: eqap45r9dpo0c
+  AddProductsProductProperty:
+    type: object
+    required:
+      - type
+      - id
+      - value
+    properties:
+      type:
+        type: string
+        enum:
+          - option
+          - input
+        example: input
+      id:
+        description: ID of the property to which the selection belongs.
+        type: string
+        example: 01-input-field.greeting-card-text
+      value:
+        type: string
+        description: Content depends on the property type. It's either the value-id of a selected property value for options or the text that was entered for inputs.
+        example: 'Happy Birthday, dad!'
+    x-stoplight:
+      id: fx8gcskz9ja90
+  Currency:
+    type: string
+    enum:
+      - EUR
+      - CHF
+      - USD
+      - RON
+      - PLN
+      - AUD
+      - GBP
+      - CAD
+      - SEK
+      - DKK
+      - NOK
+    example: USD
+    x-stoplight:
+      id: kidc2ay6rmxhf
+  CartText:
+    type: object
+    description: 'Additional texts for the current cart, like legal text. It can contain HTML content.'
+    properties:
+      legal:
+        type: string
+        example: 'By placing your order you agree to our <b><u>Privacy Policy</u></b>, our <b><u>Terms and Conditions</u></b> as well as our <b><u>Cancellation Policy</u></b>.'
+    x-stoplight:
+      id: vy7zt6s3k0sbl
+  CartFlags:
+    type: object
+    required:
+      - taxIncluded
+      - orderable
+      - coupons
+    description: Additional information about the cart.
+    properties:
+      taxIncluded:
+        type: boolean
+        description: Holds information about the cart prices being gross values or not.
+        default: false
+      orderable:
+        type: boolean
+        description: Indicates if the current cart is orderable.
+        default: false
+      coupons:
+        type: boolean
+        description: States if coupon functionality is enabled or not.
+        default: true
+    x-stoplight:
+      id: e1pl0p6qlgjw2
+  Total:
+    type: object
+    required:
+      - type
+      - label
+      - amount
+    properties:
+      type:
+        type: string
+        enum:
+          - subTotal
+          - shipping
+          - tax
+          - payment
+          - discount
+          - grandTotal
+        example: tax
+      label:
+        type: string
+        example: Tax (19%)
+      amount:
+        type: number
+        example: 7.6
+    x-stoplight:
+      id: dsq08awti2ufz
+  CartTotal:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Total'
+      - type: object
+        properties:
+          subTotals:
+            type: array
+            items:
+              $ref: '#/definitions/Total'
+    x-stoplight:
+      id: bhgo3biy8ntn1
+  Message:
+    type: object
+    description: Message to be shown to the customer.
+    required:
+      - type
+      - message
+    properties:
+      type:
+        type: string
+        enum:
+          - error
+          - warning
+          - info
+        example: error
+      message:
+        type: string
+        description: Message to be displayed to the customer.
+        example: Some error occured.
+      code:
+        type: string
+        description: 'Message code, mapped by the extension. It can be used to react in a specific way for certain messages and/or to enable the possibility for message translations.'
+        example: EUNKNOWN
+    x-stoplight:
+      id: 27quv6900956x
+  Url:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: A unified resource link.
+        example: 'http://example.com/'
+      expires:
+        type: string
+        description: 'An optional date-time-string in the format ISO 8601 (YYYY-MM-DDTH:i:s.fZ). The URL does not expire if this field is not set. The returned timezone is always UTC (+00:00).'
+        example: '2017-12-31T23:59:59.999Z'
+    x-stoplight:
+      id: i5fz0u1idpkwc
+  UnknownError:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EUNKNOWN
+            example: EUNKNOWN
+          message:
+            type: string
+            example: An internal error occured.
+    x-stoplight:
+      id: t1c87ybhj706w
+responses:
+  401 error:
+    description: ''
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    examples:
+      application/json:
+        message: 'Invalid token: access token is invalid'
+        name: invalid_token
+  404 - not found:
+    description: ''
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+    examples:
+      application/json:
+        message: Not found
+schemes:
+  - https
+consumes:
+  - application/json
+  - application/x-www-form-urlencoded
+produces:
+  - application/json
+security:
+  - api-auth: []
+tags:
+  - name: Cart
+  - name: Authentication
+  - name: User

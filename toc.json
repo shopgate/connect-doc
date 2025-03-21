@@ -83,11 +83,11 @@
 
     {
       "type": "divider",
-      "title": "✅  Guides"
+      "title": "✅ Guides"
     },
     {
       "type": "group",
-      "title": "Technical Guides",
+      "title": "✅ Technical Guides",
       "items": [
         {
           "type": "group",
@@ -180,7 +180,7 @@
     },
     {
       "type": "group",
-      "title": "Tools",
+      "title": "✅  Tools",
       "items": [
         {
           "type": "item",
@@ -196,7 +196,7 @@
     },
     {
       "type": "group",
-      "title": "Commerce",
+      "title": "✅ Commerce",
       "items": [
         {
           "type": "item",
@@ -245,6 +245,32 @@
               "type": "item",
               "title": "Mobile Redirect",
               "uri": "markdown/guides/commerce/cart-integration/mobile-redirect.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Web Checkout",
+          "items": [
+            {
+              "type": "item",
+              "title": "Overview",
+              "uri": "markdown/guides/commerce/webcheckout/overview.md"
+            },
+            {
+              "type": "item",
+              "title": "Integration",
+              "uri": "markdown/guides/commerce/webcheckout/integration-shop-system-shopgate-app.md"
+            },
+            {
+              "type": "item",
+              "title": "Steps to integrate",
+              "uri": "markdown/guides/commerce/webcheckout/steps-to-integrate.md"
+            },
+            {
+              "type": "item",
+              "title": "Web Checkout API",
+              "uri": "markdown/guides/commerce/webcheckout/web-checkout-apis.oas2.yml"
             }
           ]
         }
