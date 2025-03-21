@@ -1,0 +1,1060 @@
+swagger: '2.0'
+x-stoplight:
+  id: uxezg1p34pedb
+info:
+  title: Shopgate Products Pipelines
+  version: '1.1'
+  description: null
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /shopgate.catalog.getLiveshoppingProducts.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getLiveshoppingProducts.v1
+      summary: getLiveshoppingProducts.v1
+      description: |-
+        This pipeline will retrieve all products, that have a liveshopping timeframe. Not only active ones will be returned, but also the ones, which had such a timeframe in the past 7 days or will have one in the future. It's important for the frontend, to filter the products by active liveshopping.
+        The additional products are there, to enable the frontend to show what the customer had missed, to show a countdown like "will be cheaper in 15 minutes" or to create similar features
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            required:
+              - output
+            properties:
+              output:
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/definitions/BasicProduct'
+          examples:
+            application/json:
+              output:
+                products:
+                  - id: string
+                    active: true
+                    availability:
+                      text: string
+                      state: ok
+                    identifiers:
+                      sku: string
+                      ean: string
+                      isbn: string
+                      upc: string
+                      pzn: string
+                      mpn: string
+                    manufacturer: string
+                    name: string
+                    stock:
+                      info: string
+                      orderable: true
+                      quantity: 0
+                      maxOrderQuantity: 0
+                      minOrderQuantity: 0
+                      ignoreQuantity: true
+                    rating:
+                      count: 0
+                      average: 0
+                      reviewCount: 0
+                    featuredImageUrl: string
+                    featuredImageBaseUrl: string
+                    price:
+                      tiers:
+                        - from: 0
+                          to: 0
+                          unitPrice: 0
+                      info: string
+                      unitPrice: 0
+                      unitPriceStriked: 0
+                      unitPriceMin: 0
+                      unitPriceMax: 0
+                      unitPriceNet: 0
+                      unitPriceWithTax: 0
+                      taxAmount: 0
+                      taxPercent: 0
+                      msrp: 0
+                      currency: USD
+                    flags:
+                      hasChildren: true
+                      hasVariants: true
+                      hasOptions: true
+                    liveshoppings:
+                      - from: '2017-11-11T00:00:00.000Z'
+                        to: '2017-11-11T23:59:59.999Z'
+                    highlight: true
+                    characteristics:
+                      - null
+                    type: simple
+                    tags:
+                      - string
+        EUNKNOWN:
+          description: An internal error occured.
+          schema:
+            $ref: '#/definitions/UnknownError'
+          examples:
+            application/json:
+              error:
+                code: EUNKNOWN
+                message: An internal error occured.
+      x-stoplight:
+        id: 5sahcg5mw529x
+  /shopgate.catalog.getHighlightProducts.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getHighlightProducts.v1
+      summary: getHighlightProducts.v1
+      description: 'This pipeline will retrieve all products, that are "highlighted"'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              offset:
+                type: integer
+                format: int32
+                minimum: 0
+                default: 0
+              limit:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 100
+                default: 20
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            required:
+              - output
+            properties:
+              output:
+                properties:
+                  totalProductCount:
+                    type: integer
+                    format: int32
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/definitions/BasicProduct'
+          examples:
+            application/json:
+              output:
+                totalProductCount: 0
+                products:
+                  - id: string
+                    active: true
+                    availability:
+                      text: string
+                      state: ok
+                    identifiers:
+                      sku: string
+                      ean: string
+                      isbn: string
+                      upc: string
+                      pzn: string
+                      mpn: string
+                    manufacturer: string
+                    name: string
+                    stock:
+                      info: string
+                      orderable: true
+                      quantity: 0
+                      maxOrderQuantity: 0
+                      minOrderQuantity: 0
+                      ignoreQuantity: true
+                    rating:
+                      count: 0
+                      average: 0
+                      reviewCount: 0
+                    featuredImageUrl: string
+                    featuredImageBaseUrl: string
+                    price:
+                      tiers:
+                        - from: 0
+                          to: 0
+                          unitPrice: 0
+                      info: string
+                      unitPrice: 0
+                      unitPriceStriked: 0
+                      unitPriceMin: 0
+                      unitPriceMax: 0
+                      unitPriceNet: 0
+                      unitPriceWithTax: 0
+                      taxAmount: 0
+                      taxPercent: 0
+                      msrp: 0
+                      currency: USD
+                    flags:
+                      hasChildren: true
+                      hasVariants: true
+                      hasOptions: true
+                    liveshoppings:
+                      - from: '2017-11-11T00:00:00.000Z'
+                        to: '2017-11-11T23:59:59.999Z'
+                    highlight: true
+                    characteristics:
+                      - null
+                    type: simple
+                    tags:
+                      - string
+      x-stoplight:
+        id: g0jrkzbrn2ls4
+  /shopgate.catalog.getCategoryChildren.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getCategoryChildren.v1
+      summary: getCategoryChildren.v1
+      description: This pipeline will retrieve the sub-categories of one specific category.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - categoryId
+            properties:
+              categoryId:
+                type: string
+                description: The categoryId for which you want to retrieve children
+              sort:
+                type: string
+                enum:
+                  - nameAsc
+                  - nameDesc
+                  - relevance
+                default: relevance
+                description: 'How to sort the result, if you use relevance the merchants shopsystem or import will decide the order'
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              categories:
+                type: array
+                items:
+                  $ref: '#/definitions/Category'
+          examples:
+            application/json:
+              categories:
+                - id: cat41
+                  name: Category 41
+                  productCount: 229
+                  imageUrl: 'http://shopgate.cdn/category41.png'
+      x-stoplight:
+        id: w2nw2wbs8hcdy
+  /shopgate.catalog.getCategory.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getCategory.v1
+      summary: getCategory.v1
+      description: |
+        This pipeline will retrieve one specific category and, if "includeChildren" is set to true, it's
+        child categories. If it's set to false, the "children" property will be set to an empty array.
+        It will also add a property "parent", which holds the id and name of the parent category, of the
+        retrieved one.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - categoryId
+            properties:
+              categoryId:
+                type: string
+                description: The categoryId of the category you want to retrieve
+              includeChildren:
+                type: boolean
+                default: false
+              childrenSort:
+                type: string
+                enum:
+                  - nameAsc
+                  - nameDesc
+                  - relevance
+                description: |
+                  If children are included, they will be sorted by this.
+                  If relevance is selected, the merchants shop system or import decides the order
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              category:
+                type: object
+                allOf:
+                  - $ref: '#/definitions/Category'
+                  - type: object
+                    required:
+                      - parent
+                    properties:
+                      parent:
+                        type: object
+                        description: |
+                          If the retrieved parent is not the root/default one, this will hold basic
+                          information about the parent category, of the retrieved one.
+                        properties:
+                          id:
+                            type: string
+                            description: The id of the parent category
+                          name:
+                            type: string
+                            description: The name of the parent category
+                      children:
+                        type: array
+                        description: 'If includeChildren is true, this property will hold the child categories of the retrieved one'
+                        items:
+                          $ref: '#/definitions/Category'
+                    example:
+                      parent:
+                        id: cat40
+                        name: Category 40
+                      children:
+                        - id: cat42
+                          name: Category 42
+                          productCount: 23
+                          imageUrl: 'http://shopgate.cdn/category42.png'
+          examples:
+            application/json:
+              category:
+                id: cat41
+                name: Category 41
+                productCount: 229
+                imageUrl: 'http://shopgate.cdn/category41.png'
+                parent:
+                  id: cat40
+                  name: Category 40
+                children:
+                  - id: cat42
+                    name: Category 42
+                    productCount: 23
+                    imageUrl: 'http://shopgate.cdn/category42.png'
+        EUNKNOWN:
+          description: An internal error occured.
+          examples: {}
+      x-stoplight:
+        id: 81rqwjm56ky65
+  /shopgate.catalog.getRootCategories.v1:
+    post:
+      operationId: pipelines/shopgate.catalog.getRootCategories.v1
+      summary: getRootCategories.v1
+      description: This pipeline is used to retrieve the root categories of the shop
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              sort:
+                type: string
+                enum:
+                  - nameAsc
+                  - nameDesc
+                  - relevance
+                default: relevance
+                description: 'How to sort the result, if relevance is selected, the merchants shop system or import decides the order'
+      responses:
+        ok:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              categories:
+                type: array
+                items:
+                  $ref: '#/definitions/Category'
+          examples:
+            application/json:
+              categories:
+                - id: cat41
+                  name: Category 41
+                  productCount: 229
+                  imageUrl: 'http://shopgate.cdn/category41.png'
+      x-stoplight:
+        id: 9sig6fyx1y2cs
+parameters:
+  productIdShowInactive:
+    name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - productId
+      properties:
+        productId:
+          type: string
+        showInactive:
+          type: boolean
+          default: false
+          description: 'Only active products would be fetched by default, to fetch inactive products too, set this to true'
+  productId:
+    name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - productId
+      properties:
+        productId:
+          type: string
+  categoryIdSearchPhraseFilters:
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/CategoryIdSearchPhraseFiltersParam'
+  categoryIdSearchPhraseFiltersOffsetLimitSort:
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/CategoryIdSearchPhraseFiltersProductIdsOffsetLimitSortActiveParam'
+definitions:
+  CategoryIdSearchPhraseFiltersProductIdsOffsetLimitSortActiveParam:
+    allOf:
+      - $ref: '#/definitions/CategoryIdSearchPhraseFiltersParam'
+      - type: object
+        properties:
+          offset:
+            type: integer
+            format: int32
+            minimum: 0
+            default: 0
+            description: 'For pagination, you should give the position of the first product, you want to retrieve'
+          limit:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 100
+            default: 20
+            description: The maximum number of products you want to retrieve
+          sort:
+            type: string
+            enum:
+              - priceAsc
+              - priceDesc
+              - relevance
+              - random
+            description: 'How to sort the result, relevance will be controlled by the merchants shop-system or the import order'
+          showInactive:
+            type: boolean
+            description: 'Only active products would be returned, it this is omitted or false, set it to true, to fetch inactive ones too'
+          productIds:
+            type: array
+            description: 'Can not be combined with filters or a searchPhrase, will retrieve specific products'
+            items:
+              type: string
+    x-stoplight:
+      id: pwxd7y1kya7kv
+  CategoryIdSearchPhraseFiltersParam:
+    type: object
+    properties:
+      categoryId:
+        type: string
+        description: 'the categoryId, but only "flat", it will not "dive into" subcategories'
+      searchPhrase:
+        type: string
+        description: 'a search phrase to search for, not compatible with categoryId, use a category-filter, if you want to search inside categories'
+      filters:
+        type: object
+        description: |
+          The key is the filterId or name of filter, like categories, manufacturer or other
+          attributes/options/properties like "Größe". The value has to be an object with a values key, that
+          holds an array of strings (the "id" from the filters-endpoint) or minimum and/or maximum integer values.
+          If the filters object (from the filters-endpoint) delivers a source too, you have to send it too.
+          For categories you have to give the content of the id property, which is the name/path of the category,
+          not the category id itself.
+        additionalProperties:
+          type: object
+          properties:
+            minimum:
+              type: integer
+              format: int32
+              description: 'The minimum value for this filter, can not be combined with values.'
+            maximum:
+              type: integer
+              format: int32
+              description: 'The maximum value for this filter, can not be combined with values.'
+            values:
+              type: array
+              items:
+                type: string
+                description: 'The ids of the selected values, can not be combined with minimum or maximum.'
+            source:
+              type: string
+              description: the value of the source property from the filters endpoint
+    x-stoplight:
+      id: 3kvxgg30tnkx2
+  Filter:
+    type: object
+    required:
+      - id
+      - label
+      - type
+    properties:
+      id:
+        type: string
+        description: The id (or name) of this filter
+      label:
+        type: string
+        description: the label of the filter that is showed to the user
+      type:
+        type: string
+        description: |
+          If the type is select, a range will be displayed as a slider with a minimum and a maximum value.
+          If it is multiselect, the customer will have different options to select from and the maximum property
+          limits the number of selectable options for this filter. A value of one for this means that this
+          will be a singleselect.
+        enum:
+          - range
+          - multiselect
+      source:
+        type: string
+        enum:
+          - options
+          - properties
+          - attributes
+          - categories
+          - manufacturer
+        description: 'the source this filter was generated from, please send it with your values array, when filtering'
+      minimum:
+        type: integer
+        format: int32
+        description: Only used with type range to provide the selectable miminum value for this filter.
+      maximum:
+        type: integer
+        format: int32
+        description: |
+          Used with type range to provide the selectable maximum value for this filter.
+          With type multiselect, this gives the number of selectable values.
+      values:
+        type: array
+        description: |
+          The selectable values if type is multiselect
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The id of this value
+            label:
+              type: string
+              description: The label that is showed to the customer
+    example:
+      id: filter23
+      label: Preisbereich
+      type: range
+      minimum: 42
+      maximum: 876
+    x-stoplight:
+      id: i2jmd6ptteio8
+  Category:
+    type: object
+    description: Describes a category
+    required:
+      - id
+      - name
+      - productCount
+      - imageUrl
+    properties:
+      id:
+        type: string
+        description: the category-number or unique id inside this specific shop
+      name:
+        type: string
+        description: the display-name of this category
+      productCount:
+        type: integer
+        format: int32
+        description: Combined number of prodcts in the current and all subcategories
+      imageUrl:
+        type: string
+        description: the category-image
+      childrenCount:
+        type: integer
+        format: int32
+        description: It is the number of direct sub categories
+    example:
+      id: cat41
+      name: Category 41
+      productCount: 229
+      imageUrl: 'http://shopgate.cdn/category41.png'
+    x-stoplight:
+      id: hl2qpkuliw259
+  BasicProduct:
+    type: object
+    description: 'A basic product entity, that is used for search results or categoryviews'
+    properties:
+      id:
+        type: string
+        description: |
+          The unique product id of this product inside the shop (in old cake system: product_number)
+      active:
+        type: boolean
+        description: if this product is active or not
+      availability:
+        $ref: '#/definitions/Availability'
+      identifiers:
+        type: object
+        required:
+          - sku
+        properties:
+          sku:
+            type: string
+            description: 'should always be used for visual representation instead of id if not explicitly given, this will be the same as id (product_number_public in cake)'
+          ean:
+            type: string
+            description: The European Article Number of this product
+          isbn:
+            type: string
+            description: The International Standard Book Number of this product
+          upc:
+            type: string
+            description: The Universal Product Code of this product
+          pzn:
+            type: string
+            description: The "Pharmazentralnummer" of this product
+          mpn:
+            type: string
+            description: The Manufacturer Product Number of this product
+      manufacturer:
+        type: string
+        description: The manufacturer or brand of this product
+      name:
+        type: string
+        description: The product name to display
+      stock:
+        $ref: '#/definitions/Stock'
+      rating:
+        type: object
+        description: The accumulated review data of this product
+        properties:
+          count:
+            type: integer
+            format: int32
+            description: The amount of star-ratings
+          average:
+            type: number
+            format: float
+            description: The average score of the star-ratings
+            minimum: 1
+            maximum: 100
+          reviewCount:
+            type: integer
+            format: int32
+            description: The amount of reviews
+      featuredImageUrl:
+        type: string
+        description: 'The main image of this product, displayed in lists or search results'
+      featuredImageBaseUrl:
+        type: string
+        description: 'Base URL of the main image of this product, displayed in lists or search results. GET params for width, height, etc needs to be added.'
+      price:
+        $ref: '#/definitions/Price'
+      flags:
+        type: object
+        properties:
+          hasChildren:
+            type: boolean
+            description: 'A flag that determines if this product has children, they have to be loaded seperately at the detail page by using getProductChildren_v1 pipeline'
+          hasVariants:
+            type: boolean
+            description: 'A flag that determines if this product has variants, they have to be loaded seperately at the detail page by using getProductVariants_v1 pipeline'
+          hasOptions:
+            type: boolean
+            description: 'A flag that determines if this product has options, they have to be loaded seperately at the detail page by using getProductOptions_v1 pipeline'
+      liveshoppings:
+        description: 'A list of liveshopping-timeframes for this product. By default it will load all timeframes, that ended in the last 7 days, are active or will start in the future.'
+        type: array
+        items:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date-time
+              description: The exact start-time for this liveshopping entry
+            to:
+              type: string
+              format: date-time
+              description: The exact end-time for this liveshopping entry
+      highlight:
+        description: True if the product is highlighted
+        type: boolean
+      parent:
+        $ref: '#/definitions/BasicProduct'
+      characteristics:
+        $ref: '#/definitions/ProductCharacteristics'
+      type:
+        description: Type of the product
+        type: string
+        enum:
+          - simple
+          - parent
+          - variant
+      tags:
+        type: array
+        items:
+          type: string
+    x-stoplight:
+      id: 71cenjkwz47xw
+  Shipping:
+    type: object
+    properties:
+      price:
+        type: number
+        format: float
+        description: The amount of shipping costs
+      currency:
+        $ref: '#/definitions/Currency'
+    x-stoplight:
+      id: z4zpaj7kxy8hx
+  Price:
+    type: object
+    properties:
+      tiers:
+        description: 'A list of tier prices for this product, if available'
+        type: array
+        items:
+          type: object
+          properties:
+            from:
+              type: integer
+              format: int32
+              description: The minimum order quantity for this tier to apply
+            to:
+              type: integer
+              format: int32
+              description: The maximum order quantity for this tier to apply
+            unitPrice:
+              type: number
+              format: float
+              description: 'The product price if this tier applies, already includes customer group discount'
+      info:
+        type: string
+        description: 'Additional text which should be displayed near the price, like "12,40€/kg" (amount_info_text in old cake system)'
+      unitPrice:
+        type: number
+        format: float
+        description: 'The price in the shop''s selected currency (unit_amount_display/100 in old cake system), which already includes possible customer group discounts'
+      unitPriceStriked:
+        type: number
+        format: float
+        description: The crossed out price in the shop's selected currency (unit_amount_display_old/100 in old cake system)
+      unitPriceMin:
+        type: number
+        format: float
+        description: 'The price of the cheapest variant or child product in the shop''s selected currency (unit_amount_display_min/100 in old cake system), which already includes possible customer group discounts'
+      unitPriceMax:
+        type: number
+        format: float
+        description: 'The price of the most expensive variant or child product in the shop''s selected currency (unit_amount_display_min/100 in old cake system), which already includes possible customer group discounts'
+      unitPriceNet:
+        type: number
+        format: float
+        description: The net price in the shop's selected currency (unit_amount_display/100 in old cake system)
+      unitPriceWithTax:
+        type: number
+        format: float
+        description: The price with tax in the shop's selected currency (unit_amount_display/100 in old cake system)
+      taxAmount:
+        type: number
+        format: float
+        description: The amount of the taxes (unitPriceWithTax - unitPriceNet) in the shop's selected currency
+      taxPercent:
+        type: number
+        format: float
+        description: The tax percentage for product
+      msrp:
+        type: number
+        format: float
+        description: The manufacturer's suggested retail price in the shop's selected currency
+      currency:
+        $ref: '#/definitions/Currency'
+    x-stoplight:
+      id: 8n43bivcdkvy7
+  Currency:
+    type: string
+    description: The currency code for this value
+    enum:
+      - EUR
+      - CHF
+      - USD
+      - RON
+      - PLN
+      - AUD
+      - GBP
+      - CAD
+      - SEK
+      - DKK
+      - NOK
+    x-stoplight:
+      id: rdlionv6zqon9
+  Option:
+    type: object
+    description: 'Some products have options to select, some of them will affect the unit price of it'
+    required:
+      - id
+      - type
+      - label
+    properties:
+      id:
+        type: string
+        description: The unique identifier for this option
+      type:
+        type: string
+        enum:
+          - text
+          - select
+        description: The type of this option (input field or combobox)
+      label:
+        type: string
+        description: The label of the form element that will be display to the customer
+      required:
+        type: boolean
+        description: 'If true, the customer is forced to select or insert something to the form element'
+        default: false
+      annotation:
+        type: string
+        description: 'A short text, that will be available by clicking a little questionmark on the productpage'
+      unitPriceModifier:
+        type: number
+        format: float
+        description: This property is only available if the type is text and show the amount in the shop's currency by that the price will change if something is inserted to the form field
+      values:
+        type: array
+        description: This property is only available if the type is select and will display the possible values to choose from
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The unique id of this value for this option (as in the shop system of the merchant)
+            unitPriceModifier:
+              type: number
+              format: float
+              description: This property shows the amount in the shop's currency by that the price will change if this option is selected
+            label:
+              type: string
+              description: The label of this value that should be showed to the customer
+    x-stoplight:
+      id: jwbim0w522z1d
+  Variants:
+    type: object
+    description: A collection of variant-data for one product
+    title: Variants
+    properties:
+      products:
+        type: array
+        description: List of variant values that identify the different variant products
+        items:
+          type: object
+          example:
+            id: 123
+            hasOptions: false
+            characteristics:
+              '1': '2'
+            stock:
+              ignoreQuantity: false
+              quantity: 1
+              available: true
+              info: Sofort lieferbar
+              orderable: true
+              minOrderQuantity: 0
+              maxOrderQuantity: 0
+            availability:
+              state: ok
+              text: its ok
+          properties:
+            id:
+              type: string
+              description: The product id of this variant
+            hasOptions:
+              type: boolean
+              description: 'A flag that determines if this variant has options too, that should be loadead on the detail page'
+            characteristics:
+              type: object
+              description: A list of characteristic values that uniquely identify this variant
+              additionalProperties:
+                type: string
+                description: The property key uniquely identifies the characteristic attribute (e.g. color or size) and the value identifies the value id (e.g. red or large)
+            stock:
+              $ref: '#/definitions/Stock'
+            availability:
+              $ref: '#/definitions/Availability'
+            metadata:
+              type:
+                - string
+                - object
+          required:
+            - id
+            - hasOptions
+            - stock
+            - availability
+      characteristics:
+        type: array
+        description: A list of the available characteristics of the variants of this product
+        items:
+          $ref: '#/definitions/Characteristic'
+    x-stoplight:
+      id: wfg5b4cdtlh50
+  Characteristic:
+    type: object
+    required:
+      - id
+      - label
+      - values
+    properties:
+      id:
+        type: string
+        description: The unique id of this characteristic
+      label:
+        type: string
+        description: 'The name that should be displayed to the customer, like "color" or "size"'
+      values:
+        type: array
+        description: 'A list of values for this characteristic, already sorted'
+        items:
+          type: object
+          required:
+            - id
+            - label
+          properties:
+            id:
+              type: string
+              description: The unique id of this value
+            label:
+              type: string
+              description: 'The label that should be display to the customer, like "red" or "xl"'
+    example:
+      id: '1'
+      label: Color
+      values:
+        - id: '2'
+          label: red
+    x-stoplight:
+      id: tqk2ajd40a764
+  ProductCharacteristics:
+    type: array
+    description: 'Special kind of characteristics which are directly label/value mappings for a certain product. Will only be applied, if the product is a variant.'
+    items:
+      - $ref: '#/definitions/BasicCharacteristic'
+    x-stoplight:
+      id: 4yaktpe16a38i
+  BasicCharacteristic:
+    type: object
+    description: Label/Value mapping of characteristic of a certain product.
+    properties:
+      id:
+        type: string
+        description: The id of the characteristic
+      label:
+        type: string
+        description: The label of the characteristic like 'size'
+      value:
+        type: string
+        description: The value of the characteristic like when label is 'size' the value could be 'xxl'
+    x-stoplight:
+      id: kzuo5mfi4ckdy
+  ProductProperties:
+    type: array
+    items:
+      $ref: '#/definitions/ProductProperty'
+    x-stoplight:
+      id: 7c8oqllediga0
+  ProductProperty:
+    type: object
+    properties:
+      label:
+        type: string
+        description: The label of this specific property that should be displayed to the customer
+      value:
+        type: string
+        description: The value of this specific property that should be displayed to the customer
+    example:
+      label: RAM
+      value: 16GB
+    x-stoplight:
+      id: qk7rtqvah5pr7
+  Stock:
+    type: object
+    properties:
+      info:
+        type: string
+        description: A custom text concerning stock (see available_text in old cake system)
+      orderable:
+        type: boolean
+        description: A boolean flag that determines if the product it orderable at all
+      quantity:
+        type: integer
+        format: int32
+        description: The amount of products that are available
+      maxOrderQuantity:
+        type: integer
+        format: int32
+        description: The maximum of amount of items that are orderable in one order
+      minOrderQuantity:
+        type: integer
+        format: int32
+        default: 1
+        description: The minimu amount of items that have to be ordered of this product
+      ignoreQuantity:
+        type: boolean
+        description: 'If true, this will allow the customer to buy more products than are available in stock'
+        default: true
+    x-stoplight:
+      id: wnusof4momef1
+  Availability:
+    type: object
+    properties:
+      text:
+        type: string
+        description: Text to describe the availability of this product
+      state:
+        type: string
+        description: 'A kind of flag, that describes the availability state of this product'
+        enum:
+          - ok
+          - warning
+          - alert
+    x-stoplight:
+      id: va654xev1rw4l
+  UnknownError:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EUNKNOWN
+            example: EUNKNOWN
+          message:
+            type: string
+            example: An internal error occured.
+    x-stoplight:
+      id: ecuxeaev887zz
+  ProductRelations:
+    title: ProductRelations
+    description: An array of `BasicProduct`.
+    type: array
+    items:
+      $ref: '#/definitions/BasicProduct'
+    x-stoplight:
+      id: ue5zwpps9re63

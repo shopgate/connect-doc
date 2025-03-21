@@ -920,8 +920,13 @@
         "items": [
           {
             "type": "item",
-            "title": "Product",
-            "uri": "static/shopgate-products.oas2.yml"
+            "title": "✅ Category",
+            "uri": "static/pipelines/shopgate-categories.oas2.yml"
+          },
+          {
+            "type": "item",
+            "title": "✅ Product",
+            "uri": "static/pipelines/shopgate-products.oas2.yml"
           },
           {
             "type": "item",
@@ -937,6 +942,11 @@
             "type": "item",
             "title": "User",
             "uri": "static/shopgate-user-pipelines.oas2.yml"
+          },
+          {
+            "type": "item",
+            "title": "✅ CMS",
+            "uri": "static/pipelines/shopgate-cms.oas2.yml"
           }
         ]
       },

@@ -4,122 +4,13 @@ x-stoplight:
 info:
   title: Shopgate Products Pipelines
   version: '1.1'
-  description: 
+  description: null
 basePath: /
 produces:
   - application/json
 consumes:
   - application/json
 paths:
-  /shopgate.cms.getPageConfig.v1:
-    post:
-      operationId: pipelines/shopgate.cms.getPageConfig.v1
-      summary: getPageConfig.v1
-      description: |
-        This pipeline returns the page configuration for one specific page, the ID of the page is passed through the pageId parameter.
-        The 'title' property is only set, if the particular page has a title.
-        The 'widgets' key holds an array of widget- or widget-grid-objects, that bring their own settings with them.
-      parameters:
-        - name: pageId
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              pageId:
-                type: string
-                description: 'The pageId of the page, the device wants to display.'
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            required:
-              - output
-            properties:
-              output:
-                properties:
-                  title:
-                    type: string
-                  widgets:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          description: 'The widget-type, like @shopgate/commerce-widgets/image-slider or @shopgate/commerce-widgets/widget-grid.'
-                        height:
-                          type: integer
-                          format: int32
-                          description: 'The number of rows, this widget uses inside the grid or widget-grid.'
-                        settings:
-                          type: object
-                          description: 'The widget-specific conguration data, every type has it''s own properties for this.'
-        EUNKNOWN:
-          description: An internal error occured.
-          schema:
-            $ref: '#/definitions/UnknownError'
-          examples:
-            application/json:
-              error:
-                code: EUNKNOWN
-                message: An internal error occured.
-      tags:
-        - CMS
-      x-stoplight:
-        id: biphyw9qkqssu
-  /shopgate.cms.getMenu.v1:
-    post:
-      operationId: pipelines/shopgate.cms.getMenu.v1
-      summary: getMenu.v1
-      description: |
-        This pipeline returns the additional entries for the service menu that will be shown, when clicking the hamburger icon in the android app or "More" on iOS.
-        When there are no entries available for that shop the entries property will contain an empty array.
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Id of the menu that is supposed to be fetched.
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            required:
-              - output
-            properties:
-              output:
-                properties:
-                  entries:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          description: 'Link to the page to be opened when the user clicks on the menu entry (only path, does not include the baseUrl)'
-                        label:
-                          type: string
-                          description: Name to be shown in the menu
-        EUNKNOWN:
-          description: An internal error occured.
-          schema:
-            $ref: '#/definitions/UnknownError'
-          examples:
-            application/json:
-              error:
-                code: EUNKNOWN
-                message: An internal error occured.
-      tags:
-        - CMS
-      x-stoplight:
-        id: gj1x5qiuttr5n
   /shopgate.catalog.getFilters.v1:
     post:
       operationId: pipelines/shopgate.catalog.getFilters.v1
@@ -201,209 +92,8 @@ paths:
               error:
                 code: EUNKNOWN
                 message: An internal error occured.
-      tags:
-        - Catalog
       x-stoplight:
         id: eksnp60u7fby4
-  /shopgate.catalog.getLiveshoppingProducts.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getLiveshoppingProducts.v1
-      summary: getLiveshoppingProducts.v1
-      description: |-
-        This pipeline will retrieve all products, that have a liveshopping timeframe. Not only active ones will be returned, but also the ones, which had such a timeframe in the past 7 days or will have one in the future. It's important for the frontend, to filter the products by active liveshopping.
-        The additional products are there, to enable the frontend to show what the customer had missed, to show a countdown like "will be cheaper in 15 minutes" or to create similar features
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            required:
-              - output
-            properties:
-              output:
-                properties:
-                  products:
-                    type: array
-                    items:
-                      $ref: '#/definitions/BasicProduct'
-          examples:
-            application/json:
-              output:
-                products:
-                  - id: string
-                    active: true
-                    availability:
-                      text: string
-                      state: ok
-                    identifiers:
-                      sku: string
-                      ean: string
-                      isbn: string
-                      upc: string
-                      pzn: string
-                      mpn: string
-                    manufacturer: string
-                    name: string
-                    stock:
-                      info: string
-                      orderable: true
-                      quantity: 0
-                      maxOrderQuantity: 0
-                      minOrderQuantity: 0
-                      ignoreQuantity: true
-                    rating:
-                      count: 0
-                      average: 0
-                      reviewCount: 0
-                    featuredImageUrl: string
-                    featuredImageBaseUrl: string
-                    price:
-                      tiers:
-                        - from: 0
-                          to: 0
-                          unitPrice: 0
-                      info: string
-                      unitPrice: 0
-                      unitPriceStriked: 0
-                      unitPriceMin: 0
-                      unitPriceMax: 0
-                      unitPriceNet: 0
-                      unitPriceWithTax: 0
-                      taxAmount: 0
-                      taxPercent: 0
-                      msrp: 0
-                      currency: USD
-                    flags:
-                      hasChildren: true
-                      hasVariants: true
-                      hasOptions: true
-                    liveshoppings:
-                      - from: '2017-11-11T00:00:00.000Z'
-                        to: '2017-11-11T23:59:59.999Z'
-                    highlight: true
-                    characteristics:
-                      - null
-                    type: simple
-                    tags:
-                      - string
-        EUNKNOWN:
-          description: An internal error occured.
-          schema:
-            $ref: '#/definitions/UnknownError'
-          examples:
-            application/json:
-              error:
-                code: EUNKNOWN
-                message: An internal error occured.
-      tags:
-        - Catalog
-      x-stoplight:
-        id: l9ko8pl70cdyt
-  /shopgate.catalog.getHighlightProducts.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getHighlightProducts.v1
-      summary: getHighlightProducts.v1
-      description: 'This pipeline will retrieve all products, that are "highlighted"'
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              offset:
-                type: integer
-                format: int32
-                minimum: 0
-                default: 0
-              limit:
-                type: integer
-                format: int32
-                minimum: 1
-                maximum: 100
-                default: 20
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            required:
-              - output
-            properties:
-              output:
-                properties:
-                  totalProductCount:
-                    type: integer
-                    format: int32
-                  products:
-                    type: array
-                    items:
-                      $ref: '#/definitions/BasicProduct'
-          examples:
-            application/json:
-              output:
-                totalProductCount: 0
-                products:
-                  - id: string
-                    active: true
-                    availability:
-                      text: string
-                      state: ok
-                    identifiers:
-                      sku: string
-                      ean: string
-                      isbn: string
-                      upc: string
-                      pzn: string
-                      mpn: string
-                    manufacturer: string
-                    name: string
-                    stock:
-                      info: string
-                      orderable: true
-                      quantity: 0
-                      maxOrderQuantity: 0
-                      minOrderQuantity: 0
-                      ignoreQuantity: true
-                    rating:
-                      count: 0
-                      average: 0
-                      reviewCount: 0
-                    featuredImageUrl: string
-                    featuredImageBaseUrl: string
-                    price:
-                      tiers:
-                        - from: 0
-                          to: 0
-                          unitPrice: 0
-                      info: string
-                      unitPrice: 0
-                      unitPriceStriked: 0
-                      unitPriceMin: 0
-                      unitPriceMax: 0
-                      unitPriceNet: 0
-                      unitPriceWithTax: 0
-                      taxAmount: 0
-                      taxPercent: 0
-                      msrp: 0
-                      currency: USD
-                    flags:
-                      hasChildren: true
-                      hasVariants: true
-                      hasOptions: true
-                    liveshoppings:
-                      - from: '2017-11-11T00:00:00.000Z'
-                        to: '2017-11-11T23:59:59.999Z'
-                    highlight: true
-                    characteristics:
-                      - null
-                    type: simple
-                    tags:
-                      - string
-      tags:
-        - Catalog
-      x-stoplight:
-        id: kaituzquxpo6p
   /shopgate.catalog.getProducts.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProducts.v1
@@ -493,192 +183,8 @@ paths:
                     type: simple
                     tags:
                       - string
-      tags:
-        - Catalog
       x-stoplight:
         id: qjjplbl1caizn
-  /shopgate.catalog.getCategoryChildren.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getCategoryChildren.v1
-      summary: getCategoryChildren.v1
-      description: This pipeline will retrieve the sub-categories of one specific category.
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            required:
-              - categoryId
-            properties:
-              categoryId:
-                type: string
-                description: The categoryId for which you want to retrieve children
-              sort:
-                type: string
-                enum:
-                  - nameAsc
-                  - nameDesc
-                  - relevance
-                default: relevance
-                description: 'How to sort the result, if you use relevance the merchants shopsystem or import will decide the order'
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            properties:
-              categories:
-                type: array
-                items:
-                  $ref: '#/definitions/Category'
-          examples:
-            application/json:
-              categories:
-                - id: cat41
-                  name: Category 41
-                  productCount: 229
-                  imageUrl: 'http://shopgate.cdn/category41.png'
-      tags:
-        - Catalog
-      x-stoplight:
-        id: eppre2hrq2gqi
-  /shopgate.catalog.getCategory.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getCategory.v1
-      summary: getCategory.v1
-      description: |
-        This pipeline will retrieve one specific category and, if "includeChildren" is set to true, it's
-        child categories. If it's set to false, the "children" property will be set to an empty array.
-        It will also add a property "parent", which holds the id and name of the parent category, of the
-        retrieved one.
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            required:
-              - categoryId
-            properties:
-              categoryId:
-                type: string
-                description: The categoryId of the category you want to retrieve
-              includeChildren:
-                type: boolean
-                default: false
-              childrenSort:
-                type: string
-                enum:
-                  - nameAsc
-                  - nameDesc
-                  - relevance
-                description: |
-                  If children are included, they will be sorted by this.
-                  If relevance is selected, the merchants shop system or import decides the order
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            properties:
-              category:
-                type: object
-                allOf:
-                  - $ref: '#/definitions/Category'
-                  - type: object
-                    required:
-                      - parent
-                    properties:
-                      parent:
-                        type: object
-                        description: |
-                          If the retrieved parent is not the root/default one, this will hold basic
-                          information about the parent category, of the retrieved one.
-                        properties:
-                          id:
-                            type: string
-                            description: The id of the parent category
-                          name:
-                            type: string
-                            description: The name of the parent category
-                      children:
-                        type: array
-                        description: 'If includeChildren is true, this property will hold the child categories of the retrieved one'
-                        items:
-                          $ref: '#/definitions/Category'
-                    example:
-                      parent:
-                        id: cat40
-                        name: Category 40
-                      children:
-                        - id: cat42
-                          name: Category 42
-                          productCount: 23
-                          imageUrl: 'http://shopgate.cdn/category42.png'
-          examples:
-            application/json:
-              category:
-                id: cat41
-                name: Category 41
-                productCount: 229
-                imageUrl: 'http://shopgate.cdn/category41.png'
-                parent:
-                  id: cat40
-                  name: Category 40
-                children:
-                  - id: cat42
-                    name: Category 42
-                    productCount: 23
-                    imageUrl: 'http://shopgate.cdn/category42.png'
-        EUNKNOWN:
-          description: An internal error occured.
-          examples: {}
-      tags:
-        - Catalog
-      x-stoplight:
-        id: c3x0j2nzdgi7w
-  /shopgate.catalog.getRootCategories.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getRootCategories.v1
-      summary: getRootCategories.v1
-      description: This pipeline is used to retrieve the root categories of the shop
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              sort:
-                type: string
-                enum:
-                  - nameAsc
-                  - nameDesc
-                  - relevance
-                default: relevance
-                description: 'How to sort the result, if relevance is selected, the merchants shop system or import decides the order'
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            properties:
-              categories:
-                type: array
-                items:
-                  $ref: '#/definitions/Category'
-          examples:
-            application/json:
-              categories:
-                - id: cat41
-                  name: Category 41
-                  productCount: 229
-                  imageUrl: 'http://shopgate.cdn/category41.png'
-      tags:
-        - Catalog
-      x-stoplight:
-        id: lz4ykgl2fu935
   /shopgate.catalog.getProduct.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProduct.v1
@@ -752,8 +258,6 @@ paths:
               type: simple
               tags:
                 - string
-      tags:
-        - Catalog
       x-stoplight:
         id: o49iyo96y29ny
   /shopgate.catalog.getProductsByIds.v1:
@@ -866,8 +370,6 @@ paths:
                     type: simple
                     tags:
                       - string
-      tags:
-        - Catalog
       x-stoplight:
         id: opr5jga22gvcc
   /shopgate.catalog.getProductsByCategory.v1:
@@ -978,8 +480,6 @@ paths:
                     type: simple
                     tags:
                       - string
-      tags:
-        - Catalog
       x-stoplight:
         id: 3kbrt0xgdkn9d
   /shopgate.catalog.getProductsBySearchPhrase.v1:
@@ -1088,8 +588,6 @@ paths:
                     type: simple
                     tags:
                       - string
-      tags:
-        - Catalog
       x-stoplight:
         id: z3ujr0gkcnpw1
   /shopgate.catalog.getProductImages.v1:
@@ -1122,7 +620,7 @@ paths:
                 - 'http://someCrazyUrl/image01.jpg'
                 - //someCrazyUrl/image02.jpg
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: kvll3keeun8b2
   /shopgate.catalog.getProductImages.v2:
@@ -1196,7 +694,7 @@ paths:
                     - 'https://product-image-1-url-with-applied-params-in-1024x1024'
                     - 'https://product-image-2-url-with-applied-params-in-1024x1024'
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: 4sz4cjev4e4ns
   /shopgate.catalog.getProductImages.v3:
@@ -1229,7 +727,7 @@ paths:
                 - 'http://someCrazyUrl/image01.jpg'
                 - //someCrazyUrl/image02.jpg
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: zmx4cjpxsmvnx
   /shopgate.catalog.getProductDescription.v1:
@@ -1252,7 +750,7 @@ paths:
             application/json:
               description: Some description
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: ijmwqjjo32y2n
   /shopgate.catalog.getProductShipping.v1:
@@ -1279,7 +777,7 @@ paths:
                 price: 0
                 currency: USD
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: zxfq4z832wsyn
   /shopgate.catalog.getProductPrice.v1:
@@ -1319,7 +817,7 @@ paths:
                 msrp: 0
                 currency: USD
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: vm8nx2q4szcqf
   /shopgate.catalog.getProductProperties.v1:
@@ -1343,7 +841,7 @@ paths:
                 - label: RAM
                   value: 16GB
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: qes6b4ujdlg7q
   /shopgate.catalog.getProductOptions.v1:
@@ -1377,7 +875,7 @@ paths:
                       unitPriceModifier: 0
                       label: string
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: zhf9phjgfa2io
   /shopgate.catalog.getProductChildren.v1:
@@ -1457,7 +955,7 @@ paths:
                   tags:
                     - string
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: 6wfaq5vqjtsah
   /shopgate.catalog.getProductVariants.v1:
@@ -1497,7 +995,7 @@ paths:
                     - id: '2'
                       label: red
       tags:
-        - Catalog
+        - Product Properties
       x-stoplight:
         id: x3yky9i33cxdm
   /shopgate.catalog.getSearchSuggestions.v1:
@@ -1531,7 +1029,7 @@ paths:
               suggestions:
                 - string
       tags:
-        - Catalog
+        - Search
       x-stoplight:
         id: 8wk8w2qiz57op
   /shopgate.catalog.getProductRelations.v1:
@@ -1852,7 +1350,7 @@ paths:
                     - elit adipisicing
                     - magna adipisicing ipsum
       tags:
-        - Catalog
+        - Product Properties
       parameters:
         - in: body
           name: body
