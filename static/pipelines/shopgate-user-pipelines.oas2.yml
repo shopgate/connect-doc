@@ -54,8 +54,6 @@ paths:
             type: object
         EUNKNOWN:
           description: Returns one or multiple error messages.
-      tags:
-        - User
       x-stoplight:
         id: ps7t54redal78
   /shopgate.user.logoutUser.v1:
@@ -70,8 +68,6 @@ paths:
             type: object
         EUNKNOWN:
           description: Returns one or multiple error messages.
-      tags:
-        - User
       parameters:
         - in: body
           name: body
@@ -113,8 +109,6 @@ paths:
           required: false
           schema:
             type: object
-      tags:
-        - User
       x-stoplight:
         id: kezmggmx7kf6l
   /shopgate.user.updateUser.v1:
@@ -145,8 +139,6 @@ paths:
           $ref: '#/definitions/ErrorUnauthorized'
         '500':
           $ref: '#/definitions/ErrorUnknown'
-      tags:
-        - User
       x-stoplight:
         id: juj46ymcbctng
   /shopgate.user.updateMail.v1:
@@ -179,8 +171,6 @@ paths:
           $ref: '#/definitions/ErrorUnauthorized'
         '500':
           $ref: '#/definitions/ErrorUnknown'
-      tags:
-        - User
       x-stoplight:
         id: 524kr0sjzkoo8
   /shopgate.user.updatePassword.v1:
@@ -221,8 +211,6 @@ paths:
           $ref: '#/definitions/ErrorValidation'
         '500':
           $ref: '#/definitions/ErrorUnknown'
-      tags:
-        - User
       x-stoplight:
         id: 58izxpu9x9x8u
   /shopgate.user.getAddresses.v1:
@@ -286,7 +274,7 @@ paths:
         '500':
           $ref: '#/definitions/ErrorUnknown'
       tags:
-        - User
+        - Address
       x-stoplight:
         id: fbcirfect8jho
   /shopgate.user.addAddress.v1:
@@ -327,7 +315,7 @@ paths:
         '500':
           $ref: '#/definitions/ErrorUnknown'
       tags:
-        - User
+        - Address
       x-stoplight:
         id: 02fcgtz8qmx59
   /shopgate.user.updateAddress.v1:
@@ -369,7 +357,7 @@ paths:
         '500':
           $ref: '#/definitions/ErrorUnknown'
       tags:
-        - User
+        - Address
       x-stoplight:
         id: 8374a0iehv941
   /shopgate.user.deleteAddresses.v1:
@@ -410,7 +398,7 @@ paths:
         '500':
           $ref: '#/definitions/ErrorUnknown'
       tags:
-        - User
+        - Address
       x-stoplight:
         id: qephl39d6p6ns
   /shopgate.user.getRegistrationUrl.v1:
@@ -435,124 +423,6 @@ paths:
             type: object
       x-stoplight:
         id: a7q5xu7ifbn8r
-  /shopgate.user.getFavorites.v1:
-    post:
-      operationId: pipelines/shopgate.user.getFavorites.v1
-      summary: getFavorites.v1
-      description: |-
-        This pipeline is used to retrieve the favorites of a user.
-        Favorites are the products, retrieved from `shopgate.catalog.getProducts.v1` pipeline, but can additionally contain metadata.
-      responses:
-        ok:
-          description: Successful response
-          schema:
-            type: object
-            required:
-              - products
-            properties:
-              products:
-                type: object
-                properties:
-                  metadata:
-                    type: object
-                  ...:
-                    allOf:
-                      - $ref: ./shopgate-products-pipleines.oas2.yml#/definitions/BasicProduct
-          examples:
-            application/json:
-              products:
-                - id: abc123
-                  metadata:
-                    metaPropKey: metaPropValue
-                  ...: all properties of BasicProduct
-        EUNKNOWN:
-          description: Returns one or multiple error messages.
-      tags:
-        - Favorites
-      parameters:
-        - in: body
-          name: body
-          schema:
-            type: object
-      x-stoplight:
-        id: upu8zz83nmg34
-  /shopgate.user.addFavorites.v1:
-    post:
-      operationId: pipelines/shopgate.user.addFavorites.v1
-      summary: addFavorites.v1
-      description: Adds favorites to the favorite list of the user. This pipeline is being used in Engage Theme versions 6.7.0 and higher.
-      responses:
-        ok:
-          description: Returns an empty object.
-          schema:
-            type: object
-        EUNKNOWN:
-          description: Returns one or multiple error messages.
-      tags:
-        - Favorites
-      parameters:
-        - in: body
-          name: body
-          schema:
-            $ref: '#/definitions/productId'
-          x-examples:
-            application/json:
-              productId: abc123
-      x-stoplight:
-        id: gbhtmw1bg0szu
-  /shopgate.user.deleteFavorites.v1:
-    post:
-      operationId: pipelines/shopgate.user.deleteFavorites.v1
-      summary: deleteFavorites.v1
-      description: This pipeline is used to remove favorites from a user’s favorite list. This pipeline is being used in Engage Theme versions 6.7.0 and higher. list.
-      responses:
-        ok:
-          description: Returns an empty object.
-          schema:
-            type: object
-        EUNKNOWN:
-          description: Returns one or multiple error messages.
-          schema:
-            $ref: '#/definitions/Message'
-      tags:
-        - Favorites
-      parameters:
-        - in: body
-          name: body
-          schema:
-            $ref: '#/definitions/productId'
-          x-examples:
-            application/json:
-              productId: abc123
-      x-stoplight:
-        id: 0ytgqcdhsu9nz
-  /shopgate.user.putFavorites.v1:
-    post:
-      operationId: pipelines/shopgate.user.putFavorites.v1
-      summary: putFavorites.v1
-      description: This pipeline is used to replace the user's favorite list for Engage Theme versions below 6.7.0. Theme versions 6.7.0 and higher use addFavorites and deleteFavorites instead.
-      responses:
-        ok:
-          description: Returns an empty object.
-          schema:
-            type: object
-        EUNKNOWN:
-          description: Returns one or multiple error messages.
-      tags:
-        - Favorites
-      parameters:
-        - in: body
-          name: body
-          schema:
-            $ref: '#/definitions/productIds'
-          x-examples:
-            application/json:
-              productIds:
-                - abc123
-                - def456
-                - ghi789-0
-      x-stoplight:
-        id: 5ue36p1jpwsi1
 definitions:
   UserGet:
     type: object

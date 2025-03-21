@@ -916,36 +916,41 @@
       },
       {
         "type": "group",
-        "title": "TODO Shopgate Pipelines",
+        "title": "✅ Shopgate Pipelines",
         "items": [
           {
             "type": "item",
-            "title": "✅ Category",
+            "title": "Category",
             "uri": "static/pipelines/shopgate-categories.oas2.yml"
           },
           {
             "type": "item",
-            "title": "✅ Product",
+            "title": "Product",
             "uri": "static/pipelines/shopgate-products.oas2.yml"
           },
           {
             "type": "item",
-            "title": "Cart",
-            "uri": "static/shopgate-cart-pipelines.oas2.yml"
+            "title": "Review",
+            "uri": "static/pipelines/shopgate-reviews-pipelines.oas2.yml"
           },
           {
             "type": "item",
-            "title": "Reviews",
-            "uri": "static/shopgate-reviews-pipelines.oas2.yml"
+            "title": "Cart",
+            "uri": "static/pipelines/shopgate-cart-pipelines.oas2.yml"
           },
           {
             "type": "item",
             "title": "User",
-            "uri": "static/shopgate-user-pipelines.oas2.yml"
+            "uri": "static/pipelines/shopgate-user-pipelines.oas2.yml"
           },
           {
             "type": "item",
-            "title": "✅ CMS",
+            "title": "Favorite",
+            "uri": "static/pipelines/shopgate-favorites-pipelines.oas2.yml"
+          },
+          {
+            "type": "item",
+            "title": "CMS",
             "uri": "static/pipelines/shopgate-cms.oas2.yml"
           }
         ]

@@ -1,0 +1,454 @@
+swagger: '2.0'
+x-stoplight:
+  id: afcx16ybgld8n
+info:
+  title: Shopgate User Pipelines
+  version: '1.0'
+  contact:
+    name: ''
+  description: 'This document specifies all the user pipelines, which are used by the default Shopgate iOS and Android themes. All following pipelines run in the ‘trusted’ zone.'
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /shopgate.user.getFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.getFavorites.v1
+      summary: getFavorites.v1
+      description: |-
+        This pipeline is used to retrieve the favorites of a user.
+        Favorites are the products, retrieved from `shopgate.catalog.getProducts.v1` pipeline, but can additionally contain metadata.
+      responses:
+        ok:
+          description: Successful response
+          schema:
+            type: object
+            required:
+              - products
+            properties:
+              products:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                  ...:
+                    allOf:
+                      - $ref: ./shopgate-products-pipleines.oas2.yml#/definitions/BasicProduct
+          examples:
+            application/json:
+              products:
+                - id: abc123
+                  metadata:
+                    metaPropKey: metaPropValue
+                  ...: all properties of BasicProduct
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      x-stoplight:
+        id: 4paquavol5vx7
+  /shopgate.user.addFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.addFavorites.v1
+      summary: addFavorites.v1
+      description: Adds favorites to the favorite list of the user. This pipeline is being used in Engage Theme versions 6.7.0 and higher.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productId'
+          x-examples:
+            application/json:
+              productId: abc123
+      x-stoplight:
+        id: saohob0o07587
+  /shopgate.user.deleteFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.deleteFavorites.v1
+      summary: deleteFavorites.v1
+      description: This pipeline is used to remove favorites from a user’s favorite list. This pipeline is being used in Engage Theme versions 6.7.0 and higher. list.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+          schema:
+            $ref: '#/definitions/Message'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productId'
+          x-examples:
+            application/json:
+              productId: abc123
+      x-stoplight:
+        id: il200p0ckhcle
+  /shopgate.user.putFavorites.v1:
+    post:
+      operationId: pipelines/shopgate.user.putFavorites.v1
+      summary: putFavorites.v1
+      description: This pipeline is used to replace the user's favorite list for Engage Theme versions below 6.7.0. Theme versions 6.7.0 and higher use addFavorites and deleteFavorites instead.
+      responses:
+        ok:
+          description: Returns an empty object.
+          schema:
+            type: object
+        EUNKNOWN:
+          description: Returns one or multiple error messages.
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/productIds'
+          x-examples:
+            application/json:
+              productIds:
+                - abc123
+                - def456
+                - ghi789-0
+      x-stoplight:
+        id: fr3bj4eedrag7
+definitions:
+  UserGet:
+    type: object
+    required:
+      - id
+      - mail
+    properties:
+      id:
+        type: string
+        description: Unique identifier for the user.
+        example: 123-456789
+      mail:
+        type: string
+        description: User's email address.
+        example: developer@shopgate.com
+      firstName:
+        type: string
+        description: User's first name.
+        example: John
+      lastName:
+        type: string
+        description: User's last name.
+        example: Doe
+      userGroups:
+        type: array
+        items:
+          $ref: '#/definitions/UserGroup'
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: x1n86r1gm7fp3
+  UserUpdate:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: 2sb2953f345y5
+  AddressAdd:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      street1:
+        type: string
+        example: 313 Bell Rd
+      street2:
+        type: string
+        example: Apt 44N
+      zipCode:
+        type: string
+        example: 85250-4121
+      city:
+        type: string
+        example: Phoenix
+      province:
+        type: string
+        example: AZ
+        description: Province code
+      country:
+        type: string
+        example: US
+        description: Country code
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+          - shipping
+          - billing
+          - default
+          - default_shipping
+          - default_billing
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: in8nzq3985scu
+  AddressGetAndUpdate:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        example: '123'
+      firstName:
+        type: string
+        example: John
+      lastName:
+        type: string
+        example: Doe
+      street1:
+        type: string
+        example: 313 Bell Rd
+      street2:
+        type: string
+        example: Apt 44N
+      zipCode:
+        type: string
+        example: 85250-4121
+      city:
+        type: string
+        example: Phoenix
+      province:
+        type: string
+        example: AZ
+        description: Province code
+      country:
+        type: string
+        example: US
+        description: Country code
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+          - shipping
+          - billing
+          - default
+          - default_shipping
+          - default_billing
+      customAttributes:
+        $ref: '#/definitions/CustomAttributes'
+    x-stoplight:
+      id: qlo5yjdip8lls
+  UserGroup:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        example: '1'
+      name:
+        type: string
+        example: VIP Group
+    x-stoplight:
+      id: 2sx4oiw4xgzwn
+  CustomAttributes:
+    type: object
+    example:
+      attribute1: value1
+      attribute2: value2
+    x-stoplight:
+      id: gepipt6ao0arb
+  ErrorRemoval:
+    description: Removing this entity is not allowed
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - ENOREMOVEDEFAULT
+            example: ENOREMOVEDEFAULT
+          message:
+            type: string
+            example: Cannot delete default address
+    x-stoplight:
+      id: y8dw9z2n3lnu5
+  ErrorUnauthorized:
+    description: Unauthorized user
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EACCESS
+            example: EACCESS
+          message:
+            type: string
+            example: Unauthorized user
+    x-stoplight:
+      id: 61wnu8v1qg6zp
+  ErrorValidation:
+    description: Validation error
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EVALIDATION
+            example: EVALIDATION
+          message:
+            type: string
+            example: There was an error with a request
+          validationErrors:
+            type: array
+            items:
+              type: object
+              properties:
+                path:
+                  type: string
+                  example: mail
+                message:
+                  type: string
+                  example: Invalid email address
+    x-stoplight:
+      id: k8wkwba8mq2si
+  ErrorInvalidCall:
+    description: Invalid data
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EINVALIDCALL
+            example: EINVALIDCALL
+          message:
+            type: string
+            example: Invalid data passed to the pipeline
+    x-stoplight:
+      id: 4hyl28h22xusg
+  ErrorUnknown:
+    description: Unknown error
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            type: string
+            enum:
+              - EUNKNOWN
+            example: EUNKNOWN
+          message:
+            type: string
+            example: An internal error occurred
+    x-stoplight:
+      id: pcepkuvetrlct
+  Message:
+    type: object
+    description: Message to be shown to the user
+    required:
+      - type
+      - message
+    properties:
+      type:
+        type: string
+        enum:
+          - error
+          - warning
+          - info
+        example: error
+      message:
+        type: string
+        example: Some error occured
+      code:
+        type: string
+        description: 'Message code, mapped within the extension. It can be used to react in a specific way or to allow for message translation.'
+        example: EUNKNOWN
+    title: Message
+    x-stoplight:
+      id: lga1zndd874ys
+  Url:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: URL
+        example: 'http://example.com/'
+      expires:
+        type: string
+        description: 'An optional date-time-string in the format ISO 8601 (YYYY-MM-DDTH:i:s.fZ). The URL does not expire if this field is not set. The returned timezone is always UTC (+00:00)'
+        example: '2017-12-31T23:59:59.999Z'
+    title: Url
+    x-stoplight:
+      id: o2mvr5abih57l
+  productId:
+    type: string
+    description: The ID of the product
+    example: abc123
+    maxLength: 255
+    title: productId
+    x-stoplight:
+      id: sbya33xsurlyy
+  productIds:
+    description: List of product IDs
+    title: productIds
+    type: array
+    items:
+      $ref: '#/definitions/productId'
+    x-stoplight:
+      id: zmg1du3uvo52m
+tags:
+  - name: User
