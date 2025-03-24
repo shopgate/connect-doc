@@ -87,7 +87,7 @@
     },
     {
       "type": "group",
-      "title": "✅ Technical Guides",
+      "title": "Technical Guides",
       "items": [
         {
           "type": "group",
@@ -180,7 +180,7 @@
     },
     {
       "type": "group",
-      "title": "✅  Tools",
+      "title": "Tools",
       "items": [
         {
           "type": "item",
@@ -196,7 +196,7 @@
     },
     {
       "type": "group",
-      "title": "✅ Commerce",
+      "title": "Commerce",
       "items": [
         {
           "type": "item",
@@ -286,11 +286,11 @@
 
     {
       "type": "divider",
-      "title": "Tutorials"
+      "title": "✅ Tutorials"
     },
     {
       "type": "group",
-      "title": "✅ Kickstart-Tutorials",
+      "title": "Kickstart-Tutorials",
       "items": [
         {
           "type": "group",
@@ -343,7 +343,7 @@
     },
     {
       "type": "group",
-      "title": "✅ Advanced Tutorials",
+      "title": "Advanced Tutorials",
       "items": [
         {
           "type": "item",
@@ -1077,7 +1077,7 @@
 
     {
       "type": "divider",
-      "title": "Support"
+      "title": "✅ Support"
     },
     {
       "type": "item",

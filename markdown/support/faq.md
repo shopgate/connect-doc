@@ -39,9 +39,9 @@ TabBar.hide() / TabBar.show()
 
 ## How can I get the device ID?
 
-In a backend step, the device ID can be obtained with `context.app.getInfo()`
+In a backend step, the device ID can be obtained with `context.app.getInfo()` (see step [app-info](../references/connect/extensions/steps/app-info.md))
 
-https://developer.shopgate.com/references/connect/extensions/steps/app-info
+
 
 
 ## Which of my extension components need to be identified in the extension configuration?
@@ -140,7 +140,7 @@ const FormWrapper = props => (
 ## How can I create a new page (custom route) in the app?
 
 Follow this guide to create a new page or a custom route in the app: 
-[Creating Custom Routes](markdown/guides/technical/engange/creating-custom-routes.md)
+[Creating Custom Routes](../guides/technical/engange/creating-custom-routes.md)
 
 ## Can I access the checkout or registration pages when viewing the app content in a browser?
 
@@ -233,7 +233,7 @@ const enterMyRouteSubscriptions = (subscribe) => {
 ````
 ## How can I set a constant that holds information that may be different for each merchant, like an API key that can be easily configured?
 
-The Connect system allows you to create configurations that can be set easily in the admin. Here is information on creating configurations for your extension: https://developer.shopgate.com/references/connect/extensions/configuration.
+The Connect system allows you to create configurations that can be set easily in the admin. Here is information on creating configurations for your extension: [Link](../references/connect/extensions/configuration.md)
 
 ## How do I add data to the redux store?
 
@@ -242,5 +242,5 @@ You need to create a reducer to add data to the redux store. The reducer is regi
 
 ## Can the backend of the extension store information, like a cart token, for later use?
 
-Yes. Here is information on backend storage: https://developer.shopgate.com/references/connect/extensions/steps/storage.
+Yes. Here is information on backend storage: [Link](../references/connect/extensions/steps/storage.md)
 
