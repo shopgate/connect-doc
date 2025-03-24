@@ -9,7 +9,7 @@ Before you begin this tutorial, complete the following tasks:
 
 - Review the fundamentals of the [React JavaScript library](https://reactjs.org). 
 - Create a [Shopgate Developer Account](https://developer.shopgate.com/admin/login).
-- Complete the Shopgate [Getting Started](https://developer.shopgate.com/introduction/getting-started) instructions.
+- Complete the Shopgate [Getting Started](../../introduction/index.md) instructions.
 - Complete the tutorial about portals.
 - Create a frontend extension with the Shopgate CONNECT SDK.
 
@@ -78,7 +78,7 @@ Because the library is included, you can begin connecting all events with the Go
 
 The BasePlugin provides a function to add listeners to multiple events: `this.register.<eventName>(callback)`.
 
-You can find the list of existing events [here](/references/engage/tracking-events).
+You can find the list of existing events [here](../../references/engage/tracking-events.md).
 
 In this tutorial describes how to integrate the `pageview` event.
 Add the following code to the end of the `initPlugin` function:
@@ -178,4 +178,4 @@ The tracker is now registered and receives events from the Shopgate Framework.
 
 The Google Analytics SDK needs the `property ID` to connect the SDK with your account.
 
-To configure this ID in the Merchant Admin, follow the guide on [extension configuration](markdown/guides/technical/connect/extension-configuration.md).
+To configure this ID in the Merchant Admin, follow the guide on [extension configuration](../../guides/technical/connect/extension-configuration.md).

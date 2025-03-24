@@ -343,11 +343,11 @@
     },
     {
       "type": "group",
-      "title": "🚧 Advanced Tutorials",
+      "title": "✅ Advanced Tutorials",
       "items": [
         {
           "type": "item",
-          "title": "✅ Integrate with an ECP",
+          "title": "Integrate with an ECP",
           "uri": "markdown/tutorials/advanced/ecp-integration.md"
         },
         {

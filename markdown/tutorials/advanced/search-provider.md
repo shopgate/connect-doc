@@ -38,7 +38,7 @@ The search integration contains the following search options:
 
 #### Provide the Pipeline to Fetch Filters
 
-The first step to integrate filters is to provide the following pipeline: [`shopgate.catalog.getFilters.v1`](https://developer.shopgate.com/references/connect/shopgate-pipelines/search/shopgate.catalog.getfilters.v1) . This pipeline returns available filters for a subset of products (such as products in a category, the result of a product search, or all products).
+The first step to integrate filters is to provide the following pipeline: [`shopgate.catalog.getFilters.v1`](../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getFilters.v1/post) . This pipeline returns available filters for a subset of products (such as products in a category, the result of a product search, or all products).
 
 To begin, create the file `shopgate.catalog.getFilters.v1.json` in the `pipelines` directory of the extension. Copy the following content into the `shopgate.catalog.getFilters.v1.json` file:
 ```json
@@ -76,7 +76,7 @@ To begin, create the file `shopgate.catalog.getFilters.v1.json` in the `pipeline
   }
 }
 ```
-These pipeline parameters follow the default Shopgate pipeline specification. The inputs are `categoryId` or `searchPhrase`. The app calls the pipeline with either both inputs or only one input set. The output is an object containing available filters. For the structure of the object, refer to ["getFilter" reference](/references/connect/shopgate-pipelines/search/shopgate.catalog.getfilters.v1).
+These pipeline parameters follow the default Shopgate pipeline specification. The inputs are `categoryId` or `searchPhrase`. The app calls the pipeline with either both inputs or only one input set. The output is an object containing available filters. For the structure of the object, refer to ["getFilter" reference](../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getFilters.v1/post).
 
 
 Next, add a step to the pipeline to perform the request to the search provider. Copy the following step definition to the `steps` array:
@@ -248,7 +248,7 @@ module.exports = async (context, input) => {
 ```
 
 ##### Extract the Filter Logic
-After the step requests the filter from CloudSearch, map the result to the predefined structure. For more information, see the [`getFilters` Pipeline reference](https://developer.shopgate.com/references/connect/shopgate-pipelines/search/shopgate.catalog.getfilters.v1).
+After the step requests the filter from CloudSearch, map the result to the predefined structure. For more information, see the [`getFilters` Pipeline reference](../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getFilters.v1/post).
 
 > **Note:** The logic to extract the filter strongly depends on the real data in the search engine. This tutorial does not show how the mapping is done.
 
@@ -937,7 +937,7 @@ Copy the following content into the file:
 ```
 
 #### Develop the Step Logic
-In this step, implement the step that fetches the search suggestions. The input of this step is the `searchPhrase`. Based on this value, it needs to return an array of suggestions. For more information, review the [`getFilters` Pipeline reference](https://developer.shopgate.com/references/connect/shopgate-pipelines/search/shopgate.catalog.getsearchsuggestions.v1).
+In this step, implement the step that fetches the search suggestions. The input of this step is the `searchPhrase`. Based on this value, it needs to return an array of suggestions. For more information, review the [`getFilters` Pipeline reference](../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getFilters.v1/post).
 
 Create the step file in the `extension` directory with the name `getSearchSuggestions.js`.
 Copy the following content into the file:
