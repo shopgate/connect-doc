@@ -4,7 +4,7 @@ This tutorial shows you how to perform an advanced integration of an e-commerce 
 
 ## Prerequisites
 
-You must complete the [Web Checkout integration](https://developer.shopgate.com/webcheckout) before performing an advanced integration.
+You must complete the [Web Checkout integration](../../guides/commerce/webcheckout/overview.md) before performing an advanced integration.
 
 The advanced ECP integration includes the following parts:
 
@@ -34,7 +34,7 @@ It should look like this:
 
 ### Implement Pipelines
 
-Implement the following pipelines: [getUser](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/shopgate.user.getuser.v1), [updateUser](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/shopgate.user.updateuser.v1), [updateMail](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/shopgate.user.updatemail.v1), [updatePassword](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/shopgate.user.updatepassword.v1).
+Implement the following pipelines: [getUser](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.getUser.v1/post), [updateUser](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.updateUser.v1/post), [updateMail](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.updateMail.v1/post), [updatePassword](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.updatePassword.v1/post).
 
 
 ### Examples
@@ -174,7 +174,7 @@ Here is an example JSON:
 
 ### Implement Pipelines
 
-Implement the following pipelines: [getAddresses](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/address/shopgate.user.getaddresses.v1), [addAddress](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/address/shopgate.user.addaddress.v1), [updateAddress](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/address/shopgate.user.updateaddress.v1), [deleteAddresses](https://developer.shopgate.com/references/connect/shopgate-pipelines/user/address/shopgate.user.deleteaddresses.v1).
+Implement the following pipelines: [getAddresses](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.getAddresses.v1/post), [addAddress](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.addAddress.v1/post), [updateAddress](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.updateAddress.v1/post), [deleteAddresses](../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.deleteAddresses.v1/post).
 
 ### Examples
 
@@ -189,7 +189,7 @@ The user can add any product to their favorites list from the product detail pag
 
 ### Implement Pipelines
 
-Overwrite the following pipelines: [getFavorites](https://developer.shopgate.com/references/connect/shopgate-pipelines/favorites/shopgate.user.getfavorites.v1), [addFavorites](https://developer.shopgate.com/references/connect/shopgate-pipelines/favorites/shopgate.user.addfavorites.v1), [deleteFavorites](https://developer.shopgate.com/references/connect/shopgate-pipelines/favorites/shopgate.user.deletefavorites.v1), [putFavorites](https://developer.shopgate.com/references/connect/shopgate-pipelines/favorites/shopgate.user.putfavorites.v1).
+Overwrite the following pipelines: [getFavorites](../../../static/pipelines/shopgate-favorites-pipelines.oas2.yml/paths/~1shopgate.user.getFavorites.v1/post), [addFavorites](../../../static/pipelines/shopgate-favorites-pipelines.oas2.yml/paths/~1shopgate.user.addFavorites.v1/post), [deleteFavorites](../../../static/pipelines/shopgate-favorites-pipelines.oas2.yml/paths/~1shopgate.user.deleteFavorites.v1/post), [putFavorites](../../../static/pipelines/shopgate-favorites-pipelines.oas2.yml/paths/~1shopgate.user.putFavorites.v1/post).
 
 The default pipelines read/write the favorite data to Shopgate Connect. The goal is to overwrite these pipelines and to read/write this data directly from/to the shop system. Thus, when the user opens the favorites list in the app, the getFavorites pipeline makes a request to the shop system and fetches the most recent list of products on this user's favorites list. When the user adds a product to the favorites list in the app, the addFavorites pipeline calls the shop system directly, and the product is added to the favorites list.
 
