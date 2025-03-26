@@ -7,7 +7,7 @@ The Search page contains search results.
 
 ## How to customize
 ### Portals
-The Search page offers a similar experience to the Category page. This is why it shares [Product List Item](/references/engage/portals/product-list-item) portals.
+The Search page offers a similar experience to the Category page. This is why it shares [Product List Item](../portals/product-list-item.md) portals.
 
 ## How to link
 You can link directly to the search page results.

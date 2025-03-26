@@ -31,7 +31,7 @@ import { getUserData } from '@shopgate/engage/user';
 ### Returns
 
 _(Object|null)_: The user data. If no user data is found, it returns `null`.
-> The user data will match the [getUser](/references/connect/shopgate-pipelines/user/shopgate.user.getuser.v1) pipeline response.
+> The user data will match the [getUser](../../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.getUser.v1/post) pipeline response.
 
 ---
 

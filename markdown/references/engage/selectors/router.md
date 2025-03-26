@@ -201,7 +201,7 @@ _(string|null)_: The search query. If nothing was found, it returns `null`.
 
 ## getCurrentState
 
-Retrieves the state of the current visible route from the store. A route state can be set via the `update` helper which is provided by the [useNavigation](/references/engage/hooks#usenavigation) hook.
+Retrieves the state of the current visible route from the store. A route state can be set via the `update` helper which is provided by the [useNavigation](../hooks.md#usenavigation) hook.
 
 ### Usage
 

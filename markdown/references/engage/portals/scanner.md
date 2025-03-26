@@ -38,4 +38,4 @@ stoplight-id: q9uftq5xc3lsy
 
 ## NavMenu entry (GMD only)
 
-See [NavMenu Portal Documentation](/references/engage/portals/navmenu#scanner-only-gmd)
+See [NavMenu Portal Documentation](navmenu.md#scanner-only-gmd)

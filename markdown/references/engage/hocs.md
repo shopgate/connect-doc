@@ -35,7 +35,7 @@ export default withTheme(MyReactComponent);
 
 The theme API containing theme specific styled React components.
 
-> You can find more detailed information about the components in the [Theme API documentation](/references/engage/theme).
+> You can find more detailed information about the components in the [Theme API documentation](theme/overview.md).
 
 ---
 
@@ -133,8 +133,8 @@ The navigation helper functions:
 
 | Name             | Parameters                                                                                                                                 | Description                                                                                        |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `historyPush`    | Receives the same arguments as the redux action.                                                                                           | Performs the [historyPush](/references/engage/actions/router#historypush) navigation action.       |
-| `historyPop`     | -                                                                                                                                          | Performs the [historyPop](/references/engage/actions/router#historypop) navigation action.         |
-| `historyReplace` | Receives the same arguments as the redux action.                                                                                           | Performs the [historyReplace](/references/engage/actions/router#historyreplace) navigation action. |
-| `historyReset`   | -                                                                                                                                          | Performs the [historyReset](/references/engage/actions/router#historyreset) navigation action.     |
+| `historyPush`    | Receives the same arguments as the redux action.                                                                                           | Performs the [historyPush](actions/router.md#historypush) navigation action.       |
+| `historyPop`     | -                                                                                                                                          | Performs the [historyPop](actions/router.md#historypop) navigation action.         |
+| `historyReplace` | Receives the same arguments as the redux action.                                                                                           | Performs the [historyReplace](actions/router.md#historyreplace) navigation action. |
+| `historyReset`   | -                                                                                                                                          | Performs the [historyReset](/actions/router.md#historyreset) navigation action.     |
 | `historyUpdate`  | - `state` *(Object)* __required__: The state to be updated on the desired Route.<br>- `routeId` *(string)*: The ID of the route to update. | Updates a certain (usually the current) route's meta state object with new data.                   |

@@ -7,7 +7,7 @@ The More page is a special iOS page which offers login/logout functionality, acc
 
 ## How to customize
 ### Portals
-Main portals available on the More page are listed on [NavMenu portals reference page](/references/engage/portals/navmenu).
+Main portals available on the More page are listed on [NavMenu portals reference page](../portals/navmenu.md).
 
 ## How to link
 ```jsx

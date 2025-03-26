@@ -6,7 +6,7 @@ stoplight-id: 88tg249mmrjse
 The Login page allows the user to either log in or to create a new account.
 
 ## How to customize
-Main portals available on Login page are listed on [Login Page portals reference page](/references/engage/portals/login-page).
+Main portals available on Login page are listed on [Login Page portals reference page](../portals/login-page.md).
 
 ## How to link
 ```jsx

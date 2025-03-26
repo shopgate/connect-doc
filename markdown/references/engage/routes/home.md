@@ -14,7 +14,7 @@ Shopgate Engage provides some widgets out of the box, but you can [create a cust
 - There is no need to redeploy the shop in order to update the content of a CMS or Index page.
 
 ### Portals
-Index page portals can be found on a [CMS portal documentation pages](/references/engage/portals/cms-pages)
+Index page portals can be found on a [CMS portal documentation pages](../portals/cms-pages.md)
 
 ## How to link
 ```jsx

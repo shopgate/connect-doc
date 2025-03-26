@@ -5,28 +5,28 @@ stoplight-id: 1onzpm2jid7hb
 # Routes
 Shopgate Engage supports many routes out of the box in order to provide a full e-commerce experience.
 
-You can customize these routes using [Portals](/references/engage/portals).
+You can customize these routes using [Portals](../portals/index.md).
 
-You cannot [register your custom route](/guides/technical/engage/creating-custom-routes) under a default pattern or path name. This would result in duplicated content - default and custom.
+You cannot [register your custom route](../../../guides/technical/engange/creating-custom-routes.md) under a default pattern or path name. This would result in duplicated content - default and custom.
 
 However, you can customize most of the default content. You can find more information about possible customizations on route pages.
 
 ## Default routes list
 
-- [Home page](/references/engage/routes/home)
-- [Category](/references/engage/routes/category)
-- [Search](/references/engage/routes/search)
-- [Category and Search Filter](/references/engage/routes/category-search-filter)
-- [Cart](/references/engage/routes/cart)
-- [Browse](/references/engage/routes/browse)
-- [Favorites](/references/engage/routes/favorites)
-- [Item](/references/engage/routes/item)
-- [Item Gallery](/references/engage/routes/item-gallery)
-- [Item Reviews](/references/engage/routes/item-reviews)
-- [Item Write Review](/references/engage/routes/item-write-review)
-- [Login](/references/engage/routes/login)
-- [More](/references/engage/routes/more)
-- [Scanner](/references/engage/routes/scanner)
+- [Home page](home.md)
+- [Category](category.md)
+- [Search](search.md)
+- [Category and Search Filter](category-search-filter.md)
+- [Cart](cart.md)
+- [Browse](browse.md)
+- [Favorites](favorites.md)
+- [Item](item.md)
+- [Item Gallery](item-gallery.md)
+- [Item Reviews](item-reviews.md)
+- [Item Write Review](item-write-review.md)
+- [Login](login.md)
+- [More](more.md)
+- [Scanner](scanner.md)
 
 ## All default routes pathname and patterns
 

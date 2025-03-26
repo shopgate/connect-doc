@@ -7,7 +7,7 @@ The Cart page shows the customer's items that were added to the cart. If there a
 
 ## How to customize
 ### Portals
-Main portals that can be found on Cart page are listed on [Cart portals reference page](/references/engage/portals/cart).
+Main portals that can be found on Cart page are listed on [Cart portals reference page](../portals/cart.md).
 
 ## How to link
 ```jsx

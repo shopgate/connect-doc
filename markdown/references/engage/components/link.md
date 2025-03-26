@@ -13,7 +13,7 @@ The `Link` component detects if the provided `href` prop is an internal or exter
 ## Usage
 
 ### Internal linking
-When your component links to any internal page provided by the theme, it is always best to use [Route Constants](/references/engage/routes).
+When your component links to any internal page provided by the theme, it is always best to use [Route Constants](../routes/overview.md).
 
 We recommend using path constants when linking to an internal page provided by an extension.
 
@@ -78,5 +78,5 @@ export default Component;
 | className | string | | Additional CSS class name |
 | disabled | bool | `false` | Whether component should appear disabled |
 | replace | bool | `false` | Whether onclick should replace current page (internal pages only) |
-| state | Object | `{}` | [Route state](/references/engage/actions/router) |
+| state | Object | `{}` | [Route state](../actions/router.md) |
 | tag | string | `div` | HTML tag used as a link wrapper |

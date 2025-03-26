@@ -8,9 +8,9 @@ Category route contains a list of shop categories and a product grid with infini
 ## How to customize content
 ### Portals
 Main portals that can be found on category pages are:
-- [Category](/references/engage/portals/category)
-- [Category List Item](/references/engage/portals/category-list-item)
-- [Product List Item](/references/engage/portals/product-list-item)
+- [Category](../portals/category.md)
+- [Category List Item](../portals/category-list-item.md)
+- [Product List Item](../portals/product-list-item.md)
 
 ## How to link
 ```jsx

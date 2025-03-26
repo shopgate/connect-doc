@@ -8,4 +8,4 @@ Category filter and search filter routes are theme internal routes and **MUST NO
 ## How to customize content
 ### Portals
 Portals available on the Filters page are:
-- [Filters](/references/engage/portals/filters)
+- [Filters](../portals/filters.md)

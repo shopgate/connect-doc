@@ -35,7 +35,7 @@ function MyReactComponent() {
 
 *(Object)* - The theme API containing theme specific, styled React components.
 
-> You can find more detailed information about the components in the [Theme API documentation](/references/engage/theme).
+> You can find more detailed information about the components in the [Theme API documentation](theme/overview.md).
 
 ---
 
@@ -61,7 +61,7 @@ function MyReactComponent() {
 }
 ```
 
-This example demonstrates how to get information about the current **pathname** and the **visibility** of the current route. This information can be used to control the render output of your component and is especially helpful for creating a **Custom Route**. You can find detailed instructions on [Creating Custom Routes](/guides/technical/engage/creating-custom-routes) in the Shopgate Guides section.
+This example demonstrates how to get information about the current **pathname** and the **visibility** of the current route. This information can be used to control the render output of your component and is especially helpful for creating a **Custom Route**. You can find detailed instructions on [Creating Custom Routes](../../guides/technical/engange/creating-custom-routes.md) in the Shopgate Guides section.
 
 ### Returns
 
@@ -133,8 +133,8 @@ function MyReactComponent() {
 
 | Name      | Parameters                                                                                                                                 | Description                                                                                        |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `push`    | Receives the same arguments as the redux action.                                                                                           | Performs the [historyPush](/references/engage/actions/router#historypush) navigation action.       |
-| `pop`     | -                                                                                                                                          | Performs the [historyPop](/references/engage/actions/router#historypop) navigation action.         |
-| `replace` | Receives the same arguments as the redux action.                                                                                           | Performs the [historyReplace](/references/engage/actions/router#historyreplace) navigation action. |
-| `reset`   | -                                                                                                                                          | Performs the [historyReset](/references/engage/actions/router#historyreset) navigation action.     |
+| `push`    | Receives the same arguments as the redux action.                                                                                           | Performs the [historyPush](actions/router.md#historypush) navigation action.       |
+| `pop`     | -                                                                                                                                          | Performs the [historyPop](actions/router.md#historypop) navigation action.         |
+| `replace` | Receives the same arguments as the redux action.                                                                                           | Performs the [historyReplace](actions/router.md#historyreplace) navigation action. |
+| `reset`   | -                                                                                                                                          | Performs the [historyReset](actions/router.md#historyreset) navigation action.     |
 | `update`  | - `state` *(Object)* __required__: The state to be updated on the desired Route.<br>- `routeId` *(string)*: The ID of the route to update. | Updates a certain (usually the current) route's meta state object with new data.                   |

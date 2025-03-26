@@ -41,7 +41,7 @@ import { getCartItems } from '@shopgate/engage/cart';
 ### Returns
 
 *(Array)*: The cart items as an array. If no items are found, it returns an empty array.
-> Cart items will match the `cartItems` from the [getCart](/references/connect/shopgate-pipelines/cart/shopgate.cart.getcart.v1) pipeline response.
+> Cart items will match the `cartItems` from the [getCart](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.getCart.v1/post) pipeline response.
 
 ---
 
@@ -66,7 +66,7 @@ import { getCartItemById } from '@shopgate/engage/cart';
 ### Returns
 
 *(Object|null)*: The cart item. If no item is found for the provided ID, the selector returns `null`.
-> The cart item will match the `cartItems` from the [getCart](/references/connect/shopgate-pipelines/cart/shopgate.cart.getcart.v1) pipeline response.
+> The cart item will match the `cartItems` from the [getCart](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.getCart.v1/post) pipeline response.
 
 ---
 
@@ -89,7 +89,7 @@ import { getCartProducts } from '@shopgate/engage/cart';
 ### Returns
 
 *(Array)*: An array of the products in the cart data. If no products are found, it returns an empty array .
-> Cart products will match the cartItems of `type` "product" from the [getCart](/references/connect/shopgate-pipelines/cart/shopgate.cart.getcart.v1) pipeline response.
+> Cart products will match the cartItems of `type` "product" from the [getCart](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.getCart.v1/post) pipeline response.
 
 ---
 
@@ -112,7 +112,7 @@ import { getCartCoupons } from '@shopgate/engage/cart';
 ### Returns
 
 *(Array)*: An array of the coupons in the cart. If no coupons are found, it returns  an empty array.
-> Cart coupons will match the cartItems of `type` "coupon" from the [getCart](/references/connect/shopgate-pipelines/cart/shopgate.cart.getcart.v1) pipeline response.
+> Cart coupons will match the cartItems of `type` "coupon" from the [getCart](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.getCart.v1/post) pipeline response.
 ---
 
 ## getCartProductCount
@@ -205,7 +205,7 @@ import { getOrderableStatus } from '@shopgate/engage/cart';
 
 ## getCurrency
 
-The cart data that is received from the [getCart](/references/connect/shopgate-pipelines/cart/shopgate.cart.getcart.v1) pipeline contains information about the currency used for the current cart. This selector retrieves the __currency code__ from that cart data in the store.
+The cart data that is received from the [getCart](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.getCart.v1/post) pipeline contains information about the currency used for the current cart. This selector retrieves the __currency code__ from that cart data in the store.
 
 ### Usage
 
@@ -319,7 +319,7 @@ import { getFlags } from '@shopgate/engage/cart';
 
 ## getAddToCartOptions
 
-Builds the data for the `options` property in the [addProducts](https://developer.shopgate.com/references/connect/shopgate-pipelines/cart/product/shopgate.cart.addproducts.v1) pipeline request payload.
+Builds the data for the `options` property in the [addProducts](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.addProducts.v1/post) pipeline request payload.
 
 ### Usage
 
@@ -343,7 +343,7 @@ import { getAddToCartOptions } from '@shopgate/engage/cart';
 
 ## getAddToCartMetadata
 
-Builds the data for the `metadata` property in the [addProducts](https://developer.shopgate.com/references/connect/shopgate-pipelines/cart/product/shopgate.cart.addproducts.v1) pipeline request payload.
+Builds the data for the `metadata` property in the [addProducts](../../../../static/pipelines/shopgate-cart-pipelines.oas2.yml/paths/~1shopgate.cart.addProducts.v1/post) pipeline request payload.
 
 ### Usage
 

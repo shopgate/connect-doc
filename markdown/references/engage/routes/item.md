@@ -7,7 +7,7 @@ The Item page contains all product information, with additional controls like `V
 
 ## How to customize content
 ### Portals
-Main portals that can be found on the Item page are listed on [Product Details portals reference page](/references/engage/portals/product-details).
+Main portals that can be found on the Item page are listed on [Product Details portals reference page](../portals/product-details.md).
 
 ### How to link
 You can link directly to a selected item using `productId` param. **Please note** that `productId` MUST be converted into a hex string in order to ensure URL-safe string usage.

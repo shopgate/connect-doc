@@ -5,11 +5,11 @@ stoplight-id: x29nnah5ktgu5
 # Item Gallery
 The Item Gallery page, just like the Category Filters page, is an internal route and **SHOULD NOT** be linked from the outside.
 
-The only exception when you should link to the Item Gallery page is when you want to do it on [Item route](/references/engage/routes/item). For example, by exchanging the entire `ProductImage` component rendered on the Item page. 
+The only exception when you should link to the Item Gallery page is when you want to do it on [Item route](item.md). For example, by exchanging the entire `ProductImage` component rendered on the Item page. 
 
-You can do that by using [`product.image`](/references/engage/portals/product-details) portal. This way, you can decide if you want to implement your own Image Gallery or link to an existing one.
+You can do that by using [`product.image`](../portals/product-details.md) portal. This way, you can decide if you want to implement your own Image Gallery or link to an existing one.
 
-This route expects that [Item route](/references/engage/routes/item) is right behind in the history stack. Linking to it from other pages might result in some unexpected problems with navigation.
+This route expects that [Item route](item.md) is right behind in the history stack. Linking to it from other pages might result in some unexpected problems with navigation.
 
 ## How to customize
 The Item Gallery page does not offer any page specific portals.

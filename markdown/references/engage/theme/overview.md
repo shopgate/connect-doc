@@ -8,8 +8,8 @@ Shopgate Engage comes with two different themes that are styled to match the fol
 
 ## Components
 
-* [AppBar](/references/engage/theme/app-bar)
-* [View](/references/engage/theme/view)
+* [AppBar](app-bar.md)
+* [View](view.md)
 * Drawer
 * ProductCard
 * ProductGrid

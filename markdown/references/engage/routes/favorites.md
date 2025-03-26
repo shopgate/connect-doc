@@ -9,7 +9,7 @@ May not be available, depending on shop configuration.
 
 ## How to customize
 ### Portals
-Main portals available on Favorites page are listed on [Favorites List portals reference page](/references/engage/portals/favorites-list).
+Main portals available on Favorites page are listed on [Favorites List portals reference page](../portals/favorites-list.md).
 
 ## How to link
 ```jsx

@@ -4,7 +4,7 @@ stoplight-id: l8d9no2n1ryl5
 
 # Tracking Events and Data
 
-This page lists all possible tracking events for which a tracking extension can register. Each event has a short description and an example of the data format required.  To learn more, refer to the Shopgate tutorial on [integrating a tracking provider](/tutorials/advanced/tracking-provider).
+This page lists all possible tracking events for which a tracking extension can register. Each event has a short description and an example of the data format required.  To learn more, refer to the Shopgate tutorial on [integrating a tracking provider](../../tutorials/advanced/tracking-provider.md).
 
 ## Table of Contents
 

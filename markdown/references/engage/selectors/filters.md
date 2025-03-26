@@ -30,7 +30,7 @@ import { getFiltersByHash } from '@shopgate/engage/filters';
 ### Returns
 
 *(Array|null)*: A collection of set filters. If there are no filters, it returns `null`.
-> Filters will match the filters from the [getFilters](/references/connect/shopgate-pipelines/search/shopgate.catalog.getfilters.v1) pipeline response.
+> Filters will match the filters from the [getFilters](../../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getFilters.v1/post) pipeline response.
 
 ---
 

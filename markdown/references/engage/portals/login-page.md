@@ -26,4 +26,4 @@ stoplight-id: hcuezy9cupb1b
 | `page.login.register-link` | Your components **replace** the register link component on the login page. |
 | `page.login.register-link.after` | Your components are shown **after** the register link component on the login page. |
 
-Note: If you only need to change the registration URL, consider overriding [shopgate.user.getRegistrationUrl.v1 pipeline](/references/connect/shopgate-pipelines/user/shopgate.user.getregistrationurl.v1)
+Note: If you only need to change the registration URL, consider overriding [shopgate.user.getRegistrationUrl.v1 pipeline](../../../../static/pipelines/shopgate-user-pipelines.oas2.yml/paths/~1shopgate.user.getRegistrationUrl.v1/post)

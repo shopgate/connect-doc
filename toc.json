@@ -371,7 +371,7 @@
     
 {
   "type": "group",
-  "title": "Engage",
+  "title": "✅ Engage",
   "items": [
     {
       "type": "group",
@@ -487,6 +487,11 @@
       "items": [
         {
           "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/engage/portals/index.md"
+        },
+        {
+          "type": "item",
           "title": "Appbar",
           "uri": "markdown/references/engage/portals/appbar.md"
         },
@@ -534,11 +539,6 @@
           "type": "item",
           "title": "General",
           "uri": "markdown/references/engage/portals/general.md"
-        },
-        {
-          "type": "item",
-          "title": "Index",
-          "uri": "markdown/references/engage/portals/index.md"
         },
         {
           "type": "item",
@@ -845,7 +845,7 @@
 },
     {
     "type": "group",
-    "title": "Connect",
+    "title": "🚧 Connect",
     "items": [
       {
         "type": "group",
@@ -983,7 +983,7 @@
       },
       {
         "type": "group",
-        "title": "Platform SDK",
+        "title": "✅ Platform SDK",
         "items": [
           {
             "type": "item",
@@ -1026,7 +1026,7 @@
     },
     {
       "type": "group",
-      "title": "TODO Cart Integration",
+      "title": "🚧 Cart Integration",
       "items": [
         {
           "type": "group",

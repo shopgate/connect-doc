@@ -7,7 +7,7 @@ The Browse page is a special iOS page that offers default search functionality (
 
 ## How to customize
 ### Portals
-Main portals available on Browse page are listed on [Browse portals reference page](/references/engage/portals/browse)
+Main portals available on Browse page are listed on [Browse portals reference page](../portals/browse.md)
 
 ## How to link
 ```jsx

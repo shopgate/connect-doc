@@ -61,7 +61,7 @@ import { getProductById } from '@shopgate/engage/product';
 
 *(Object|null)*: Returns the product data object from the store. If no product is found, it returns `null`.
 
-> Products will have the shape of entities from the [getProduct](/references/connect/shopgate-pipelines/product/shopgate.catalog.getproduct.v1) pipeline response.
+> Products will have the shape of entities from the [getProduct](../../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getProductsByIds.v1) pipeline response.
 
 ---
 
@@ -87,7 +87,7 @@ import { getProduct } from '@shopgate/engage/product'
 ### Returns
 
 *(Object|null)*: The product data. If no product is found, it returns `null`.
-> Products will have the shape of entities from the [getProduct](/references/connect/shopgate-pipelines/product/shopgate.catalog.getproduct.v1) pipeline response.
+> Products will have the shape of entities from the [getProduct](../../../../static/pipelines/shopgate-products.oas2.yml/paths/~1shopgate.catalog.getProductsByIds.v1) pipeline response.
 
 ---
 
@@ -574,7 +574,7 @@ import { getProductImages } from '@shopgate/engage/product'
 * `props` *(Object)* __required__: An object containing props.
   * `productId` *(string)*: The product ID to search for.
   * `variantId` *(string)*: The variant ID to search for.
-  * `formats` *(Array\<Object\>)*: The desired formats of the returned images (need the be requested via the [fetchProductImages](/references/engage/actions/product#fetchProductImages) action).
+  * `formats` *(Array\<Object\>)*: The desired formats of the returned images (need the be requested via the [fetchProductImages](../actions/product.md#fetchProductImages) action).
 
 ### Returns
 
