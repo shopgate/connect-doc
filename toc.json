@@ -845,7 +845,7 @@
 },
     {
     "type": "group",
-    "title": "🚧 Connect",
+    "title": "✅ Connect",
     "items": [
       {
         "type": "group",
@@ -942,7 +942,7 @@
       },
       {
         "type": "group",
-        "title": "✅ Shopgate Pipelines",
+        "title": "Shopgate Pipelines",
         "items": [
           {
             "type": "item",
@@ -983,7 +983,7 @@
       },
       {
         "type": "group",
-        "title": "✅ Platform SDK",
+        "title": "Platform SDK",
         "items": [
           {
             "type": "item",
