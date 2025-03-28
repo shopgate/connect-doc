@@ -21,8 +21,13 @@
         },
         {
           "type": "item",
-          "title": "Commerce integration",
+          "title": "DELETE Commerce integration",
           "uri": "markdown/introduction/shopgate-connect/commerce-integration.md"
+        },
+        {
+          "type": "item",
+          "title": "E-Commerce integration",
+          "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/ecommerce-integration.md"
         }
       ]
     },
