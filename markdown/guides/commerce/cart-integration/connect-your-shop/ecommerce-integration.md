@@ -48,7 +48,7 @@ Real-time-Updates via [API](https://docs.shopgate.com/docs/retail-red/276d02bcb3
 Requires JSON export as full import
 
 ### Basic Web-Checkout Integration  
-[Cart and user handling + checkout](../../webcheckout/overview.md) have been implemented
+[Cart and user handling, checkout and app communication](../../webcheckout/overview.md) have been implemented
 
 ### Order and Customer endpoints  
 Add [TODO endpoints](TODO) that provide required information for Shopgate to update the app dashboard  
