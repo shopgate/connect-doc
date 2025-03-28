@@ -1030,7 +1030,7 @@
       "items": [
         {
           "type": "group",
-          "title": "TODO Plugin API",
+          "title": "🚧 TODO Plugin API",
           "items": [
               {
                 "type": "item",
@@ -1052,7 +1052,7 @@
         // Removed merchant API, not relevant
         {
           "type": "group",
-          "title": "Catalog Feed Data",
+          "title": "✅ Catalog Feed Data",
           "items": [
             {
             "type": "item",

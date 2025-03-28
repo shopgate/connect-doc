@@ -925,7 +925,7 @@ What requirements does your interface need to fulfill in order to receive a Shop
 - **Allow us to help you** The Shopgate Cart Integration SDK already contains many basic functions delivered to you in a ready-made state with Shopgate responsible for the maintenance. If your interface uses PHP, it is the easiest way to ensure that it works properly.
 
 ### Contact
-You can contact our Technical Team via Ωe-mail at:
+You can contact our Technical Team via e-mail at:
 
 [support@shopgate.com](mailto:support@shopgate.com)
 
