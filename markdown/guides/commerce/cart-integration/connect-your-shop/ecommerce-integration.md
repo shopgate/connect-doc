@@ -66,7 +66,7 @@ Export of [XML](../../../../references/cart-integration/catalog-data-feed/review
 Full Feature Set, full files only, one file per local, import max. once per hour
 
 Third Party Review Source (via Extension)  
-In case your reviews are managed by an some third party provider, you can either check for already available integrations with our support team or implement your own extension by overriding/extending the review [pipelines](../../../../../static/pipelines/shopgate-reviews-pipelines.oas2.yml) or [TODOload new content](url) inside the app.
+In case your reviews are managed by an some third party provider, you can either check for already available integrations with our support team or implement your own extension by overriding/extending the review [pipelines](../../../../../static/pipelines/shopgate-reviews-pipelines.oas2.yml) or [TODOload external/new content](url) inside the app.
 
 ### Favorite List Sync  
 Allow your customers [favorite list(s)](https://docs.shopgate.com/docs/connect-doc/988df8d7e72a6-tutorial-how-to-perform-an-advanced-ecp-integration#syncing-the-favorites-list) to be in sync with your ecommerce platform. Otherwise they are saved only in the Shopgate system.  
