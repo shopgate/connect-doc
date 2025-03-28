@@ -7,6 +7,9 @@ Please be aware that Shopgate APIs and imports are designed for fair usage. Plea
 
 If you're looking for a guidance which way you should use to i.e. implement the export, please contact our support. We also offer standard integrations for many major e-commerce platforms like Shopify, Shopware or Adobe/Magento.
 
+![Highlevel Integration Overview](../../../../../assets/integration-overview.png)
+
+
 ## Minimum Requirements
 
 In order to allow your customers to browse and buy products inside the app, these steps need to be completed:
