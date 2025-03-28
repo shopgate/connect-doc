@@ -76,8 +76,7 @@ Open user profile pages in webshop
 
 or  
 
-Build native profile pages inside the app  
-../../../../tutorials/advanced/ecp-integration.md
+[Build native profile pages inside the app  ](../../../../tutorials/advanced/ecp-integration.md)
 
 **Allow app only offers**
 Allow your marketing users to create app only offers like coupons
