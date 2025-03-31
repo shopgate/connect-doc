@@ -9,7 +9,7 @@
  following software on your machine:
 
 
- * [Node.js](https://nodejs.org/) (Version 8.4 or higher)
+ * [Node.js](https://nodejs.org/) (Version 12)
  * [Git](https://git-scm.com/)
 
 

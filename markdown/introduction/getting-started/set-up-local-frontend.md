@@ -59,9 +59,3 @@ title: Set Up Local Frontend
  *Note: The port is set to 8080 by default. If you
  changed the port during setup, you need to use the new
  port to access the development server URL.*
-
-
->**Next:**
->
-> [Test with Cloud Flight](test-with-cloud-flight.md)  
-or continue with our [Kick-start Tutorials](../../tutorials/starter/hello-world/overview.md)

@@ -17,7 +17,3 @@ The CONNECT platform SDK helps you to develop extensions and themes on your loca
 
 
 The Cloud Flight testing app provides a convenient way to test any deployed or locally running application on a native device. This functionality works for staging deployments and simplifies the release process.
-
->**Next:**
->
->[Commerce Integration](commerce-integration.md)

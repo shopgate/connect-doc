@@ -91,8 +91,3 @@ title: Test With Cloud Flight
  the Merchant admin area. The preview app requires the shop to be deployed
  with all extensions in order to test everything together.
  For the development process, it is easier to work with the Cloud Flight app.
-
-
->**Next:**
->
->Continue with our [Kick-start Tutorials](../../tutorials/starter/hello-world/overview.md)
