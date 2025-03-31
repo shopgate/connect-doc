@@ -11,27 +11,21 @@
       "uri": "markdown/introduction/index.md"
     },
     {
-      "type": "group",
-      "title": "What is Shopgate Connect",
-      "items": [
-        {
           "type": "item",
           "title": "Development Process",
           "uri": "markdown/introduction/shopgate-connect/development-process.md"
         },
-        {
-          "type": "item",
-          "title": "DELETE Commerce integration",
-          "uri": "markdown/introduction/shopgate-connect/commerce-integration.md"
-        },
-        {
-          "type": "item",
-          "title": "E-Commerce integration",
-          "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/ecommerce-integration.md"
-        }
-      ]
-    },
+    
     {
+          "type": "item",
+          "title": "App Architecture",
+          "uri": "markdown/introduction/connect-architecture/app-architecture.md"
+        },
+    {
+    "type": "item",
+    "title": "Platform SDK",
+    "uri": "markdown/guides/tools/platform-sdk.md"
+  },{
       "type": "group",
       "title": "Getting Started",
       "items": [
@@ -52,37 +46,6 @@
         }
       ]
     },
-    {
-      "type": "group",
-      "title": "Connect Architecture",
-      "items": [
-        {
-          "type": "item",
-          "title": "App Architecture",
-          "uri": "markdown/introduction/connect-architecture/app-architecture.md"
-        },
-        {
-          "type": "item",
-          "title": "Infrastructure Overview",
-          "uri": "markdown/introduction/connect-architecture/infrastructure-overview.md"
-        },
-        {
-          "type": "item",
-          "title": "Backend Communication",
-          "uri": "markdown/introduction/connect-architecture/backend-communication.md"
-        },
-        {
-          "type": "item",
-          "title": "Extending Your App",
-          "uri": "markdown/introduction/connect-architecture/extending-your-app.md"
-        }
-      ]
-    },
-    {
-    "type": "item",
-    "title": "Platform SDK",
-    "uri": "markdown/guides/tools/platform-sdk.md"
-  },
 
 
 
@@ -158,10 +121,6 @@
         }
       ]
     },
-    {
-      "type": "group",
-      "title": "Technical Guides",
-      "items": [
         {
           "type": "group",
           "title": "Shopping App Frontend",
@@ -248,8 +207,6 @@
               "uri": "markdown/guides/technical/connect/step-insertion.md"
             }
           ]
-        }
-      ]
     },
     {
       "type": "group",
@@ -257,53 +214,8 @@
       "items": [
         {
           "type": "item",
-          "title": "Existing Interfaces",
-          "uri": "markdown/guides/commerce/existing-interfaces.md"
-        },
-        {
-          "type": "group",
-          "title": "Cart Integration",
-          "items": [
-            {
-              "type": "group",
-              "title": "Connect Your Shop",
-              "items": [
-                {
-                  "type": "item",
-                  "title": "Quickstart",
-                  "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/quickstart.md"
-                },
-                {
-                  "type": "item",
-                  "title": "Full Requirements",
-                  "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/full-requirements.md"
-                }
-              ]
-            },
-            // Moved to references
-            // Remove Merchant API, not relevant anymore
-            // Remove Catalog Data Feed, this content is already in references
-            {
-              "type": "item",
-              "title": "Plugin API",
-              "uri": "markdown/guides/commerce/cart-integration/plugin-api.md"
-            },
-            {
-              "type": "item",
-              "title": "Cart Integration SDK",
-              "uri": "markdown/guides/commerce/cart-integration/cart-integration-sdk.md"
-            },
-            {
-              "type": "item",
-              "title": "Example Plugin",
-              "uri": "markdown/guides/commerce/cart-integration/example-plugin.md"
-            },
-            {
-              "type": "item",
-              "title": "Mobile Redirect",
-              "uri": "markdown/guides/commerce/cart-integration/mobile-redirect.md"
-            }
-          ]
+          "title": "E-Commerce Integration Checklist",
+          "uri": "markdown/guides/commerce/cart-integration/connect-your-shop/ecommerce-integration.md"
         },
         {
           "type": "group",
