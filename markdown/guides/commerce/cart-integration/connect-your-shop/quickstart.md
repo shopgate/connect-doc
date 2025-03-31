@@ -62,6 +62,7 @@ class ShopgatePluginMyShoppingSystem extends ShopgatePlugin {
 >automatically when you extend the existing
 >class `ShopgatePlugin`.
 
+
 ## Step 3 - Create an API endpoint
 
 

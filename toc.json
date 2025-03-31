@@ -3,7 +3,7 @@
   "items": [
     {
       "type": "divider",
-      "title": "✅ Introduction"
+      "title": "Introduction"
     },
     {
       "type": "item",
@@ -78,6 +78,11 @@
         }
       ]
     },
+    {
+    "type": "item",
+    "title": "Platform SDK",
+    "uri": "markdown/guides/tools/platform-sdk.md"
+  },
 
 
 
@@ -88,7 +93,70 @@
 
     {
       "type": "divider",
-      "title": "✅ Guides"
+      "title": "Guides"
+    },
+        {
+      "type": "group",
+      "title": "Extension-Tutorials",
+      "items": [
+        {
+          "type": "group",
+          "title": "Hello World",
+          "items": [
+            {
+              "type": "item",
+              "title": "Overview",
+              "uri": "markdown/tutorials/starter/hello-world/overview.md"
+            },
+            {
+              "type": "item",
+              "title": "1. Create first extension",
+              "uri": "markdown/tutorials/starter/hello-world/part-1.md"
+            },
+            {
+              "type": "item",
+              "title": "2. Build first pipeline",
+              "uri": "markdown/tutorials/starter/hello-world/part-2.md"
+            },
+            {
+              "type": "item",
+              "title": "3. Modify existing pipelines",
+              "uri": "markdown/tutorials/starter/hello-world/part-3.md"
+            },
+            {
+              "type": "item",
+              "title": "4. Interact with storage",
+              "uri": "markdown/tutorials/starter/hello-world/part-4.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Loyalty Points",
+          "items": [
+            {
+              "type": "item",
+              "title": "1. Backend part",
+              "uri": "markdown/tutorials/starter/loyalty-points/backend.md"
+            },
+            {
+              "type": "item",
+              "title": "2. Frontend part",
+              "uri": "markdown/tutorials/starter/loyalty-points/frontend.md"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "title": "Integrate Search Provider",
+          "uri": "markdown/tutorials/advanced/search-provider.md"
+        },
+        {
+          "type": "item",
+          "title": "Integrate Tracking Provider",
+          "uri": "markdown/tutorials/advanced/tracking-provider.md"
+        }
+      ]
     },
     {
       "type": "group",
@@ -96,7 +164,7 @@
       "items": [
         {
           "type": "group",
-          "title": "Engage",
+          "title": "Shopping App Frontend",
           "items": [
             {
               "type": "item",
@@ -152,7 +220,7 @@
         },
         {
           "type": "group",
-          "title": "Connect",
+          "title": "Shopping App Backend",
           "items": [
             {
               "type": "item",
@@ -180,22 +248,6 @@
               "uri": "markdown/guides/technical/connect/step-insertion.md"
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "title": "Tools",
-      "items": [
-        {
-          "type": "item",
-          "title": "Platform SDK",
-          "uri": "markdown/guides/tools/platform-sdk.md"
-        },
-        {
-          "type": "item",
-          "title": "Cloud Flight",
-          "uri": "markdown/guides/tools/cloud-flight.md"
         }
       ]
     },
@@ -272,6 +324,11 @@
               "title": "Steps to integrate",
               "uri": "markdown/guides/commerce/webcheckout/steps-to-integrate.md"
             },
+             {
+              "type": "item",
+              "title": "Sync user data",
+              "uri": "markdown/tutorials/advanced/ecp-integration.md"
+            },
             {
               "type": "item",
               "title": "Web Checkout API",
@@ -281,92 +338,7 @@
         }
       ]
     },
-    
 
-
-
-
-
-
-
-    {
-      "type": "divider",
-      "title": "✅ Tutorials"
-    },
-    {
-      "type": "group",
-      "title": "Kickstart-Tutorials",
-      "items": [
-        {
-          "type": "group",
-          "title": "Hello World",
-          "items": [
-            {
-              "type": "item",
-              "title": "Overview",
-              "uri": "markdown/tutorials/starter/hello-world/overview.md"
-            },
-            {
-              "type": "item",
-              "title": "1. Create first extension",
-              "uri": "markdown/tutorials/starter/hello-world/part-1.md"
-            },
-            {
-              "type": "item",
-              "title": "2. Build first pipeline",
-              "uri": "markdown/tutorials/starter/hello-world/part-2.md"
-            },
-            {
-              "type": "item",
-              "title": "3. Modify existing pipelines",
-              "uri": "markdown/tutorials/starter/hello-world/part-3.md"
-            },
-            {
-              "type": "item",
-              "title": "4. Interact with storage",
-              "uri": "markdown/tutorials/starter/hello-world/part-4.md"
-            }
-          ]
-        },
-        {
-          "type": "group",
-          "title": "Loyalty Points",
-          "items": [
-            {
-              "type": "item",
-              "title": "1. Backend part",
-              "uri": "markdown/tutorials/starter/loyalty-points/backend.md"
-            },
-            {
-              "type": "item",
-              "title": "2. Frontend part",
-              "uri": "markdown/tutorials/starter/loyalty-points/frontend.md"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "title": "Advanced Tutorials",
-      "items": [
-        {
-          "type": "item",
-          "title": "Integrate with an ECP",
-          "uri": "markdown/tutorials/advanced/ecp-integration.md"
-        },
-        {
-          "type": "item",
-          "title": "Integrate Search Provider",
-          "uri": "markdown/tutorials/advanced/search-provider.md"
-        },
-        {
-          "type": "item",
-          "title": "Integrate Tracking Provider",
-          "uri": "markdown/tutorials/advanced/tracking-provider.md"
-        }
-      ]
-    },
 
 
     {
@@ -376,7 +348,7 @@
     
 {
   "type": "group",
-  "title": "✅ Engage",
+  "title": "Shopping App Frontend",
   "items": [
     {
       "type": "group",
@@ -850,7 +822,7 @@
 },
     {
     "type": "group",
-    "title": "✅ Connect",
+    "title": "Shopping App Backend",
     "items": [
       {
         "type": "group",
@@ -1031,58 +1003,30 @@
     },
     {
       "type": "group",
-      "title": "🚧 Cart Integration",
+      "title": "Catalog Feed Data",
       "items": [
         {
-          "type": "group",
-          "title": "🚧 TODO Plugin API",
-          "items": [
-              {
-                "type": "item",
-                "title": "Overview",
-                "uri": "markdown/references/cart-integration/plugin-api/overview.md"
-              },
-              {
-                "type": "item",
-                "title": "Authentification",
-                "uri": "markdown/references/cart-integration/plugin-api/authentication.md"
-              },
-              {
-                "type": "item",
-                "title": "TODO the actual routes",
-                "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
-              }
-          ]
+        "type": "item",
+        "title": "Category XML",
+        "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
         },
-        // Removed merchant API, not relevant
         {
-          "type": "group",
-          "title": "✅ Catalog Feed Data",
-          "items": [
-            {
-            "type": "item",
-            "title": "Category XML",
-            "uri": "markdown/references/cart-integration/catalog-data-feed/category-xml.md"
-            },
-            {
-            "type": "item",
-            "title": "Product XML",
-            "uri": "markdown/references/cart-integration/catalog-data-feed/product-xml.md"
-            },
-            {
-            "type": "item",
-            "title": "Review XML",
-            "uri": "markdown/references/cart-integration/catalog-data-feed/review-xml.md"
-            }
-          ]          
+        "type": "item",
+        "title": "Product XML",
+        "uri": "markdown/references/cart-integration/catalog-data-feed/product-xml.md"
+        },
+        {
+        "type": "item",
+        "title": "Review XML",
+        "uri": "markdown/references/cart-integration/catalog-data-feed/review-xml.md"
         }
-      ]
+      ]          
     },
 
 
     {
       "type": "divider",
-      "title": "✅ Support"
+      "title": "Support"
     },
     {
       "type": "item",
