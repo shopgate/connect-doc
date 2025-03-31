@@ -46,7 +46,7 @@ To communicate with the native parts of the app, a
  the backend infrastructure. The backend is based on
  micro-service architecture.
 
-# Backend Communication
+## Backend Communication
 
 
  You invoke actions and receive data from the backend
@@ -85,7 +85,7 @@ For example, the image shows the getProduct pipeline.
  gives you the option to extend or replace all
  functionality with custom extensions.
 
- # Extending Your App
+## Extending Your App
 
 
 You can customize the frontend UI and the backend of
@@ -113,7 +113,7 @@ For example, the getProduct pipeline contains a step to
  a bonus point extension to add the number of bonus
  points.
 
- # Infrastructure Overview
+## Infrastructure Overview
 
 
  The Shopgate CONNECT backend consists of a microservice
