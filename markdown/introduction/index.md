@@ -5,35 +5,22 @@ stoplight-id: mky882ah9v3ig
 # Introduction
 
 
-Welcome to Shopgate CONNECT, the complete app development platform!
+Welcome to Shopgate, the most flexible development platform for mobile shopping apps!
 
-## What is Shopgate CONNECT?
-
-
-The Shopgate CONNECT platform is a cloud-based environment you use to develop and deploy mobile shopping applications.
+![shopping_apps.png](../../assets/shopping_apps.png)
 
 
+
+## What is Shopgate?
+
+The Shopgate platform is a cloud-based environment you use to develop and deploy mobile shopping applications. You can use this guide to begin developing for the Shopgate platform.
+
+
+* [App Architecture](connect-architecture/app-architecture.md)
 * [Development Process](shopgate-connect/development-process.md)
-* [Commerce Integration](shopgate-connect/commerce-integration.md)
-
-
-## Getting Started
-
-
-You can use this guide to begin developing for the Shopgate CONNECT platform.
-
-
+* [Platform SDK](../guides/tools/platform-sdk.md)
 * [Set Up environment](getting-started/set-up-environment.md)
 * [Set Up Local Frontend](getting-started/set-up-local-frontend.md)
 * [Test with Cloud Flight](getting-started/test-with-cloud-flight.md)
+* [Ecommerce Integration](../guides/commerce/cart-integration/connect-your-shop/ecommerce-integration.md)
 
-
-## CONNECT Architecture
-
-
-You can use this guide to learn about the frontend and backend of the Shopgate CONNECT app.
-
-* [App Architecture](connect-architecture/app-architecture.md)
-* [Infrastructure Overview](connect-architecture/infrastructure-overview.md)
-* [Backend Communication](connect-architecture/backend-communication.md)
-* [Extending Your App](connect-architecture/extending-your-app.md)
