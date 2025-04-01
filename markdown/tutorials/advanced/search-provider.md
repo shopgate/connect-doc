@@ -1,13 +1,13 @@
 # Tutorial: How to integrate a search provider
 
-This tutorial shows you how to integrate a new product search provider into your Shopgate Connect application. This example uses the search provider `Amazon Cloudsearch.`
+This tutorial shows you how to integrate a new product search provider into your Shopgate  application. This example uses the search provider `Amazon Cloudsearch.`
 
 ## Prerequisites
 Before beginning this tutorial, complete the following tasks:
 
 - Create a [Shopgate Developer Account](https://developer.shopgate.com/admin/login).
 - Complete the Shopgate [Getting Started](../../introduction/getting-started/set-up-environment.md) instructions.
-- Create a new backend extension with the Shopgate Connect SDK.
+- Create a new backend extension with the Shopgate Platform SDK.
 - Optional: Complete [Hello World Tutorial](../starter/hello-world/overview.md)
 
 ## Pipelines
