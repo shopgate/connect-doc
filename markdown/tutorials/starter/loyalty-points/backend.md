@@ -1,4 +1,4 @@
-# Tutorial -- Loyalty Points Backend
+# Tutorial - Loyalty Points Backend
 
 You can use this tutorial to create a new Shopgate Connect extension that adds an additional property to the standard product response. In this tutorial, the additional property represents the number of loyalty points a customer can earn by buying a specific product. You will extend the existing `shopgate.catalog.getProducts.v1` and `shopgate.catalog.getProduct.v1` pipelines.
 
