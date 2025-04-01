@@ -4,7 +4,7 @@
  ## Prerequisites
 
 
- Before you start with Shopgate CONNECT, make sure you
+ Before you start with Shopgate, make sure you
  have **created a Developer Account**. Then, install the
  following software on your machine:
 
@@ -22,10 +22,10 @@
  * [Redux](https://redux.js.org/) (optional, for data handling), [Tutorial on egghead.io](https://egghead.io/courses/getting-started-with-redux)
 
 
- ## Install the Shopgate CONNECT Platform SDK
+ ## Install the Shopgate Platform SDK
 
 
- The Shopgate CONNECT Platform SDK is based on
+ The Shopgate Platform SDK is based on
  [Node.js](https://nodejs.org/). The Shopgate CONNECT
  Platform SDK requires Node.js version 8.4 or later
  installed on your developer machine.
