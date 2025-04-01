@@ -89,8 +89,8 @@ Allow your marketing users to create app only offers like coupons or automatic d
 ### Webcheckout 
 Check our Shopware 6 Webcheckout integration as an example integration:  
 Endpoints on shop-side: https://github.com/shopgate/shopware6-webcheckout  
-Utilities Extension: TODO  
-User Extension: TODO  
-Cart Extension: TODO  
-Favorites Extension: TODO  
-Web-Account Extension (link to i.e. order history): TODO
+Utilities Extension: https://github.com/shopgate/shopware6-utility  
+User Extension: https://github.com/shopgate/shopware6-user  
+Cart Extension: https://github.com/shopgate/shopware6-cart  
+Favorites Extension: https://github.com/shopgate/shopware6-favorites  
+Web-Account Extension (link to i.e. order history): https://github.com/shopgate/web-account
