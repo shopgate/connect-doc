@@ -4,11 +4,11 @@ The Platform SDK is a command line tool for developing frontend and backend exte
 
 > **Prerequisites:**
 >
-> Before using the Shopgate Connect Platform SDK, you should have a basic understanding of the following topics: Extensions, [Pipelines](/guides/technical/connect/pipelines), and [Steps](/guides/technical/connect/steps).
+> Before using the Shopgate Platform SDK, you should have a basic understanding of the following topics: Extensions, [Pipelines](/guides/technical/connect/pipelines), and [Steps](/guides/technical/connect/steps).
 
 ## How To Install the Platform SDK
 
-The Shopgate Connect Platform SDK is based on Node.js and requires Node.js version **8.4 or later** installed on your development machine.
+The Shopgate Platform SDK is based on Node.js and **requires Node.js version 12** installed on your development machine.
 
 To install the Platform SDK, open a terminal (as a user with permission to install software) and type:
 
@@ -38,7 +38,7 @@ The Platform SDK enables you to develop backend extensions, frontend extensions,
 
 ### Log In with Your Account
 
-Before you can use the Platform SDK for developing extensions or themes, you need to authenticate against the Shopgate Connect Platform. A [Shopgate Developer Account](https://developer.shopgate.com/admin/signup) is required.
+Before you can use the Platform SDK for developing extensions or themes, you need to authenticate against the Shopgate platform. A [Shopgate Developer Account](https://developer.shopgate.com/admin/signup) is required.
 
 
 Log in to the Shopgate Connect Platform:
