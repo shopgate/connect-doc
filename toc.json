@@ -11,21 +11,21 @@
       "uri": "markdown/introduction/index.md"
     },
     {
-          "type": "item",
-          "title": "Development Process",
-          "uri": "markdown/introduction/shopgate-connect/development-process.md"
-        },
-    
+      "type": "item",
+      "title": "App Architecture",
+      "uri": "markdown/introduction/connect-architecture/app-architecture.md"
+    },
     {
-          "type": "item",
-          "title": "App Architecture",
-          "uri": "markdown/introduction/connect-architecture/app-architecture.md"
-        },
+      "type": "item",
+      "title": "Development Process",
+      "uri": "markdown/introduction/shopgate-connect/development-process.md"
+    },
     {
     "type": "item",
     "title": "Platform SDK",
     "uri": "markdown/guides/tools/platform-sdk.md"
-  },{
+    },
+    {
       "type": "group",
       "title": "Getting Started",
       "items": [
