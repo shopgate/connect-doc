@@ -46,14 +46,6 @@
         }
       ]
     },
-
-
-
-
-
-
-
-
     {
       "type": "divider",
       "title": "Guides"
@@ -228,26 +220,23 @@
             },
             {
               "type": "item",
-              "title": "Integration",
+              "title": "Integration Steps",
               "uri": "markdown/guides/commerce/webcheckout/integration-shop-system-shopgate-app.md"
             },
             {
               "type": "item",
-              "title": "Steps to integrate",
+              "title": "Basic integration",
               "uri": "markdown/guides/commerce/webcheckout/steps-to-integrate.md"
             },
              {
               "type": "item",
-              "title": "Sync user data",
+              "title": "Advanced integration",
               "uri": "markdown/tutorials/advanced/ecp-integration.md"
             }
           ]
         }
       ]
     },
-
-
-
     {
       "type": "divider",
       "title": "References"
