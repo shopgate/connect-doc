@@ -47,8 +47,7 @@
  
  >**Note:**
  >
- > This process does not apply to communication between the
- app and the shop system.
+ > This process does not apply to communication between the app and the shop system.
 
 
  #### Cart Management
@@ -179,13 +178,11 @@
 
  #### Tracking
 
- By default the Shopgate app has three trackers
+ By default the Shopgate app has these trackers
  integrated:
 
- * Facebook Analytics
-
- * Google Analytics for mobile apps
-
+ * Firebase / Google Analytics
+ * Facebook / Meta 
  * Appsflyer
 
 
