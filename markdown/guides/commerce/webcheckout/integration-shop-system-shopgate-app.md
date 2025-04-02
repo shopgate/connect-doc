@@ -1,4 +1,4 @@
-## Integration between Shop System and Shopgate App
+## Basic Webcheckout integration
 
 
  The integration is based on two different parts:

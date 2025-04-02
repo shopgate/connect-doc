@@ -1,10 +1,10 @@
-# Tutorial: How to Perform an Advanced ECP Integration
+# Advanced Webcheckout integration with user data sync
 
 This tutorial shows you how to perform an advanced integration of an e-commerce platform (ECP) to Shopgate Connect. Follow these steps to sync user core data, address data, and the favorites list.
 
 ## Prerequisites
 
-You must complete the [Web Checkout integration](../../guides/commerce/webcheckout/overview.md) before performing an advanced integration.
+You must complete the [basic Webcheckout integration](../../guides/commerce/webcheckout/steps-to-integrate.md) before performing an advanced integration.
 
 The advanced ECP integration includes the following parts:
 
