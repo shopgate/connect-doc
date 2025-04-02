@@ -6,7 +6,7 @@ stoplight-id: zfu93lco5tkoa
 # Web Checkout
 
 
-## General
+## Overview
 
 The Web Checkout is an easy way to integrate the checkout of any
 shopping cart system into the Shopgate app. From start to cart,
@@ -31,4 +31,4 @@ app.
 
 ## Reference
 
-* [API documentation](/webcheckout/api)
+* [API documentation](web-checkout-apis.oas2.yml)
