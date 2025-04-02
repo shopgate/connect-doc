@@ -128,7 +128,7 @@
 
  ```
 
- <script src="https://data.shopgate.com/webcheckout/generic/commandLib.v1.js"></script>
+ <script src="https://data.shopgate.com/webcheckout/generic/commandLib.v2.js"></script>
 
  ```
 
