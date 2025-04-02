@@ -16,7 +16,7 @@ Generally, the more information we receive, the better the categories can be dis
 
 | Node | Attributes | Allow empty | Description | Example |
 | --- | --- | --- | --- | --- |
-| category Shopgate_Model_Catalog_Category | uid sort_order is_active parent_uid | ✕ ✔ ✔ ✔ | Unique ID Sort-order; highest value displayed first Is active (0 or omitted means inactive) Parent Category UID (must be omitted for top-level categories) | 5 1 1 1 |
+| category Shopgate_Model_Catalog_Category | uid<br>sort_order<br>is_active<br>parent_uid | ✕<br>✔<br>✔<br>✔ | Unique ID<br><br>Sort-order; highest value displayed first<br><br>Is active (0 or omitted means inactive)<br><br>Parent Category UID (must be omitted for top-level categories) | 5<br>1<br>1<br>1 |
 | name STRING |  | ✕ | Category name | Living Room |
 | deeplink STRING |  | ✕ | Link to the category | http://shop.com/living-room |
 | image Shopgate_Model_Media_Image | uid | ✔ | Unique ID | 5 |
