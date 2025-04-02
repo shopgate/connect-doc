@@ -25,7 +25,8 @@ app.
 
 
 * [Learn more about the Web Checkout](integration-shop-system-shopgate-app.md)
-* [Steps to integrate the Web Checkout](steps-to-integrate.md)
+* [Basic integration with cart-sync, user-login and checkout](steps-to-integrate.md)
+* [Advanced integration with full user data sync](../../../tutorials/advanced/ecp-integration.md)
 
 
 
