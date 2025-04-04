@@ -1,19 +1,6 @@
 ## What Are Streams?
 
-Observable streams allow unrelated components, features, and extensions to interact with each other. You can filter Observable streams into multiple streams. Subscriptions can subscribe to these streams to perform tasks. Observable streams are based on the RxJS Library. Refer to the [RxJS documentation](https://www.learnrxjs.io/) for more information.
-An Observable is similar to an event emitter. When a condition is met, Observables emit a stream  that is available for subscription. You can also apply operators to Observables to create and control more complex scenarios for when a stream emits. By default, Shopgate imports the following operators:
-
-* [do](https://www.learnrxjs.io/operators/utility/do.html)
-* [distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html)
-* [filter](https://www.learnrxjs.io/operators/filtering/filter.html)
-* [first](https://www.learnrxjs.io/operators/filtering/first.html)
-* [map](https://www.learnrxjs.io/operators/transformation/map.html)
-* [merge](https://www.learnrxjs.io/operators/combination/merge.html)
-* [shareReplay](https://www.learnrxjs.io/operators/multicasting/sharereplay.html)
-* [switchMap](https://www.learnrxjs.io/operators/transformation/switchmap.html)
-* [zip](https://www.learnrxjs.io/operators/combination/zip.html)
-
-For a complete list of operators and examples, refer to [RxJS 5 Operators By Example](https://www.learnrxjs.io/operators/).
+Observable streams allow unrelated components, features, and extensions to interact with each other. You can filter Observable streams into multiple streams. Subscriptions can subscribe to these streams to perform tasks. Observable streams are based on the RxJS Library.
 
 ## How to Use Streams and Subscriptions
 
