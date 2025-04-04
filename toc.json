@@ -166,6 +166,11 @@
               "type": "item",
               "title": "Form Builder",
               "uri": "markdown/guides/technical/engange/form-builder.md"
+            },
+            {
+              "type": "item",
+              "title": "Consent Manager",
+              "uri": "markdown/consent-manager.md"
             }
           ]
         },
