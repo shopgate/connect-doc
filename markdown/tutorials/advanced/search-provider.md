@@ -974,7 +974,7 @@ module.exports = async (context, input) => {
 
 ## Testing
 
-After the implementation of all pipelines is complete, the last step is testing. You can test with your sandbox app and the CloudFlight app.
+After the implementation of all pipelines is complete, the last step is testing. You can test with your sandbox app.
 
 The test cases are as follows:
 - Search: Do the search suggestions appear?
