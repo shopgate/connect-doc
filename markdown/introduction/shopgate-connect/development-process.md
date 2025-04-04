@@ -12,8 +12,4 @@ Follow these steps to develop on the Shopgate platform:
 
 The platform SDK helps you to develop extensions and themes on your local computer. It comes with a lightweight command line tool to set up your environment, enable pipeline step execution locally and test the theme within the browser.
 
-
-!["Development Process"](../../../assets/dev-process.png)
-
-
-The Cloud Flight testing app provides a convenient way to test any deployed or locally running application on a native device. This functionality works for staging deployments and simplifies the release process.
+The[ native testing app](../getting-started/test-with-cloud-flight.md) provides a convenient way to test any deployed or locally running application on a native device. This functionality works for staging deployments and simplifies the release process.
