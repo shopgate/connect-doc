@@ -9,7 +9,7 @@ notification, and how you can use the Shopgate Notification System to send out n
 an external system.
 
 ## Prerequisites
-- You have read the [support article about notifications](https://support.shopgate.com/knowledge/push-nachrichten) and know how Campaigns & Templates work together.
+- You have read the [support article about notifications](https://support.shopgate.com/knowledge/push-nachrichten) and know how Campaigns work in general.
 - You have the swagger file of the [notification service](https://s3.eu-central-1.amazonaws.com/shopgatedevcloud-bigapi/swagger-docs/omni/static.html?url=https://s3.eu-central-1.amazonaws.com/shopgatedevcloud-bigapi/swagger-docs/omni/notification2-crud.yaml#/) available to check
 - You have the swagger file of the [notification event receiver service](https://s3.eu-central-1.amazonaws.com/shopgatedevcloud-bigapi/swagger-docs/omni/static.html?url=https://s3.eu-central-1.amazonaws.com/shopgatedevcloud-bigapi/swagger-docs/omni/notification-event-receiver-crud.yaml) available to check
 
