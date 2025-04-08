@@ -52,7 +52,7 @@
     },
         {
       "type": "group",
-      "title": "Extension-Tutorials",
+      "title": "Tutorials",
       "items": [
         {
           "type": "group",
@@ -110,6 +110,11 @@
           "type": "item",
           "title": "Integrate Tracking Provider",
           "uri": "markdown/tutorials/advanced/tracking-provider.md"
+        },
+        {
+          "type": "item",
+          "title": "Integrate External Notification Trigger",
+          "uri": "markdown/Integrate-External-Notification-Trigger.md"
         }
       ]
     },
