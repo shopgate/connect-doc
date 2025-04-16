@@ -2,7 +2,7 @@
 stoplight-id: 3npp9umgibvh5
 ---
 
-# Shopgate Consent Manager
+# Shopgate Consent Manager 
 
 ## How to Evaluate if User Accepted Cookie Consent
 This guide provides instructions on how to evaluate whether a user has accepted cookie
