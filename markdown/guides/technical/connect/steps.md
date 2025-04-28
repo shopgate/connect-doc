@@ -12,8 +12,7 @@
  * Alter the structure of a javascript object
 
 
- See [step reference](/references/connect/extensions/pipeline/common-step-structure)
- for information on the available step types.
+ See [step reference](../../../references/connect/extensions/pipeline/pipeline-step.md) for information on the available step types.
 
 
  ## Extension Step
@@ -70,9 +69,9 @@ The context object provides three different storage types: the extension-, devic
 | ---|---|---|---|
 | `extension` | when you need to store data in an application-wide scope | extension | always |
 | `device` | when you need to store data associated with a device | extension and device | always |
-| `user` | when you need to store data across devices associated with a user | extension and user | [when user is logged in](/references/connect/extensions/pipeline/auth-step) |
+| `user` | when you need to store data across devices associated with a user | extension and user | [when user is logged in](../../../references/connect/extensions/pipeline/auth-step.md) |
 
-See [storage reference](/references/connect/extensions/steps/storage).
+See [storage reference](../../../references/connect/extensions/steps/storage.md).
     
 Each storage type provides a simple key/value storage and a map storage. You can store any value (strings, numbers, arrays, objects) for a key. You can access complete maps or access items directly from map storage. 
 
@@ -108,8 +107,8 @@ Each storage type provides a simple key/value storage and a map storage. You can
  created when altering the `extension-config.json` file.
 
 
- See [SDK automations](/guides/tools/platform-sdk#automations)
- and/or [extension config](/references/connect/extensions/configuration).
+ See [SDK automations](../../../guides/tools/platform-sdk.md#automations)
+ and/or [extension config](../../../references/connect/extensions/configuration.md).
 
 
 
@@ -119,7 +118,7 @@ Each storage type provides a simple key/value storage and a map storage. You can
  defined by the pipeline definition.
 
 
- See [pipeline reference](/references/connect/extensions/pipeline)
+ See [pipeline reference](../../../references/connect/extensions/pipeline/overview.md)
  and/or the [shared object](#shared-object).
 
 
@@ -271,7 +270,7 @@ The pipeline returns what is stored in ID `2` in the
 
 
  See
- [Steps](/references/connect/extensions/pipeline/common-step-structure)
+ [Steps](../../../references/connect/extensions/pipeline/common-step-structure.md)
  to learn more about step types.
 
 
@@ -327,4 +326,4 @@ The pipeline returns what is stored in ID `2` in the
 }
  ```
 
- for other step type dependent properties: see [Steps](/references/connect/extensions/pipeline/common-step-structure).
+ for other step type dependent properties: see [Steps](../../../references/connect/extensions/pipeline/common-step-structure.md).

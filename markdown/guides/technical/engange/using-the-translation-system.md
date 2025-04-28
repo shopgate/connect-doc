@@ -18,7 +18,7 @@ At the moment (v6.7.0) all our themes provide these languages out of the box:
 
 Bookmark these links in case you need them later. Please note that the above examples are for theme-ioS11. For theme-GMD, please see the [relevant github repository directory](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-gmd/locale).
 
-During app start up, the theme checks if there are any locales provided by extensions, selects relevant ones (according to the shop language settings), merges them with defaults provided by the theme itself, and then uses it as a source for [`i18n helper`](/references/engage/helpers/i18n) and [`I18n Component`](/references/engage/components/i18n).
+During app start up, the theme checks if there are any locales provided by extensions, selects relevant ones (according to the shop language settings), merges them with defaults provided by the theme itself, and then uses it as a source for [`i18n helper`](../../../references/engage/helpers/i18n.md) and [`I18n Component`](../../../references/engage/helpers/i18n.md).
 
 This construction empowers you as an extension developer to not only __provide your custom translation__ strings, but also to __override default translations__ provided by the theme.
 
@@ -27,13 +27,13 @@ __It is however NOT RECOMMENDED__ to override default translations and doing so 
 ## How to Use Translation Support
 Shopgate Engage provides two ways of using translations:
 
-### [i18n helper](/references/engage/helpers/i18n) (since 6.7.0)
+### [i18n helper](../../../references/engage/helpers/i18n.md) (since 6.7.0)
 The `i18n helper` is a set of pure javascript translating functions. Use it when you need to translate text outside of the `React` context.
-[Read i18n helper documentation](/references/engage/helpers/i18n)
+[Read i18n helper documentation](../../../references/engage/helpers/i18n.md)
 
-### [I18n component](/references/engage/components/i18n)
+### [I18n component](../../../references/engage/components/i18n.md)
 The `I18n component` is a set of `React Components` made for translations within the `React` context.
-[Read I18n component documentation](/references/engage/components/i18n)
+[Read I18n component documentation](../../../references/engage/components/i18n.md)
 
 ## How to Use Custom Extension Locales
 If your extension provides a UI to the end customer, you most likely need to translate your content into the customer language.
@@ -78,10 +78,10 @@ Now, when you have your translation files in place, you only need to declare the
 
 ### 3. Testing Your Translation
 
-You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [i18n helper](/references/engage/helpers/i18n) or [`I18n component`](/references/engage/components/i18n).
+You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [i18n helper](../../../references/engage/helpers/i18n.md) or [`I18n component`](../../../references/engage/components/i18n.md).
 
 
 ## More Information
 For more information and specific details on how to use our translation system please refer to:
-- [I18n Component](/references/engage/components/i18n)
-- [i18n helper](/references/engage/helpers/i18n)
+- [I18n Component](../../../references/engage/components/i18n.md)
+- [i18n helper](../../../references/engage/helpers/i18n.md)

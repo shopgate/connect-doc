@@ -13,7 +13,7 @@ Parent portal name example: `PRODUCT-ITEM.NAME`
 
 Sibling portal name example: `PRODUCT-ITEM.NAME.AFTER`
 
-Refer to the [Portals Reference](/references/engage/portals) for a list of available portals.
+Refer to the [Portals Reference](../../../references/engage/portals/index.md) for a list of available portals.
 
 ## How to Add a Component using a Portal
 

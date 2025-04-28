@@ -207,5 +207,5 @@
 * `shopgate.catalog.getProductsByFilter.v1`
 * `shopgate.catalog.getProductsBySearchPhraseAndFilter.v1`
 
- >Refer to the tutorial [How to Integrate a Search Provider](/tutorials/advanced/search-provider) to see this
+ >Refer to the tutorial [How to Integrate a Search Provider](../../../tutorials/advanced/search-provider.md) to see this
  in detail.

@@ -48,7 +48,7 @@ Log in to the Shopgate Connect Platform:
 
 After initially logging in, a session file is created and stored in your user directory for later Platform SDK requests so you do not have to log in again.
 
-Refer to [sgconnect login](/references/connect/platform-sdk/login) in the reference documentation for more information.
+Refer to [sgconnect login](../../references/connect/platform-sdk/login.md) in the reference documentation for more information.
 
 ## Initialize a New Project
 
@@ -85,7 +85,7 @@ If you call the `sgconnect init` command inside of an initialized project (on an
 
 The command asks you to which Sandbox App you want to connect this project. This request enables you to switch the Sandbox App without setting up a new project.
 
-Refer to [sgconnect init](/references/connect/platform-sdk/init) in the reference documentation for more information.
+Refer to [sgconnect init](../../references/connect/platform-sdk/overview.md) in the reference documentation for more information.
 
 ### Create a New Extension
 
@@ -108,7 +108,7 @@ Here are the steps the Platform SDK executes when you create a new extension:
 4. Removes placeholders and updates files according to your changes. For example, the Platform SDK updates the organization name and the extension name. All occurences of `@awesomeOrganization/awesomeExtensions` will be named `<organization name>/<extension name>`.
 5. Installs dependencies necessary for frontend development for all frontend extensions.
 
-Refer to [sgconnect extension create](/references/connect/platform-sdk/extension) in the reference documentation for more information.
+Refer to [sgconnect extension create](../../references/connect/platform-sdk/extension.md) in the reference documentation for more information.
 
 ### Attach / Detach an Extension
 #### Attaching
@@ -125,7 +125,7 @@ To attach specific extensions, type:
 ```
 $ sgconnect extension attach extensionsId1 extensionsId2 ...
 ```
-Refer to [sgconnect extension attach](/references/connect/platform-sdk/extension) in the reference documentation for more information.
+Refer to [sgconnect extension attach](../../references/connect/platform-sdk/extension.md) in the reference documentation for more information.
 
 #### Detaching
 Detaching causes the extension to be “inactive” or “disabled”. Like the attach command, the detach command can be used to detach all extensions or only specific ones.
@@ -139,7 +139,7 @@ To detach specific extensions, type:
 $ sgconnect extension detach extensionsId1 extensionsId2 ...
 ```
 
-Refer to [sgconnect extension detach](/references/connect/platform-sdk/extension) in the reference documentation for more information.
+Refer to [sgconnect extension detach](../../references/connect/platform-sdk/extension.md) in the reference documentation for more information.
 
 #### Manage
 A convenience wrapper around attach & detach is available via the `extension manage` command, which provides a list of available extensions and their current attachment status for selection/deselection.
@@ -166,7 +166,7 @@ When you enter this command, the backend process completes the following actions
 4. Copies currently used pipelines of your Sandbox App into the general pipelines/trustedPipelines folders. You can view this folder to see the current state of your Sandbox App. 
 5. Creates a proxy server on port 8090 on your local machine. You can use the proxy server to send direct pipeline calls to it. 
 
-Refer to [sgconnect backend start](/references/connect/platform-sdk/backend) in the reference documentation for more information.
+Refer to [sgconnect backend start](../../references/connect/platform-sdk/backend.md) in the reference documentation for more information.
 
 ### Developing Pipelines
 
@@ -201,7 +201,7 @@ would look like this:
 15/03/2018, 11:43:36 DEBUG: [@shopgate/testExtension/testStep.js]: { status: 'OK' } Got request status
 ```
 
-See [logger reference](/references/connect/extensions/steps/logger).
+See [logger reference](../../references/connect/extensions/steps/logger.md).
 
 ### Debugging Step Code
 

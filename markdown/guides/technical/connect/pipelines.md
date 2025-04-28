@@ -55,7 +55,7 @@
  * A flag indicating whether the pipeline is callable
  from the outside. If `false`, you can only [call the
  pipeline by another
- pipeline](/references/connect/extensions/pipeline/pipeline-step)
+ pipeline](../../../references/connect/extensions/pipeline/pipeline-step.md)
  in the [same
  environment](#regular-and-trusted-pipelines).
 
@@ -67,7 +67,7 @@
  be met by the request and by the steps generating the
  output; otherwise, the pipeline request fails. Refer to
  the [Pipeline
- Reference](/references/connect/extensions/pipeline).
+ Reference](../../../references/connect/extensions/pipeline/overview.md).
 
 
  #### Step List
@@ -94,7 +94,7 @@
  trusted environment can only use steps of a trusted
  extension. However, a [pipeline can call another
  pipeline in a different
- environment](/references/connect/extensions/pipeline/pipeline-step).
+ environment](../../../references/connect/extensions/pipeline/pipeline-step.md).
 
 >Extensions and pipelines marked as trusted are carefully reviewed by Shopgate. The review process looks for malicious code.
 
@@ -113,7 +113,7 @@
  ### Pipeline requests
 
  You can [run pipeline requests
- directly](/guides/tools/platform-sdk#using-the-proxy-server)
+ directly](../../tools/platform-sdk.md#using-the-proxy-server)
  to your Sandbox App using the SDK.
 
 

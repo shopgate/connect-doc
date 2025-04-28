@@ -10,7 +10,7 @@ The following example illustrates how to filter the main$ stream, create a new s
 **MyStream**
 
 ```js
-import { main$ } from '@shopgate/engage/core;
+import { main$ } from '@shopgate/engage/core';
 
 // Create a new stream
 export const loginSuccess$ = main$
