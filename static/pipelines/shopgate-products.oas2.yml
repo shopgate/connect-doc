@@ -734,7 +734,7 @@ paths:
     post:
       operationId: pipelines/shopgate.catalog.getProductDescription.v1
       summary: getProductDescription.v1
-      description: 'This pipeline is used to retrieve the product description only. This could be a very long text, including html'
+      description: 'This pipeline is used to retrieve the product description only. This could be a very long text, including html.'
       parameters:
         - $ref: '#/parameters/productId'
       responses:
