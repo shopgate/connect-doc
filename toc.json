@@ -176,6 +176,11 @@
               "type": "item",
               "title": "Consent Manager",
               "uri": "markdown/consent-manager.md"
+            },
+            {
+              "type": "item",
+              "title": "Accessibility",
+              "uri": "markdown/Accessibility.md"
             }
           ]
         },
