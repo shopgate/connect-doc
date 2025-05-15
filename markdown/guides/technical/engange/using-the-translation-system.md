@@ -62,4 +62,4 @@ When you have your translation files in place, you only need to declare them in 
 
 ### 3. Testing Your Translation
 
-You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [i18n helper](../../../references/engage/helpers/i18n.md) or [I18n component](../../../references/engage/components/i18n.md).
+You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [`i18n helper`](../../../references/engage/helpers/i18n.md) or [`I18n component`](../../../references/engage/components/i18n.md).
