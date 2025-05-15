@@ -1,33 +1,19 @@
 # Using Translations
-
-Shopgate Engage provides translation support that enhances the theme and extension development experience. 
-
-This article explains how the translation process works and how to use it.
+The Shopgate platform provides translation support that enhances the theme and extension development experience. This article explains how the translation process works and how to use it.
 
 ## Introduction to Using Translations
-Every Shopgate theme provides its own locales dictionary. You can find an [en-US locales example of theme-ios11 on Shopgate's Engage github repository](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/en-US.json).
+Every Shopgate theme provides its own locales dictionary. You can find them in our [Github repository](https://github.com/shopgate/pwa/tree/master/themes/theme-ios11/locale).
 
-At the moment (v6.7.0) all our themes provide these languages out of the box:
-- [de-DE - German](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/de-DE.json)
-- [en-US - English (US)](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/en-US.json)
-- [es-ES - Spanish](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/es-ES.json)
-- [fr-FR - French](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/fr-FR.json)
-- [it-IT - Italian](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/it-IT.json)
-- [nl-NL - Dutch](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/nl-NL.json)
-- [pt-PT Portuguese](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-ios11/locale/pt-PT.json)
+Bookmark these links in case you need them later. Please note that the above examples are for theme-iOS. For theme-GMD, please see the [this github repository directory](https://github.com/shopgate/pwa/tree/master/themes/theme-gmd/locale).
 
-Bookmark these links in case you need them later. Please note that the above examples are for theme-ioS11. For theme-GMD, please see the [relevant github repository directory](https://github.com/shopgate/pwa/blob/v6.7.0/themes/theme-gmd/locale).
+During app start up, the theme checks if there are any locales provided by extensions, selects relevant ones (according to the shop language settings), merges them with defaults provided by the theme itself, and then uses it as a source for [`i18n helper`](../../../references/engage/helpers/i18n.md) and [`I18n Component`](../../../references/engage/components/i18n.md).
 
-During app start up, the theme checks if there are any locales provided by extensions, selects relevant ones (according to the shop language settings), merges them with defaults provided by the theme itself, and then uses it as a source for [`i18n helper`](../../../references/engage/helpers/i18n.md) and [`I18n Component`](../../../references/engage/helpers/i18n.md).
-
-This construction empowers you as an extension developer to not only __provide your custom translation__ strings, but also to __override default translations__ provided by the theme.
-
-__It is however NOT RECOMMENDED__ to override default translations and doing so must be agreed upon. Please note that overriding default translations affects the entire application and causes additional issues for future updates.
+This construction empowers you as an extension developer to not only __provide your custom translation__ strings, but also to __override default translations__ provided by the theme. Please note that overriding default translations affects the entire application.
 
 ## How to Use Translation Support
-Shopgate Engage provides two ways of using translations:
+The Shopgate system provides two ways of using translations:
 
-### [i18n helper](../../../references/engage/helpers/i18n.md) (since 6.7.0)
+### [i18n helper](../../../references/engage/helpers/i18n.md)
 The `i18n helper` is a set of pure javascript translating functions. Use it when you need to translate text outside of the `React` context.
 [Read i18n helper documentation](../../../references/engage/helpers/i18n.md)
 
@@ -38,7 +24,7 @@ The `I18n component` is a set of `React Components` made for translations within
 ## How to Use Custom Extension Locales
 If your extension provides a UI to the end customer, you most likely need to translate your content into the customer language.
 
-If you do not find any relevant default translations [provided by the theme](#how-it-works) you need to provide you own translations within an extension.
+If you do not find any relevant default translations provided by the theme you need to provide you own translations within an extension.
 
 ### 1. Creating Translations
 Create your locale files in any `frontend` directory. For example: `frontend/locales/en-US.json`. This is a pure JSON file which has a structure like this:
@@ -51,12 +37,10 @@ Create your locale files in any `frontend` directory. For example: `frontend/loc
 }
 ```
 
-Please note that the translation file starts with `myExtensionName`. It is a good practice to namespace your translations in order to avoid possible conflicts with default translations.
-
-It is possible to intentionally create these conflicts in order to override theme translations. But as stated before, we highly discourage this approach.
+Please note that the translation file starts with `myExtensionName`. It is a good practice to namespace your translations in order to avoid possible conflicts with default translations. It is possible to intentionally create these conflicts in order to override theme translations. 
 
 ### 2. Declaring Your Translation in the Extension-config
-Now, when you have your translation files in place, you only need to declare them in the `extension-config.json` file, like in the example below:
+When you have your translation files in place, you only need to declare them in the `extension-config.json` file, like in the example below:
 ```json
 {
   "version": "1.0.0",
@@ -78,10 +62,4 @@ Now, when you have your translation files in place, you only need to declare the
 
 ### 3. Testing Your Translation
 
-You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [i18n helper](../../../references/engage/helpers/i18n.md) or [`I18n component`](../../../references/engage/components/i18n.md).
-
-
-## More Information
-For more information and specific details on how to use our translation system please refer to:
-- [I18n Component](../../../references/engage/components/i18n.md)
-- [i18n helper](../../../references/engage/helpers/i18n.md)
+You are nearly finished. The final step is to test if your translation works by implementing it in your UI, using either [i18n helper](../../../references/engage/helpers/i18n.md) or [I18n component](../../../references/engage/components/i18n.md).
