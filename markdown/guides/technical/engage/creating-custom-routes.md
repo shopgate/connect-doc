@@ -52,7 +52,7 @@ Then adjust the `extension-config.json` to inject the new page into the theme.
 
 This code creates a page that you access through the `/myroute` pathname and renders some text onto a blank page.
 
-> To add multiple routes in __Engange__ versions below __6.1__, you must put each route into its own file or directly into the page component. Then, you can add all route export files.
+> To add multiple routes in __Engage__ versions below __6.1__, you must put each route into its own file or directly into the page component. Then, you can add all route export files.
 
 ## Using existing theme components
 

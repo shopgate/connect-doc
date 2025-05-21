@@ -7,7 +7,7 @@ Shopgate Engage supports many routes out of the box in order to provide a full e
 
 You can customize these routes using [Portals](../portals/index.md).
 
-You cannot [register your custom route](../../../guides/technical/engange/creating-custom-routes.md) under a default pattern or path name. This would result in duplicated content - default and custom.
+You cannot [register your custom route](../../../guides/technical/engage/creating-custom-routes.md) under a default pattern or path name. This would result in duplicated content - default and custom.
 
 However, you can customize most of the default content. You can find more information about possible customizations on route pages.
 

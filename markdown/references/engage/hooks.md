@@ -61,7 +61,7 @@ function MyReactComponent() {
 }
 ```
 
-This example demonstrates how to get information about the current **pathname** and the **visibility** of the current route. This information can be used to control the render output of your component and is especially helpful for creating a **Custom Route**. You can find detailed instructions on [Creating Custom Routes](../../guides/technical/engange/creating-custom-routes.md) in the Shopgate Guides section.
+This example demonstrates how to get information about the current **pathname** and the **visibility** of the current route. This information can be used to control the render output of your component and is especially helpful for creating a **Custom Route**. You can find detailed instructions on [Creating Custom Routes](../../guides/technical/engage/creating-custom-routes.md) in the Shopgate Guides section.
 
 ### Returns
 
