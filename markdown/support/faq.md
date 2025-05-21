@@ -24,7 +24,7 @@ You cannot, because the URL changes with every deployment.
 
 Use the <Link> component + bin2hex(ID).
 
-## How do I get the Product/Cateogry ID from a URL?
+## How do I get the Product/Category ID from a URL?
 
 Use `hex2bin(IdFromUrl)`.
 
