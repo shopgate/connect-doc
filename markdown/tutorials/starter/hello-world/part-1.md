@@ -11,7 +11,7 @@ Create a new extension using sgconnect.
 3. run `sgconnect extension create`
 4. When asked about the type of extension you plan on creating deselect frontend and leave backend selected. Press enter
 5. Enter the name `@myAwesomeOrganization/myFirstExtension` as the extension name
-6. When asked if the extension needs to run in a trusted environment select `no`. Trusted enviroments will be explained in later tutorials.
+6. When asked if the extension needs to run in a trusted environment select `no`. Trusted environments will be explained in later tutorials.
 
 The SDK will create the basic structure of our "Hello World" extension in the `extensions` folder.
 

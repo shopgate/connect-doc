@@ -105,7 +105,7 @@ Here are the steps the Platform SDK executes when you create a new extension:
     2. Removed backend items:
         * directory: `extension/`
         * directory: `pipelines/`
-4. Removes placeholders and updates files according to your changes. For example, the Platform SDK updates the organization name and the extension name. All occurences of `@awesomeOrganization/awesomeExtensions` will be named `<organization name>/<extension name>`.
+4. Removes placeholders and updates files according to your changes. For example, the Platform SDK updates the organization name and the extension name. All occurrences of `@awesomeOrganization/awesomeExtensions` will be named `<organization name>/<extension name>`.
 5. Installs dependencies necessary for frontend development for all frontend extensions.
 
 Refer to [sgconnect extension create](../../references/connect/platform-sdk/extension.md) in the reference documentation for more information.

@@ -974,7 +974,7 @@ class ShopgatePluginMyShoppingSystem extends ShopgatePlugin {
 	}
  
 	/**
-	 * Check items of a cart, validates stock quantity of the the products and returns available amount.
+	 * Check items of a cart, validates stock quantity of the products and returns available amount.
 	 *
 	 * @see http://developer.shopgate.com/plugin_api/stock
 	 *
