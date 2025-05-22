@@ -79,14 +79,14 @@ paths:
                     title: This product is not that good
                     review: 'I ordered a vacuum cleaner, but there are no dust bags with it, that is a pain'
         EUNKNOWN:
-          description: An internal error occured.
+          description: An internal error occurred.
           schema:
             $ref: ./shopgate-products-pipleines.oas2.yml#/definitions/UnknownError
           examples:
             application/json:
               error:
                 code: EUNKNOWN
-                message: An internal error occured.
+                message: An internal error occurred.
       x-stoplight:
         id: w5bhpytj2u2mu
   /shopgate.user.getReview.v1:

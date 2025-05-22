@@ -75,13 +75,13 @@ Allow your customers [favorite list(s)](https://docs.shopgate.com/docs/connect-d
 **Ways of implementation:**  
 
 **Link profile pages**  
-You can all kind of pages for logged-in users to your onlineshop pages. The pages are opened inside app webview just like the webcheckout. This is recommended when you have many custom pages but limited ressources to rebuild all of them. Check the Webcheckout code examples below.   
+You can link all kinds of pages for logged-in users to your online shop pages. The pages are opened inside the app's webview just like the web checkout. This is recommended when you have many custom pages but limited resources to rebuild all of them. Check the Webcheckout code examples below.
 
 **Build native profile pages**   
-You can build your own pages for logged-in users inside the app using native frontends like your [profile page & adress book](../../../../tutorials/advanced/ecp-integration.md) or build your own custom frontends with custom pipelines. 
+You can build your own pages for logged-in users inside the app using native frontends like your [profile page & address book](../../../../tutorials/advanced/ecp-integration.md) or build your own custom frontends with custom pipelines. 
 
 ### Allow app only offers
-Allow your marketing users to create app only offers like coupons or automatic discounts inside your e-commerce platform. You can detect app users via the useragent. 
+Allow your marketing users to create app only offers like coupons or automatic discounts inside your e-commerce platform. You can detect app users via the user agent. 
 
 
 ## Code Examples

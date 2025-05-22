@@ -93,14 +93,14 @@ paths:
                     tags:
                       - string
         EUNKNOWN:
-          description: An internal error occured.
+          description: An internal error occurred.
           schema:
             $ref: '#/definitions/UnknownError'
           examples:
             application/json:
               error:
                 code: EUNKNOWN
-                message: An internal error occured.
+                message: An internal error occurred.
       x-stoplight:
         id: 5sahcg5mw529x
   /shopgate.catalog.getHighlightProducts.v1:
@@ -339,7 +339,7 @@ paths:
                     productCount: 23
                     imageUrl: 'http://shopgate.cdn/category42.png'
         EUNKNOWN:
-          description: An internal error occured.
+          description: An internal error occurred.
           examples: {}
       x-stoplight:
         id: 81rqwjm56ky65
@@ -668,13 +668,13 @@ definitions:
         properties:
           hasChildren:
             type: boolean
-            description: 'A flag that determines if this product has children, they have to be loaded seperately at the detail page by using getProductChildren_v1 pipeline'
+            description: 'A flag that determines if this product has children, they have to be loaded separately at the detail page by using getProductChildren_v1 pipeline'
           hasVariants:
             type: boolean
-            description: 'A flag that determines if this product has variants, they have to be loaded seperately at the detail page by using getProductVariants_v1 pipeline'
+            description: 'A flag that determines if this product has variants, they have to be loaded separately at the detail page by using getProductVariants_v1 pipeline'
           hasOptions:
             type: boolean
-            description: 'A flag that determines if this product has options, they have to be loaded seperately at the detail page by using getProductOptions_v1 pipeline'
+            description: 'A flag that determines if this product has options, they have to be loaded separately at the detail page by using getProductOptions_v1 pipeline'
       liveshoppings:
         description: 'A list of liveshopping-timeframes for this product. By default it will load all timeframes, that ended in the last 7 days, are active or will start in the future.'
         type: array
@@ -1047,7 +1047,7 @@ definitions:
             example: EUNKNOWN
           message:
             type: string
-            example: An internal error occured.
+            example: An internal error occurred.
     x-stoplight:
       id: ecuxeaev887zz
   ProductRelations:

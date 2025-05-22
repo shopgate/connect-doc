@@ -190,7 +190,7 @@ After adding the step into the pipeline, you must write the step code. The step 
 Create an empty step with the name `getFilters.js` in the `extension` directory:
 ```javascript=
 // extension/getFilters.js
-modules.exports = (context, input) => {
+module.exports = (context, input) => {
     // Add your code here
 }
 ```

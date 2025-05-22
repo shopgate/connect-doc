@@ -410,7 +410,7 @@ definitions:
         example: error
       message:
         type: string
-        example: Some error occured
+        example: Some error occurred
       code:
         type: string
         description: 'Message code, mapped within the extension. It can be used to react in a specific way or to allow for message translation.'

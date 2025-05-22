@@ -122,7 +122,7 @@ The following React components are passed to all of the NavMenu Portals as Props
 
 ### Store Information
 
-The Store Information Portal wraps multiple store-related entries of the Navigation Menu. Within the the `iOS` theme, the Portal wraps all available entries: `shipping`, `payment`, `terms`, `privacy`, `return-policy` and `imprint`. However, in the GMD theme, the list is split into two sections which are wrapped by the `nav-menu.store-information-about` and the `nav-menu.store-information-more` Portal.
+The Store Information Portal wraps multiple store-related entries of the Navigation Menu. Within the `iOS` theme, the Portal wraps all available entries: `shipping`, `payment`, `terms`, `privacy`, `return-policy` and `imprint`. However, in the GMD theme, the list is split into two sections which are wrapped by the `nav-menu.store-information-about` and the `nav-menu.store-information-more` Portal.
 
 | Name | Description | Props |
 | - | - | - |

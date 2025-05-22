@@ -110,7 +110,7 @@
  passes them to the `shopgate.catalog.getProductsByIds.v1` pipeline.
 
 
- This pipeline is triggered when the the user navigates
+ This pipeline is triggered when the user navigates
  into a category and the product count of this category
  is greater than zero. This behavior also applies to the root
  category.

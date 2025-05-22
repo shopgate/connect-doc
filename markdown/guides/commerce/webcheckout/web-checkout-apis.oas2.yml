@@ -241,7 +241,7 @@ paths:
       summary: Get checkout url
       description: |-
         Generates a checkout URL for the app with a token.
-        This URL opens in the app in a seperate tab, logs the user in, and transfers the cart.
+        This URL opens in the app in a separate tab, logs the user in, and transfers the cart.
       tags:
         - Cart
       parameters:
@@ -291,7 +291,7 @@ paths:
             application/json:
               message: wrong credentials
       summary: Login user
-      description: 'Makes an attempt to log in the user. The user can choose between multiple login strategies. A stretegy can be ‘basic’ or ‘facebook’ login. After login, the user storage becomes available to store data in a shop-global scope, so it can be shared across devices. Based on the shop, custom errors can be returned to react to in the theme. Calling this pipeline when a user is logged in results in an error.'
+      description: 'Makes an attempt to log in the user. The user can choose between multiple login strategies. A strategy can be ‘basic’ or ‘facebook’ login. After login, the user storage becomes available to store data in a shop-global scope, so it can be shared across devices. Based on the shop, custom errors can be returned to react to in the theme. Calling this pipeline when a user is logged in results in an error.'
       parameters:
         - in: body
           name: body
@@ -429,7 +429,7 @@ paths:
               birthday: '1976-09-23'
               phone: 800-490-2467
               addresses:
-                - alias: Janes home adress
+                - alias: Janes home address
                   id: de7566f0-15f1-4836-bf74-621ef07f96a5
                   type: shipping
                   firstName: Jane
@@ -1017,7 +1017,7 @@ definitions:
       message:
         type: string
         description: Message to be displayed to the customer.
-        example: Some error occured.
+        example: Some error occurred.
       code:
         type: string
         description: 'Message code, mapped by the extension. It can be used to react in a specific way for certain messages and/or to enable the possibility for message translations.'
@@ -1056,7 +1056,7 @@ definitions:
             example: EUNKNOWN
           message:
             type: string
-            example: An internal error occured.
+            example: An internal error occurred.
     x-stoplight:
       id: t1c87ybhj706w
 responses:

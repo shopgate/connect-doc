@@ -156,13 +156,13 @@ const countries = config.countryCodes.split(',');
 export default countries;
 ```
 
-The content of the the config object is the same as the content of the app.json file.
+The content of the config object is the same as the content of the app.json file.
 
 ### Theme
 
-If your extension is a theme, the config key/value pairs are resolved into the ./config/app.json of the theme.
+If your extension is a theme, the config key/value pairs are resolved into the ./config/app.json of theme.
 
-The following code shows how to access the value of the config key `colors` within the theme:
+The following code shows how to access the value of the config key `colors` within theme:
 
 ```javascript
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
