@@ -140,7 +140,7 @@ const FormWrapper = props => (
 ## How can I create a new page (custom route) in the app?
 
 Follow this guide to create a new page or a custom route in the app: 
-[Creating Custom Routes](../guides/technical/engange/creating-custom-routes.md)
+[Creating Custom Routes](../guides/technical/engage/creating-custom-routes.md)
 
 ## Can I access the checkout or registration pages when viewing the app content in a browser?
 

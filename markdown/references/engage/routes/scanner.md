@@ -10,4 +10,4 @@ The Scanner page is a special page that contains a native app video feed and aut
 All portals available on the Scanner page are listed on [Scanner portals reference page](../portals/scanner.md)
 
 ## How to link
-For information on how to use the scanner, refer to the [Scanner guideline section](../../../guides/technical/engange/extending-the-built-in-scanner.md)
+For information on how to use the scanner, refer to the [Scanner guideline section](../../../guides/technical/engage/extending-the-built-in-scanner.md)
