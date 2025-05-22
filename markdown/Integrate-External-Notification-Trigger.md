@@ -2,7 +2,7 @@
 stoplight-id: wiqclsdfoeau5
 ---
 
-# How to trigger Notifications form external systems
+# How to trigger Notifications from external systems
 
 Goal of this guide is to give you an overview of the different components used for sending a
 notification, and how you can use the Shopgate Notification System to send out notifications via
@@ -16,7 +16,7 @@ an external system.
 ## Overview
 To send a notification to your customers, you need to create a campaign. In the
 Campaign you configure:
-- When the notification should be send out (event based)
+- When the notification should be sent out (event based)
 - The title & message of the notification
 - What should happen in the app when the notification is opened  
 
@@ -28,7 +28,7 @@ campaign multiple times, to send notifications to multiple different users at di
 
 As a summary, the following steps have to be done:
 1. Create a campaign
-3. Trigger the Event
+2. Trigger the Event
 
 ## Creating a campaign
 Campaigns can be created via Shopgate Admin or via API.
