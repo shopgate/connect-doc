@@ -936,9 +936,13 @@
         "title": "Web Checkout API",
         "uri": "markdown/guides/commerce/webcheckout/web-checkout-apis.oas2.yml"
         }
-      ]          
+      ]
     },
-
+    {
+      "type": "item",
+      "title": "CMS Input Types (visible only internally)",
+      "uri": "markdown/references/cms/input-types.md"
+      },
 
     {
       "type": "divider",
