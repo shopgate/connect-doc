@@ -167,7 +167,7 @@ class ShopgatePluginMyShopSystem extends ShopgatePlugin
     public function updateOrderStatus(MyShopSystemOrder $shopOrder) {
         try {
             $this->merchantApi->addOrderDeliveryNote($shopOrder->orderNumber, $shopOrder->shippingServiceId, $shopOrder->trackingNumber, true);
-            $shopOrder->addComment('Shopgate has has marked the order as shipped.');
+            $shopOrder->addComment('Shopgate has marked the order as shipped.');
 
         } catch (ShopgateMerchantApiException $e) {
             // Do not abort at this point as this would crash editing the order in the shop system's backend.

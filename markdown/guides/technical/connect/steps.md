@@ -216,7 +216,7 @@ The shared object contains id `1` which we expect to see in the request paramete
 }
 ```
 
-The step takes id `1` from the shared input and and maps it to the input key `pId`.
+The step takes id `1` from the shared input and maps it to the input key `pId`.
 
 
 **Step function**
