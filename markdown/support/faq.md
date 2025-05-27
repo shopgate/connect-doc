@@ -90,7 +90,7 @@ The reducers of all extensions add data to the 'extensions' property of the redu
 
 ## How can I make my extension accommodate multiple languages?
 
-1) Start by creating locale files. These files are JSON files that are given names that correspond to the language/country for the language they contain. For instance, the file that contains translations for English US would be called 'en-US.json'.  It is best to scope your extension-specific translations with something unique to your extension. This scoping is important because the locale files of your extension, all other extensions, and the theme are combined. If you do not scope your translation information, your translations may overwrite that of the theme or other extensions, or may be be overwritten by translations from another extension.
+1) Start by creating locale files. These files are JSON files that are given names that correspond to the language/country for the language they contain. For instance, the file that contains translations for English US would be called 'en-US.json'.  It is best to scope your extension-specific translations with something unique to your extension. This scoping is important because the locale files of your extension, all other extensions, and the theme are combined. If you do not scope your translation information, your translations may overwrite that of the theme or other extensions, or may be overwritten by translations from another extension.
 
 Example locale file:
 
@@ -103,7 +103,7 @@ Example locale file:
 }
 ````
 
-2) Identify the translation files in your extension extension-config.json file. Each translation file (you will have one for every language you support) needs to be identified separately as a component in the extension configuration.
+2) Identify the translation files in your extension's extension-config.json file. Each translation file (you will have one for every language you support) needs to be identified separately as a component in the extension configuration.
 
 Example configuration:
 ````

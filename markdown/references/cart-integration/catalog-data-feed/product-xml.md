@@ -70,7 +70,7 @@ Generally, the more information we receive, the better the product can be displa
 | relation Shopgate_Model_Catalog_Relation | type | ✕ | Indicate additional relations to the product upsell crosssell/crossell bonus ordered_with custom | upsell |
 | uid String |  | ✕ | Product ID for the relation | 122 |
 | label String |  | ⚑ | Required if type = custom | users_also_buy |
-| attribute_groups parent parent product only Array |  | ✔ |  |  |
+| attribute_groups parent product only Array |  | ✔ |  |  |
 | attribute_group Shopgate_Model_Catalog_AttributeGroup | uid | ✕ | attribute group id | 80 |
 | inputs Array |  | ✔ |  |  |
 | input Shopgate_Model_Catalog_Input | uid<br>type<br>sort_order<br>additional_price<br>price_type<br>required | ✕<br>✕<br>✔<br>⚑<br>⚑<br>✔ | input id<br><br>type (see possible types below) input<br><br>sort order (see below) for text and image types only and required<br><br>price type (fixed or percentage, not for select type)<br><br>required or not | 3<br>text<br>1<br>4.99<br>fixed<br>1 |
