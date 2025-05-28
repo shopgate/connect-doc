@@ -1,33 +1,7 @@
----
-internal: true
----
-
 # CMS Input Types Documentation
 
-This document outlines the supported input types in the CMS system.
-
----
-
-## List of input types
-
-- [Text](#text)
-- [TextArea](#textarea)
-- [TextWithFormatting](#textwithformatting)
-- [RichText](#richtext)
-- [RichTextArea](#richtextarea)
-- [URL](#url)
-- [Number](#number)
-- [Boolean](#boolean)
-- [Select](#select)
-- [MultiSelect](#multiselect)
-- [DateTime](#datetime)
-- [Date](#date)
-- [Link](#link)
-- [ProductList](#productlist)
-- [Image](#image)
-- [TextWithFormatting Block](#textwithformatting-block)
-- [Category](#category)
-- [DateFromTo](#datefromto)
+> This document is work in progress and describes a feature that is not released yet.
+This document outlines the supported input types in the new CMS system.
 
 ---
 

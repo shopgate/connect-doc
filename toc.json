@@ -938,11 +938,7 @@
         }
       ]
     },
-    {
-      "type": "item",
-      "title": "CMS Input Types (visible only internally)",
-      "uri": "markdown/references/cms/input-types.md"
-      },
+
 
     {
       "type": "divider",
