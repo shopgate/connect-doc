@@ -780,46 +780,6 @@ paths:
         - Product Properties
       x-stoplight:
         id: zxfq4z832wsyn
-  /shopgate.catalog.getProductPrice.v1:
-    post:
-      operationId: pipelines/shopgate.catalog.getProductPrice.v1
-      summary: getProductPrice.v1
-      description: |
-        This pipeline is used to retrieve the price information only.
-        Useful to update outdated data on the products detail page. Outdated data can be caused by
-        a long term app inactivity or if the retrieved product list was already outdated.
-      parameters:
-        - $ref: '#/parameters/productId'
-      responses:
-        ok:
-          description: Successful response.
-          schema:
-            type: object
-            properties:
-              price:
-                $ref: '#/definitions/Price'
-          examples:
-            application/json:
-              price:
-                tiers:
-                  - from: 0
-                    to: 0
-                    unitPrice: 0
-                info: string
-                unitPrice: 0
-                unitPriceStriked: 0
-                unitPriceMin: 0
-                unitPriceMax: 0
-                unitPriceNet: 0
-                unitPriceWithTax: 0
-                taxAmount: 0
-                taxPercent: 0
-                msrp: 0
-                currency: USD
-      tags:
-        - Product Properties
-      x-stoplight:
-        id: vm8nx2q4szcqf
   /shopgate.catalog.getProductProperties.v1:
     post:
       operationId: pipelines/shopgate.catalog.getProductProperties.v1
