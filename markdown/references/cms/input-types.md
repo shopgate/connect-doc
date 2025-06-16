@@ -16,6 +16,9 @@ Single-line plain text input without formatting.
 - `validationMaxLength`: Maximum number of characters allowed (e.g. `50`).
 - `validationMinLength`: Minimum number of characters required (e.g. `3`).
 - `validationRegex`: Pattern the text must match (e.g. `^[A-Z]+$`).
+- `validationIsEmail`: Checks for a valid e-mail address.
+- `validationIsHttpsUrl`: Checks for a valid https url. 
+
 
 ---
 
@@ -46,6 +49,16 @@ Formatted text input like headlines. Allows bold, size, etc.
 ### richText
 
 Multi-line WYSIWYG editor with rich formatting.
+
+**Settings**:
+
+- _None_
+
+---
+
+### html
+
+HTML editor with syntax highlighting.
 
 **Settings**:
 
