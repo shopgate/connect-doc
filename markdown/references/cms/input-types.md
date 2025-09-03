@@ -43,6 +43,7 @@ Formatted text input like headlines. Allows bold, size, etc.
 - `validationMaxLength`: Maximum number of characters allowed (e.g. `50`).
 - `validationMinLength`: Minimum number of characters required (e.g. `3`).
 - `validationRegex`: Pattern the text must match (e.g. `^[A-Z]+$`).
+- `useTypographySelection`: If enabled, instead of font-size the user can select a typography (headline1, headline 2, ...)
 
 ---
 
@@ -109,11 +110,19 @@ Shows a selector where user can choose a category.
 
 ### products
 
-Shows a selector where user can define a list of products, e.g. all products that fit a specific search term, all products of a specific brand/category or specific products via a list of product codes.
+Shows a group of inputs that allow user to select products in different ways. For example products that fit a specific search term, products of a specific brand/category or specific products via a list of product codes.
 
 **Settings**:
 
 - _None_
+
+### productSelector
+
+Shows a selector where user can easily select one or multiple products, based on setting. If multiple products are selected, the order can also be changed via drag&drop.
+
+**Settings**:
+
+ - `allowMultipleProducts`: If multiple products or only one product can be selected (boolean)
 
 ### dateTime
 
