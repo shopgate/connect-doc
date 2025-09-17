@@ -151,3 +151,15 @@ Image including alt text.
 **Settings**:
 
 - _None_
+
+---
+
+### arrayOf
+
+Composite input type that allows users to create multiple  entries based of a grouped input. Each entry can contain one or multiple input types (e.g. image + link).
+
+This type is useful for cases such as image sliders, FAQ sections, or other repeatable content blocks where the user needs to add multiple sets of structured data.
+
+**Settings**:
+
+- `validationMaxEntries`: Maximum number of entries allowed (e.g. `10`).
