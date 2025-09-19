@@ -75,7 +75,6 @@ Numeric input field accepting integers and decimals.
 
   - `validationMinValue`: Minimum numeric value allowed (e.g. `0`).
   - `validationMaxValue`: Maximum value allowed (e.g. `1000`).
-  - `validationRegex`: Format for numbers if specific patterns are required.
   - `maxNumberOfDecimals`: Number of decimal places allowed (e.g. `2`).
 
 ---
