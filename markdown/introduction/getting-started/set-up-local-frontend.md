@@ -68,4 +68,5 @@ One can activate additional highlighting by clicking one of the insets.
 This tool gives developers immediate visual feedback on how their UI will behave on real iOS devices.
 
 Example (regular insets + highlighted insets):
-![Simulated Insets](<../../../assets/Bildschirmfoto 2025-11-06 um 14.20.32.png>)
+![Simulated_Insets.png](../../../assets/Simulated_Insets.png)
+
