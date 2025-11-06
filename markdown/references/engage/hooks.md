@@ -138,3 +138,19 @@ function MyReactComponent() {
 | `replace` | Receives the same arguments as the redux action.                                                                                           | Performs the [historyReplace](actions/router.md#historyreplace) navigation action. |
 | `reset`   | -                                                                                                                                          | Performs the [historyReset](actions/router.md#historyreset) navigation action.     |
 | `update`  | - `state` *(Object)* __required__: The state to be updated on the desired Route.<br>- `routeId` *(string)*: The ID of the route to update. | Updates a certain (usually the current) route's meta state object with new data.                   |
+
+## useReduceMotion
+
+Provides accessibility information in case user has activated "reduce motion" on the device.
+
+### Usage
+
+```javascript
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
+const reduceMotion = useReduceMotion();
+```
+### Example
+
+```html
+<video src={url} autoPlay={reduceMotion ? false : autoplay}> </video>
+```
