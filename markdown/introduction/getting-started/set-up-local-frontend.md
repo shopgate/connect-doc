@@ -69,4 +69,3 @@ This tool gives developers immediate visual feedback on how their UI will behave
 
 Example (regular insets + highlighted insets):
 ![Simulated_Insets.png](../../../assets/Simulated_Insets.png)
-
