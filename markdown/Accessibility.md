@@ -13,3 +13,7 @@ When implementing new code or refactoring the existing code base, please make su
 For example, this means favouring native html elements whenever possible, e.g. using button, input, and a tags for links instead of giving custom styling and functionality to a div or a span. Moreover, images should have either a descriptive alt-text to be announced by the screen reader or should be hidden from screen readers if they are purely decoration.
 
 Also, pay attention to a sufficient colour contrast and font-size of the elements on your page. This isn't just important for individuals with visual disabilities but it is in fact user-friendly for all customers.
+
+### Reduce Motion Hook
+
+Shopgate offers a hook to detect reduce motion settings by users. This hook should be used in order to reduce motion/animations: [Hook](https://docs.shopgate.com/docs/connect-doc/fiswddb89tznw-hooks#usereducemotion)
