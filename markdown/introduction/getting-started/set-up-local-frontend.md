@@ -18,8 +18,8 @@ title: Set Up Local Frontend
 
  ```shell
  $ cd themes
- $ git clone https://github.com/shopgate/theme-gmd.git
- $ cd theme-gmd
+ $ git clone https://github.com/shopgate/theme-ios11.git
+ $ cd theme-ios11
  $ npm i
  $ cd ../..
  ```
