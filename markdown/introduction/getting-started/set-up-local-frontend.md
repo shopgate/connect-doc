@@ -13,7 +13,7 @@ title: Set Up Local Frontend
  GitHub.
 
 
- ## Using the Default Android Theme
+ ## Using the Default iOS Theme
 
 
  ```shell
