@@ -129,8 +129,13 @@
             },
             {
               "type": "item",
-              "title": "Creating Custom Routes",
+              "title": "Create Custom Route",
               "uri": "markdown/guides/technical/engage/creating-custom-routes.md"
+            },
+            {
+              "type": "item",
+              "title": "Create Custom Widget",
+              "uri": "markdown/Custom-Widgets.md"
             },
             {
               "type": "item",
