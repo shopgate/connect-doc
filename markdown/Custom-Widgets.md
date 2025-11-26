@@ -2,7 +2,7 @@
 stoplight-id: s229hyi2s4y63
 ---
 
-# Implement a Cuatom widget
+# Implement a Custom widget
 
 ## Introduction
 
