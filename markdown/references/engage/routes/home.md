@@ -8,7 +8,7 @@ Index page (home) and CMS pages are essentially the same type of content, which 
 
 ## How to customize content
 ### Custom widgets
-Shopgate Engage provides some widgets out of the box, but you can [create a custom one](/custom-widgets). When creating a new feature that can be customized in a WYSIWYG manner, always consider the custom widgets approach, since it gives you the following additional benefits:
+Shopgate Engage provides some widgets out of the box, but you can [create a custom one](markdown/Custom-Widgets.md). When creating a new feature that can be customized in a WYSIWYG manner, always consider the custom widgets approach, since it gives you the following additional benefits:
 - Your user (editor) is able to add basic widgets like `HTML Widget` or `Image Widget` before and after a custom widget.
 - Your user (editor) is free to include your custom widget in any CMS page or home page.
 - There is no need to redeploy the shop in order to update the content of a CMS or Index page.
