@@ -22,8 +22,6 @@ Retrieves the user data object from the store.
 import { getUserData } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { getUserData } from '@shopgate/pwa-common/selectors/user'`
-
 ### Parameters
 
 * `state` _(Object)_ **required**: The application state.
@@ -45,7 +43,7 @@ Retrieves whether the user is logged in from the user data in the store.
 import { isUserLoggedIn } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user'`
+
 
 ### Parameters
 
@@ -67,7 +65,6 @@ Retrieves the display name ({firstName} {lastName}) for a user from the user dat
 import { getUserDisplayName } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { getUserDisplayName } from '@shopgate/pwa-common/selectors/user'`
 
 ### Parameters
 
@@ -89,7 +86,6 @@ Retrieves the first name for a user from the user data in the store.
 import { getUserFirstName } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { getUserFirstName } from '@shopgate/pwa-common/selectors/user'`
 
 ### Parameters
 
@@ -111,7 +107,6 @@ Retrieves the email for the currently logged in user.
 import { getUserEmail } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { getUserEmail } from '@shopgate/pwa-common/selectors/user'`
 
 ### Parameters
 
@@ -133,7 +128,6 @@ Retrieves whether the user login is disabled from the user data in the store.
 import { isUserLoginDisabled } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user'`
 
 ### Parameters
 
@@ -155,7 +149,6 @@ Retrieves the registration URL from the data in the store.
 import { getRegisterUrl } from '@shopgate/engage/user';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { getRegisterUrl } from '@shopgate/pwa-common/selectors/user'`
 
 ### Parameters
 
