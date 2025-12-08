@@ -16,7 +16,7 @@ Generally, the more information we receive, the better the product can be displa
 
 | Node | Type | Attributes | Allow empty | Description | Example |
 | --- | --- | --- | --- | --- | --- |
-| item Shopgate_Model_Catalog_Product | String | uid | ✕ | Unique ID Note: Every item needs a unique item number (uid). If items have identical item numbers, they cannot be imported to Shopgate. | 5 |
+| item <br> Shopgate_Model_Catalog_Product | String | uid | ✕ | Unique ID Note: Every item needs a unique item number (uid). If items have identical item numbers, they cannot be imported to Shopgate. | 5 |
 | name | String |  | ✕ | Product name | Example Product |
 | tax_percent | Float |  | ⚑ | Tax percent -maximum of two decimal places -no percentage symbol Attention: Use this field only if your system does not support tax classes. For tax class support use tax_class. | 19 |
 | tax_class | String |  | ⚑ | Tax class Identifier of a tax class in your store. The main identifier is the name or ID of the tax class. The name should be the same as the defined in tax settings. Attention: Use this field only if your system supports tax classes. To export gross amounts use tax_percent. | 19% DE |
@@ -25,7 +25,7 @@ Generally, the more information we receive, the better the product can be displa
 | deeplink | String |  | ✔ | Deeplink Link to the items detail page Complete link to the item in your shop. This information enables to link items in the app with your shop site. | http://shop.com/ipod-touch-32gb.html |
 | internal_order_info | String |  | ✔ | Internal order info In this field you can store additional information that will automatically be sent to you with any order. This information will not be visible to the customer. | ..... |
 | weight | Float | unit | ✔ | set the weight (units g, lb, kg and oz). Default g | 25 |
-| prices Shopgate_Model_Catalog_Price | | type | ✔ | set the price type (net / gross) if nothing is set, gross is default | gross |
+| prices <br> Shopgate_Model_Catalog_Price | Array | type | ✔ | set the price type (net / gross) if nothing is set, gross is default | gross |
 | price | Float |  | ⚑ | This price is the basic price without any discounts. If price is not set sale_price needs to be set. | 19.99 |
 | sale_price | Float |  | ⚑ | This price is the price a customer has to pay (e.g. with discounts). If sales_price is not set price needs to be set. If sale_price is cheaper than price, price becomes the 'was price' and sale_price will be used as item price. | 15.99 |
 | cost | Float |  | ✔ | This is the price a merchant has to pay (purchase price). | 11.21 |
@@ -33,26 +33,26 @@ Generally, the more information we receive, the better the product can be displa
 | minimum_order_amount | Float |  | ✔ | Minimum order amount. Default 0 (For example: Product price is 1 cent but only if you your order is at least $50) | 25.00 |
 | base_price | String |  | ✔ | The base price is a price per unit. This value needs to be set e.g. for food. | 10.00 € / kg |
 | tier_prices | Array |  | ✔ | set the tier price items |  |
-| tier_price Shopgate_Model_Catalog_TierPrice | | threshold<br>max_quantity<br>type<br>customer_group_uid | ✕<br>✔<br>✕<br>✔ | threshold ( > 0)<br>maximum quantity<br>type (percent, fixed)<br>customer group id | 10<br>5<br>percent<br>1 |
+| tier_price <br> Shopgate_Model_Catalog_TierPrice | | threshold<br>max_quantity<br>type<br>customer_group_uid | ✕<br>✔<br>✕<br>✔ | threshold ( > 0)<br>maximum quantity<br>type (percent, fixed)<br>customer group id | 10<br>5<br>percent<br>1 |
 | _value | Float |  | ✕ | value for the tier price. Fixed discount or percentage discount. Relative to the item's price (sale_price if cheaper than price) | 12.00 |
 | images | Array |  | ✔ | set the images items |  |
-| image Shopgate_Model_Media_Image| | sort_order | ✔ | sort order of the image; smallest value displayed first | 2 |
+| image <br> Shopgate_Model_Media_Image| | sort_order | ✔ | sort order of the image; smallest value displayed first | 2 |
 | url | String | | | ✕ | Image Url | http://shop.com/media/hello.jpg |
 | categories | Array |  | ✕ | set the categories items |  |
-| category Shopgate_Model_Catalog_CategoryPath | | uid<br>sort_order | ✕<br>✔ | set the uid sort order of the product inside the category;<br>highest value displayed first |  |
-| shipping Shopgate_Model_Catalog_Shipping | |  | ✔ | Shipping costs for the product if specific ones exist. |  |
+| category <br> Shopgate_Model_Catalog_CategoryPath | | uid<br>sort_order | ✕<br>✔ | set the uid sort order of the product inside the category;<br>highest value displayed first |  |
+| shipping <br> Shopgate_Model_Catalog_Shipping | |  | ✔ | Shipping costs for the product if specific ones exist. |  |
 | costs_per_order| Float |  | ✔ | costs per order The highest value in costs_per_order of an item in the cart is added once to the regular shipping costs during checkout. positive value maximum two decimal places no currency symbol Default 0 | 5.99 |
 | additional_costs_per_unit | Float |  | ✔ | additional costs per unit Additional shipping costs per unit. This value is added to the shipping costs of the order. positive value maximum two decimal places no currency symbol Default 0 | 2.99 |
 | is_free | Bool |  | ✔ | is free shipping If this field is set to "1", the customer will not have to pay for any shipping costs. Attention: If the cart contains an item with "additional_costs_per_unit," the shipping of this item will also be free. Default 0 | 0 |
-| manufacturer Shopgate_Model_Catalog_Manufacturer | |  | ✕ | Set manufacturer details |  |
+| manufacturer <br> Shopgate_Model_Catalog_Manufacturer | |  | ✕ | Set manufacturer details |  |
 | title | String |  | ✔ | set the manufacturer name | Apple |
 | item_number | String |  | ✔ | external item number | apple_123 |
-| visibility Shopgate_Model_Catalog_Visibility | | level | ✔| nothing: item will not be visible while browsing the app. The product can only be accessed with a direct link, or by searching for the exact article - number. <br><br>0: Item will be shown in the app | nothing |
+| visibility <br> Shopgate_Model_Catalog_Visibility | | level | ✔| nothing: item will not be visible while browsing the app. The product can only be accessed with a direct link, or by searching for the exact article - number. <br><br>0: Item will be shown in the app | nothing |
 | properties | Array |  | ✔ |  |  |
-| property Shopgate_Model_Catalog_Property ||| uid | ✔ | Property UID. If no ID provided the property cannot be used for sorting / filter. | 463 |
+| property <br> Shopgate_Model_Catalog_Property ||| uid | ✔ | Property UID. If no ID provided the property cannot be used for sorting / filter. | 463 |
 | label | String |  | ✕ | Label of the property | Megapixels |
 | value | String |  | ✕ | Value could also contain HTML | 8 |
-| stock Shopgate_Model_Catalog_Stock| |  | ✕ |  |  |
+| stock <br> Shopgate_Model_Catalog_Stock| |  | ✕ |  |  |
 | is_saleable | Bool |  | ✔ | 1 if the product is saleable. Default 0 | 1 |
 | use_stock | Bool |  | ✔ | Product uses stock? Default 0 (no inventory management) | 1 |
 | stock_quantity | Int |  | ✔ | Stock quantity. Default 0 | 5 |
@@ -60,25 +60,25 @@ Generally, the more information we receive, the better the product can be displa
 | maximum_order_quantity | Int |  | ✔ | The maximum order quantity that can be ordered. | 500 |
 | availability_text | String |  | ✔ | Availability text | 2-3 business |
 | identifiers| Array |  | ✔ |  |  |
-| identifier Shopgate_Model_Catalog_Identifier | | uid<br>type | ✕<br>✕ | uid<br>if needed types: ean, ean13, sku, upc, pzn or isbn | 10<br>ean |
+| identifier <br> Shopgate_Model_Catalog_Identifier | | uid<br>type | ✕<br>✕ | uid<br>if needed types: ean, ean13, sku, upc, pzn or isbn | 10<br>ean |
 | _value | String |  |  |  | 12345678 |
 | tags | Array |  | ✔ | Tags are indexed, which allows searching for products by tags. |  |
-| tag Shopgate_Model_Catalog_Tag | |  | ✕ | Product Tag | car |
+| tag <br> Shopgate_Model_Catalog_Tag | |  | ✕ | Product Tag | car |
 | relations | Array |  | ✔ |  |  |
-| relation Shopgate_Model_Catalog_Relation | | type | ✕ | Indicate additional relations to the product upsell crosssell/crossell bonus ordered_with custom | upsell |
+| relation <br> Shopgate_Model_Catalog_Relation | | type | ✕ | Indicate additional relations to the product upsell crosssell/crossell bonus ordered_with custom | upsell |
 | uid | String |  | ✕ | Product ID for the relation | 122 |
 | label | String |  | ⚑ | Required if type = custom | users_also_buy |
-| attribute_groups parent product only |Array |  | ✔ |  |  |
-| attribute_group Shopgate_Model_Catalog_AttributeGroup | | uid | ✕ | attribute group id | 80 |
+| attribute_groups <br> parent product only |Array |  | ✔ |  |  |
+| attribute_group <br> Shopgate_Model_Catalog_AttributeGroup | | uid | ✕ | attribute group id | 80 |
 | inputs | Array |  | ✔ |  |  |
-| input Shopgate_Model_Catalog_Input | |uid<br>type<br>sort_order<br>additional_price<br>price_type<br>required | ✕<br>✕<br>✔<br>⚑<br>⚑<br>✔ | input id<br><br>type (see possible types below) input<br><br>sort order (see below) for text and image types only and required<br><br>price type (fixed or percentage, not for select type)<br><br>required or not | 3<br>text<br>1<br>4.99<br>fixed<br>1 |
+| input <br> Shopgate_Model_Catalog_Input | |uid<br>type<br>sort_order<br>additional_price<br>price_type<br>required | ✕<br>✕<br>✔<br>⚑<br>⚑<br>✔ | input id<br><br>type (see possible types below) input<br><br>sort order (see below) for text and image types only and required<br><br>price type (fixed or percentage, not for select type)<br><br>required or not | 3<br>text<br>1<br>4.99<br>fixed<br>1 |
 | label | String |  | ✕ | Label for the input | PC Tower case color |
 | info_text | String |  | ✔ | Info text shown in a question mark | The tower color will be specially made for you |
 | options | Array |  | ✔ |  |  |
-| option Shopgate_Model_Catalog_Option | | uid<br>additional_price<br>price_type<br>sort_order | ✔<br>✔<br>✔<br>✔ | option id additional price for the option price type (fixed, percentage) sort order (lowest first) | 3 0.99 fixed 1 |
+| option <br> Shopgate_Model_Catalog_Option | | uid<br>additional_price<br>price_type<br>sort_order | ✔<br>✔<br>✔<br>✔ | option id additional price for the option price type (fixed, percentage) sort order (lowest first) | 3 0.99 fixed 1 |
 | label | String |  | ✕ | Option Label | Color |
-| display_type parent product only | |  | ✔ | display type explanation can be seen below. | list |
-| children Shopgate_Model_Catalog_Product | |  |  | Make sure this node is the last node for every item. In general node order is not important, but it is important that the "children" node is the last node for each item. children have got the same nodes as their parent product except for display_type attribute_groups (instead of attribute_groups they have attributes) inheritance rules if a tag is missing at the child, the child will have the according value from its parent any tag present at the child will override the value from their parents especially: if a tag is present but empty the value from the parent will not be used (the value becomes empty) |  |
+| display_type <br> parent product only | |  | ✔ | display type explanation can be seen below. | list |
+| children <br> Shopgate_Model_Catalog_Product | |  |  | Make sure this node is the last node for every item. In general node order is not important, but it is important that the "children" node is the last node for each item. children have got the same nodes as their parent product except for display_type attribute_groups (instead of attribute_groups they have attributes) inheritance rules if a tag is missing at the child, the child will have the according value from its parent any tag present at the child will override the value from their parents especially: if a tag is present but empty the value from the parent will not be used (the value becomes empty) |  |
 | attributes | Array | group_uid | ✕ | refers to the uid of the corresponding attribute_group at parent product | 80 |
 
 # Details for Product Export
