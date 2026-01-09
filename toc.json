@@ -876,6 +876,17 @@
       },
       {
         "type": "group",
+        "title": "Services",
+        "items": [
+          {
+            "type": "item",
+            "title": "CMS",
+            "uri": "static/services/cms.yaml"
+          }
+        ]
+      },
+      {
+        "type": "group",
         "title": "Platform SDK",
         "items": [
           {

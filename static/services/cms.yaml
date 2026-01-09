@@ -1,0 +1,981 @@
+swagger: '2.0'
+x-stoplight:
+  id: hakx5tqv6idhx
+info:
+  title: Omni CMS Service
+  version: '1.0'
+  contact:
+    name: Shopgate API
+    url: 'https://shopagte.com'
+    email: support@shopgate.com
+  description: The next cms service
+host: cms.shopgate.io
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  '/merchants/{merchantCode}':
+    parameters:
+      - name: merchantCode
+        in: path
+        type: string
+        required: true
+    delete:
+      operationId: deleteMerchantEntities
+      summary: Delete merchant entities
+      description: Delete all entities belonging to a merchant
+      x-internal: true
+      tags:
+        - Deprovisioning
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/DeprovisioningRequest'
+      responses:
+        '204':
+          description: Delete request accepted
+        '403':
+          description: Access denied
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Merchant not found
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      x-stoplight:
+        id: 85s9u5omkhgvw
+  '/merchants/{merchantCode}/shops/{shopCode}':
+    parameters:
+      - name: merchantCode
+        in: path
+        type: string
+        required: true
+      - name: shopCode
+        in: path
+        type: string
+        required: true
+    delete:
+      operationId: deleteShopEntities
+      summary: Delete shop entities
+      description: Delete all entities belonging to a shop
+      x-internal: true
+      tags:
+        - Deprovisioning
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/DeprovisioningRequest'
+      responses:
+        '204':
+          description: Delete request accepted
+        '403':
+          description: Access denied
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Merchant or shop not found
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      x-stoplight:
+        id: co1p76s1cmvn1
+  '/merchants/{merchantCode}/shops/{shopCode}/widgetConfigDefinitions':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+    get:
+      tags:
+        - Widget Config Definitions
+      operationId: getWidgetConfigDefinitions
+      summary: Get widget config definitions
+      description: Get widget config definitions
+      parameters:
+        - $ref: '#/parameters/LocaleCode'
+        - $ref: '#/parameters/PaginationLimit'
+        - $ref: '#/parameters/PaginationOffset'
+      responses:
+        '200':
+          description: widget config definitions
+          schema:
+            type: object
+            required:
+              - widgetConfigDefinitions
+              - meta
+            properties:
+              meta:
+                $ref: '#/definitions/Pagination'
+              widgetConfigDefinitions:
+                $ref: '#/definitions/WidgetConfigDefinitionResolved'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: p9lnvxp0ia7rj
+  '/merchants/{merchantCode}/shops/{shopCode}/pages':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+    post:
+      tags:
+        - pages
+      operationId: createPages
+      summary: Create pages
+      description: Create pages
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            required:
+              - pages
+            properties:
+              pages:
+                type: array
+                items:
+                  $ref: '#/definitions/PageCreate'
+      responses:
+        '200':
+          description: create pages response
+          schema:
+            type: object
+        '400':
+          description: Validation error or config validation error
+          schema:
+            allOf:
+              - $ref: '#/definitions/ConfigValidationError'
+              - $ref: '#/definitions/ValidationError'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: 2355ck56grz0l
+    get:
+      tags:
+        - pages
+      operationId: getPages
+      summary: Get pages
+      description: Get pages
+      parameters:
+        - $ref: '#/parameters/PaginationLimit'
+        - $ref: '#/parameters/PaginationOffset'
+        - $ref: '#/parameters/Sort'
+        - in: query
+          name: filters
+          type: string
+          description: Filter string
+          format: json
+      responses:
+        '200':
+          description: get pages response
+          schema:
+            type: object
+            required:
+              - pages
+              - meta
+            properties:
+              pages:
+                type: array
+                items:
+                  $ref: '#/definitions/PageGet'
+              meta:
+                $ref: '#/definitions/Pagination'
+      x-stoplight:
+        id: m49wsutueqca1
+  '/merchants/{merchantCode}/shops/{shopCode}/pages/{slug}/resolved':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+      - $ref: '#/parameters/Slug'
+      - $ref: '#/parameters/LocaleCode'
+    get:
+      tags:
+        - pages
+      operationId: getPublishedPage
+      summary: Get published page
+      description: get published page
+      responses:
+        '200':
+          description: get published page response
+          schema:
+            type: object
+            properties:
+              page:
+                $ref: '#/definitions/PageGetResolved'
+      x-stoplight:
+        id: dkycipdoreh7f
+  '/merchants/{merchantCode}/shops/{shopCode}/pages/{pageCode}':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+      - $ref: '#/parameters/PageCode'
+    get:
+      tags:
+        - pages
+      operationId: getNextPage
+      summary: Get next page
+      description: Get next page
+      responses:
+        '200':
+          description: get next page response
+          schema:
+            type: object
+            properties:
+              page:
+                $ref: '#/definitions/PageGet'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: 6ddrjg969k5ur
+    post:
+      tags:
+        - pages
+      operationId: updateNextPage
+      summary: Update next page
+      description: Update next page
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/PageUpdate'
+      responses:
+        '204':
+          description: update next page response
+        '400':
+          description: Validation error
+          schema:
+            $ref: '#/definitions/ValidationError'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: t8u2wfxnpee1n
+    delete:
+      tags:
+        - pages
+      operationId: deletePage
+      summary: Delete page
+      description: Delete page
+      responses:
+        '204':
+          description: delete page response
+      x-stoplight:
+        id: phoosn3iul63b
+  '/merchants/{merchantCode}/shops/{shopCode}/pages/{pageCode}/publish':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+      - $ref: '#/parameters/PageCode'
+    post:
+      tags:
+        - pages
+      operationId: publishNextPage
+      summary: Publish next page
+      description: Publish next page
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              description:
+                type: string
+                maxLength: 255
+      responses:
+        '204':
+          description: publish next page response
+        '400':
+          description: Validation error
+          schema:
+            $ref: '#/definitions/ValidationError'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: 78l2i4gynykvv
+  '/merchants/{merchantCode}/shops/{shopCode}/pages/{pageCode}/versions':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+      - $ref: '#/parameters/PageCode'
+    get:
+      tags:
+        - pages
+      operationId: getPublishedPageVersions
+      summary: Get published page versions
+      description: Get published page versions
+      parameters:
+        - $ref: '#/parameters/PaginationLimit'
+        - $ref: '#/parameters/PaginationOffset'
+      responses:
+        '200':
+          description: Versions of a page
+          schema:
+            type: object
+            required:
+              - versions
+              - meta
+            properties:
+              versions:
+                type: array
+                items:
+                  $ref: '#/definitions/VersionGet'
+              meta:
+                $ref: '#/definitions/Pagination'
+      x-stoplight:
+        id: lfgdeyxqzav7l
+  '/merchants/{merchantCode}/shops/{shopCode}/pages/{pageCode}/versions/{versionNumber}':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+      - $ref: '#/parameters/ShopCode'
+      - $ref: '#/parameters/PageCode'
+      - $ref: '#/parameters/VersionNumber'
+    get:
+      operationId: getPublishedPageVersion
+      summary: Get published page version
+      description: Get published page version
+      responses:
+        '200':
+          description: Version of a page
+          schema:
+            type: object
+            properties:
+              page:
+                $ref: '#/definitions/PageGet'
+        '404':
+          description: Resource not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: d5e3t8wfkfoht
+  '/merchants/{merchantCode}/images':
+    parameters:
+      - $ref: '#/parameters/MerchantCode'
+    post:
+      description: Uploads an image for use with the cms system
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+          description: The file to upload. Must be eiter a .jpg or .png file.
+      tags:
+        - images
+      responses:
+        '200':
+          description: url of the uploaded file
+          schema:
+            type: object
+            properties:
+              baseUrl:
+                type: string
+        '400':
+          description: Validation error
+          schema:
+            $ref: '#/definitions/ValidationError'
+        '403':
+          description: Insufficient permissions
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Merchant not found
+          schema:
+            $ref: '#/definitions/NotFoundError'
+      x-stoplight:
+        id: j9un8abbrwr4y
+parameters:
+  MerchantCode:
+    name: merchantCode
+    in: path
+    type: string
+    required: true
+    maxLength: 255
+  ShopCode:
+    name: shopCode
+    in: path
+    type: string
+    required: true
+    maxLength: 255
+  LocaleCode:
+    in: query
+    name: localeCode
+    description: 'Locale code to change the language of the name, descriptions, properties and media'
+    type: string
+    maxLength: 5
+  PageCode:
+    name: pageCode
+    in: path
+    type: string
+    required: true
+    maxLength: 255
+  Slug:
+    name: slug
+    in: path
+    type: string
+    required: true
+    maxLength: 255
+  PaginationLimit:
+    description: the limit of entries of one page
+    in: query
+    name: limit
+    type: integer
+    default: 100
+    minimum: 1
+    maximum: 100
+  PaginationOffset:
+    description: the offset where to start the page
+    in: query
+    name: offset
+    type: integer
+    default: 0
+    minimum: 0
+  Sort:
+    description: sorting of pages
+    in: query
+    name: sort
+    type: string
+  VersionNumber:
+    description: Number of the page version
+    in: path
+    name: versionNumber
+    type: integer
+    required: true
+    minimum: 1
+definitions:
+  Code:
+    description: Code of the entity
+    type: string
+    example: 55585-1
+    minLength: 1
+    maxLength: 255
+    x-stoplight:
+      id: b6gpipag018xb
+  OptionalLocalization:
+    type: object
+    description: 'Localization object, see [Entity Localization](/docs/retail-red/ZG9jOjM1NjU0NzY4-concepts-and-entities#entity-localization) for further information.'
+    additionalProperties:
+      type:
+        - 'null'
+        - string
+    example:
+      en-us: string in english
+      de-de: Zeichenkette auf Deutsch
+    x-stoplight:
+      id: jvyfbs4c7oe0c
+  Visibility:
+    type: object
+    required:
+      - scheduleStartDate
+      - scheduleEndDate
+    properties:
+      isHidden:
+        type: boolean
+        default: false
+      scheduleStartDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+      scheduleEndDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+    x-stoplight:
+      id: mdlvq5q3626wq
+  Margin:
+    minimum: 0
+    type:
+      - number
+      - 'null'
+    x-stoplight:
+      id: 3tbovjdrsjbum
+  Layout:
+    type: object
+    required:
+      - marginTop
+      - marginBottom
+      - marginLeft
+      - marginRight
+    properties:
+      marginTop:
+        $ref: '#/definitions/Margin'
+      marginBottom:
+        $ref: '#/definitions/Margin'
+      marginLeft:
+        $ref: '#/definitions/Margin'
+      marginRight:
+        $ref: '#/definitions/Margin'
+    x-stoplight:
+      id: tqqcgdhl7jr5g
+  Widget:
+    type: object
+    required:
+      - code
+      - widgetConfigDefinitionCode
+      - widgetConfig
+      - visibility
+      - layout
+    properties:
+      code:
+        $ref: '#/definitions/Code'
+      widgetConfigDefinitionCode:
+        $ref: '#/definitions/Code'
+      widgetConfig:
+        type: object
+        additionalProperties: true
+      visibility:
+        $ref: '#/definitions/Visibility'
+      layout:
+        $ref: '#/definitions/Layout'
+    x-stoplight:
+      id: 8r781mdk50nwz
+  WidgetConfigDefinitionResolved:
+    type: object
+    x-stoplight:
+      id: zxd1hzq9xvnf5
+  PageCreate:
+    type: object
+    additionalProperties: false
+    required:
+      - code
+      - name
+      - type
+      - dropzones
+      - slug
+    properties:
+      code:
+        $ref: '#/definitions/Code'
+      name:
+        $ref: '#/definitions/Name'
+      pageTitle:
+        $ref: '#/definitions/OptionalLocalization'
+      slug:
+        $ref: '#/definitions/Slug'
+      type:
+        $ref: '#/definitions/Type'
+      isFavorite:
+        $ref: '#/definitions/IsFavorite'
+      isProtected:
+        $ref: '#/definitions/IsProtected'
+      dropzones:
+        type: object
+        properties:
+          cmsWidgetList:
+            type: array
+            items:
+              $ref: '#/definitions/Widget'
+    x-stoplight:
+      id: e6lc005uw0zjh
+  PageGet:
+    type: object
+    properties:
+      code:
+        $ref: '#/definitions/Code'
+      name:
+        $ref: '#/definitions/Name'
+      pageTitle:
+        $ref: '#/definitions/OptionalLocalization'
+      slug:
+        $ref: '#/definitions/Slug'
+      type:
+        $ref: '#/definitions/Type'
+      isFavorite:
+        $ref: '#/definitions/IsFavorite'
+      isProtected:
+        $ref: '#/definitions/IsProtected'
+      dropzones:
+        type: object
+        properties:
+          cmsWidgetList:
+            type: array
+            items:
+              $ref: '#/definitions/Widget'
+      createDate:
+        type:
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+      updateDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+      lastPublishDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+    x-stoplight:
+      id: 3te7lpgxxshux
+  PageGetResolved:
+    type: object
+    properties:
+      code:
+        $ref: '#/definitions/Code'
+      name:
+        $ref: '#/definitions/Name'
+      pageTitle:
+        $ref: '#/definitions/Title'
+      slug:
+        $ref: '#/definitions/Slug'
+      type:
+        $ref: '#/definitions/Type'
+      isFavorite:
+        $ref: '#/definitions/IsFavorite'
+      isProtected:
+        $ref: '#/definitions/IsProtected'
+      dropzones:
+        type: object
+        properties:
+          cmsWidgetList:
+            type: array
+            items:
+              $ref: '#/definitions/Widget'
+      createDate:
+        type:
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+      updateDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+      publishDate:
+        type:
+          - 'null'
+          - string
+        format: date-time
+        example: '2018-12-12T14:27:23.114Z'
+    x-stoplight:
+      id: vffyncdd82f2p
+  PageUpdate:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        $ref: '#/definitions/Name'
+      pageTitle:
+        $ref: '#/definitions/OptionalLocalization'
+      slug:
+        $ref: '#/definitions/Slug'
+      type:
+        $ref: '#/definitions/Type'
+      isFavorite:
+        $ref: '#/definitions/IsFavorite'
+      isProtected:
+        $ref: '#/definitions/IsProtected'
+      dropzones:
+        type: object
+        properties:
+          cmsWidgetList:
+            type: array
+            items:
+              $ref: '#/definitions/Widget'
+    x-stoplight:
+      id: ysx0faexvoz0j
+  Name:
+    type: string
+    minLength: 1
+    maxLength: 255
+    x-stoplight:
+      id: sv03nzf2w2sn0
+  Slug:
+    type: string
+    minLength: 1
+    maxLength: 255
+    x-stoplight:
+      id: uc416vjabmdol
+  Type:
+    type: string
+    enum:
+      - cms
+    x-stoplight:
+      id: aeejxegy4970f
+  IsFavorite:
+    type: boolean
+    default: false
+    x-stoplight:
+      id: z0h7dfdk9h9nv
+  IsProtected:
+    type: boolean
+    default: false
+    x-stoplight:
+      id: m8iujdhrwe8rv
+  Pagination:
+    type: object
+    properties:
+      limit:
+        type: number
+      offset:
+        type: number
+      totalItemCount:
+        type: number
+    example:
+      limit: 10
+      offset: 0
+      totalItemCount: 1
+    x-stoplight:
+      id: 9vnrn4vu08wj1
+  ValidationError:
+    type: object
+    properties:
+      statusCode:
+        type: number
+      message:
+        type: string
+      code:
+        type: string
+      additionalInfo:
+        type: object
+        properties:
+          validationErrors:
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: number
+                reason:
+                  type: string
+                entity:
+                  type: string
+                entityId:
+                  type: string
+                subentityPath:
+                  type: array
+                  items:
+                    type:
+                      - string
+                      - number
+      error:
+        type: object
+        required:
+          - message
+        properties:
+          paramName:
+            type: string
+            description: 'the parameter-field, that failed to validate, like "userId"'
+          paramValue:
+            type:
+              - 'null'
+              - string
+              - number
+              - array
+              - object
+            description: 'the value, that was sent, like "xxx"'
+          code:
+            type: string
+            description: machine readable error code
+            enum:
+              - SCHEMA_VALIDATION_FAILED
+              - VALIDATION_FAILED
+              - ENUM_MISMATCH
+              - MAXIMUM
+              - MAXIMUM_EXCLUSIVE
+              - MINIMUM
+              - MINIMUM_EXCLUSIVE
+              - MULTIPLE_OF
+              - ARRAY_LENGTH_LONG
+              - ARRAY_LENGTH_SHORT
+              - ARRAY_ADDITIONAL_ITEMS
+              - ARRAY_UNIQUE
+              - MAX_LENGTH
+              - MIN_LENGTH
+              - MAX_PROPERTIES
+              - MIN_PROPERTIES
+              - OBJECT_MISSING_REQUIRED_PROPERTY
+              - OBJECT_PROPERTIES_MAXIMUM
+              - OBJECT_PROPERTIES_MINIMUM
+              - OBJECT_ADDITIONAL_PROPERTIES
+              - OBJECT_DEPENDENCY_KEY
+              - ONE_OF_MISSING
+              - ONE_OF_MULTIPLE
+              - NOT_PASSED
+              - INVALID_FORMAT
+              - INVALID_TYPE
+              - UNKNOWN_FORMAT
+              - PATTERN
+              - REQUIRED
+          message:
+            type: string
+            description: human readable error code
+          results:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  $ref: '#/definitions/ValidationErrorResult'
+              warnings:
+                type: array
+    x-stoplight:
+      id: r9qjybm8hbkhn
+  ValidationErrorResult:
+    type: object
+    properties:
+      code:
+        type: string
+        description: machine readable error code
+        enum:
+          - ENUM_MISMATCH
+          - MAXIMUM
+          - MAXIMUM_EXCLUSIVE
+          - MINIMUM
+          - MINIMUM_EXCLUSIVE
+          - MULTIPLE_OF
+          - ARRAY_LENGTH_LONG
+          - ARRAY_LENGTH_SHORT
+          - ARRAY_ADDITIONAL_ITEMS
+          - ARRAY_UNIQUE
+          - MAX_LENGTH
+          - MIN_LENGTH
+          - MAX_PROPERTIES
+          - MIN_PROPERTIES
+          - OBJECT_MISSING_REQUIRED_PROPERTY
+          - OBJECT_PROPERTIES_MAXIMUM
+          - OBJECT_PROPERTIES_MINIMUM
+          - OBJECT_ADDITIONAL_PROPERTIES
+          - OBJECT_DEPENDENCY_KEY
+          - ONE_OF_MISSING
+          - ONE_OF_MULTIPLE
+          - NOT_PASSED
+          - INVALID_FORMAT
+          - INVALID_CREDENTIALS
+          - INVALID_TYPE
+          - UNKNOWN_FORMAT
+          - PATTERN
+          - REQUIRED
+      message:
+        type: string
+        description: human readable error code
+      description:
+        type: string
+        example: human readable error code
+      path:
+        type: array
+        items:
+          type: string
+    example:
+      code: MAX_LENGTH
+      message: Name too long
+      description: Property Name is too long
+      path:
+        - name
+    x-stoplight:
+      id: sqn3bh2gr66u7
+  NotFoundError:
+    type: object
+    required:
+      - message
+      - code
+    properties:
+      statusCode:
+        type: number
+      code:
+        type: string
+        example: NotFound
+      message:
+        type: string
+        example: Merchant not found
+    x-stoplight:
+      id: ar6ezerj3dfqo
+  Error:
+    type: object
+    required:
+      - message
+    properties:
+      code:
+        type: string
+        description: machine readable error code
+      message:
+        type: string
+        description: human readable error code
+    x-stoplight:
+      id: vifrqjy527uwl
+  ConfigValidationError:
+    type: object
+    properties:
+      code:
+        type: string
+        description: machine readable error code
+      message:
+        type: string
+        description: human readable error code
+      validationErrors:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            reason:
+              type: string
+            entity:
+              type: string
+            entityId:
+              type: string
+            entityIndex:
+              type: number
+            subentityPath:
+              type: array
+              items:
+                type:
+                  - string
+                  - number
+    x-stoplight:
+      id: 56egilahxv2lb
+  DeprovisioningRequest:
+    type: object
+    additionalProperties: false
+    required:
+      - deleteRequestId
+    properties:
+      deleteRequestId:
+        type: string
+    x-stoplight:
+      id: sqxs0cr14lctq
+  Title:
+    type: string
+    x-stoplight:
+      id: 0t49uufx4vf9t
+  VersionGet:
+    type: object
+    properties:
+      versionNumber:
+        type: number
+      description:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      createBy:
+        type: string
+    x-stoplight:
+      id: 15ktfcovwb59w
