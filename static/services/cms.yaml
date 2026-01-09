@@ -65,8 +65,8 @@ paths:
         required: true
     delete:
       operationId: deleteShopEntities
-      summary: Delete shop entities
-      description: Delete all entities belonging to a shop
+      summary: Deprovision Shop
+      description: Deletes a specific shop and its associated CMS data. This will remove all pages and configurations linked to this shop code.
       x-internal: true
       tags:
         - Deprovisioning
@@ -101,7 +101,7 @@ paths:
         - Widget Config Definitions
       operationId: getWidgetConfigDefinitions
       summary: Get widget config definitions
-      description: Get widget config definitions
+      description: Returns the list of available widgets and their configuration schemas for the specified shop and locale.
       parameters:
         - $ref: '#/parameters/LocaleCode'
         - $ref: '#/parameters/PaginationLimit'
@@ -133,8 +133,8 @@ paths:
       tags:
         - Pages
       operationId: createPages
-      summary: Create pages
-      description: Create pages
+      summary: Create New Pages
+      description: Bulk-creates one or more new CMS pages. Requires a unique slug and page code for each entry.
       parameters:
         - in: body
           name: body
@@ -168,8 +168,8 @@ paths:
       tags:
         - Pages
       operationId: getPages
-      summary: Get pages
-      description: Get pages
+      summary: List pages
+      description: Retrieves a list of all pages for a shop. Supports filtering by status or metadata and custom sorting.
       parameters:
         - $ref: '#/parameters/PaginationLimit'
         - $ref: '#/parameters/PaginationOffset'
@@ -206,8 +206,8 @@ paths:
       tags:
         - Pages
       operationId: getPublishedPage
-      summary: Get published page
-      description: get published page
+      summary: Get Live Page Content
+      description: Fetches the fully resolved (published & localized) version of a page by its slug.
       responses:
         '200':
           description: get published page response
@@ -227,8 +227,8 @@ paths:
       tags:
         - Pages
       operationId: getNextPage
-      summary: Get next page
-      description: Get next page
+      summary: Retrieve Current Page Draft
+      description: Gets the current working draft of a specific page.
       responses:
         '200':
           description: get next page response
@@ -247,8 +247,8 @@ paths:
       tags:
         - Pages
       operationId: updateNextPage
-      summary: Update next page
-      description: Update next page
+      summary: Update Page Draft
+      description: Updates the current page draft. Does not affect the live site until published.
       parameters:
         - in: body
           name: body
@@ -271,8 +271,8 @@ paths:
       tags:
         - Pages
       operationId: deletePage
-      summary: Delete page
-      description: Delete page
+      summary: Delete Page
+      description: Permanently removes a page and all its versions from the CMS.
       responses:
         '204':
           description: delete page response
@@ -287,8 +287,8 @@ paths:
       tags:
         - Pages
       operationId: publishNextPage
-      summary: Publish next page
-      description: Publish next page
+      summary: Publish Page Draft
+      description: Takes the current draft and makes it the "Live" version. Allows for an optional description to track changes in the version history.
       parameters:
         - in: body
           name: body
@@ -320,8 +320,8 @@ paths:
       tags:
         - Pages
       operationId: getPublishedPageVersions
-      summary: Get published page versions
-      description: Get published page versions
+      summary: List Page History
+      description: Returns a history of the published versions for a specific page, including version numbers and creation dates.
       parameters:
         - $ref: '#/parameters/PaginationLimit'
         - $ref: '#/parameters/PaginationOffset'
@@ -352,8 +352,8 @@ paths:
       tags:
         - Pages
       operationId: getPublishedPageVersion
-      summary: Get published page version
-      description: Get published page version
+      summary: Get Specific Published Version
+      description: Retrieves the full configuration of a published page as it existed at a specific version number.
       responses:
         '200':
           description: Version of a page
@@ -372,7 +372,8 @@ paths:
     parameters:
       - $ref: '#/parameters/MerchantCode'
     post:
-      description: Uploads an image for use with the cms system
+      summary: Upload Image Asset
+      description: Uploads an image to the Shopgate CDN. Returns a base URL that can be used within widget configurations.
       consumes:
         - multipart/form-data
       parameters:
