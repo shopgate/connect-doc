@@ -29,6 +29,7 @@ paths:
       summary: Delete merchant entities
       description: Delete all entities belonging to a merchant
       x-internal: true
+      x-private: true
       tags:
         - Deprovisioning
       parameters:
