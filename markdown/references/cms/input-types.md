@@ -1,7 +1,5 @@
 # CMS Input Types Documentation
 
-> This document is work in progress and describes a feature that is not released yet.
-This document outlines the supported input types in the new CMS system.
 
 ---
 

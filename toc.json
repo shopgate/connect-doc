@@ -954,6 +954,22 @@
         }
       ]
     },
+    {
+      "type": "group",
+      "title": "CMS",
+      "items": [
+        {
+        "type": "item",
+        "title": "Widget Configs",
+        "uri": "markdown/references/cms/widget-configs.md"
+        },
+        {
+        "type": "item",
+        "title": "Input Types",
+        "uri": "markdown/references/cms/input-types.md"
+        }
+      ]
+    },
 
 
     {

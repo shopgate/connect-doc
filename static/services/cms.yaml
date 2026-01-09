@@ -468,7 +468,7 @@ definitions:
   Code:
     description: Code of the entity
     type: string
-    example: 55585-1
+    example: 8b2802a6-ab0e-4310-97d4-096ae8b3610f
     minLength: 1
     maxLength: 255
     x-stoplight:
