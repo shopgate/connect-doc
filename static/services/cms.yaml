@@ -2,13 +2,29 @@ swagger: '2.0'
 x-stoplight:
   id: hakx5tqv6idhx
 info:
-  title: Omni CMS Service
+  title: CMS Service
   version: '1.0'
   contact:
     name: Shopgate API
     url: 'https://shopagte.com'
     email: support@shopgate.com
-  description: The next cms service
+  description: >-
+    The CMS Service manages content delivery for the Shopgate mobile shopping apps. 
+    It follows a hierarchical structure: Merchants own Shops, and Shops contain Pages and Media Assets.
+
+
+    **Key Features:**
+
+    * **Lifecycle Management**: Support for creating drafts, versioning, and publishing.
+
+    * **Modular Widgets**: Pages are built using Widgets, which include global settings like scheduling (`visibility`), manual toggles (`isHidden`), and layout padding.
+
+    * **Dynamic Config**: Widget configurations (`widgetConfig`) with possibilities for visibility logic (e.g. only show one field if another field has value x).
+
+    * **Localization**: Full support for multi-language content via `localeCode` parameters.
+
+
+    For detailed widget schemas and visibility syntax, refer to the [Widget Configuration Guide](../../markdown/references/cms/widget-configs.md).
 host: cms.shopgate.io
 schemes:
   - https
