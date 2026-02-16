@@ -7,7 +7,7 @@ There are two types of portals: parents and siblings. You use a parent portal to
 
 ## Portal Names
 
-portals have unique names, and portal names use the following naming convention: `<feature>.<content>.<position (optional)>`. Sibling names always include a position suffix in their names.
+Portals have unique names, and portal names use the following naming convention: `<feature>.<content>.<position (optional)>`. Sibling names always include a position suffix in their names.
 
 Parent portal name example: `PRODUCT-ITEM.NAME`
 
