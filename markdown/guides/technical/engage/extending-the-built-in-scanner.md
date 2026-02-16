@@ -4,8 +4,6 @@ The Engage app has a built-in scanner functionality. The scanner recognizes QR c
 
 This guide shows you how to open the scanner, implement custom handling of scanned data, change the appearance of the default scanner page, and create a completely custom scanner route.
 
-> **NOTE**: The scanner is available from PWA 6.5.0 (iOS App Version 10.38 / Android App Version 5.35).
-
 ## Table of Contents
 
 - [Opening the Scanner](#opening-the-scanner)
