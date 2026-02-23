@@ -81,7 +81,7 @@ When `resolveWithData` is set to `true`, the action will resolve with an object 
 
 ## Examples
 
-## React component example
+### React component example
 
 The component below will preset a geolocation permission dialog with custom translations when the user didn't opt-in yet.
 
@@ -115,7 +115,7 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-## RxJS Subscription Example
+### RxJS Subscription Example
 
 The subscription below will preset a geolocation permission dialog on app start with custom translations when the user didn't opt-in yet.
 
