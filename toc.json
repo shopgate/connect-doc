@@ -184,6 +184,11 @@
             },
             {
               "type": "item",
+              "title": "Requesting App Permisions",
+              "uri": "markdown/Requesting-App-Permissions.md"
+            },
+            {
+              "type": "item",
               "title": "Accessibility",
               "uri": "markdown/Accessibility.md"
             }
