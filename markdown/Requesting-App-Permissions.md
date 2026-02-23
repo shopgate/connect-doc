@@ -51,7 +51,7 @@ The `grantAppTrackingTransparencyPermission` is only supported on iOS right now.
 
 | Option | Description | Type | Default |
 |--------|-------------|------|---------|
-|`resolveWithData`| If set to `true` the promise will resolve with an object containing the permission status and additional data, instead of a boolean value. (see [Grant Permissions Resolved Value](#grant-permissions-resolved-value))| `[boolean]`| `false` |
+|`resolveWithData`| If set to `true` the promise will resolve with an object containing the permission status and additional data, instead of a boolean value. (see [Grant Permissions Resolved Value](#grant-permissions-resolved-value)).<br /><br />This option is available from version 7.30.1. Prior this version the promise only resolves with a boolean value that indicates if the permission is granted. | `[boolean]`| `false` |
 |`useSettingsModal` | Whether in case of declined permissions a modal shall be presented, which redirects to the app settings. | `[boolean]`| `false`|
 |`settingsModal`| Options for the settings modal (see [Modal Options](#modal-options)). In version < 7.30.1 this option was called `modal`. From 7.30.1 this option is flagged as deprecated. | `[object]`| `{}` |
 |`useRationaleModal` | Whether a rationale modal should be shown before requesting the permission. | `[boolean]`| `false` |
