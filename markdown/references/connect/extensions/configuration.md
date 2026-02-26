@@ -51,7 +51,7 @@ If the `value` property of `param` is a string or an object containing strings, 
 
 
 | Name | Type | Description |
-|--|--|--|--|
+|--|--|--|
 | **appId** | string | Indicates your current app id, such as "app_123456" |
 | **publicPath** | string | Indicates the base path where your application is served |
 | **themes** | array of strings | Shows the available themes, including their versions |
