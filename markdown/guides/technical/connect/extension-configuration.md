@@ -64,7 +64,7 @@ There is no way to resolve a key that has not been released. Therefore, you need
 
 Example:
 
-```
+```json
 ...
 "credentials": {
   "type": "admin",
@@ -81,10 +81,10 @@ In Extension Settings > (your extension) in the Merchant Admin, you can use a js
 
 ```json
 {
-	"credentials": {
-		"user": "testUser",
-		"password": "mySecurePassword123456789!?"
-	}
+  "credentials": {
+    "user": "testUser",
+    "password": "mySecurePassword123456789!?"
+  }
 }
 ```
 
