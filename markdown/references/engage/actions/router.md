@@ -21,7 +21,6 @@ import { historyPush } from '@shopgate/engage/core';
 dispatch(historyPush({ pathname: '/' }));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { historyPush } from '@shopgate/pwa-common/actions/router'`
 
 ### Parameters
 
@@ -44,7 +43,6 @@ import { historyPop } from '@shopgate/engage/core';
 dispatch(historyPop());
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { historyPop } from '@shopgate/pwa-common/actions/router'`
 
 ---
 
@@ -60,7 +58,6 @@ import { historyReplace } from '@shopgate/engage/core';
 dispatch(historyReplace({ pathname: '/some-page' }));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { historyReplace } from '@shopgate/pwa-common/actions/router'`
 
 
 ### Parameters
@@ -83,5 +80,3 @@ import { historyReset } from '@shopgate/engage/core';
 
 dispatch(historyReset());
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { historyReset } from '@shopgate/pwa-common/actions/router'`
