@@ -26,7 +26,6 @@ dispatch(showModal({
 }));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import showModal from '@shopgate/pwa-common/actions/modal/showModal'`
 
 ### Parameters
 
@@ -51,7 +50,6 @@ import { closeModal } from '@shopgate/engage/core';
 dispatch(closeModal(123, true))
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import closeModal from '@shopgate/pwa-common/actions/modal/closeModal'`
 
 ### Parameters
 
