@@ -25,8 +25,6 @@ const couponIds = ['someCouponId', 'anotherCouponId'];
 dispatch(addCouponsToCart(couponIds));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { addCouponsToCart } from '@shopgate/pwa-common-commerce/cart'`
-
 ### Parameters
 
 * `couponIds` _(Array\<string\>)_: The  IDs of the coupons to add to the cart.
@@ -57,8 +55,6 @@ const productsData = [
 dispatch(addProductsToCart(productsData));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { addProductsToCart } from '@shopgate/pwa-common-commerce/cart'`
-
 ### Parameters
 
 * `data` _(Array\<Object\>)_ **required**: The data necessary for the products to be added to the cart.
@@ -85,8 +81,6 @@ const couponIds = ['someCouponId', 'anotherCouponId'];
 dispatch(deleteCouponsFromCart(couponIds));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { deleteCouponsFromCart } from '@shopgate/pwa-common-commerce/cart'`
-
 ### Parameters
 
 * `couponIds` _(Array\<string\>)_ **required**: The IDs of the coupons to be removed from the cart.
@@ -107,8 +101,6 @@ const cartItemIds = ['1', '2', '5'];
 dispatch(deleteProductsFromCart(cartItemIds));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { deleteProductsFromCart } from '@shopgate/pwa-common-commerce/cart'`
-
 ### Parameters
 
 * `cartItemIds` _(Array\<string\>)_ **required**: The IDs of the cart items to be removed from the cart.
@@ -126,8 +118,6 @@ import { fetchCart } from '@shopgate/engage/cart';
 
 dispatch(fetchCart());
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchCart } from '@shopgate/pwa-common-commerce/cart'`
 
 ---
 
@@ -154,7 +144,6 @@ const updateData = [
 dispatch(updateProductsInCart(updateData));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { updateProductsInCart } from '@shopgate/pwa-common-commerce/cart'`
 
 ### Parameters
 
