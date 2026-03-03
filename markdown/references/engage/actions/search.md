@@ -25,7 +25,6 @@ const params = {
 dispatch(fetchSearchResults(params));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchSearchResults } from '@shopgate/pwa-common-commerce/search'`
 
 ### Parameters
 
@@ -40,7 +39,6 @@ dispatch(fetchSearchResults(params));
 import { SORT_RELEVANCE, SORT_PRICE_ASC, SORT_PRICE_DESC, SORT_RANDOM } from '@shopgate/engage/core';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { SORT_RELEVANCE, SORT_PRICE_ASC, SORT_PRICE_DESC, SORT_RANDOM } from '@shopgate/pwa-common/constants/DisplayOptions'`
 
 ---
 
@@ -58,7 +56,6 @@ const searchPhrase = 'red';
 dispatch(fetchSearchSuggestions(searchPhrase));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchSearchSuggestions } from '@shopgate/pwa-common-commerce/search'`
 
 ### Parameters
 
