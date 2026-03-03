@@ -27,7 +27,7 @@ const forceFetch = false;
 
 dispatch(fetchProduct(productId, forceFetch));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProduct } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -49,7 +49,7 @@ const productId = 'abc123';
 
 dispatch(fetchProductDescription(productId));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductDescription } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -74,7 +74,7 @@ const formats = [{
 
 dispatch(fetchProductImages(productId, formats));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductImages } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -98,7 +98,7 @@ const productId = 'abc123';
 
 dispatch(fetchProductOptions(productId));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductOptions } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -119,7 +119,7 @@ const productId = 'abc123';
 
 dispatch(fetchProductProperties(productId));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductProperties } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -144,7 +144,7 @@ const type = PRODUCT_RELATIONS_TYPE_UPSELLING;
 
 dispatch(fetchProductRelations(productId, type));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductRelations } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -162,7 +162,7 @@ import {
   PRODUCT_RELATIONS_TYPE_CUSTOM
 } from '@shopgate/engage/product';
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { PRODUCT_RELATIONS_TYPE_CROSS_SELLING, PRODUCT_RELATIONS_TYPE_UPSELLING, PRODUCT_RELATIONS_TYPE_BONUS, PRODUCT_RELATIONS_TYPE_BOUGHT_WITH, PRODUCT_RELATIONS_TYPE_CUSTOM } from '@shopgate/pwa-common-commerce/product'`
+`
 
 ---
 
@@ -179,7 +179,7 @@ const productId = 'abc123';
 
 dispatch(fetchProductShipping(productId));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductShipping } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
@@ -200,7 +200,7 @@ const productId = 'abc123';
 
 dispatch(fetchProductVariants(productId));
 ```
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductVariants } from '@shopgate/pwa-common-commerce/product'`
+
 
 ### Parameters
 
