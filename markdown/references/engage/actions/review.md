@@ -26,7 +26,6 @@ const sort = 'priceAsc',
 dispatch(fetchProductReviews(productId, limit, sort));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchProductReviews } from '@shopgate/pwa-common-commerce/reviews'`
 
 ### Parameters
 
@@ -38,8 +37,6 @@ dispatch(fetchProductReviews(productId, limit, sort));
 ```javascript
 import { SORT_RELEVANCE, SORT_DATE_ASC, SORT_DATA_DESC, SORT_RATE_ASC, SORT_RATE_DEC } from '@shopgate/engage/core';
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { SORT_RELEVANCE, SORT_DATE_ASC, SORT_DATA_DESC, SORT_RATE_ASC, SORT_RATE_DEC } from '@shopgate/pwa-common/constants/DisplayOptions'`
 
 ---
 
@@ -60,7 +57,6 @@ const sort = 'priceAsc',
 dispatch(fetchReviews(productId, limit, offset, sort));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchReviews } from '@shopgate/pwa-common-commerce/reviews'`
 
 ### Parameters
 
@@ -74,7 +70,6 @@ dispatch(fetchReviews(productId, limit, offset, sort));
 import { SORT_RELEVANCE, SORT_DATE_ASC, SORT_DATA_DESC, SORT_RATE_ASC, SORT_RATE_DEC } from '@shopgate/engage/core';
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { SORT_RELEVANCE, SORT_DATE_ASC, SORT_DATA_DESC, SORT_RATE_ASC, SORT_RATE_DEC } from '@shopgate/pwa-common/constants/DisplayOptions'`
 
 ---
 
@@ -92,7 +87,6 @@ const productId = '25';
 dispatch(fetchUserReview(productId))
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchUserReview } from '@shopgate/pwa-common-commerce/reviews'`
 
 ### Parameters
 
@@ -112,7 +106,6 @@ import { flushUserReview } from '@shopgate/engage/reviews'
 dispatch(flushUserReview());
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { flushUserReview } from '@shopgate/pwa-common-commerce/reviews'`
 
 ---
 
@@ -138,7 +131,6 @@ const update = true;
 dispatch(submitReview(review, update));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { submitReview } from '@shopgate/pwa-common-commerce/reviews'`
 
 ### Parameters
 
