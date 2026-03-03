@@ -19,8 +19,6 @@ import { fetchFavorites } from '@shopgate/engage/favorites';
 dispatch(fetchFavorites());
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { fetchFavorites } from '@shopgate/pwa-common-commerce/favorites'`
-
 ### Parameters
 
 * `ignoreCache` *(boolean)*: Indicates whether to ignore the cache.
@@ -42,8 +40,6 @@ const withRelatives = false;
 dispatch(addFavorite(productId));
 dispatch(removeFavorites(productId, withRelatives));
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import { addFavorites, removeFavorites } from '@shopgate/pwa-common-commerce/favorites'`
 
 ### Parameters
 
