@@ -21,8 +21,6 @@ import { fetchRegisterUrl } from '@shopgate/engage/user';
 dispatch(fetchRegisterUrl());
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl'`
-
 ---
 
 ## fetchUser
@@ -37,7 +35,6 @@ import { fetchUser } from '@shopgate/engage/user';
 dispatch(fetchUser());
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import fetchUser from '@shopgate/pwa-common/actions/user/fetchUser'`
 
 ---
 
@@ -53,7 +50,6 @@ import { login } from '@shopgate/engage/user';
 dispatch(login({login: 'user@email.com', password: 'password123'}, '/checkout', 'basic'));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import login from '@shopgate/pwa-common/actions/user/login'`
 
 ### Parameters
 
@@ -76,5 +72,3 @@ import { logout } from '@shopgate/engage/user';
 
 dispatch(logout());
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in *ENGAGE v7*: `import logout from '@shopgate/pwa-common/actions/user/logout'`
