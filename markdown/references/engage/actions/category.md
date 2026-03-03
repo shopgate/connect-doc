@@ -23,8 +23,6 @@ const categoryId = '25';
 dispatch(fetchCategory(categoryId));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in _ENGAGE v7_: `import { fetchCategory } from '@shopgate/pwa-common-commerce/category'`
-
 ### Parameters
 
 - `categoryId`_(string)_ **required**: The ID for the category to fetch.
@@ -44,8 +42,6 @@ const categoryId = '25';
 
 dispatch(fetchCategoryChildren(categoryId));
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in _ENGAGE v7_: `import { fetchCategoryChildren } from '@shopgate/pwa-common-commerce/category'`
 
 ### Parameters
 
@@ -79,8 +75,6 @@ const filters = {
 dispatch(fetchCategoryProducts({categoryId, offset, limit, sort, filters}));
 ```
 
-> **Attention**: The path to the old modules is deprecated and will be removed in _ENGAGE v7_: `import { fetchCategoryProducts } from '@shopgate/pwa-common-commerce/category'`
-
 ### Parameters
 
 - `categoryId`_(string)_ **required**: The ID for the category to fetch.
@@ -93,8 +87,6 @@ dispatch(fetchCategoryProducts({categoryId, offset, limit, sort, filters}));
 ```javascript
 import { SORT_RELEVANCE, SORT_PRICE_ASC, SORT_PRICE_DESC } from '@shopgate/engage/core';
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in _ENGAGE v7_: `import { SORT_RELEVANCE, SORT_PRICE_ASC, SORT_PRICE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions'`
 
 ---
 
@@ -109,5 +101,3 @@ import { fetchRootCategories } from '@shopgate/engage/category';
 
 dispatch(fetchRootCategories());
 ```
-
-> **Attention**: The path to the old modules is deprecated and will be removed in _ENGAGE v7_: `import { fetchRootCategories } from '@shopgate/pwa-common-commerce/category'`
