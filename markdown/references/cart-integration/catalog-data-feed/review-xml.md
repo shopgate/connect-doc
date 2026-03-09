@@ -16,9 +16,9 @@ Generally, the more information we receive, the better the reviews can be displa
 | Node | Attributes | Allow empty | Description | Example |
 | --- | --- | --- | --- | --- |
 | review Shopgate_Model_Review | uid | ✕ | Unique ID | 5 |
-| item_uid STRING |  | ✕ | Product / Item UID | 36 |
-| score INT |  | ✕ | Score value (0 - 10) | 4 |
-| reviewer_name STRING |  | ✔ | Username or Display-name of the review author | Natashenka |
-| date DATE |  | ✕ | Created at | 2007-08-25 |
-| title STRING |  | ✔ | Review title | Chicks dig ribs |
-| text STRING |  | ✔ | Review text | Ever since buying this shirt chics cant take their hands off me. I don't know what it is it must be... |
+| item_uid  | STRING | ✕ | Product / Item UID | 36 |
+| score  | INT | ✕ | Score value (0 - 10) | 4 |
+| reviewer_name  | STRING | ✔ | Username or Display-name of the review author | Natashenka |
+| date  | DATE | ✕ | Created at | 2007-08-25 |
+| title  |  STRING| ✔ | Review title | Chicks dig ribs |
+| text  | STRING | ✔ | Review text | Ever since buying this shirt chics cant take their hands off me. I don't know what it is it must be... |
