@@ -9,7 +9,7 @@
  following software on your machine:
 
 
- * [Node.js](https://nodejs.org/) (Version 12)
+ * [Node.js](https://nodejs.org/) (Version 24)
  * [Git](https://git-scm.com/)
 
 
@@ -27,7 +27,7 @@
 
  The Shopgate Platform SDK is based on
  [Node.js](https://nodejs.org/). The Shopgate CONNECT
- Platform SDK requires Node.js version 8.4 or later
+ Platform SDK requires Node.js version 18 or later
  installed on your developer machine.
 
 
