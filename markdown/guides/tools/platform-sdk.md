@@ -8,7 +8,7 @@ The Platform SDK is a command line tool for developing frontend and backend exte
 
 ## How To Install the Platform SDK
 
-The Shopgate Platform SDK is based on Node.js and **requires Node.js version 12** installed on your development machine.
+The Shopgate Platform SDK is based on Node.js and **requires Node.js version 18** installed on your development machine.
 
 To install the Platform SDK, open a terminal (as a user with permission to install software) and type:
 
