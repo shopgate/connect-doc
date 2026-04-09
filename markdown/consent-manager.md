@@ -63,10 +63,10 @@ class YourComponent extends Component {
   const {
     comfortCookiesAcceptedState,
     statisticsCookiesAcceptedState,
-   } = this.props;
+  } = this.props;
   return (
     //...your code
-    );
+  );
   }
 }
 YourComponent.propTypes = {
