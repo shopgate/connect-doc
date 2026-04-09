@@ -20,11 +20,11 @@ You can connect the required state to your component using react-redux's connect
 function. This will allow you to access the cookie consent state (comfort and statistics cookies)
 from the Redux store.
 
-```json
+```js
 import { connect } from 'react-redux';
 import {
-getAreComfortCookiesAccepted,
-getAreStatisticsCookiesAccepted,
+  getAreComfortCookiesAccepted,
+  getAreStatisticsCookiesAccepted,
 } from '@shopgate/engage/tracking/selectors';
 
 /**
@@ -32,11 +32,9 @@ getAreStatisticsCookiesAccepted,
 */
 
 
-JavaScript
 const mapStateToProps = (state) => ({
-comfortCookiesAcceptedState:getAreComfortCookiesAccepted(state),
-statisticsCookiesAcceptedState:getAreStatisticsCookiesAccepted(st
-ate),
+  comfortCookiesAcceptedState:getAreComfortCookiesAccepted(state),
+  statisticsCookiesAcceptedState:getAreStatisticsCookiesAccepted(state),
 });
 export default connect(mapStateToProps);
 ```
@@ -52,7 +50,7 @@ export default connect(mapStateToProps);
 Once the Redux state is connected, you can access the cookie consent status and use it within
 your component. Below is an example of how to use the previously created connector.js:
 
-```json
+```js
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from './connector';
@@ -60,20 +58,20 @@ import connect from './connector';
 * Your component
 */
 class YourComponent extends Component {
-render() {
+  render() {
 
-const {
-comfortCookiesAcceptedState,
-statisticsCookiesAcceptedState,
-} = this.props;
-return (
-//...your code
-);
-}
+  const {
+    comfortCookiesAcceptedState,
+    statisticsCookiesAcceptedState,
+   } = this.props;
+  return (
+    //...your code
+    );
+  }
 }
 YourComponent.propTypes = {
-comfortCookiesAcceptedState: PropTypes.bool.isRequired,
-statisticsCookiesAcceptedState: PropTypes.bool.isRequired,
+  comfortCookiesAcceptedState: PropTypes.bool.isRequired,
+  statisticsCookiesAcceptedState: PropTypes.bool.isRequired,
 };
 export default connect(YourComponent);
 ```
