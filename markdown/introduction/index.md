@@ -9,8 +9,6 @@ Welcome to Shopgate, the most flexible development platform for mobile shopping 
 
 ![shopping_apps.png](../../assets/shopping_apps.png)
 
-test
-
 ## What is Shopgate?
 
 The Shopgate platform is a cloud-based environment you use to develop and deploy mobile shopping applications. You can use this guide to begin developing for the Shopgate platform.
