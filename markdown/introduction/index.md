@@ -9,7 +9,7 @@ Welcome to Shopgate, the most flexible development platform for mobile shopping 
 
 ![shopping_apps.png](../../assets/shopping_apps.png)
 
-
+test
 
 ## What is Shopgate?
 
