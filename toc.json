@@ -358,31 +358,6 @@
         }
       ]
     },
-        {
-      "type": "group",
-      "title": "Native Modules",
-      "items": [
-        {
-          "type": "item",
-          "title": "Overview",
-          "uri": "markdown/references/Native Modules/Native-Modules-Overview.md"
-        },{
-          "type": "item",
-          "title": "Android Navigation Bar",
-          "uri": "markdown/references/Native Modules/AndroidNavigationBar.md"
-        },
-        {
-          "type": "item",
-          "title": "Braze",
-          "uri": "markdown/references/Native Modules/Braze.md"
-        },
-        {
-          "type": "item",
-          "title": "Brightness",
-          "uri": "markdown/references/Native Modules/Brightness.md"
-        }
-      ]
-    },
     {
       "type": "group",
       "title": "Helpers",
@@ -991,6 +966,31 @@
           "type": "item",
           "title": "CMS Service API",
           "uri": "static/services/cms.yaml"
+        }
+      ]
+    },
+        {
+      "type": "group",
+      "title": "Native Modules",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "markdown/references/Native Modules/Native-Modules-Overview.md"
+        },{
+          "type": "item",
+          "title": "Android Navigation Bar",
+          "uri": "markdown/references/Native Modules/AndroidNavigationBar.md"
+        },
+        {
+          "type": "item",
+          "title": "Braze",
+          "uri": "markdown/references/Native Modules/Braze.md"
+        },
+        {
+          "type": "item",
+          "title": "Brightness",
+          "uri": "markdown/references/Native Modules/Brightness.md"
         }
       ]
     },
