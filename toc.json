@@ -991,6 +991,76 @@
           "type": "item",
           "title": "Brightness",
           "uri": "markdown/references/Native Modules/Brightness.md"
+        },
+        {
+          "type": "item",
+          "title": "Camera",
+          "uri": "markdown/references/Native Modules/Camera.md"
+        },
+        {
+          "type": "item",
+          "title": "Connectivity Monitor",
+          "uri": "markdown/references/Native Modules/ConnectivityMonitor.md"
+        },
+        {
+          "type": "item",
+          "title": "Emarsys",
+          "uri": "markdown/references/Native Modules/Emarsys.md"
+        },
+        {
+          "type": "item",
+          "title": "Facebook Analytics",
+          "uri": "markdown/references/Native Modules/FacebookAnalytics.md"
+        },
+        {
+          "type": "item",
+          "title": "Firebase Analytics",
+          "uri": "markdown/references/Native Modules/FirebaseAnalytics.md"
+        },
+        {
+          "type": "item",
+          "title": "Geolocation",
+          "uri": "markdown/references/Native Modules/Geolocation.md"
+        },
+        {
+          "type": "item",
+          "title": "HTTP",
+          "uri": "markdown/references/Native Modules/Http.md"
+        },
+        {
+          "type": "item",
+          "title": "In App Browser",
+          "uri": "markdown/references/Native Modules/InAppBrowser.md"
+        },
+        {
+          "type": "item",
+          "title": "Keychain",
+          "uri": "markdown/references/Native Modules/Keychain.md"
+        },
+        {
+          "type": "item",
+          "title": "Linking",
+          "uri": "markdown/references/Native Modules/Linking.md"
+        },
+        {
+          "type": "item",
+          "title": "Push",
+          "uri": "markdown/references/Native Modules/Push.md"
+        },
+        {
+          "type": "item",
+          "title": "Sharing",
+          "uri": "markdown/references/Native Modules/Sharing.md"
+        },
+        {
+          "type": "item",
+          "title": "Splash Screen",
+          "uri": "markdown/references/Native Modules/SplashScreen.md"
+        },
+        {
+          "type": "item",
+          "title": "Status Bar",
+          "uri": "markdown/references/Native Modules/StatusBar.md"
         }
       ]
     },
