@@ -42,7 +42,7 @@ A few conventions apply across all modules:
 | Module | Purpose | Docs |
 |--------|---------|------|
 | Camera | Native scanner, flashlight, and base64 JPEG image capture. | [Camera.md](./Camera.md) |
-| Brightness | Read and set the screen brightness (0–100%). | [BrightnessModule.md](./BrightnessModule.md) |
+| Brightness | Read and set the screen brightness (0–100%). | [Brightness.md](./Brightness.md) |
 | Geolocation | Configure location services, request authorization, read current position. | [Geolocation.md](./Geolocation.md) |
 | Connectivity Monitor | Report online/offline state and connection type (WIFI/2G/3G/4G), with a change event. | [ConnectivityMonitor.md](./ConnectivityMonitor.md) |
 
