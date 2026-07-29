@@ -1,5 +1,5 @@
 ---
-stoplight-id: wu00cjby6gs8v
+stoplight-id: sjuqyo49uuadb
 ---
 
 # App Permissions Module
